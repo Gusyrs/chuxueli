@@ -272,7 +272,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .cpGroup{padding:4px 10px;border-radius:14px;font-size:11px;cursor:pointer;background:#fff;border:1px solid #111;white-space:nowrap;color:#111}
 .cpGroup.active{background:#111;color:#fff}
 .cpGroup.add{border-style:dashed}
-.cpBody{flex:1;overflow-y:auto;padding:12px 14px}
+.cpBody{flex:1;overflow-y:auto;padding:12px 8px}
 #momentsBody{scrollbar-width:none;-ms-overflow-style:none}
 #momentsBody::-webkit-scrollbar{display:none}
 .cpToolbar{display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap}
@@ -321,7 +321,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .meName{font-size:16px;font-weight:700;color:#111;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .meSign{font-size:11px;color:#666;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .meAv{width:64px;height:64px;border-radius:10px;border:1px solid #111;object-fit:cover;background:#fff;flex-shrink:0}
-.momentCard{background:#fff;border-radius:10px;padding:12px;margin-bottom:12px;border:1px solid #e5e5e5}
+.momentCard{background:#fff;border-radius:10px;padding:10px 8px;margin-bottom:12px;border:1px solid #e5e5e5}
 .momentHead{display:flex;align-items:center;gap:8px;margin-bottom:8px}
 .momentHead img{width:38px;height:38px;border-radius:50%;object-fit:cover;background:#eee}
 .mhName{font-size:13px;font-weight:600;color:#111}
@@ -332,12 +332,13 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .momentActs{display:flex;gap:14px;font-size:12px;color:#555;border-top:1px solid #eee;padding-top:8px}
 .momentActs span{cursor:pointer}
 .momentActs .delM{color:#111;margin-left:auto;border:1px solid #111;border-radius:4px;padding:1px 6px}
-.cmtList{margin-top:8px;background:#f5f5f5;border-radius:6px;padding:8px}
-.cmtRow{font-size:12px;line-height:1.6;display:flex;gap:6px;align-items:flex-start;padding:3px 0;color:#111}
-.cmtRow .who{color:#111;font-weight:600;flex-shrink:0}
-.cmtRow .ct{flex:1;word-break:break-word}
-.cmtRow .cAct{font-size:11px;color:#555;cursor:pointer;flex-shrink:0}
-.mailItem{background:#fff;border-radius:8px;padding:9px 11px;margin-bottom:7px;cursor:pointer;border:1px solid #e5e5e5}
+/* ===== 评论区：加宽、正常换行，回复/删除固定在整行右侧 ===== */
+.cmtList{margin-top:8px;background:#f5f5f5;border-radius:6px;padding:6px 4px}
+.cmtRow{font-size:12px;line-height:1.55;display:flex;gap:3px;align-items:flex-start;padding:2px 0;color:#111}
+.cmtRow .who{color:#111;font-weight:600;flex-shrink:0;white-space:nowrap}
+.cmtRow .ct{flex:1 1 auto;min-width:0;word-break:break-word;overflow-wrap:anywhere}
+.cmtRow .cAct{font-size:11px;color:#555;cursor:pointer;flex-shrink:0;margin-left:4px}
+.cmtRow .cAct.push{margin-left:auto}.mailItem{background:#fff;border-radius:8px;padding:9px 11px;margin-bottom:7px;cursor:pointer;border:1px solid #e5e5e5}
 .mailItem.unread{border-left:3px solid #111}
 .mailItem .mt{font-size:13px;font-weight:600;margin-bottom:2px;color:#111}
 .mailItem .ms{font-size:11px;color:#999;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -418,12 +419,10 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 #diaryPage.show,#diaryDetailPage.show,#diaryStkPage.show{display:flex}
 #diaryDetailPage{z-index:27}
 #diaryStkPage{z-index:26}
-/* 日记列表、详情 body 透明，背景透出 #diaryPage / #diaryDetailPage */
 #diaryBody,#ddBody{flex:1;overflow-y:auto;padding:14px;scrollbar-width:none;-ms-overflow-style:none;background:transparent}
 #ssBody{flex:1;overflow-y:auto;padding:14px;scrollbar-width:none;-ms-overflow-style:none;background:#f7f7f7}
 #diaryBody::-webkit-scrollbar,#ddBody::-webkit-scrollbar{display:none}
 .diaryTopIcons{display:flex;gap:6px;margin-left:auto}
-/* 动态条：默认透明白+磨砂，具体 alpha / blur 由 applyDiaryPageBg 按设置覆盖 */
 #diaryTipsBar{margin:10px 14px 0;border:1px solid #111;border-radius:8px;background:rgba(255,255,255,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);overflow:hidden}
 #diaryTipsHead{display:flex;align-items:center;gap:6px;padding:6px 10px;font-size:12px;color:#111;cursor:pointer;background:rgba(255,255,255,.25)}
 #diaryTipsHead .dtDot{width:6px;height:6px;border-radius:50%;background:#111;flex-shrink:0}
@@ -656,8 +655,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .styleOpt .sPreview.ins{background:linear-gradient(135deg,#fbf8f3,#f3ecdf);border:1px solid rgba(0,0,0,.05);box-shadow:0 4px 12px rgba(60,55,48,.08)}
 .styleOpt .sPreview.glass{background:linear-gradient(135deg,rgba(251,248,241,.55),rgba(243,236,223,.55));backdrop-filter:blur(20px) saturate(180%);border:1px solid rgba(255,255,255,.7);box-shadow:inset 0 1px 0 rgba(255,255,255,.85),0 4px 12px rgba(60,60,90,.10)}
 .styleOpt .sName{font-size:11px;color:#555;font-weight:500;letter-spacing:.5px}
-</style></head><body>
-<div id="app">
+</style></head><body><div id="app">
 
   <!-- ========== 主页（多页面） ========== -->
   <div id="home">
@@ -1434,6 +1432,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
     <div class="btns"><button class="cancel" id="mwCancel">取消</button><button class="ok" id="mwOk">寄出</button></div>
   </div></div>
 
+  <!-- 信箱设置：回信/主动写信 = 开关 + 概率 + min/max + 补算上限 -->
   <div class="mask" id="mailSetMask"><div class="dialog">
     <h3>信箱设置</h3>
     <div class="fRow"><span>信件背景图</span>
@@ -1452,18 +1451,21 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
       <input id="mailFont" type="range" min="11" max="20">
     </div>
     <hr style="border:none;border-top:1px solid #eee;margin:12px 0">
-    <div class="fRow"><span>允许对方主动写信</span>
-      <select id="mailEnable"><option value="1">开启</option><option value="0">关闭</option></select>
-    </div>
-    <div class="probRow"><span>对方每封信抽取字卡条数-最少</span><input id="mailCardMin" type="number" min="1"></div>
-    <div class="probRow"><span>对方每封信抽取字卡条数-最多</span><input id="mailCardMax" type="number" min="1"></div>
+    <div class="switchRow"><span>允许对方回信</span><label class="switch"><input type="checkbox" id="mailAllowReply"><span class="sl"></span></label></div>
+    <div class="probRow"><span>回信概率（%，100 = 必回）</span><input id="mailReplyP" type="number" min="0" max="100"></div>
+    <div class="probRow"><span>回信最短延迟（分钟）</span><input id="mailReplyMin" type="number" min="0"></div>
+    <div class="probRow"><span>回信最长延迟（分钟）</span><input id="mailReplyMax" type="number" min="0"></div>
+    <hr style="border:none;border-top:1px solid #eee;margin:12px 0">
+    <div class="switchRow"><span>允许对方主动写信</span><label class="switch"><input type="checkbox" id="mailAllowProactive"><span class="sl"></span></label></div>
+    <div class="probRow"><span>主动写信概率（%）</span><input id="mailWriteP" type="number" min="0" max="100"></div>
+    <div class="probRow"><span>主动写信最短间隔（分钟）</span><input id="mailProactiveMin" type="number" min="1"></div>
+    <div class="probRow"><span>主动写信最长间隔（分钟）</span><input id="mailProactiveMax" type="number" min="1"></div>
+    <hr style="border:none;border-top:1px solid #eee;margin:12px 0">
+    <div class="probRow"><span>单次补算上限（封，防止一次涌出太多）</span><input id="mailMaxCatchUp" type="number" min="1"></div>
+    <div class="probRow"><span>每封信抽取字卡条数-最少</span><input id="mailCardMin" type="number" min="1"></div>
+    <div class="probRow"><span>每封信抽取字卡条数-最多</span><input id="mailCardMax" type="number" min="1"></div>
     <div class="probRow"><span>附带表情包数量-最少（默认0）</span><input id="mailImgMin" type="number" min="0"></div>
     <div class="probRow"><span>附带表情包数量-最多（默认2）</span><input id="mailImgMax" type="number" min="0"></div>
-    <div class="probRow"><span>每天最少写几封</span><input id="mailDayMin" type="number" min="0"></div>
-    <div class="probRow"><span>每天最多写几封</span><input id="mailDayMax" type="number" min="0"></div>
-    <div class="probRow"><span>写信时间间隔（分钟）</span><input id="mailGap" type="number" min="1"></div>
-    <div class="probRow"><span>对方回信最快延迟（分钟）</span><input id="mailReplyMin" type="number" min="1" value="1"></div>
-    <div class="probRow"><span>对方回信最慢延迟（分钟）</span><input id="mailReplyMax" type="number" min="1" value="60"></div>
     <div class="btns"><button class="cancel" id="mailSetCancel">取消</button><button class="ok" id="mailSetSave">保存</button></div>
   </div></div>
   <!-- ========== 商店弹窗 ========== -->
@@ -1587,8 +1589,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 
   <dialog id="actDialog"><div id="dlgRow"></div></dialog>
 
-</div><script>
-(function(){
+</div><script>(function(){
 var $=function(id){return document.getElementById(id);};
 function load(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch(e){return d;}}
 function save(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
@@ -1725,9 +1726,42 @@ if(ms.delayMax==null)ms.delayMax=60;
 save('zika_moment_settings',ms);
 
 var convs=load('zika_mail_convs',[]);
-var mailSet=load('zika_mail_set',{enable:1,cardMin:1,cardMax:2,imgMin:0,imgMax:2,dayMin:1,dayMax:2,gap:60,replyMin:1,replyMax:60,bg:'',bgScope:'detail',bgAlpha:100,bgBlur:0,cardAlpha:100,cardBlur:0,fontMode:'global',font:13});
+/* ===== 信箱设置：回信/主动写信 = 开关 + 概率 + min/max + 补算上限 ===== */
+var mailSet=load('zika_mail_set',{
+  enable:1, allowReply:1, replyP:100, replyMin:1, replyMax:60,
+  allowProactive:1, writeP:30, proactiveMin:60, proactiveMax:180,
+  maxCatchUp:3, cardMin:1, cardMax:2, imgMin:0, imgMax:2,
+  bg:'', bgScope:'detail', bgAlpha:100, bgBlur:0, cardAlpha:100, cardBlur:0,
+  fontMode:'global', font:13
+});
+if(mailSet.enable==null)mailSet.enable=1;
+if(mailSet.allowReply==null)mailSet.allowReply=1;
+if(mailSet.replyP==null)mailSet.replyP=100;
 if(mailSet.replyMin==null)mailSet.replyMin=1;
 if(mailSet.replyMax==null)mailSet.replyMax=60;
+if(mailSet.allowProactive==null)mailSet.allowProactive=1;
+if(mailSet.writeP==null)mailSet.writeP=30;
+if(mailSet.proactiveMin==null)mailSet.proactiveMin=60;
+if(mailSet.proactiveMax==null)mailSet.proactiveMax=180;
+if(mailSet.maxCatchUp==null)mailSet.maxCatchUp=3;
+if(mailSet.cardMin==null)mailSet.cardMin=1;
+if(mailSet.cardMax==null)mailSet.cardMax=2;
+if(mailSet.imgMin==null)mailSet.imgMin=0;
+if(mailSet.imgMax==null)mailSet.imgMax=2;
+if(mailSet.replyMax<mailSet.replyMin)mailSet.replyMax=mailSet.replyMin;
+if(mailSet.proactiveMax<mailSet.proactiveMin)mailSet.proactiveMax=mailSet.proactiveMin;
+save('zika_mail_set',mailSet);
+/* 邮箱主动写信的绝对时间戳 */
+var mailProactive=load('zika_mail_proactive',null);
+if(!mailProactive||typeof mailProactive!=='object'||typeof mailProactive.nextAt!=='number'||!mailProactive.nextAt){
+  mailProactive={nextAt:Date.now()+Math.round((mailSet.proactiveMin+Math.random()*(mailSet.proactiveMax-mailSet.proactiveMin))*60*1000)};
+  save('zika_mail_proactive',mailProactive);
+}
+function mailRandMs(minMin,maxMin){
+  var a=Math.max(0,parseFloat(minMin)||0),b=Math.max(a,parseFloat(maxMin)||a);
+  return Math.round((a+Math.random()*(b-a))*60*1000);
+}
+
 var goods=load('zika_shop_goods',[{id:'g1',name:'奶茶',price:15,img:''},{id:'g2',name:'鲜花',price:52,img:''},{id:'g3',name:'蛋糕',price:88,img:''},{id:'g4',name:'小夜灯',price:39,img:''},{id:'g5',name:'围巾',price:99,img:''},{id:'g6',name:'巧克力',price:66,img:''}]);
 var wallet=load('zika_shop_wallet',{balance:500});
 var cart=load('zika_shop_cart',[]);
@@ -2424,8 +2458,7 @@ function msgPreview(m){
   if(m.type==='giftRecvCard')return '[已接收礼物] '+(m.goodsName||'');
   if(m.type==='loc')return '[定位] '+(m.locName||'');
   return m.text||'';
-}
-function renderChat(){
+}function renderChat(){
   var box=$('chat');if(!box)return;box.innerHTML='';
   chatHistory.forEach(function(m,idx){
     if(!m||typeof m!=='object')return;
@@ -2759,7 +2792,6 @@ function renderDiaryTips(){
   latest.textContent=diaryEvents[0].text;list.innerHTML='';
   diaryEvents.forEach(function(ev){var d=document.createElement('div');d.className='dtItem';d.innerHTML=esc(ev.text)+'<span class="dtTime">'+diaryShortTime(ev.time)+'</span>';list.appendChild(d);});
 }
-/* ===== 日记页面背景：铺满整个 #diaryPage 和 #diaryDetailPage；动态条单独 alpha/blur ===== */
 function applyDiaryPageBg(){
   var a=(diarySet.pageBgAlpha==null?100:diarySet.pageBgAlpha)/100;
   var bl=(diarySet.pageBgBlur==null?0:diarySet.pageBgBlur)/10;
@@ -2791,7 +2823,6 @@ function applyDiaryPageBg(){
     head.style.background='rgba(255,255,255,'+Math.min(1,tipsA+.1)+')';
   }
 }
-/* ===== 日记卡片背景：只用全局 diarySet.cardAlpha / cardBlur ===== */
 function buildDiaryBg(card,dn,withBorder){
   var st=getDiaryStyle(dn.style||'blank');var shape=dn.shape||'rect';
   card.className='diaryNote shape-'+shape;
@@ -3289,9 +3320,22 @@ function renderSavePage(){
     r.appendChild(cb);r.appendChild(sp);r.appendChild(meta);r.appendChild(del);
     list.appendChild(r);
   });
+}/* ========== 朋友圈 ==========
+   - 评论存 whoType / replyToType，渲染时按当前 profile 名字动态取，改名后旧评论跟着变
+   - 评论区已加宽（CSS 里 .cmtList/.cmtRow/.ct 收窄 padding，回复/删除在行尾）
+*/
+function momentName(c){
+  if(!c) return '';
+  if(c.whoType==='me') return profile.meName||'我';
+  if(c.whoType==='ta') return profile.taName||'TA';
+  return c.who||'';
 }
-
-/* ========== 朋友圈 ========== */
+function momentReplyName(c){
+  if(!c) return '';
+  if(c.replyToType==='me') return profile.meName||'我';
+  if(c.replyToType==='ta') return profile.taName||'TA';
+  return c.replyTo||'';
+}
 function renderMoments(){
   var body=$('momentsBody');if(!body)return;body.innerHTML='';
   var cv=document.createElement('div');cv.className='cover';
@@ -3304,14 +3348,16 @@ function renderMoments(){
   left.appendChild(nm);left.appendChild(sg);
   var av=document.createElement('img');av.className='meAv';av.src=profile.meAvatar||meAvDefault;
   row.appendChild(left);row.appendChild(av);body.appendChild(row);
-  var list=document.createElement('div');list.style.padding='12px';body.appendChild(list);
+  /* 列表容器：左右内边距压到 4px，让动态卡片更贴边 */
+  var list=document.createElement('div');list.style.padding='10px 4px';body.appendChild(list);
   if(!moments.length){list.innerHTML='<div style="color:#999;font-size:12px;padding:20px;text-align:center">还没有动态，点右上角「＋ 发动态」</div>';return;}
   moments.slice().reverse().forEach(function(mt){
     var card=document.createElement('div');card.className='momentCard';
     var head=document.createElement('div');head.className='momentHead';
     var a=document.createElement('img');a.src=mt.from==='me'?(profile.meAvatar||meAvDefault):(profile.taAvatar||'');
     var info=document.createElement('div');var t=new Date(mt.time);var hh=('0'+t.getHours()).slice(-2),mm=('0'+t.getMinutes()).slice(-2);
-    info.innerHTML='<div class="mhName">'+String(mt.from==='me'?(profile.meName||'我'):(profile.taName||'TA'))+'</div><div class="mhTime">'+hh+':'+mm+'</div>';
+    var authorName = mt.from==='me' ? (profile.meName||'我') : (profile.taName||'TA');
+    info.innerHTML='<div class="mhName">'+esc(authorName)+'</div><div class="mhTime">'+hh+':'+mm+'</div>';
     head.appendChild(a);head.appendChild(info);card.appendChild(head);
     if(mt.text){var tx=document.createElement('div');tx.className='momentText';tx.textContent=mt.text;card.appendChild(tx);}
     if(mt.imgs&&mt.imgs.length){var ig=document.createElement('div');ig.className='momentImgs';mt.imgs.forEach(function(u){var im=document.createElement('img');im.src=u;ig.appendChild(im);});card.appendChild(ig);}
@@ -3326,13 +3372,13 @@ function renderMoments(){
     cmt.onclick=function(){
       var v=prompt('写评论：');if(v===null)return;v=v.trim();if(!v)return;
       if(!mt.comments)mt.comments=[];
-      var myCmt={who:profile.meName||'我',text:v,time:Date.now(),_replied:false};
+      var myCmt={whoType:'me',who:profile.meName||'我',text:v,time:Date.now(),_replied:false};
       mt.comments.push(myCmt);
       save('zika_moments',moments);renderMoments();
       if(mt.from==='ta'&&!myCmt._replied&&Math.random()*100<ms.replyCmtP){
         myCmt._replied=true;
         setTimeout(function(){
-          mt.comments.push({who:profile.taName||'TA',text:getCardText(replyCards[Math.floor(Math.random()*replyCards.length)]),replyTo:profile.meName||'我',time:Date.now()});
+          mt.comments.push({whoType:'ta',who:profile.taName||'TA',text:getCardText(replyCards[Math.floor(Math.random()*replyCards.length)]),replyToType:'me',replyTo:profile.meName||'我',time:Date.now()});
           save('zika_moments',moments);renderMoments();
         },1500+Math.random()*1500);
       }
@@ -3342,23 +3388,30 @@ function renderMoments(){
     if(mt.comments&&mt.comments.length){
       var cl=document.createElement('div');cl.className='cmtList';
       mt.comments.forEach(function(c,ci){
-        var r=document.createElement('div');r.className='cmtRow';var prefix=c.replyTo?'回复 '+c.replyTo+'：':'';
-        r.innerHTML='<span class="who">'+c.who+'：</span><span class="ct">'+prefix+c.text+'</span>';
-        var rp=document.createElement('span');rp.className='cAct';rp.textContent='回复';
+        var r=document.createElement('div');r.className='cmtRow';
+        var whoName=momentName(c);
+        var replyToName=momentReplyName(c);
+        var who=document.createElement('span');who.className='who';who.textContent=whoName+'：';
+        var ct=document.createElement('span');ct.className='ct';
+        var prefix=replyToName?'回复 '+replyToName+'：':'';
+        ct.appendChild(document.createTextNode(prefix+(c.text||'')));
+        var rp=document.createElement('span');rp.className='cAct push';rp.textContent='回复';
         rp.onclick=function(){
-          var v=prompt('回复 '+c.who+'：');if(v===null)return;v=v.trim();if(!v)return;
-          var myReply={who:profile.meName||'我',text:v,replyTo:c.who,time:Date.now()};
+          var v=prompt('回复 '+whoName+'：');if(v===null)return;v=v.trim();if(!v)return;
+          var myReply={whoType:'me',who:profile.meName||'我',text:v,replyToType:(c.whoType||'ta'),replyTo:whoName,time:Date.now()};
           mt.comments.push(myReply);
           save('zika_moments',moments);renderMoments();
-          if(c.who===(profile.taName||'TA')&&Math.random()*100<ms.replyCmtP){
+          if(c.whoType==='ta'&&Math.random()*100<ms.replyCmtP){
             setTimeout(function(){
-              mt.comments.push({who:profile.taName||'TA',text:getCardText(replyCards[Math.floor(Math.random()*replyCards.length)]),replyTo:profile.meName||'我',time:Date.now()});
+              mt.comments.push({whoType:'ta',who:profile.taName||'TA',text:getCardText(replyCards[Math.floor(Math.random()*replyCards.length)]),replyToType:'me',replyTo:profile.meName||'我',time:Date.now()});
               save('zika_moments',moments);renderMoments();
             },1500+Math.random()*1500);
           }
         };
-        var dl=document.createElement('span');dl.className='cAct del';dl.textContent='删除';dl.onclick=function(){mt.comments.splice(ci,1);save('zika_moments',moments);renderMoments();};
-        r.appendChild(rp);r.appendChild(dl);cl.appendChild(r);
+        var dl=document.createElement('span');dl.className='cAct del';dl.textContent='删除';
+        dl.onclick=function(){mt.comments.splice(ci,1);save('zika_moments',moments);renderMoments();};
+        r.appendChild(who);r.appendChild(ct);r.appendChild(rp);r.appendChild(dl);
+        cl.appendChild(r);
       });
       card.appendChild(cl);
     }
@@ -3378,7 +3431,7 @@ function taReactMyMoments(){
       changed=true;
       setTimeout(function(){renderMoments();},200);
     }
-    var taCommented = mt.comments && mt.comments.some(function(c){return c.who===(profile.taName||'TA') && !c.replyTo;});
+    var taCommented = mt.comments && mt.comments.some(function(c){return (c.whoType==='ta'||(!c.whoType&&c.who===(profile.taName||'TA'))) && !c.replyTo;});
     if(!taCommented && Math.random()*100 < ms.cmtP){
       var delayMin=Math.max(1,ms.delayMin||1);
       var delayMax=Math.max(delayMin,ms.delayMax||60);
@@ -3386,6 +3439,7 @@ function taReactMyMoments(){
       setTimeout(function(){
         if(!mt.comments)mt.comments=[];
         mt.comments.push({
+          whoType:'ta',
           who:profile.taName||'TA',
           text:getCardText(replyCards[Math.floor(Math.random()*replyCards.length)]),
           time:Date.now()
@@ -3424,7 +3478,17 @@ function taTick(){
   taReactMyMoments();renderMoments();
 }
 
-/* ========== 信箱 ========== */
+/* ========== 信箱 ==========
+   - 回信：你每寄出一封（新信或回信），该会话 cv.nextAt = 现在 + random(回信最短, 回信最长)。
+           到点时按「允许回信」开关 + 「回信概率」判定：概率 100 = 必回。
+           回信时间戳 = cv.nextAt（落在过去），补出来就像"他一直在按真实时间回"。
+   - 主动写信：全局 mailProactive.nextAt = 现在 + random(主动最短, 主动最长)。
+           到点按「允许主动写信」开关 + 「主动写信概率」判定。
+           无论中不中，都推进 nextAt 到下一周期。
+   - 补算：打开网站 / 切回前台 / 每 30 秒 / 打开信箱页 时结算一次，
+           若 nextAt 落后 now 很多，while 循环按周期补，最多补 maxCatchUp 封。
+   - 绝不自己加概率：回信只看 allowReply + replyP；主动只看 allowProactive + writeP。
+*/
 function applyMailCard(){
   var a=(mailSet.cardAlpha==null?100:mailSet.cardAlpha)/100;var blur=(mailSet.cardBlur==null?0:mailSet.cardBlur)/10;
   var f=(mailSet.fontMode==='global')?globalFont():(mailSet.font==null?13:mailSet.font);
@@ -3440,7 +3504,6 @@ function tagText(m,mi){if(m.from==='me'){return mi===0?'我寄出的原信':'我
 function toName(m){return m.from==='me'?(profile.taName||'TA'):(profile.meName||'我');}
 function signName(m){return m.from==='me'?(profile.meName||'我'):(profile.taName||'TA');}
 function fmtTime(t){var d=new Date(t);var hh=('0'+d.getHours()).slice(-2),mm=('0'+d.getMinutes()).slice(-2);var mo=('0'+(d.getMonth()+1)).slice(-2),dd=('0'+d.getDate()).slice(-2);return mo+'-'+dd+' '+hh+':'+mm;}
-/* 信箱背景：列表和详情都覆盖，铺在 #mailPage 上，#mailList 透明 */
 function applyMailPageBg(){
   var page=$('mailPage');if(!page)return;
   if(mailSet.bg){
@@ -3460,9 +3523,26 @@ function applyMailPageBg(){
   var list=$('mailList');
   if(list){list.style.background='transparent';list.style.backdropFilter='none';}
 }
+function ensureConvNextAt(){
+  if(!Array.isArray(convs))convs=[];
+  var changed=false;
+  convs.forEach(function(cv){
+    if(!cv||typeof cv!=='object'||!Array.isArray(cv.msgs)||!cv.msgs.length)return;
+    if(cv.nextAt==null){
+      if(cv.msgs[cv.msgs.length-1].from==='me'){
+        cv.nextAt=Date.now()+mailRandMs(mailSet.replyMin,mailSet.replyMax);
+      }else{
+        cv.nextAt=0;
+      }
+      changed=true;
+    }
+  });
+  if(changed)save('zika_mail_convs',convs);
+}
 function renderMail(){
   var list=$('mailList');if(!list)return;
   applyMailPageBg();
+  ensureConvNextAt();
   list.innerHTML='';
   if(!Array.isArray(convs))convs=[];
   convs.forEach(function(cv){if(!cv||typeof cv!=='object')return;if(!Array.isArray(cv.msgs))cv.msgs=[];});
@@ -3506,77 +3586,119 @@ function openConv(idx){
   var reply=document.createElement('span');reply.textContent='回信';
   reply.onclick=function(){
     var v=prompt('回信正文：');if(v===null)return;v=v.trim();if(!v)return;
-    cv.msgs.push({from:'me',text:v,imgs:[],time:Date.now()});save('zika_mail_convs',convs);openConv(idx);
-    if(mailSet.enable){
-      var rMin=Math.max(1,mailSet.replyMin||1);
-      var rMax=Math.max(rMin,mailSet.replyMax||60);
-      var delayMin=rMin+Math.random()*(rMax-rMin);
-      setTimeout(function(){
-        var n=randInt(mailSet.cardMin,mailSet.cardMax);var parts=[];
-        for(var i=0;i<n;i++) parts.push(getCardText(replyCards[Math.floor(Math.random()*replyCards.length)]));
-        var body=joinCardsWithPunc(parts);if(!body.trim()) body='嗯嗯。';
-        var imgs=[];if(stickers.length){var k=randInt(mailSet.imgMin,mailSet.imgMax);for(var j=0;j<k;j++)imgs.push(stickers[Math.floor(Math.random()*stickers.length)]);}
-        cv.msgs.push({from:'ta',text:body,imgs:imgs,time:Date.now()});save('zika_mail_convs',convs);
-        if($('mailPage').classList.contains('show') && $('mailList').innerHTML.indexOf('convWrap')>=0) openConv(idx);
-        else { unreadData.mail++; saveUnread(); }
-      },delayMin*60*1000);
-    }
+    cv.msgs.push({from:'me',text:v,imgs:[],time:Date.now()});
+    cv.nextAt=Date.now()+mailRandMs(mailSet.replyMin,mailSet.replyMax);
+    save('zika_mail_convs',convs);
+    openConv(idx);
+    settleMailAll();
   };
   var del=document.createElement('span');del.className='delM';del.textContent='删除整封';del.onclick=function(){if(!confirm('删除这封信及全部往来？'))return;convs.splice(idx,1);save('zika_mail_convs',convs);renderMail();};
   acts.appendChild(back);acts.appendChild(reply);acts.appendChild(del);box.appendChild(acts);list.appendChild(box);applyMailCard();
 }
-function taWriteMail(){
-  if(!mailSet.enable)return;
+
+function settleMailReply(){
+  if(!parseInt(mailSet.enable))return 0;
+  if(!parseInt(mailSet.allowReply))return 0;
   if(!Array.isArray(convs))convs=[];
-  var myPendingConv=null;
+  var now=Date.now();
+  var done=0;
+  var maxCatch=Math.max(1,parseInt(mailSet.maxCatchUp)||3);
   for(var i=0;i<convs.length;i++){
     var cv=convs[i];
-    if(!cv.msgs||!cv.msgs.length)continue;
-    if(cv.msgs[cv.msgs.length-1].from==='me'){myPendingConv=cv;break;}
-  }
-  if(myPendingConv){
-    var rMin=Math.max(1,mailSet.replyMin||1);
-    var rMax=Math.max(rMin,mailSet.replyMax||60);
-    var delayMin=rMin+Math.random()*(rMax-rMin);
-    setTimeout(function(){
-      var n=randInt(mailSet.cardMin,mailSet.cardMax);
-      var parts=[];
-      for(var k=0;k<n;k++)parts.push(getCardText(replyCards[Math.floor(Math.random()*replyCards.length)]));
-      var body=joinCardsWithPunc(parts);
-      if(!body.trim())body='嗯嗯。';
-      var imgs=[];
-      if(stickers.length){var kk=randInt(mailSet.imgMin,mailSet.imgMax);for(var j=0;j<kk;j++)imgs.push(stickers[Math.floor(Math.random()*stickers.length)]);}
-      myPendingConv.msgs.push({from:'ta',text:body,imgs:imgs,time:Date.now()});
-      myPendingConv.unread=true;
-      unreadData.mail++;
-      saveUnread();
-      save('zika_mail_convs',convs);
-      renderMail();
-      if($('mailPage').classList.contains('show')){
-        var idx=convs.indexOf(myPendingConv);
-        if(idx>=0)openConv(idx);
+    if(!cv||!Array.isArray(cv.msgs)||!cv.msgs.length)continue;
+    if(cv.nextAt==null||!cv.nextAt)continue;
+    if(cv.msgs[cv.msgs.length-1].from!=='me'){cv.nextAt=0;continue;}
+    var guard=0;
+    while(now>=cv.nextAt && guard<50){
+      guard++;
+      var hit=Math.random()*100<(parseFloat(mailSet.replyP)||0);
+      if(hit){
+        var n=randInt(mailSet.cardMin,mailSet.cardMax);
+        var parts=[];
+        for(var k=0;k<n;k++)parts.push(getCardText(replyCards[Math.floor(Math.random()*replyCards.length)]));
+        var body=joinCardsWithPunc(parts);
+        if(!body.trim())body='嗯嗯。';
+        var imgs=[];
+        if(stickers.length){var kk=randInt(mailSet.imgMin,mailSet.imgMax);for(var j=0;j<kk;j++)imgs.push(stickers[Math.floor(Math.random()*stickers.length)]);}
+        cv.msgs.push({from:'ta',text:body,imgs:imgs,time:cv.nextAt});
+        cv.unread=true;
+        unreadData.mail++;
+        cv.nextAt=0;
+        done++;
+        break;
+      }else{
+        cv.nextAt+=mailRandMs(mailSet.replyMin,mailSet.replyMax);
+        if(done>=maxCatch)break;
       }
-    },delayMin*60*1000);
-    return;
+    }
+    if(done>=maxCatch)break;
   }
-  var n2=randInt(mailSet.cardMin,mailSet.cardMax);
-  var parts2=[];
-  for(var i2=0;i2<n2;i2++)parts2.push(getCardText(replyCards[Math.floor(Math.random()*replyCards.length)]));
-  var body2=joinCardsWithPunc(parts2);
-  if(!body2.trim())body2='嗯嗯。';
-  var imgs2=[];
-  if(stickers.length){var k2=randInt(mailSet.imgMin,mailSet.imgMax);for(var j2=0;j2<k2;j2++)imgs2.push(stickers[Math.floor(Math.random()*stickers.length)]);}
-  var titlePool=['一封信','想你了','今天怎么样','随手写写','见字如面'];
-  var title=titlePool[Math.floor(Math.random()*titlePool.length)];
-  convs.push({title:title,msgs:[{from:'ta',text:body2,imgs:imgs2,time:Date.now()}],unread:true});
-  unreadData.mail++;
-  saveUnread();
-  save('zika_mail_convs',convs);
-  renderMail();
-  if(!$('mailPage').classList.contains('show')){toastSimple('来信',title,profile.taAvatar);}
+  return done;
 }
 
-/* ========== 商店 ========== */
+function settleMailProactive(){
+  if(!parseInt(mailSet.enable))return 0;
+  if(!parseInt(mailSet.allowProactive))return 0;
+  if(!Array.isArray(convs))convs=[];
+  var now=Date.now();
+  var done=0;
+  var maxCatch=Math.max(1,parseInt(mailSet.maxCatchUp)||3);
+  if(!mailProactive||typeof mailProactive.nextAt!=='number'||!mailProactive.nextAt){
+    mailProactive={nextAt:now+mailRandMs(mailSet.proactiveMin,mailSet.proactiveMax)};
+    save('zika_mail_proactive',mailProactive);
+    return 0;
+  }
+  var guard=0;
+  while(now>=mailProactive.nextAt && guard<200){
+    guard++;
+    var fireTs=mailProactive.nextAt;
+    var hit=Math.random()*100<(parseFloat(mailSet.writeP)||0);
+    if(hit && done<maxCatch){
+      var n2=randInt(mailSet.cardMin,mailSet.cardMax);
+      var parts2=[];
+      for(var i2=0;i2<n2;i2++)parts2.push(getCardText(replyCards[Math.floor(Math.random()*replyCards.length)]));
+      var body2=joinCardsWithPunc(parts2);
+      if(!body2.trim())body2='嗯嗯。';
+      var imgs2=[];
+      if(stickers.length){var k2=randInt(mailSet.imgMin,mailSet.imgMax);for(var j2=0;j2<k2;j2++)imgs2.push(stickers[Math.floor(Math.random()*stickers.length)]);}
+      var titlePool=['一封信','想你了','今天怎么样','随手写写','见字如面'];
+      var title=titlePool[Math.floor(Math.random()*titlePool.length)];
+      convs.push({title:title,msgs:[{from:'ta',text:body2,imgs:imgs2,time:fireTs}],unread:true,nextAt:0});
+      unreadData.mail++;
+      done++;
+    }
+    mailProactive.nextAt+=mailRandMs(mailSet.proactiveMin,mailSet.proactiveMax);
+    if(done>=maxCatch)break;
+  }
+  if(now>=mailProactive.nextAt && guard>=200){
+    mailProactive.nextAt=now+mailRandMs(mailSet.proactiveMin,mailSet.proactiveMax);
+  }
+  save('zika_mail_proactive',mailProactive);
+  return done;
+}
+
+function settleMailAll(){
+  var a=settleMailReply();
+  var b=settleMailProactive();
+  var changed=(a+b)>0;
+  if(changed){
+    save('zika_mail_convs',convs);
+    saveUnread();
+    if($('mailPage').classList.contains('show')){
+      var list=$('mailList');
+      if(list && !list.querySelector('.convWrap')) renderMail();
+    }else{
+      renderMail();
+    }
+    if(!$('mailPage').classList.contains('show')){
+      var latest=null;
+      convs.forEach(function(cv){if(!cv.msgs||!cv.msgs.length)return;var last=cv.msgs[cv.msgs.length-1];if(!latest||last.time>latest.time)latest=last;});
+      if(latest)toastSimple('来信',msgPreview(latest),profile.taAvatar);
+    }
+  }
+  return changed;
+}
+function taWriteMail(){ settleMailAll(); }/* ========== 商店 ========== */
 function applyShopBg(){
   var page=$('shopPage');var body=$('shopBody');
   if(!page||!body)return;
@@ -3928,7 +4050,7 @@ function bindHomeClick(){
     else if(p==='cards'){cpTab='reply';cpCurGroup='全部';cpSel={};setPageTitle('ttlCards',navTitle('cards')||'字卡总库');showCardsPage();}
     else if(p==='save'){$('home').classList.add('hide');setPageTitle('ttlSave',navTitle('save')||'珍藏');$('savePage').classList.add('show');saveSel={};renderSavePage();}
     else if(p==='moments'){$('home').classList.add('hide');setPageTitle('ttlMoments',navTitle('moments')||'朋友圈');$('momentsPage').classList.add('show');unreadData.moments=0;saveUnread();renderMoments();}
-    else if(p==='mail'){$('home').classList.add('hide');setPageTitle('ttlMail',navTitle('mail')||'信箱');$('mailPage').classList.add('show');unreadData.mail=0;saveUnread();renderMail();}
+    else if(p==='mail'){$('home').classList.add('hide');setPageTitle('ttlMail',navTitle('mail')||'信箱');$('mailPage').classList.add('show');unreadData.mail=0;saveUnread();renderMail();settleMailAll();}
     else if(p==='shop'){$('home').classList.add('hide');setPageTitle('ttlShop',navTitle('shop')||'商店');$('shopPage').classList.add('show');renderShop();}
     else if(p==='diary'){$('home').classList.add('hide');setPageTitle('ttlDiary',navTitle('diary')||'日记本');$('diaryPage').classList.add('show');renderDiaryTips();renderDiary();}
     else if(p==='spark'){$('home').classList.add('hide');$('sparkPage').classList.add('show');renderSparkPage();}
@@ -4177,9 +4299,7 @@ function bindHomeBeauty(){
       homeBeauty.bgColor=$('hbBgColor').value;homeBeauty.dim=parseInt($('hbDim').value)||100;homeBeauty.iconSize=parseInt($('hbIconSize').value)||56;homeBeauty.iconAlpha=parseInt($('hbIconAlpha').value)||100;homeBeauty.iconBlur=parseInt($('hbIconBlur').value)||0;homeBeauty.iconBorderColor=$('hbIconBorderColor').value;homeBeauty.iconNameColor=$('hbIconNameColor').value;homeBeauty.setAlpha=parseInt($('hbSetAlpha').value);homeBeauty.setBlur=parseInt($('hbSetBlur').value);homeBeauty.setBorderColor=$('hbSetBorderColor').value;applyHomeBeauty();
     });
   });
-}
-
-/* ========== 字卡页委托 ========== */
+}/* ========== 字卡页委托 ========== */
 function bindCardsPageDelegate(){
   var page=$('cardsPage');if(!page)return;if(page.dataset.bound)return;page.dataset.bound='1';
   page.addEventListener('click',function(e){
@@ -4212,7 +4332,7 @@ function showConfirm(title,msg,onOk){
 function resetChatData(){chatHistory=[];save('zika_chat_history',chatHistory);renderChat();}
 function resetFavData(){favorites=[];save('zika_favorites',favorites);saveSel={};renderSavePage();}
 function resetMomentsData(){moments=[];save('zika_moments',moments);ms._todayKey='';ms._todayCount=0;save('zika_moment_settings',ms);renderMoments();}
-function resetMailData(){convs=[];save('zika_mail_convs',convs);renderMail();}
+function resetMailData(){convs=[];save('zika_mail_convs',convs);mailProactive={nextAt:Date.now()+mailRandMs(mailSet.proactiveMin,mailSet.proactiveMax)};save('zika_mail_proactive',mailProactive);renderMail();}
 function resetDiaryData(){diaryList=[];save('zika_diary',diaryList);diaryEvents=[];save('zika_diary_events',diaryEvents);renderDiary();renderDiaryTips();}
 function resetSparkData(){spark={adopted:false,name:'',callMe:'',callTa:'',floatOn:1,streak:0,lastFireDay:'',meToday:false,taToday:false,lastDayKey:'',coupon:0,dailyCoupon:10,weekCoupon:20,msgCouponNeed:5,msgCoupon:5,taGap:30,taBuyP:30,meSpoke:0,taSpoke:0};save('zika_spark',spark);sparkOwned=[];save('zika_spark_owned',sparkOwned);updateSparkFloat();if($('sparkPage').classList.contains('show'))renderSparkPage();}
 function resetScreenData(){screenSet={lockEnable:1,lockP:15,lockGap:60,lockDayMax:3,lockDuration:5,lockPwd:'',begSuccess:60,shareEnable:1,shareP:12,shareGap:60,shareDayMax:3,shareRejectLockP:60,shareReactGap:30,shareBarText:'对方正在观看你的屏幕'};save('zika_screen_set',screenSet);screenStat={lastLockTs:0,lastShareTs:0,lockCountDay:0,shareCountDay:0,dayKey:''};save('zika_screen_stat',screenStat);endLockScreen();stopShare();if($('screenPage').classList.contains('show'))renderScreenPage();}
@@ -4220,7 +4340,7 @@ function resetCardsData(){replyCards=DC.slice();save('zika_reply_cards',replyCar
 function resetShopData(){wallet={balance:500};save('zika_shop_wallet',wallet);cart=[];save('zika_shop_cart',cart);buyLog=[];save('zika_shop_buylog',buyLog);giveLog=[];save('zika_shop_givelog',giveLog);renderWallet();}
 function resetLocData(){locList=[];save('zika_loc_list',locList);if(cpTab==='loc')renderLocTab();}
 function resetWidgetsData(){homeBeauty.pages.forEach(function(p){p.widgets=[];});widgets=homeBeauty.pages[homeBeauty.curPage].widgets;save('zika_home_beauty',homeBeauty);try{save('zika_widgets',[]);}catch(e){}renderPagesStructure();renderWgManageList();}
-var ZIKA_KEYS=['zika_status_pool','zika_chat_history','zika_reply_cards','zika_probs','zika_pat_me','zika_pat_ta','zika_check_cards','zika_check_ask','zika_stickers','zika_favorites','zika_beauty','zika_home_beauty','zika_moments','zika_moment_settings','zika_mail_convs','zika_mail_set','zika_shop_goods','zika_shop_wallet','zika_shop_cart','zika_shop_buylog','zika_shop_givelog','zika_shop_set','zika_cp_groups','zika_profile','zika_status_current','zika_unread','zika_diary','zika_diary_set','zika_diary_stickers','zika_diary_events','zika_spark','zika_spark_shop','zika_spark_owned','zika_screen_set','zika_screen_stat','zika_loc_list','zika_fine_set','zika_widgets'];
+var ZIKA_KEYS=['zika_status_pool','zika_chat_history','zika_reply_cards','zika_probs','zika_pat_me','zika_pat_ta','zika_check_cards','zika_check_ask','zika_stickers','zika_favorites','zika_beauty','zika_home_beauty','zika_moments','zika_moment_settings','zika_mail_convs','zika_mail_set','zika_mail_proactive','zika_shop_goods','zika_shop_wallet','zika_shop_cart','zika_shop_buylog','zika_shop_givelog','zika_shop_set','zika_cp_groups','zika_profile','zika_status_current','zika_unread','zika_diary','zika_diary_set','zika_diary_stickers','zika_diary_events','zika_spark','zika_spark_shop','zika_spark_owned','zika_screen_set','zika_screen_stat','zika_loc_list','zika_fine_set','zika_widgets'];
 function exportAllData(){
   var data={__app:'chuxueli',__version:2,__time:Date.now(),items:{}};
   ZIKA_KEYS.forEach(function(k){var v=localStorage.getItem(k);if(v!==null)data.items[k]=v;});
@@ -4611,18 +4731,66 @@ document.addEventListener('DOMContentLoaded',function(){
     if($('mwOk'))$('mwOk').onclick=function(){
       var t=$('mwTitle').value.trim();var b=$('mwBody').value.trim();if(!b){alert('写点正文再寄出');return;}
       if(!Array.isArray(convs))convs=[];
-      convs.push({title:(t||'无题'),msgs:[{from:'me',text:b,imgs:mwImgs.slice(),time:Date.now()}],unread:false});
+      var newCv={title:(t||'无题'),msgs:[{from:'me',text:b,imgs:mwImgs.slice(),time:Date.now()}],unread:false,nextAt:Date.now()+mailRandMs(mailSet.replyMin,mailSet.replyMax)};
+      convs.push(newCv);
       save('zika_mail_convs',convs);
       $('mailWriteMask').classList.remove('show');$('mailPage').classList.add('show');$('home').classList.add('hide');
       renderMail();
-      setTimeout(function(){taWriteMail();},1000);
+      settleMailAll();
     };
     if($('mwSticker'))$('mwSticker').onchange=function(e){var f=e.target.files[0];if(!f)return;readImage(f,300,function(u){mwImgs.push(u);$('mwPrev').innerHTML=mwImgs.map(function(x){return '<img src="'+x+'" style="max-width:60px;max-height:60px;border-radius:6px">';}).join('');});e.target.value='';};
-    if($('mailSetBtn'))$('mailSetBtn').onclick=function(){$('mailEnable').value=String(mailSet.enable);$('mailCardMin').value=mailSet.cardMin;$('mailCardMax').value=mailSet.cardMax;$('mailImgMin').value=mailSet.imgMin;$('mailImgMax').value=mailSet.imgMax;$('mailDayMin').value=mailSet.dayMin;$('mailDayMax').value=mailSet.dayMax;$('mailGap').value=mailSet.gap;$('mailReplyMin').value=mailSet.replyMin||1;$('mailReplyMax').value=mailSet.replyMax||60;$('mailBgScope').value=mailSet.bgScope;$('mailBgAlpha').value=mailSet.bgAlpha;$('mailBgBlur').value=mailSet.bgBlur;$('mailCardAlpha').value=mailSet.cardAlpha;$('mailCardBlur').value=mailSet.cardBlur;$('mailFontMode').value=mailSet.fontMode;$('mailFont').value=mailSet.font;$('mailSetMask').classList.add('show');};
+    if($('mailSetBtn'))$('mailSetBtn').onclick=function(){
+      $('mailAllowReply').checked=!!parseInt(mailSet.allowReply);
+      $('mailReplyP').value=(mailSet.replyP==null?100:mailSet.replyP);
+      $('mailReplyMin').value=(mailSet.replyMin==null?1:mailSet.replyMin);
+      $('mailReplyMax').value=(mailSet.replyMax==null?60:mailSet.replyMax);
+      $('mailAllowProactive').checked=!!parseInt(mailSet.allowProactive);
+      $('mailWriteP').value=(mailSet.writeP==null?30:mailSet.writeP);
+      $('mailProactiveMin').value=(mailSet.proactiveMin==null?60:mailSet.proactiveMin);
+      $('mailProactiveMax').value=(mailSet.proactiveMax==null?180:mailSet.proactiveMax);
+      $('mailMaxCatchUp').value=(mailSet.maxCatchUp==null?3:mailSet.maxCatchUp);
+      $('mailCardMin').value=mailSet.cardMin;$('mailCardMax').value=mailSet.cardMax;
+      $('mailImgMin').value=mailSet.imgMin;$('mailImgMax').value=mailSet.imgMax;
+      $('mailBgScope').value=mailSet.bgScope;$('mailBgAlpha').value=mailSet.bgAlpha;
+      $('mailBgBlur').value=mailSet.bgBlur;$('mailCardAlpha').value=mailSet.cardAlpha;
+      $('mailCardBlur').value=mailSet.cardBlur;$('mailFontMode').value=mailSet.fontMode;
+      $('mailFont').value=mailSet.font;
+      $('mailSetMask').classList.add('show');
+    };
     if($('mailSetCancel'))$('mailSetCancel').onclick=function(){$('mailSetMask').classList.remove('show');};
     if($('mailBgFile'))$('mailBgFile').onchange=function(e){var f=e.target.files[0];if(!f)return;readBgImage(f,function(u){mailSet.bg=u;save('zika_mail_set',mailSet);renderMail();});e.target.value='';};
     if($('mailBgDel'))$('mailBgDel').onclick=function(){mailSet.bg='';save('zika_mail_set',mailSet);renderMail();};
-    if($('mailSetSave'))$('mailSetSave').onclick=function(){function n(id,def){var el=$(id);if(!el)return def;var v=parseFloat(el.value);return isFinite(v)?v:def;}mailSet.enable=parseInt($('mailEnable').value)||0;mailSet.cardMin=Math.max(1,Math.round(n('mailCardMin',1)));mailSet.cardMax=Math.max(1,Math.round(n('mailCardMax',2)));mailSet.imgMin=Math.max(0,Math.round(n('mailImgMin',0)));mailSet.imgMax=Math.max(0,Math.round(n('mailImgMax',2)));mailSet.dayMin=Math.max(0,Math.round(n('mailDayMin',0)));mailSet.dayMax=Math.max(0,Math.round(n('mailDayMax',2)));mailSet.gap=Math.max(1,Math.round(n('mailGap',60)));mailSet.replyMin=Math.max(1,Math.round(n('mailReplyMin',1)));mailSet.replyMax=Math.max(mailSet.replyMin,Math.round(n('mailReplyMax',60)));mailSet.bgScope=$('mailBgScope').value;mailSet.bgAlpha=Math.max(0,Math.min(100,n('mailBgAlpha',100)));mailSet.bgBlur=Math.max(0,Math.min(100,n('mailBgBlur',0)));mailSet.cardAlpha=Math.max(0,Math.min(100,n('mailCardAlpha',100)));mailSet.cardBlur=Math.max(0,Math.min(100,n('mailCardBlur',0)));mailSet.fontMode=$('mailFontMode').value;mailSet.font=Math.max(11,Math.min(20,Math.round(n('mailFont',13))));save('zika_mail_set',mailSet);$('mailSetMask').classList.remove('show');renderMail();restartMailTick();};
+    if($('mailSetSave'))$('mailSetSave').onclick=function(){
+      function n(id,def){var el=$(id);if(!el)return def;var v=parseFloat(el.value);return isFinite(v)?v:def;}
+      mailSet.enable=1;
+      mailSet.allowReply=$('mailAllowReply').checked?1:0;
+      mailSet.replyP=Math.max(0,Math.min(100,n('mailReplyP',100)));
+      mailSet.replyMin=Math.max(0,n('mailReplyMin',1));
+      mailSet.replyMax=Math.max(mailSet.replyMin,n('mailReplyMax',60));
+      mailSet.allowProactive=$('mailAllowProactive').checked?1:0;
+      mailSet.writeP=Math.max(0,Math.min(100,n('mailWriteP',30)));
+      mailSet.proactiveMin=Math.max(1,n('mailProactiveMin',60));
+      mailSet.proactiveMax=Math.max(mailSet.proactiveMin,n('mailProactiveMax',180));
+      mailSet.maxCatchUp=Math.max(1,Math.round(n('mailMaxCatchUp',3)));
+      mailSet.cardMin=Math.max(1,Math.round(n('mailCardMin',1)));
+      mailSet.cardMax=Math.max(mailSet.cardMin,Math.round(n('mailCardMax',2)));
+      mailSet.imgMin=Math.max(0,Math.round(n('mailImgMin',0)));
+      mailSet.imgMax=Math.max(mailSet.imgMin,Math.round(n('mailImgMax',2)));
+      mailSet.bgScope=$('mailBgScope').value;
+      mailSet.bgAlpha=Math.max(0,Math.min(100,n('mailBgAlpha',100)));
+      mailSet.bgBlur=Math.max(0,Math.min(100,n('mailBgBlur',0)));
+      mailSet.cardAlpha=Math.max(0,Math.min(100,n('mailCardAlpha',100)));
+      mailSet.cardBlur=Math.max(0,Math.min(100,n('mailCardBlur',0)));
+      mailSet.fontMode=$('mailFontMode').value;
+      mailSet.font=Math.max(11,Math.min(20,Math.round(n('mailFont',13))));
+      save('zika_mail_set',mailSet);
+      mailProactive={nextAt:Date.now()+mailRandMs(mailSet.proactiveMin,mailSet.proactiveMax)};
+      save('zika_mail_proactive',mailProactive);
+      $('mailSetMask').classList.remove('show');
+      renderMail();
+      restartMailTick();
+      settleMailAll();
+    };
     if($('shopSetBtn'))$('shopSetBtn').onclick=function(){$('sAllowTa').value=String(shopSet.allowTa);$('sDaiP').value=shopSet.daiP;$('sTaBuyP').value=shopSet.taBuyP;$('sTaCartP').value=shopSet.taCartP;$('sTaGap').value=shopSet.taGap;$('shopBgAlpha').value=shopSet.bgAlpha;$('shopBgBlur').value=shopSet.bgBlur;$('shopCardAlpha').value=shopSet.cardAlpha;$('shopCardBlur').value=shopSet.cardBlur;$('shopSetMask').classList.add('show');};
     if($('shopSetCancel'))$('shopSetCancel').onclick=function(){$('shopSetMask').classList.remove('show');};
     if($('shopBgFile'))$('shopBgFile').onchange=function(e){var f=e.target.files[0];if(!f)return;readBgImage(f,function(u){shopSet.bg=u;save('zika_shop_set',shopSet);renderShop();});e.target.value='';};
@@ -4768,12 +4936,21 @@ function restartMomentsTick(){
   var gap=Math.max(1,parseInt(ms.tickGap)||60);
   momentsTickTimer=setInterval(function(){taTick();},gap*60*1000);
 }
-function restartMailTick(){if(mailTickTimer)clearInterval(mailTickTimer);var gap=Math.max(1,parseInt(mailSet.gap)||60);mailTickTimer=setInterval(function(){taWriteMail();},gap*60*1000);}
+function restartMailTick(){
+  if(mailTickTimer)clearInterval(mailTickTimer);
+  mailTickTimer=setInterval(function(){settleMailAll();},30*1000);
+}
 function restartShopTick(){if(shopTickTimer)clearInterval(shopTickTimer);var gap=Math.max(1,parseInt(shopSet.taGap)||30);shopTickTimer=setInterval(function(){taShopBuy();},gap*60*1000);}
 function restartDiaryTick(){if(diaryTickTimer)clearInterval(diaryTickTimer);var gap=Math.max(1,parseInt(diarySet.gap)||120);diaryTickTimer=setInterval(function(){taWriteDiary();},gap*60*1000);}
 function restartDiaryNoteTick(){if(diaryNoteTickTimer)clearInterval(diaryNoteTickTimer);var gap=Math.max(1,parseInt(diarySet.noteGap)||60);diaryNoteTickTimer=setInterval(function(){taWriteNoteToMyDiary();},gap*60*1000);}
 setInterval(function(){refreshStatus();},60*1000);
 restartMomentsTick();restartMailTick();restartShopTick();restartDiaryTick();restartDiaryNoteTick();restartActiveMsgTick();
+
+try{settleMailAll();}catch(e){}
+document.addEventListener('visibilitychange',function(){
+  if(!document.hidden){try{settleMailAll();}catch(e){}}
+});
+window.addEventListener('focus',function(){try{settleMailAll();}catch(e){}});
 
 })();
 </script>
