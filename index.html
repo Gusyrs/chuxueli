@@ -7,10 +7,12 @@
 <style>
 *{box-sizing:border-box}
 html,body{height:100%;margin:0}
-body{font-family:var(--app-font,"Songti SC","Noto Serif CJK SC",serif);background:#f7f7f7;display:flex;justify-content:center;color:#111;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
-#app{width:100%;max-width:430px;height:100vh;background:#fff;display:flex;flex-direction:column;position:relative;overflow:hidden;font-size:var(--gfont,14px)}
+body{-webkit-user-select:none;-moz-user-select:none;user-select:none;-webkit-touch-callout:none;font-family:var(--app-font,"Songti SC","Noto Serif CJK SC",serif);background:#f7f7f7;display:flex;justify-content:center;color:#111;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+#app{width:100%;max-width:430px;height:100vh;background:#fff;display:flex;flex-direction:column;position:relative;overflow:hidden;font-size:var(--gfont,14px);-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+input,textarea,select,[contenteditable="true"]{-webkit-user-select:text;user-select:text}
 #home{position:absolute;inset:0;background:#fff;z-index:20;overflow:hidden;background-size:cover;background-position:center;display:flex;flex-direction:column}
 #home.hide{display:none}
+#home,.page,.appIcon,.widget{-webkit-user-select:none;-moz-user-select:none;user-select:none;-webkit-touch-callout:none}
 .homeTop{padding:24px 20px 12px;font-size:20px;font-weight:700;color:#111;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:relative;z-index:10}
 .homeTop .homeSet{font-size:13px;font-weight:400;border:1px solid #111;border-radius:6px;padding:3px 10px;cursor:pointer;background:#fff;color:#111}
 .homeTop .homeDone{display:none;font-size:13px;font-weight:400;border:1px solid #111;border-radius:6px;padding:3px 10px;cursor:pointer;background:#111;color:#fff}
@@ -378,9 +380,17 @@ body{font-family:var(--app-font,"Songti SC","Noto Serif CJK SC",serif);backgroun
 .wg-anniv3 .a3v{writing-mode:vertical-rl;color:#b0b0b0}
 .wg-anniv3 .a3seal{border:1px solid #111;border-radius:50%;display:flex;align-items:center;justify-content:center;transform:rotate(-8deg);color:#111;letter-spacing:1px}
 .wg-anniv3.ticket{border-style:dashed;border-radius:0}
-.wg-anniv3.hasImg{background-size:cover;background-position:center}
-.wg-anniv3.hasImg:after{content:"";position:absolute;inset:0;background:rgba(255,255,255,.42);pointer-events:none}
+.wg-anniv3.hasImg{background:transparent}
+.wg-anniv3 .a3bg{position:absolute;inset:-6px;background-size:cover;background-position:center;z-index:0}
+.wg-anniv3.hasImg:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.30));pointer-events:none}
 .wg-anniv3.hasImg .a3main,.wg-anniv3.hasImg .a3stub{position:relative;z-index:2}
+.wg-anniv3.hasImg{background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-color:rgba(255,255,255,.65)!important;box-shadow:0 6px 18px rgba(60,55,48,.10)!important}
+.widget.style-glass .wg-anniv3.hasImg,.widget.style-line .wg-anniv3.hasImg,.widget.style-ins .wg-anniv3.hasImg{background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+.wg-anniv3.hasImg:after{background:none!important}
+.wg-anniv3.hasImg .a3top,.wg-anniv3.hasImg .a3foot{color:rgba(255,255,255,.95)!important;text-shadow:0 1px 3px rgba(0,0,0,.45)}
+.wg-anniv3.hasImg .a3name,.wg-anniv3.hasImg .a3num{color:#1b1712!important;text-shadow:0 1px 2px rgba(255,255,255,.65)}
+.wg-anniv3.hasImg .a3v{color:rgba(255,255,255,.92)!important;text-shadow:0 1px 2px rgba(0,0,0,.4)}
+.wg-anniv3.hasImg .a3seal{border-color:rgba(255,255,255,.9)!important;color:#fff!important;text-shadow:0 1px 2px rgba(0,0,0,.35)}
 .widget.style-ins .wg-anniv3{background:#fbf8f3;border-color:rgba(0,0,0,.1);box-shadow:0 10px 26px rgba(60,55,48,.10)}
 .widget.style-glass .wg-anniv3{background:rgba(255,255,255,.42);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-color:rgba(255,255,255,.7)}
 
@@ -457,15 +467,33 @@ body{font-family:var(--app-font,"Songti SC","Noto Serif CJK SC",serif);backgroun
 .msgMeta{font-size:10px;color:var(--meta-color,#aaa);line-height:1;margin-top:5px;padding:0 2px}
 .bubbleFoot{display:flex;align-items:center;gap:4px;margin-top:2px}
 .dotsBtn{display:inline-block;font-size:14px;color:#aaa;cursor:pointer;padding:0 3px;line-height:1;position:relative;z-index:5;user-select:none;-webkit-user-select:none}
-.cardMsg{border-radius:8px;padding:6px 10px;font-size:12px;min-width:120px;cursor:pointer;border:1px solid #111;background:#fff;color:#111;display:inline-block}
-.cardTitle{font-size:11px;color:#666}
-.cardNote{font-size:10px;color:#666;margin-top:3px}
-.cardStatus{font-size:10px;color:#999;margin-top:3px}
+.cardMsg{width:var(--cardw,172px);max-width:100%;box-sizing:border-box;border-radius:10px;padding:10px 11px 9px;font-size:12px;cursor:pointer;border:1px dashed rgba(130,112,90,.45);background:linear-gradient(180deg,#fffdf8,#f7f1e6);color:#2b2620;display:inline-block;position:relative;overflow:hidden;box-shadow:0 4px 12px rgba(80,70,55,.06)}
+.cardMsg:before{content:"查岗";position:absolute;right:8px;bottom:7px;font-size:8px;letter-spacing:2px;color:rgba(150,120,90,.5);border:1px solid rgba(150,120,90,.3);border-radius:3px;padding:1px 3px;transform:rotate(-6deg)}
+.cardTitle{font-size:10px;letter-spacing:1.5px;color:#9a8a74;padding-right:30px}
+.cardNote{font-size:12.5px;line-height:1.55;color:#2b2620;margin-top:4px;word-break:break-word}
+.cardStatus{font-size:10px;color:#9a8a74;margin-top:6px;padding-top:5px;border-top:1px dashed rgba(130,112,90,.25)}
 .cardActs{display:flex;gap:8px;margin-top:6px}
 .cardActs button{border:1px solid #111;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;background:#fff;color:#111}
+.checkCard{width:var(--cardw,150px);max-width:100%;box-sizing:border-box;position:relative;overflow:hidden;border:1px solid #ddd2c2;border-left:3px solid #b9a98f;border-radius:8px;background:linear-gradient(180deg,#fffdf8,#f6f0e5);padding:11px 12px 22px;color:#2b2620;box-shadow:0 6px 16px rgba(80,70,55,.08)}
+.checkCard:before{content:"查岗";position:absolute;right:10px;bottom:7px;width:26px;height:26px;border:1px solid rgba(178,86,68,.55);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;line-height:1;letter-spacing:1px;color:rgba(178,86,68,.75);transform:rotate(-11deg);opacity:.85;z-index:2}
+.checkCard:after{content:"";position:absolute;right:14px;top:12px;width:34px;height:34px;border-radius:50%;border:1px dashed rgba(150,135,110,.32);opacity:.75}
+.ckTop{display:flex;align-items:center;justify-content:space-between;gap:8px;position:relative;z-index:1}
+.ckKind{font-size:9px;letter-spacing:2px;color:#fff;background:#1d1b18;border-radius:20px;padding:3px 8px}
+.ckTime{font-size:9px;color:#a89d8b;letter-spacing:.5px;padding-right:16px}
+.ckMain{display:flex;gap:9px;margin-top:9px;align-items:flex-start;position:relative;z-index:1}
+.ckPing{width:28px;height:28px;border-radius:50%;border:1px solid rgba(160,145,120,.55);flex:0 0 auto;position:relative;background:radial-gradient(circle,rgba(201,189,169,.28),rgba(201,189,169,0) 70%);box-shadow:0 0 0 4px rgba(201,189,169,.10),0 0 0 8px rgba(201,189,169,.05)}
+.ckPing:after{content:"";position:absolute;left:9px;top:9px;width:8px;height:8px;border-radius:50%;background:#b8a88d;box-shadow:0 0 0 3px rgba(184,168,141,.18)}
+.ckText{flex:1;min-width:0}
+.ckTitle{font-size:12px;line-height:1.35;letter-spacing:.4px;color:#2b2620;word-break:break-word}
+.ckNote{font-size:11.5px;line-height:1.55;color:#6f6658;margin-top:3px;word-break:break-word}
+.ckFoot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:8px;padding-top:6px;padding-right:34px;border-top:1px dashed rgba(140,125,100,.22);font-size:9.5px;color:#9a8f7d;position:relative;z-index:1}
+.ckReply{border:0;background:#1d1b18;color:#fff;font-size:9px;line-height:1;padding:4px 9px;border-radius:12px;font-family:inherit;letter-spacing:.5px}
+.checkCard.mine{background:linear-gradient(180deg,#f7f3ea,#efe9dd)}
+.checkCard.reply{background:linear-gradient(180deg,#fbf7ef,#f2ece0)}
+.checkCard.reply .ckPing:after{background:#8fa07f;box-shadow:0 0 0 3px rgba(143,160,127,.16)}
 .cardActs .yes{background:#111;color:#fff}
 /* ===== 聊天卡片：微信风 红包 / 转账 ===== */
-.wxcard{width:172px;max-width:100%;border-radius:6px;overflow:hidden;cursor:default;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.wxcard{width:var(--cardw,172px);max-width:100%;border-radius:6px;overflow:hidden;cursor:default;box-shadow:0 1px 2px rgba(0,0,0,.08)}
 .wxcard.clickable{cursor:pointer}
 .wx-rect{padding:9px 10px 0}
 .wx-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
@@ -493,7 +521,7 @@ body{font-family:var(--app-font,"Songti SC","Noto Serif CJK SC",serif);backgroun
 .wx-gray .wx-rect{background:linear-gradient(180deg,#C9C4BC 0%,#B7B1A8 100%)}
 
 /* ===== 聊天卡片：极简 / 便签 / 票据 ===== */
-.zmake{width:172px;max-width:100%}
+.zmake{width:var(--cardw,172px);max-width:100%}
 .zmini{padding:1px 1px 2px}
 .zmini-top{display:flex;align-items:baseline;justify-content:space-between;gap:6px;border-bottom:1px solid #111;padding-bottom:4px}
 .zmini-kind{font-size:10px;letter-spacing:2.5px;color:#111}
@@ -573,12 +601,16 @@ body{font-family:var(--app-font,"Songti SC","Noto Serif CJK SC",serif);backgroun
 .wg-hang.vtri .hangItem:last-child:after{content:"";display:block;width:2px;height:10px;background:#1a1a1a;margin-top:2px;border-radius:1px;box-shadow:0 1px 2px rgba(0,0,0,.25)}
 
 /* ===== 通用弹窗/页 ===== */
-.mask{position:absolute;inset:0;background:rgba(0,0,0,.35);display:none;align-items:center;justify-content:center;padding:20px;z-index:120}
+.mask{position:fixed;inset:0;background:rgba(0,0,0,.35);display:none;align-items:center;justify-content:center;padding:20px;z-index:200}
+#beautyMask{z-index:360;align-items:flex-start;padding:10px;overflow:auto;-webkit-overflow-scrolling:touch}
+#beautyMask .dialog{max-height:calc(100vh - 20px);max-width:400px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.cpMask{z-index:460}
 .mask.show{display:flex}
 .dialog{width:100%;max-width:360px;background:#fff;border-radius:12px;padding:18px;max-height:82vh;display:flex;flex-direction:column;overflow-y:auto;border:1px solid #111}
 .dialog h3{margin:0 0 12px;font-size:15px;color:#111}
 .dialog input,.dialog textarea,.dialog select{width:100%;border:1px solid #111;border-radius:8px;padding:8px 10px;font-size:13px;outline:none;font-family:inherit;background:#fff;color:#111}
 .dialog textarea{min-height:70px;resize:vertical}
+input,textarea,select,[contenteditable]{-webkit-user-select:text;-moz-user-select:text;user-select:text}
 .btns{display:flex;gap:10px;margin-top:14px}
 .btns button{flex:1;border:1px solid #111;border-radius:8px;padding:10px;font-size:13px;cursor:pointer}
 .cancel{background:#fff;color:#111}
@@ -1064,7 +1096,281 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
 
 /* 标题字体跟随设置 */
 #home .homeTitle,#home.tB .homeTitle,#home.tC .homeTitle,#home.tD .homeTitle{font-family:var(--title-font,var(--app-font))}
+
+/* ===== 统一颜色选择器（色卡 + HSL 滑块） ===== */
+.cpBtn{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;margin-top:6px;padding:8px 10px;border-radius:9px;border:1px solid rgba(0,0,0,.12);background:#fff;color:#111;font-size:12px;font-family:inherit;cursor:pointer;text-align:left}
+.cpBtn i{width:22px;height:22px;border-radius:6px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12);flex-shrink:0}
+.cpBtn em{font-style:normal;letter-spacing:1px;font-size:11px;opacity:.75}
+.cpMask{position:fixed;inset:0;background:rgba(0,0,0,.42);z-index:480;display:none;align-items:flex-end;justify-content:center}
+.cpMask.show{display:flex}
+.cpPanel{width:100%;max-width:430px;max-height:88vh;overflow:auto;background:#fffdf9;border-radius:18px 18px 0 0;padding:14px 16px calc(14px + env(safe-area-inset-bottom));box-shadow:0 -12px 36px rgba(0,0,0,.2);font-family:inherit}
+.cpHead{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}
+.cpHead b{font-size:14px;letter-spacing:1px}
+.cpHead span{font-size:12px;letter-spacing:1px;color:#8a8378}
+.cpPrev{height:38px;border-radius:10px;border:1px solid rgba(0,0,0,.1);margin-bottom:9px;display:flex;align-items:center;justify-content:center;font-size:11px;letter-spacing:2px}
+.cpCard{position:relative;width:100%;height:176px;border-radius:12px;overflow:hidden;touch-action:none;border:1px solid rgba(0,0,0,.08);background:linear-gradient(to top,#000,rgba(0,0,0,0)),linear-gradient(to right,#fff,#f00)}
+.cpCursor{position:absolute;width:16px;height:16px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.35),0 2px 6px rgba(0,0,0,.25);transform:translate(-50%,-50%);pointer-events:none;left:100%;top:18%}
+.cpSliders{margin-top:10px}
+.cpRow{display:flex;align-items:center;gap:10px;margin:8px 0;font-size:12px;color:#5f594f}
+.cpRow span{width:34px;flex-shrink:0}
+.cpRow input[type=range]{flex:1;-webkit-appearance:none;appearance:none;height:20px;border-radius:10px;outline:none;border:1px solid rgba(0,0,0,.08);background:#eee}
+.cpRow input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#fff;border:2px solid #1d1b18;box-shadow:0 1px 4px rgba(0,0,0,.25)}
+.cpHexRow{display:flex;align-items:center;gap:8px;margin-top:2px}
+.cpHexRow input{flex:1;min-width:0;padding:7px 9px;border:1px solid rgba(0,0,0,.12);border-radius:8px;font-size:12px;font-family:ui-monospace,Menlo,monospace;background:#fff;color:#222}
+.cpSwatches{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin:10px 0 2px}
+.cpSw{aspect-ratio:1;border-radius:8px;border:1px solid rgba(0,0,0,.12);cursor:pointer}
+.cpBtns{display:flex;gap:10px;margin-top:12px}
+.cpBtns button{flex:1;border:0;border-radius:10px;padding:11px;font-size:13px;font-family:inherit;cursor:pointer}
+#cpCancel{background:#f1ece3;color:#4d463c}
+#cpOk{background:#1d1b18;color:#fff}
+
+
+/* ===== 2026-11-19 查岗卡 / 同屏页 改版 ===== */
+/* 查岗卡：冷白书签纸 + 左侧竖排标签 + 小印章，去掉厚重米色块 */
+.checkCard{width:var(--cardw,150px)!important;max-width:100%;box-sizing:border-box;position:relative;overflow:hidden;border:1px solid #d9e3ea!important;border-left:none!important;border-radius:9px!important;background:linear-gradient(180deg,#fbfdfe,#f3f7fa)!important;padding:10px 10px 9px 25px!important;color:#26343f!important;box-shadow:0 5px 16px rgba(89,112,130,.08)!important}
+.checkCard:before{content:"查岗";position:absolute;left:0;top:0;right:auto;bottom:0;width:17px;height:100%;display:block;writing-mode:vertical-rl;text-orientation:upright;text-align:center;padding:9px 0;box-sizing:border-box;background:linear-gradient(180deg,#e9f1f6,#f8fbfc);border:0;border-right:1px solid #dbe5ec;border-radius:0;font-size:8px;line-height:17px;letter-spacing:2px;color:#7890a3;transform:none;opacity:1;z-index:2}
+.checkCard.reply:before{content:"回应"}
+.checkCard:after{content:"查";position:absolute;left:auto;top:auto;right:8px;bottom:7px;width:21px;height:21px;border:1px solid rgba(179,80,80,.42);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;line-height:1;letter-spacing:1px;color:rgba(179,80,80,.72);transform:rotate(-11deg);background:rgba(255,255,255,.5);z-index:2}
+.checkCard.reply:after{content:"复";border-color:rgba(96,117,138,.38);color:rgba(96,117,138,.72)}
+.ckTop{display:flex;align-items:center;justify-content:flex-end;gap:8px;position:relative;z-index:1}
+.ckKind{display:none!important}
+.ckTime{font-size:8.5px;color:#93a4b1;letter-spacing:.8px;padding-right:16px}
+.ckMain{display:flex;gap:8px;margin-top:6px;align-items:flex-start;position:relative;z-index:1}
+.ckPing{width:23px;height:23px;border-radius:50%;border:1px solid rgba(127,155,179,.55);flex:0 0 auto;position:relative;background:radial-gradient(circle,rgba(176,198,214,.22),rgba(176,198,214,0) 70%);box-shadow:0 0 0 4px rgba(176,198,214,.08),0 0 0 8px rgba(176,198,214,.035)}
+.ckPing:after{content:"";position:absolute;left:8px;top:8px;width:6px;height:6px;border-radius:50%;background:#8fa8ba}
+.ckText{flex:1;min-width:0}
+.ckTitle{font-size:11.5px;line-height:1.35;letter-spacing:.3px;color:#2b3943;word-break:break-word}
+.ckNote{font-size:11px;line-height:1.55;color:#667985;margin-top:3px;word-break:break-word}
+.ckFoot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:7px;padding-top:5px;padding-right:26px;border-top:1px dashed rgba(127,155,179,.25);font-size:9px;color:#8fa2af;position:relative;z-index:1}
+.ckReply{border:0;background:#5f788c;color:#fff;font-size:8.5px;line-height:1;padding:4px 9px;border-radius:12px;font-family:inherit;letter-spacing:.5px}
+
+/* 同屏：从红黑恐怖改成雾凇玻璃 */
+#lockScreen{background:linear-gradient(165deg,#eef4f7 0%,#fbfcfd 46%,#e6eef3 100%)!important;color:#24333f!important;overflow:hidden;padding:34px 24px!important}
+#lockScreen:before{content:"";position:absolute;top:-110px;right:-90px;width:330px;height:330px;border-radius:50%;background:radial-gradient(circle,rgba(158,187,205,.42),rgba(158,187,205,0) 68%);filter:blur(6px);pointer-events:none}
+#lockScreen:after{content:"";position:absolute;left:-120px;bottom:-160px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(196,210,221,.35),rgba(196,210,221,0) 70%);filter:blur(8px);pointer-events:none}
+#lockScreen>*:not(#lockWarn){position:relative;z-index:2}
+#lockScreen .lsGlow{display:none!important}
+#lockScreen .lsTime{font-size:60px;font-weight:300;letter-spacing:3px;color:#223440;text-shadow:none}
+#lockScreen .lsDate{color:#8294a1;letter-spacing:2px}
+#lockScreen .lsLock{margin-top:24px;width:44px;height:44px;border:1px solid rgba(95,120,140,.45);background:rgba(255,255,255,.55);box-shadow:0 6px 20px rgba(95,120,140,.12);border-radius:50%}
+#lockScreen .lsLock svg{width:20px;height:20px;stroke:#5f788c}
+#lockScreen .lsTitle{font-size:17px;font-weight:500;color:#223440;margin-top:20px;line-height:1.7;letter-spacing:.5px}
+#lockScreen .taName{color:#45677f;font-weight:700;font-size:22px;text-shadow:none;animation:none;border-bottom:1px solid rgba(69,103,127,.28);padding-bottom:1px}
+#lockScreen .lsSub{color:#718491;font-size:12px;line-height:1.9}
+#lockScreen .lsSub b{color:#45677f;font-weight:600}
+#lockScreen .lsCount{color:#8294a1}
+#lockScreen .lsCount b{color:#45677f;font-weight:600}
+#lockScreen .lsInputWrap{margin-top:22px}
+#lockScreen .lsInput{background:rgba(255,255,255,.72);border:1px solid rgba(127,155,179,.35);color:#24333f;box-shadow:0 4px 14px rgba(95,120,140,.06);backdrop-filter:blur(10px)}
+#lockScreen .lsInput::placeholder{color:#9aabb7}
+#lockScreen .lsInput:focus{border-color:#6f8ea5;background:rgba(255,255,255,.9);box-shadow:0 0 0 3px rgba(127,155,179,.12)}
+#lockScreen .lsBtnUnlock{background:#314b5e;color:#fff;box-shadow:0 8px 22px rgba(49,75,94,.22)}
+#lockScreen .lsBtnBeg{background:rgba(255,255,255,.66);color:#526d82;border:1px solid rgba(127,155,179,.35)}
+#lockScreen .lsHint{color:#8fa0ac}
+#lockWarn{position:absolute!important;inset:0!important;z-index:1000!important;background:rgba(232,240,245,.82)!important;backdrop-filter:blur(16px)!important;padding:22px!important;overflow:auto!important;align-items:center!important}
+.lwBox{margin:auto!important;background:linear-gradient(180deg,#ffffff,#f4f8fb)!important;border:1px solid rgba(127,155,179,.3)!important;box-shadow:0 18px 50px rgba(60,85,105,.18)!important;border-radius:16px!important;padding:28px 22px 22px!important}
+.lwPulse{background:#b35050!important;box-shadow:0 0 0 0 rgba(179,80,80,.45)!important}
+.lwIcon{font-size:26px!important;filter:none!important;margin-bottom:6px!important;line-height:1}.lwIcon svg{width:25px;height:25px;fill:none;stroke:#7f9bb3;stroke-width:1.5}
+.lwTitle{color:#b35050!important;text-shadow:none!important;font-size:17px!important;letter-spacing:2px!important}
+.lwTitle .hl{color:#24333f!important}
+.lwText{color:#5d707e!important;font-size:12.5px!important}
+.lwText b{color:#b35050!important}
+.lwCount{color:#9a6a62!important;border-color:rgba(179,80,80,.25)!important;background:rgba(179,80,80,.06)!important}
+.lwFoot{color:#8fa0ac!important}
+.lwBtnOk{background:#314b5e!important;color:#fff!important}
+.lwBtnBeg{background:#fff!important;color:#526d82!important;border:1px solid rgba(127,155,179,.35)!important}
+
+.siSheet{width:100%;max-width:320px;box-sizing:border-box;padding:36px 24px 30px;border-radius:24px;background:rgba(255,255,255,.74);border:1px solid rgba(255,255,255,.92);box-shadow:0 22px 60px rgba(75,105,125,.18);backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);display:flex;flex-direction:column;align-items:center;position:relative;z-index:3}
+#lockScreen .lsLive{display:inline-flex;align-items:center;gap:7px;margin-top:20px;padding:5px 12px;border:1px solid rgba(127,155,179,.28);border-radius:20px;background:rgba(255,255,255,.55);font-size:10px;letter-spacing:1px;color:#6d8494}
+#lockScreen .lsLive i{width:6px;height:6px;border-radius:50%;background:#7f9bb3;animation:lsLive 2.2s infinite}
+@keyframes lsLive{0%{box-shadow:0 0 0 0 rgba(127,155,179,.35)}70%{box-shadow:0 0 0 8px rgba(127,155,179,0)}100%{box-shadow:0 0 0 0 rgba(127,155,179,0)}}
+/* 同屏邀请：从来电红黑改成一张雾面卡片 */
+#shareInvite{background:linear-gradient(160deg,#eaf2f6 0%,#f9fbfc 52%,#e4edf2 100%)!important;color:#24333f!important;padding:22px!important}
+#shareInvite:before{content:"";position:absolute;top:-90px;left:-70px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(164,190,206,.35),rgba(164,190,206,0) 68%);filter:blur(6px);pointer-events:none}
+#shareInvite .siAv{width:86px;height:86px;border:1px solid rgba(127,155,179,.5)!important;box-shadow:0 8px 28px rgba(95,120,140,.18)!important;background:radial-gradient(circle at 35% 28%,#ffffff,#dce9f0 72%)}
+#shareInvite .siName{color:#223440!important;font-size:20px;font-weight:600;letter-spacing:1px}
+#shareInvite .siTip{color:#718491!important}
+#shareInvite .siTip b{color:#45677f!important}
+#shareInvite .siCall{color:#8fa0ac!important;letter-spacing:2px}
+#shareInvite .siBtns{gap:48px!important;margin-top:40px!important}
+#shareInvite .siBtn .lb{color:#5f7789!important}
+#shareInvite .siAccept .circle{background:#6f9b86!important;box-shadow:0 8px 22px rgba(111,155,134,.28)!important}
+#shareInvite .siReject .circle{background:#b35050!important;box-shadow:0 8px 22px rgba(179,80,80,.22)!important}
+#shareBar{background:rgba(255,255,255,.86)!important;color:#45677f!important;border-bottom:1px solid rgba(127,155,179,.22);backdrop-filter:blur(12px);box-shadow:0 2px 10px rgba(95,120,140,.08)!important}
+#shareBar .sbDot{background:#7f9bb3!important}
+#shareBar .sbStop{border-color:#9fb4c7!important;background:rgba(255,255,255,.7)!important;color:#45677f!important}
+#shareFrame{border:1px solid rgba(127,155,179,.28)!important;box-shadow:inset 0 0 22px rgba(127,155,179,.08)!important}
+
+/* 锁机 · 无密码，只能哄 */
+#lockScreen{overflow-y:auto!important}
+#lockScreen .lsSoft{font-size:12px;color:#718491;letter-spacing:.5px;margin-top:14px;line-height:1.8}
+#lockScreen .lsBegLog{width:100%;max-width:300px;max-height:150px;overflow-y:auto;display:flex;flex-direction:column;gap:6px;margin-top:14px;padding-right:2px}
+#lockScreen .lsBegLog:empty{display:none}
+#lockScreen .lsBegMsg{max-width:86%;font-size:12px;line-height:1.6;padding:8px 11px;border-radius:12px;word-break:break-word}
+#lockScreen .lsBegMsg.me{align-self:flex-end;background:#314b5e;color:#fff;border-bottom-right-radius:4px}
+#lockScreen .lsBegMsg.ta{align-self:flex-start;background:rgba(255,255,255,.82);color:#526d82;border:1px solid rgba(127,155,179,.25);border-bottom-left-radius:4px}
+#lockScreen .lsBegRow{width:100%;max-width:300px;display:flex;gap:8px;margin-top:12px}
+#lockScreen .lsBegInput{flex:1;min-width:0;height:42px;border-radius:12px;border:1px solid rgba(127,155,179,.35);background:rgba(255,255,255,.74);padding:0 12px;font-family:inherit;font-size:13px;color:#24333f;outline:none;backdrop-filter:blur(10px)}
+#lockScreen .lsBegInput::placeholder{color:#9aabb7}
+#lockScreen .lsBegInput:focus{border-color:#6f8ea5;background:rgba(255,255,255,.92);box-shadow:0 0 0 3px rgba(127,155,179,.12)}
+#lockScreen .lsBegSend{flex:0 0 auto;height:42px;padding:0 16px;border:none;border-radius:12px;background:#314b5e;color:#fff;font-family:inherit;font-size:13px;letter-spacing:1px;cursor:pointer;box-shadow:0 8px 18px rgba(49,75,94,.22)}
+
+
+/* 同屏 · 他在翻我的手机 */
+#shareCheck{position:absolute;inset:0;z-index:850;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(31,46,57,.42);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px)}
+#shareCheck.show{display:flex}
+#shareCheck .scCard{width:100%;max-width:310px;max-height:92%;background:rgba(255,255,255,.86);border:1px solid rgba(255,255,255,.7);border-radius:26px;padding:16px 14px 12px;box-shadow:0 24px 70px rgba(24,40,52,.24);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;flex-direction:column;gap:10px;overflow:hidden;animation:scIn .35s ease both}
+@keyframes scIn{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+#shareCheck .scHead{display:flex;align-items:center;gap:8px;padding:0 2px}
+#shareCheck .scLive{display:inline-flex;align-items:center;gap:5px;font-size:9px;letter-spacing:1px;color:#5d788b;background:rgba(127,155,179,.12);border:1px solid rgba(127,155,179,.22);padding:4px 8px;border-radius:20px;flex-shrink:0}
+#shareCheck .scLive i{width:5px;height:5px;border-radius:50%;background:#6f8ea5;animation:scPulse 1.8s infinite}
+@keyframes scPulse{0%,100%{opacity:.35}50%{opacity:1}}
+#shareCheck .scHead b{font-size:14px;font-weight:600;color:#24333f;letter-spacing:.3px}
+#shareCheck .scPhone{position:relative;width:100%;height:238px;border-radius:20px;background:linear-gradient(165deg,#f7fafb,#e8f0f4);border:1px solid rgba(127,155,179,.28);overflow:hidden;padding:10px 10px 8px;box-shadow:inset 0 1px 0 rgba(255,255,255,.8)}
+#shareCheck .scPhoneTop{display:flex;justify-content:space-between;font-size:9px;letter-spacing:1px;color:#8fa3b0;padding:1px 3px 7px}
+#shareCheck .scPhoneTop b{color:#5d788b;font-weight:500}
+#shareCheck .scList{display:flex;flex-direction:column;gap:5px}
+#shareCheck .scRow{display:flex;align-items:center;gap:8px;height:38px;padding:0 9px;border-radius:12px;background:rgba(255,255,255,.62);border:1px solid rgba(127,155,179,.16);transition:.25s}
+#shareCheck .scIco{width:24px;height:24px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:10px;color:#5d788b;background:rgba(127,155,179,.13);flex-shrink:0}
+#shareCheck .scName{font-size:11.5px;color:#3c5262;flex:1;letter-spacing:.4px}
+#shareCheck .scRow b{font-size:9px;font-weight:400;color:#a2b1bb;letter-spacing:.5px}
+#shareCheck .scRow.active{background:rgba(255,255,255,.95);border-color:rgba(95,120,140,.4);box-shadow:0 3px 12px rgba(95,120,140,.12);transform:translateX(2px)}
+#shareCheck .scRow.active b{color:#45677f;font-weight:600}
+#shareCheck .scRow.done{opacity:.48;background:rgba(255,255,255,.35)}
+#shareCheck .scRow.done b{color:#9aabb7}
+#shareCheck .scScan{position:absolute;left:0;right:0;height:46px;top:0;background:linear-gradient(180deg,rgba(127,155,179,0),rgba(127,155,179,.16),rgba(127,155,179,0));animation:scScan 4.2s linear infinite;pointer-events:none;mix-blend-mode:multiply}
+@keyframes scScan{0%{transform:translateY(-50px)}100%{transform:translateY(238px)}}
+#shareCheck .scFinger{position:absolute;right:26px;bottom:22px;width:17px;height:17px;border-radius:50%;border:1.5px solid rgba(69,103,127,.5);background:rgba(255,255,255,.35);box-shadow:0 2px 8px rgba(69,103,127,.18);animation:scFinger 3.1s ease-in-out infinite}
+@keyframes scFinger{0%,100%{transform:translate(0,0);opacity:.55}35%{transform:translate(-8px,-32px);opacity:.9}70%{transform:translate(-18px,-58px);opacity:.65}}
+#shareCheck .scFeed{min-height:34px;max-height:64px;overflow-y:auto;display:flex;flex-direction:column;gap:3px;padding:0 2px}
+#shareCheck .scLine{font-size:10.5px;line-height:1.6;color:#5d788b;opacity:.9}
+#shareCheck .scLine b{color:#3c5262;font-weight:600}
+#shareCheck .scFoot{display:flex;align-items:center;gap:8px;padding-top:2px;border-top:1px solid rgba(127,155,179,.18)}
+#shareCheck .scFoot span{flex:1;font-size:9px;color:#9aabb7;letter-spacing:.4px;line-height:1.5}
+#shareCheck .scFoot button{flex:0 0 auto;border:none;border-radius:20px;background:#314b5e;color:#fff;font-family:inherit;font-size:11px;letter-spacing:.5px;padding:9px 12px;cursor:pointer;box-shadow:0 6px 16px rgba(49,75,94,.2)}
+
+
+/* 锁机 · 留痕与失败警告 */
+#lockScreen .lsTrace{font-size:10px;letter-spacing:1.2px;color:#9aabb7;margin-top:12px}
+#lockWarn .lwText{white-space:pre-line}
+#lockWarn .lwCount{letter-spacing:.5px}
+
+
+/* 同屏 · 他接管手机桌面 */
+#shareTakeover{position:absolute;inset:0;z-index:860;display:none;flex-direction:column;background:linear-gradient(155deg,#dce9ef 0%,#f8fbfc 48%,#ccdde6 100%);overflow:hidden;padding:16px 16px 12px;color:#24333f}
+#shareTakeover.show{display:flex}
+#shareTakeover:before{content:"";position:absolute;top:-100px;right:-80px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(148,180,198,.4),rgba(148,180,198,0) 70%);filter:blur(4px);pointer-events:none}
+#shareTakeover .stStatus{position:relative;z-index:2;display:flex;align-items:center;gap:7px;padding:4px 2px 12px;font-size:11px;letter-spacing:.8px;color:#5d788b}
+#shareTakeover .stStatus b{font-size:12px;font-weight:600;color:#314b5e;letter-spacing:.5px}
+#shareTakeover .stStatus i{margin-left:auto;font-style:normal;font-size:11px;color:#8fa3b0;letter-spacing:1px}
+#shareTakeover .stDot{width:6px;height:6px;border-radius:50%;background:#6f8ea5;box-shadow:0 0 0 0 rgba(111,142,165,.4);animation:stPulse 1.8s infinite}
+@keyframes stPulse{0%,100%{box-shadow:0 0 0 0 rgba(111,142,165,.35)}60%{box-shadow:0 0 0 8px rgba(111,142,165,0)}}
+#shareTakeover .stDesk{position:relative;z-index:2;flex:0 0 auto;height:238px;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,1fr);gap:16px 8px;padding:18px 12px 8px;border-radius:22px;background:rgba(255,255,255,.34);border:1px solid rgba(255,255,255,.65);box-shadow:inset 0 1px 0 rgba(255,255,255,.8)}
+#shareTakeover .stIcon{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;opacity:.72;transition:.35s}
+#shareTakeover .stIcon .stBox{width:42px;height:42px;border-radius:13px;background:rgba(255,255,255,.8);border:1px solid rgba(127,155,179,.35);display:flex;align-items:center;justify-content:center;font-size:13px;color:#45677f;box-shadow:0 3px 10px rgba(95,120,140,.08)}
+#shareTakeover .stIcon b{font-size:9px;font-weight:400;letter-spacing:.5px;color:#718491}
+#shareTakeover .stIcon.on{opacity:1;transform:translateY(-2px)}
+#shareTakeover .stIcon.on .stBox{border-color:#45677f;box-shadow:0 0 0 4px rgba(69,103,127,.12),0 8px 18px rgba(49,75,94,.18);background:#fff}
+#shareTakeover .stIcon.on b{color:#314b5e;font-weight:600}
+#shareTakeover .stHand{position:absolute;width:34px;height:34px;border-radius:50%;border:1.5px solid rgba(69,103,127,.55);background:rgba(255,255,255,.18);box-shadow:0 0 0 7px rgba(69,103,127,.08);pointer-events:none;transition:left .8s cubic-bezier(.4,0,.2,1),top .8s cubic-bezier(.4,0,.2,1);left:20px;top:30px;z-index:5}
+#shareTakeover .stHand:after{content:"";position:absolute;left:50%;top:50%;width:5px;height:5px;border-radius:50%;background:#45677f;transform:translate(-50%,-50%)}
+#shareTakeover .stHand i{position:absolute;left:50%;top:100%;width:1px;height:14px;background:linear-gradient(rgba(69,103,127,.5),transparent)}
+#shareTakeover .stPreview{position:relative;z-index:2;margin-top:10px;padding:12px 13px;border-radius:18px;background:rgba(255,255,255,.82);border:1px solid rgba(255,255,255,.9);box-shadow:0 10px 26px rgba(60,85,105,.1);min-height:116px;max-height:150px;overflow:hidden}
+#shareTakeover .stPrevTitle{font-size:11px;letter-spacing:.8px;color:#45677f;font-weight:600;margin-bottom:8px}
+#shareTakeover .stPrevBody{font-size:11px;line-height:1.8;color:#5d788b}
+#shareTakeover .stPrevBody .stLine{padding:4px 0;border-bottom:1px solid rgba(127,155,179,.12)}
+#shareTakeover .stPrevBody .stLine:last-child{border-bottom:0}
+#shareTakeover .stPrevBody .stPhotoRow{display:flex;gap:8px;margin-top:4px}
+#shareTakeover .stPrevBody .stPhoto{width:52px;height:52px;border-radius:9px;background:linear-gradient(135deg,#dbe8ef,#b9ceda);border:1px solid rgba(127,155,179,.24)}
+#shareTakeover .stChat{position:relative;z-index:2;flex:1;min-height:54px;max-height:88px;overflow-y:auto;display:flex;flex-direction:column;gap:4px;padding:8px 2px 2px}
+#shareTakeover .stMsg{max-width:82%;font-size:11px;line-height:1.6;padding:6px 10px;border-radius:11px}
+#shareTakeover .stMsg.ta{align-self:flex-start;background:rgba(255,255,255,.75);border:1px solid rgba(127,155,179,.22);color:#45677f;border-bottom-left-radius:3px}
+#shareTakeover .stMsg.me{align-self:flex-end;background:#314b5e;color:#fff;border-bottom-right-radius:3px}
+#shareTakeover .stInputBar{position:relative;z-index:2;display:flex;gap:7px;align-items:center;padding-top:8px}
+#shareTakeover .stInputBar input{flex:1;min-width:0;height:42px;border-radius:12px;border:1px solid rgba(127,155,179,.38);background:rgba(255,255,255,.8);padding:0 12px;font-family:inherit;font-size:12px;color:#24333f;outline:none}
+#shareTakeover .stInputBar input::placeholder{color:#9aabb7}
+#shareTakeover .stInputBar input:focus{border-color:#6f8ea5;box-shadow:0 0 0 3px rgba(127,155,179,.12);background:#fff}
+#shareTakeover .stInputBar button{border:none;border-radius:12px;height:42px;font-family:inherit;cursor:pointer}
+#shareTakeover #stSend{flex:0 0 auto;padding:0 15px;background:#314b5e;color:#fff;font-size:12px;letter-spacing:1px;box-shadow:0 6px 16px rgba(49,75,94,.2)}
+#shareTakeover #stExit{flex:0 0 auto;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.6);color:#8fa3b0;font-size:16px;line-height:1;border:1px solid rgba(127,155,179,.3)}
+
+
+#shareTakeover .stSub{position:relative;z-index:2;font-size:10px;letter-spacing:1px;color:#8fa3b0;padding:0 2px 10px}
+#shareTakeover .stChat{max-height:none!important}
+
+
+#lockScreen .lsHisLine{font-size:17px;color:#45677f;letter-spacing:1px;line-height:1.8;margin-top:12px;font-weight:500}
+
+
+
+
+/* ===== 锁机：大字 + 消息留痕 ===== */
+#lockScreen{justify-content:flex-start!important;padding:46px 22px 24px!important;overflow-y:auto!important;gap:0!important}
+#lockScreen .lsTime{font-size:46px!important;font-weight:300!important;letter-spacing:4px!important;line-height:1.1!important}
+#lockScreen .lsDate{margin-top:8px!important;font-size:12px!important;letter-spacing:2px!important}
+#lockScreen .lsBigTitle{margin-top:22px!important;font-size:29px!important;line-height:1.42!important;letter-spacing:2px!important;font-weight:600!important;color:#24333f!important;text-align:center}
+#lockScreen .lsBigTitle .taName{font-size:29px!important;color:#314b5e!important;font-weight:700!important;animation:none!important;text-shadow:none!important;border-bottom:none!important;padding:0!important;display:inline!important}
+#lockScreen .lsElapsed{margin-top:12px!important;font-size:10px!important;letter-spacing:2px!important;color:#8fa0ac!important}
+#lockScreen .lsElapsed b{font-size:12px!important;letter-spacing:1px!important;color:#5f788c!important;font-weight:500!important}
+#lockScreen .lsBegLog{flex:1!important;width:100%!important;max-width:340px!important;max-height:none!important;min-height:180px!important;margin-top:18px!important;padding:4px 2px 8px!important;gap:8px!important}
+#lockScreen .lsBegMsg.ta{font-size:15px!important;line-height:1.72!important;padding:10px 14px!important;max-width:86%!important;border-radius:14px!important;color:#3d586b!important;background:rgba(255,255,255,.9)!important;border-color:rgba(127,155,179,.24)!important}
+#lockScreen .lsBegMsg.me{font-size:12px!important;line-height:1.65!important;padding:8px 12px!important;max-width:82%!important;border-radius:13px!important;background:#314b5e!important;color:#fff!important}
+#lockScreen .lsBegRow{margin-top:12px!important;margin-bottom:4px!important}
+#lockScreen .lsBegRow input{height:44px!important}
+#lockScreen .lsBegRow button{height:44px!important}
+
+/* 锁机警告：只做居中弹窗，不再铺满全屏 */
+#lockWarn{position:fixed!important;inset:auto!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;width:calc(100% - 40px)!important;max-width:330px!important;z-index:1002!important;display:none!important;padding:0!important;background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;overflow:visible!important;align-items:initial!important;justify-content:initial!important}
+#lockWarn.show{display:block!important;animation:lwPop .18s ease both}
+@keyframes lwPop{from{opacity:0;transform:translate(-50%,-48%) scale(.96)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+#lockWarn .lwBox{width:100%!important;max-width:none!important;margin:0!important;padding:24px 20px 20px!important;border-radius:18px!important;background:linear-gradient(180deg,#ffffff,#f3f8fb)!important;border:1px solid rgba(127,155,179,.3)!important;box-shadow:0 24px 60px rgba(49,75,94,.24)!important;text-align:center!important}
+#lockWarn .lwTitle{font-size:18px!important;line-height:1.5!important;color:#8a5555!important;letter-spacing:1px!important;margin-bottom:8px!important;text-shadow:none!important;font-weight:600!important}
+#lockWarn .lwTitle .hl{color:#24333f!important}
+#lockWarn .lwText{font-size:12px!important;line-height:1.9!important;color:#5d707e!important;white-space:pre-line!important;margin:4px 0 2px!important}
+#lockWarn .lwCount{display:inline-block!important;margin:12px 0 2px!important;font-size:10px!important;letter-spacing:.5px!important;color:#9a6a62!important;border:1px solid rgba(179,80,80,.22)!important;background:rgba(179,80,80,.05)!important;border-radius:20px!important;padding:4px 12px!important}
+#lockWarn .lwBtnOk{display:block!important;width:100%!important;height:44px!important;margin-top:16px!important;border:none!important;border-radius:12px!important;background:#314b5e!important;color:#fff!important;font-family:inherit!important;font-size:13px!important;letter-spacing:1px!important;cursor:pointer!important;box-shadow:0 8px 20px rgba(49,75,94,.2)!important}
+
+/* ===== 同屏：压缩上方桌面，给下方对话留空间 ===== */
+#shareTakeover .stDesk{height:192px!important;gap:10px 8px!important;padding:12px 10px 6px!important;border-radius:18px!important}
+#shareTakeover .stIcon{gap:4px!important}
+#shareTakeover .stIcon .stBox{width:38px!important;height:38px!important;border-radius:12px!important;font-size:12px!important}
+#shareTakeover .stIcon b{font-size:8.5px!important}
+#shareTakeover .stPreview{min-height:86px!important;max-height:108px!important;padding:9px 12px!important;margin-top:8px!important;border-radius:15px!important}
+#shareTakeover .stPrevTitle{font-size:10.5px!important;margin-bottom:5px!important}
+#shareTakeover .stPrevBody{font-size:10.5px!important;line-height:1.65!important}
+#shareTakeover .stPrevBody .stLine{padding:2px 0!important}
+#shareTakeover .stChat{flex:1!important;min-height:0!important;max-height:none!important;margin-top:9px!important;padding:12px 11px!important;background:rgba(255,255,255,.48)!important;border:1px solid rgba(255,255,255,.78)!important;border-radius:16px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.7)!important}
+#shareTakeover .stMsg{font-size:12px!important;line-height:1.65!important;padding:7px 11px!important;border-radius:12px!important}
+
+
+/* 锁机：锁图标、屏幕锁定、观看提示 */
+#lockScreen .lsLock{margin-top:14px!important;margin-bottom:2px!important;width:44px!important;height:44px!important;border-radius:50%!important;border:1px solid rgba(95,120,140,.4)!important;background:rgba(255,255,255,.62)!important;box-shadow:0 8px 22px rgba(95,120,140,.14)!important;display:flex!important}
+#lockScreen .lsLock svg{width:20px!important;height:20px!important;stroke:#5f788c!important}
+#lockScreen .lsBigTitle{margin-top:8px!important;font-size:28px!important;line-height:1.45!important}
+#lockScreen .lsBigTitle .taName{font-size:31px!important;font-weight:800!important;color:#1f4157!important;border-bottom:2px solid rgba(49,75,94,.28)!important;padding:0 2px 1px!important;display:inline-block!important;letter-spacing:1px!important}
+#lockScreen .lsWatch{margin-top:10px!important;font-size:10.5px!important;line-height:1.9!important;letter-spacing:1.2px!important;color:#8496a2!important;text-align:center}
+#lockScreen .lsElapsed{margin-top:7px!important;font-size:10px!important;letter-spacing:1.2px!important;color:#8fa0ac!important}
+#lockScreen .lsElapsed b{font-size:12px!important;color:#5f788c!important}
+#lockScreen .lsBegLog{min-height:150px!important;margin-top:14px!important}
+#lockScreen .lsBegMsg.ta{font-size:13px!important;line-height:1.7!important;padding:8px 12px!important;border-radius:12px!important}
+#lockScreen .lsBegMsg.me{font-size:11.5px!important;line-height:1.65!important;padding:7px 11px!important;border-radius:11px!important}
+
+/* 共享屏幕：录屏角标 */
+#shareViewOverlay{position:fixed;top:54px;right:12px;z-index:1150;display:none;flex-direction:column;align-items:flex-end;gap:5px;pointer-events:none;max-width:calc(100vw - 24px);box-sizing:border-box}
+#shareViewOverlay.show{display:flex}
+#shareViewOverlay .svTop{display:flex;align-items:center;gap:7px;padding:5px 9px;border-radius:10px;background:rgba(24,33,41,.74);color:#fff;border:1px solid rgba(255,255,255,.16);box-shadow:0 10px 26px rgba(20,30,38,.24);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);pointer-events:auto;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
+#shareViewOverlay .svRec{display:inline-flex;align-items:center;gap:4px;font-size:8.5px;letter-spacing:1.2px;color:#ff7474;font-weight:600}
+#shareViewOverlay .svRec b{width:6px;height:6px;border-radius:50%;background:#ff3b30;box-shadow:0 0 0 2px rgba(255,59,48,.16);animation:svBlink 1.2s infinite}
+#shareViewOverlay .svRec span{font-size:9px;color:rgba(255,255,255,.75);letter-spacing:.8px;font-weight:400}
+#shareViewOverlay .svText{max-width:190px;padding:4px 8px;border-radius:8px;background:rgba(24,33,41,.66);color:rgba(255,255,255,.82);font-size:9px;line-height:1.6;letter-spacing:.5px;text-align:right;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-sizing:border-box;word-break:break-word}#shareViewOverlay .svTop.drag{cursor:grabbing}
+#shareViewOverlay .svStop{pointer-events:auto;border:1px solid rgba(255,255,255,.24);background:rgba(255,255,255,.12);color:rgba(255,255,255,.78);font-family:inherit;font-size:12px;line-height:1;width:16px;height:16px;padding:0;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center}
+@keyframes svBlink{0%,45%{opacity:1}55%,100%{opacity:.35}}
+
 </style></head><body><div id="app">
+<div id="shareViewOverlay">
+  <div class="svTop" title="按住可拖动"><span class="svRec"><b></b>REC <span id="svTime">00:00</span></span><button class="svStop" id="svStop" title="停止共享">×</button></div>
+  <div class="svText" id="svText">对方正在观看你的屏幕</div>
+</div>
 
   <!-- ========== 主页（多页面） ========== -->
   <div id="home">
@@ -1152,6 +1458,8 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
         <div class="bgSwatch up" id="annivBgUpload">＋</div>
       </div>
     </div>
+    <div class="fRow"><span>背景图透明度（0-100）</span><input id="annivAlpha" type="range" min="0" max="100"></div>
+    <div class="fRow"><span>背景图磨砂（0-100）</span><input id="annivBlur" type="range" min="0" max="100"></div>
     <div class="btns"><button class="cancel" id="annivBgDel">删除背景</button></div>
     <div class="btns"><button class="cancel" id="annivCancel">取消</button><button class="ok" id="annivSave">保存</button></div>
   </div></div>
@@ -1205,7 +1513,7 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
     <div id="shareFrame"></div>
     <div id="shareBar">
       <span class="sbDot"></span>
-      <span class="sbText" id="shareBarText">对方正在观看你的屏幕</span>
+      <span class="sbText" id="shareBarText">他正在翻你的手机</span>
       <button class="sbStop" id="shareStopBtn">停止</button>
     </div>
     <div id="chatBg"><div id="bgDim"></div></div>
@@ -1288,15 +1596,56 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
       <button class="cfHang" id="cfHang">挂断</button>
     </div>
 
-    <div id="shareInvite">
+    <div id="shareInvite"><div class="siSheet">
       <img class="siAv" id="siAvatar" alt="">
       <div class="siName" id="siName">TA</div>
-      <div class="siTip" id="siTip">邀请你 <b>共享屏幕</b></div>
-      <div class="siCall">同屏邀请 · 来电</div>
+      <div class="siTip" id="siTip">邀请你 <b>交出手机</b></div>
+      <div class="siCall" id="siCall">同屏后，他能翻你的聊天、相册、日记</div>
       <div class="siBtns">
-        <button class="siBtn siReject" id="siRejectBtn"><span class="circle">✕</span><span class="lb">拒绝</span></button>
-        <button class="siBtn siAccept" id="siAcceptBtn"><span class="circle">✓</span><span class="lb">接受</span></button>
+        <button class="siBtn siReject" id="siRejectBtn"><span class="circle">✕</span><span class="lb">不给</span></button>
+        <button class="siBtn siAccept" id="siAcceptBtn"><span class="circle">✓</span><span class="lb">给他翻</span></button>
       </div>
+    </div>
+    </div>
+
+    <div id="shareCheck">
+      <div class="scCard">
+        <div class="scHead"><span class="scLive"><i></i>同屏中</span><b>他正在翻你的手机</b></div>
+        <div class="scPhone">
+          <div class="scPhoneTop"><span>他的手指</span><b>正在滑动</b></div>
+          <div class="scList" id="scList">
+            <div class="scRow" data-sc="chat"><span class="scIco">聊</span><span class="scName">聊天记录</span><b>待翻</b></div>
+            <div class="scRow" data-sc="photo"><span class="scIco">照</span><span class="scName">相册</span><b>待翻</b></div>
+            <div class="scRow" data-sc="diary"><span class="scIco">记</span><span class="scName">日记本</span><b>待翻</b></div>
+            <div class="scRow" data-sc="mail"><span class="scIco">信</span><span class="scName">信箱</span><b>待翻</b></div>
+          </div>
+          <div class="scScan"></div><div class="scFinger"></div>
+        </div>
+        <div class="scFeed" id="scFeed"></div>
+        <div class="scFoot"><span id="scFootText">他每划一下，你都看得见。</span><button id="scBack">把手机拿回来</button></div>
+      </div>
+    </div>
+
+    <div id="shareTakeover">
+      <div class="stStatus"><span class="stDot"></span><b>他接管了你的手机</b><i id="stClock">23:47</i></div>
+      <div class="stSub">你碰不了。手机现在只听他的。</div>
+      <div class="stDesk" id="stDesk">
+        <div class="stIcon" data-app="chat"><span class="stBox">聊</span><b>聊天</b></div>
+        <div class="stIcon" data-app="photo"><span class="stBox">照</span><b>相册</b></div>
+        <div class="stIcon" data-app="diary"><span class="stBox">记</span><b>日记</b></div>
+        <div class="stIcon" data-app="mail"><span class="stBox">信</span><b>信箱</b></div>
+        <div class="stIcon" data-app="cards"><span class="stBox">卡</span><b>字卡</b></div>
+        <div class="stIcon" data-app="shop"><span class="stBox">店</span><b>商店</b></div>
+        <div class="stIcon" data-app="settings"><span class="stBox">设</span><b>设置</b></div>
+        <div class="stIcon" data-app="screen"><span class="stBox">屏</span><b>同屏</b></div>
+        <div class="stHand" id="stHand"><i></i></div>
+      </div>
+      <div class="stPreview" id="stPreview">
+        <div class="stPrevTitle" id="stPrevTitle">他点开了聊天记录</div>
+        <div class="stPrevBody" id="stPrevBody"></div>
+      </div>
+      <div class="stChat" id="stChat"></div>
+      <div class="stInputBar"><input id="stInput" maxlength="80" placeholder="别查了…求他还给你"><button id="stSend">求他</button><button id="stExit">×</button></div>
     </div>
 
     <div id="lockScreen">
@@ -1304,29 +1653,19 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
       <div class="lsTime" id="lsTime">23:47</div>
       <div class="lsDate" id="lsDate">3月15日 星期六</div>
       <div class="lsLock"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
-      <div class="lsTitle">你的屏幕已被 <span class="taName" id="lsTaName">TA</span> 锁定</div>
-      <div class="lsSub">别乱动。<br>他正在看着你，<b>每一秒都知道你在做什么</b>。</div>
-      <div class="lsCount">距离自动解锁还有 <b id="lsCountNum">5:00</b></div>
-      <div class="lsInputWrap"><input class="lsInput" id="lsPwd" type="password" inputmode="numeric" maxlength="12" placeholder="输入解锁密码"></div>
-      <button class="lsBtn lsBtnUnlock" id="lsUnlockBtn">解锁</button>
-      <button class="lsBtn lsBtnBeg" id="lsBegBtn">立刻哄他 · 求他解锁</button>
-      <div class="lsHint"><span>提示</span>：密码是他设的，或者……<br>点下面的「立刻哄他」，他也许会心软。</div>
-
-      <div id="lockWarn">
-        <div class="lwBox">
-          <div class="lwPulse"></div>
-          <div class="lwIcon">🔒</div>
-          <div class="lwTitle">密 码 错 了 <span class="hl">。</span></div>
-          <div class="lwText">你不乖。<br><b>再错一次试试。</b></div>
-          <div class="lwText" style="font-size:12px;color:#ff6b6b">他已经记住你输错几次了。</div>
-          <div class="lwCount" id="lwCount">这是第 1 次</div>
-          <div class="lwFoot">想让他消气？<br>点下面的「哄他」，不然……屏幕会锁得更久。</div>
-          <button class="lwBtn lwBtnOk" id="lwBack">回去重新输</button>
-          <button class="lwBtn lwBtnBeg" id="lwBeg">哄他消气</button>
-        </div>
-      </div>
+      <div class="lsBigTitle">你的屏幕<br>已被 <span class="taName" id="lsTaName">TA</span> 锁定</div>
+      <div class="lsWatch">别乱动。<br>他正在看着你，每一秒都知道你在做什么。</div>
+      <div class="lsElapsed">已经被对方锁了 <b id="lsElapsed">00:00</b></div>
+      <div class="lsBegLog" id="lsBegLog"></div>
+      <div class="lsBegRow"><input class="lsBegInput" id="lsBegInput" type="text" maxlength="80" placeholder="说一句软话，求他先消气…"><button class="lsBegSend" id="lsBegSend">哄他</button></div>
+      <div id="lockWarn"><div class="lwBox">
+        <div class="lwTitle" id="lwTitle">这句话，他没接。</div>
+        <div class="lwText" id="lwText">手机还锁着。
+再说一句，软一点。</div>
+        <div class="lwCount" id="lwCount">第 1 次 · 还没哄开</div>
+        <button class="lwBtn lwBtnOk" id="lwBack">再哄一句</button>
+      </div></div>
     </div>
-  </div>
 
   <!-- ========== 字卡页 ========== -->
   <div id="cardsPage">
@@ -1559,7 +1898,7 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
   <div id="screenPage">
     <div class="pgTop">
       <span class="back" id="screenBack">‹ 返回</span>
-      <span>同屏</span>
+      <span>屏幕</span>
     </div>
     <div class="cpBody" id="screenBody"></div>
   </div>
@@ -1654,6 +1993,7 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
     <div class="probRow"><span>对方被动回复条数-最多</span><input id="pRmaxN" type="number" min="1"></div>
     <div class="probRow"><span>对方回复最短延迟（秒）</span><input id="pRmin" type="number" min="0" step="0.5"></div>
     <div class="probRow"><span>对方回复最长延迟（秒）</span><input id="pRmax" type="number" min="0" step="0.5"></div>
+    <div class="probRow"><span>对方回你消息的概率（%）</span><input id="pReplyP" type="number" min="0" max="100"></div>
     <div class="probRow"><span>对方主动发消息平均间隔（分钟）</span><input id="pActiveGap" type="number" min="1"></div>
     <div class="probRow"><span>对方主动发条数-最少</span><input id="pAmin" type="number" min="1"></div>
     <div class="probRow"><span>对方主动发条数-最多</span><input id="pAmax" type="number" min="1"></div>
@@ -1683,10 +2023,11 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
     <div class="fRow"><span>气泡字体大小（px）</span><input id="bFont" type="number" min="10" max="24"></div>
     <div class="fRow"><span>气泡内边距（px）</span><input id="bPad" type="number" min="2" max="20"></div>
     <div class="fRow"><span>气泡圆角（px）</span><input id="bRadius" type="number" min="0" max="24"></div>
+    <div class="fRow"><span>聊天卡片宽度（110-220px）</span><input id="bCardW" type="range" min="110" max="220" step="2"></div>
     <div class="fRow"><span>礼物 / 代付卡片风格</span>
       <select id="bGiftSkin"><option value="mini">极简线条</option><option value="note">便签纸</option></select>
     </div>
-    <div class="fRow"><span>问卷卡片风格</span>
+    <div class="fRow"><span>问卷 / 查岗卡片风格</span>
       <select id="bSurveySkin"><option value="ticket">票据</option><option value="mini">极简线条</option><option value="note">便签纸</option></select>
     </div>
     <div class="fRow"><span>我的气泡颜色</span><input id="bMeColor" type="color"></div>
@@ -1797,9 +2138,6 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
     <div class="fRow"><span>主页墨色浓度（越小越淡）</span><input id="hbInkAlpha" type="range" min="35" max="100" value="82"></div>
     <div class="fRow"><span>图标边框颜色</span><input id="hbIconBorderColor" type="color"></div>
     <div class="fRow"><span>图标名称颜色</span><input id="hbIconNameColor" type="color"></div>
-    <div class="fRow"><span>“美化”按钮透明度（0-100）</span><input id="hbSetAlpha" type="range" min="0" max="100"></div>
-    <div class="fRow"><span>“美化”按钮磨砂（0-100）</span><input id="hbSetBlur" type="range" min="0" max="100"></div>
-    <div class="fRow"><span>“美化”按钮边框颜色</span><input id="hbSetBorderColor" type="color"></div>
     <hr style="border:none;border-top:1px solid #eee;margin:12px 0">
     <div style="font-size:12px;color:#666;margin-bottom:8px">自定义图标（可逐个上传替换、修改名称）</div>
     <div id="hbIconList"></div>
@@ -1961,7 +2299,6 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
     <div class="probRow"><span>主动写信最短间隔（分钟）</span><input id="mailProactiveMin" type="number" min="1"></div>
     <div class="probRow"><span>主动写信最长间隔（分钟）</span><input id="mailProactiveMax" type="number" min="1"></div>
     <hr style="border:none;border-top:1px solid #eee;margin:12px 0">
-    <div class="probRow"><span>单次补算上限（封，防止一次涌出太多）</span><input id="mailMaxCatchUp" type="number" min="1"></div>
     <div class="probRow"><span>每封信抽取字卡条数-最少</span><input id="mailCardMin" type="number" min="1"></div>
     <div class="probRow"><span>每封信抽取字卡条数-最多</span><input id="mailCardMax" type="number" min="1"></div>
     <div class="probRow"><span>附带表情包数量-最少（默认0）</span><input id="mailImgMin" type="number" min="0"></div>
@@ -2314,7 +2651,15 @@ if(!currentStatus||typeof currentStatus!=='object'||typeof currentStatus.text!==
 var chatHistory=Array.isArray(load('zika_chat_history',[]))?load('zika_chat_history',[]):[];
 chatHistory=chatHistory.filter(function(m){return m&&typeof m==='object';});
 var replyCards=load('zika_reply_cards',DC);
-var probs=load('zika_probs',{active:1,rminN:1,rmaxN:2,rmin:1,rmax:3,activeGap:30,amin:1,amax:2,rp:8,tf:6,gf:5,pat:10,taCheck:8,check:80,stk:8,recall:10,fav:15,quote:20,quoteN:3,answer:70,callMe:10,hangTa:20,loc:10,fine:20});
+var probs=load('zika_probs',{active:1,rminN:1,rmaxN:2,rmin:1,rmax:3,activeGap:30,amin:1,amax:2,replyP:100,rp:8,tf:6,gf:5,pat:10,taCheck:8,check:80,stk:8,recall:10,fav:15,quote:20,quoteN:3,answer:70,callMe:10,hangTa:20,loc:10,fine:20});
+probs.active=(probs.active===true||probs.active===1||probs.active==='1'||probs.active==='true')?1:0;
+probs.rminN=Math.max(1,Math.round(Number(probs.rminN)||1));
+probs.rmaxN=Math.max(probs.rminN,Math.round(Number(probs.rmaxN)||probs.rminN));
+probs.rmin=Math.max(0,Number(probs.rmin)||0);
+probs.rmax=Math.max(probs.rmin,Number(probs.rmax)||probs.rmin);
+probs.replyP=Math.max(0,Math.min(100,Number(probs.replyP)||100));
+probs.amin=Math.max(1,Math.round(Number(probs.amin)||1));
+probs.amax=Math.max(probs.amin,Math.round(Number(probs.amax)||probs.amin));
 if(probs.active==null)probs.active=1;
 if(probs.taCheck==null)probs.taCheck=8;
 if(probs.loc==null)probs.loc=10;
@@ -2326,7 +2671,7 @@ var checkCards=load('zika_check_cards',DCHK);
 var checkAskCards=load('zika_check_ask',DCHKASK);
 var stickers=load('zika_stickers',[]);
 var favorites=load('zika_favorites',[]);
-var beauty=load('zika_beauty',{fontFamily:'serif',gfont:14,font:14,pad:6,radius:14,meColor:'#111111',metaColor:'#aaaaaa',taColor:'#ffffff',bgColor:'#f7f7f7',bgImg:'',dim:100,scope:'chat',topAlpha:100,topBlur:0,inAlpha:100,inBlur:0,btnAlpha:100,btnBlur:0,btnBorderColor:'#111111',btnTextColor:'#111111',inBg:'#ffffff',inBorder:'#111111',inText:'#111111',plusBg:'#ffffff',plusBorder:'#111111',plusText:'#111111',sendBg:'#111111',sendBorder:'#111111',sendText:'#ffffff',css:'',typing:'对方正在输入…',callBg:'',callFloatBg:'',callDim:0,fontCss:''});
+var beauty=load('zika_beauty',{fontFamily:'serif',gfont:14,font:14,pad:6,radius:14,cardW:150,meColor:'#111111',metaColor:'#aaaaaa',taColor:'#ffffff',bgColor:'#f7f7f7',bgImg:'',dim:100,scope:'chat',topAlpha:100,topBlur:0,inAlpha:100,inBlur:0,btnAlpha:100,btnBlur:0,btnBorderColor:'#111111',btnTextColor:'#111111',inBg:'#ffffff',inBorder:'#111111',inText:'#111111',plusBg:'#ffffff',plusBorder:'#111111',plusText:'#111111',sendBg:'#111111',sendBorder:'#111111',sendText:'#ffffff',css:'',typing:'对方正在输入…',callBg:'',callFloatBg:'',callDim:0,fontCss:''});
 if(beauty.fontCss==null)beauty.fontCss='';
 if(beauty.btnAlpha==null)beauty.btnAlpha=100;
 if(beauty.btnBlur==null)beauty.btnBlur=0;
@@ -2341,17 +2686,18 @@ if(beauty.sendText==null)beauty.sendText='#ffffff';
 function isBluePink(c){if(!c)return false;var v=String(c).toLowerCase();return v.indexOf('3b5bdb')>=0||v.indexOf('e03131')>=0||v.indexOf('dbe4ff')>=0||v.indexOf('ffe3e3')>=0||v.indexOf('4a6cf7')>=0;}
 if(isBluePink(beauty.meColor))beauty.meColor='#111111';
 if(isBluePink(beauty.taColor))beauty.taColor='#ffffff';
+if(beauty.cardW==null)beauty.cardW=150;
+if(beauty.cardW===164||beauty.cardW===172)beauty.cardW=150;
 /* 版式放宽：旧的默认值（字号14 / 气泡内边距6）自动升级，避免拥挤；用户手动改过的更大值不受影响 */
 if(beauty.font===14)beauty.font=15;
 if(beauty.pad===6)beauty.pad=9;
 save('zika_beauty',beauty);
 var homeBeauty=load('zika_home_beauty',null);
 if(!homeBeauty||typeof homeBeauty!=='object'){
-  homeBeauty={bgColor:'#ffffff',bgImg:'',dim:100,iconSize:56,iconAlpha:100,iconBlur:0,iconBorderColor:'#111111',iconNameColor:'#333333',setAlpha:100,setBlur:0,setBorderColor:'#111111',titleStyle:'D',iconFont:'serif',inkAlpha:82,icons:{},names:Object.assign({},DEFAULT_NAMES),pages:[],curPage:0};
+  homeBeauty={bgColor:'#ffffff',bgImg:'',dim:100,iconSize:56,iconAlpha:100,iconBlur:0,iconBorderColor:'#111111',iconNameColor:'#333333',titleStyle:'D',iconFont:'serif',inkAlpha:82,icons:{},names:Object.assign({},DEFAULT_NAMES),pages:[],curPage:0};
 }
 if(!homeBeauty.names)homeBeauty.names=Object.assign({},DEFAULT_NAMES);
 if(!homeBeauty.icons)homeBeauty.icons={};
-if(homeBeauty.setBorderColor==null)homeBeauty.setBorderColor='#111111';
 if(!homeBeauty.titleStyle)homeBeauty.titleStyle='D';
 if(!homeBeauty.iconFont)homeBeauty.iconFont='serif';
 if(!homeBeauty.titleDv){homeBeauty.titleStyle='D';homeBeauty.titleDv=1;save('zika_home_beauty',homeBeauty);}
@@ -2516,27 +2862,35 @@ if(!Array.isArray(sparkShop)){sparkShop=[{id:'sp1',emoji:'🌸',name:'小花',pr
 var sparkOwned=load('zika_spark_owned',[]);
 if(!Array.isArray(sparkOwned))sparkOwned=[];
 
-var screenSet=load('zika_screen_set',{lockEnable:1,lockP:15,lockGap:60,lockDayMax:3,lockDuration:5,lockPwd:'',begSuccess:60,shareEnable:1,shareP:12,shareGap:60,shareDayMax:3,shareRejectLockP:60,shareReactGap:30,shareBarText:'对方正在观看你的屏幕'});
-if(!screenSet)screenSet={lockEnable:1,lockP:15,lockGap:60,lockDayMax:3,lockDuration:5,lockPwd:'',begSuccess:60,shareEnable:1,shareP:12,shareGap:60,shareDayMax:3,shareRejectLockP:60,shareReactGap:30,shareBarText:'对方正在观看你的屏幕'};
+var screenSet=load('zika_screen_set',{lockEnable:1,lockP:15,lockGap:60,lockDayMax:3,lockDuration:5,begSuccess:18,shareEnable:1,shareP:12,shareGap:60,shareDayMax:3,shareRejectLockP:60,shareReactGap:3,shareBarText:'他正在翻你的手机',shareViewEnable:1,shareViewP:10,shareViewGap:60,shareViewDayMax:2,shareViewBarText:'对方正在观看你的屏幕'});
+if(!screenSet)screenSet={lockEnable:1,lockP:15,lockGap:60,lockDayMax:3,lockDuration:5,begSuccess:18,shareEnable:1,shareP:12,shareGap:60,shareDayMax:3,shareRejectLockP:60,shareReactGap:3,shareBarText:'他正在翻你的手机',shareViewEnable:1,shareViewP:10,shareViewGap:60,shareViewDayMax:2,shareViewBarText:'对方正在观看你的屏幕'};
 if(screenSet.lockEnable==null)screenSet.lockEnable=1;
 if(screenSet.lockP==null)screenSet.lockP=15;
 if(screenSet.lockGap==null)screenSet.lockGap=60;
 if(screenSet.lockDayMax==null)screenSet.lockDayMax=3;
 if(screenSet.lockDuration==null)screenSet.lockDuration=5;
-if(screenSet.lockPwd==null)screenSet.lockPwd='';
-if(screenSet.begSuccess==null)screenSet.begSuccess=60;
+if(screenSet.begSuccess==null)screenSet.begSuccess=18;
+if(Number(screenSet.begSuccess)===60)screenSet.begSuccess=18;
+if(Number(screenSet.shareReactGap)===30)screenSet.shareReactGap=3;
 if(screenSet.shareEnable==null)screenSet.shareEnable=1;
 if(screenSet.shareP==null)screenSet.shareP=12;
 if(screenSet.shareGap==null)screenSet.shareGap=60;
 if(screenSet.shareDayMax==null)screenSet.shareDayMax=3;
 if(screenSet.shareRejectLockP==null)screenSet.shareRejectLockP=60;
-if(screenSet.shareReactGap==null)screenSet.shareReactGap=30;
-if(!screenSet.shareBarText)screenSet.shareBarText='对方正在观看你的屏幕';
+if(screenSet.shareReactGap==null)screenSet.shareReactGap=3;
+if(!screenSet.shareBarText)screenSet.shareBarText='他正在翻你的手机';
+if(screenSet.shareViewEnable==null)screenSet.shareViewEnable=1;
+if(screenSet.shareViewP==null)screenSet.shareViewP=10;
+if(screenSet.shareViewGap==null)screenSet.shareViewGap=60;
+if(screenSet.shareViewDayMax==null)screenSet.shareViewDayMax=2;
+if(!screenSet.shareViewBarText)screenSet.shareViewBarText='对方正在观看你的屏幕';
 save('zika_screen_set',screenSet);
-var screenStat=load('zika_screen_stat',{lastLockTs:0,lastShareTs:0,lockCountDay:0,shareCountDay:0,dayKey:''});
-if(!screenStat)screenStat={lastLockTs:0,lastShareTs:0,lockCountDay:0,shareCountDay:0,dayKey:''};
+var screenStat=load('zika_screen_stat',{lastLockTs:0,lastShareTs:0,lastShareViewTs:0,lockCountDay:0,shareCountDay:0,shareViewCountDay:0,dayKey:''});
+if(!screenStat)screenStat={lastLockTs:0,lastShareTs:0,lastShareViewTs:0,lockCountDay:0,shareCountDay:0,shareViewCountDay:0,dayKey:''};
+if(screenStat.lastShareViewTs==null)screenStat.lastShareViewTs=0;
+if(screenStat.shareViewCountDay==null)screenStat.shareViewCountDay=0;
 save('zika_screen_stat',screenStat);
-var lockActive=false,lockTimer=null,lockRemain=0,wrongCount=0,shareActive=false,shareReactTimer=null;
+var lockActive=false,lockTimer=null,lockRemain=0,wrongCount=0,shareActive=false,shareReactTimer=null,shareViewActive=false,shareViewTimer=null,shareViewStart=0,pendingShareKind='takeover';
 var tmpImgs=[],mwImgs=[],cpTab='reply',cpCurGroup='全部',cpSel={},quoteMsg=null,typingOn=false,surveyQuestions=[],curBuyGoods=null,agImg='',saveSel={},cpEditIndex=-1,pendingCheckAsk=null;
 
 function statusTexts(){return (statusPool||[]).map(function(x){return typeof x==='string'?x:(x&&x.text)||'';}).filter(function(x){return String(x).trim();});}
@@ -2571,6 +2925,8 @@ function ensureFontCss(key){
   var l=document.createElement('link');l.id='fcss_'+key;l.rel='stylesheet';l.href=__fontCss[key];
   document.head.appendChild(l);
 }
+/* 一次性把旧默认卡片宽度 172 收窄到 164，避免老用户看不到变化 */
+if(beauty && beauty.cardW===172){beauty.cardW=150;try{save('zika_beauty',beauty);}catch(e){}}
 function applyBeauty(){
   var root=document.documentElement;
   var __ff={serif:'"Songti SC","Noto Serif CJK SC","STSong",serif',
@@ -2593,6 +2949,7 @@ function applyBeauty(){
   root.style.setProperty('--msg-font',beauty.font+'px');
   root.style.setProperty('--msg-pad',beauty.pad+'px');
   root.style.setProperty('--msg-radius',beauty.radius+'px');
+  root.style.setProperty('--cardw',(beauty.cardW||150)+'px');
   root.style.setProperty('--me-color',beauty.meColor);
   root.style.setProperty('--meta-color',beauty.metaColor||'#aaaaaa');
   root.style.setProperty('--ta-color',beauty.taColor);
@@ -2663,10 +3020,8 @@ function applyHomeBeauty(){
     homeEl.classList.toggle('iconBare',_if==='bare');
     homeEl.classList.toggle('iconRound',_if==='round');
     homeEl.classList.toggle('iconSans',_if==='sans');}
-  var setBtn=$('homeSetBtn');
-  if(setBtn){setBtn.style.backgroundColor='rgba(255,255,255,'+(homeBeauty.setAlpha/100)+')';setBtn.style.backdropFilter='blur('+(homeBeauty.setBlur/10)+'px)';setBtn.style.webkitBackdropFilter='blur('+(homeBeauty.setBlur/10)+'px)';setBtn.style.borderColor=homeBeauty.setBorderColor||'#111111';}
   var doneBtn=$('homeDoneBtn');if(doneBtn){doneBtn.style.backgroundColor='#111';doneBtn.style.color='#fff';doneBtn.style.backdropFilter='none';}
-  var pmBtn=$('homePageMgrBtn');if(pmBtn){pmBtn.style.backgroundColor='rgba(255,255,255,'+(homeBeauty.setAlpha/100)+')';pmBtn.style.backdropFilter='blur('+(homeBeauty.setBlur/10)+'px)';pmBtn.style.borderColor=homeBeauty.setBorderColor||'#111111';}
+  var pmBtn=$('homePageMgrBtn');if(pmBtn){pmBtn.style.backgroundColor='#fff';pmBtn.style.backdropFilter='none';pmBtn.style.borderColor='#111111';}
   applyHomeTitle();
 }function applyHomeTitle(){
   var home=$('home');if(!home)return;
@@ -3005,11 +3360,12 @@ function buildAnniv(w){
   var sc=Math.max(0.55,Math.min(2,(Math.min(w.w||180,w.h||180))/180));
   var box=document.createElement('div');
   box.className='wg-anniv3'+(w.style==='ticket'?' ticket':'')+(w.img?' hasImg':'');
-  if(w.img)box.style.backgroundImage='url('+w.img+')';
+  var bg='';
+  if(w.img){bg='<div class="a3bg" style="background-image:url('+w.img+');opacity:'+((w.imgAlpha==null?100:w.imgAlpha)/100)+';filter:blur('+((w.imgBlur||0)/10)+'px)"></div>';}
   var days=daysFromNow(w.date,w.mode);
   var abs=(days==null?'—':Math.abs(days));
   var modeTxt=(w.mode==='countup'?'SINCE':'TO');
-  box.innerHTML='<div class="a3main">'+
+  box.innerHTML=bg+'<div class="a3main">'+
     '<div class="a3top"><span class="a3lab" style="font-size:'+(8*sc)+'px;letter-spacing:'+(2.2*sc)+'px">ANNIVERSARY</span></div>'+
     '<div class="a3name" style="font-size:'+(11.5*sc)+'px;letter-spacing:'+(1.2*sc)+'px">'+esc(w.name||'纪念日')+'</div>'+
     '<div class="a3num" style="font-size:'+(40*sc)+'px">'+abs+'<i style="font-size:'+(9*sc)+'px;letter-spacing:'+(1.5*sc)+'px">DAYS</i></div>'+
@@ -3158,11 +3514,12 @@ function buildAnniv(w){
   var sc=Math.max(0.55,Math.min(2,(Math.min(w.w||180,w.h||180))/180));
   var box=document.createElement('div');
   box.className='wg-anniv3'+(w.style==='ticket'?' ticket':'')+(w.img?' hasImg':'');
-  if(w.img)box.style.backgroundImage='url('+w.img+')';
+  var bg='';
+  if(w.img){bg='<div class="a3bg" style="background-image:url('+w.img+');opacity:'+((w.imgAlpha==null?100:w.imgAlpha)/100)+';filter:blur('+((w.imgBlur||0)/10)+'px)"></div>';}
   var days=daysFromNow(w.date,w.mode);
   var abs=(days==null?'—':Math.abs(days));
   var modeTxt=(w.mode==='countup'?'SINCE':'TO');
-  box.innerHTML='<div class="a3main">'+
+  box.innerHTML=bg+'<div class="a3main">'+
     '<div class="a3top"><span class="a3lab" style="font-size:'+(8*sc)+'px;letter-spacing:'+(2.2*sc)+'px">ANNIVERSARY</span></div>'+
     '<div class="a3name" style="font-size:'+(11.5*sc)+'px;letter-spacing:'+(1.2*sc)+'px">'+esc(w.name||'纪念日')+'</div>'+
     '<div class="a3num" style="font-size:'+(40*sc)+'px">'+abs+'<i style="font-size:'+(9*sc)+'px;letter-spacing:'+(1.5*sc)+'px">DAYS</i></div>'+
@@ -3336,7 +3693,7 @@ function bindWidgetResize(el,handle,w,pidx){
 
 function newAnnivWidget(){
   return {id:'w'+Date.now()+Math.floor(Math.random()*1000),type:'anniv',layout:'anniv',
-    name:'我们的纪念日',date:fmtDate(Date.now()),mode:'countdown',bg:'bg1',img:'',style:'line',
+    name:'我们的纪念日',date:fmtDate(Date.now()),mode:'countdown',bg:'bg1',img:'',imgAlpha:100,imgBlur:0,style:'line',
     x:32,y:110,w:180,h:180};
 }
 function newClockWidget(){
@@ -3354,10 +3711,14 @@ function newNoteWidget(){
 }
 var editingAnnivId=null,editingNoteId=null;
 function openAnnivEdit(w){
-  editingAnnivId=w.id;
+  editingAnnivId=w.id;editingAnnivBg='__keep__';editingAnnivBg='__keep__';
   $('annivName').value=w.name||'';
+  if($('annivAlpha'))$('annivAlpha').value=(w.imgAlpha==null?100:w.imgAlpha);
+  if($('annivBlur'))$('annivBlur').value=(w.imgBlur==null?0:w.imgBlur);
   $('annivDate').value=w.date||fmtDate(Date.now());
   $('annivMode').value=w.mode||'countdown';
+  if($('annivAlpha'))$('annivAlpha').value=(w.imgAlpha==null?100:w.imgAlpha);
+  if($('annivBlur'))$('annivBlur').value=(w.imgBlur||0);
   var sp=$('annivStylePick');if(sp)sp.querySelectorAll('.styleOpt').forEach(function(el){el.classList.toggle('on',el.dataset.style===(w.style||'ins'));});
   var bg=$('annivBgGrid');if(bg)bg.querySelectorAll('.bgSwatch').forEach(function(el){
     el.classList.remove('on');
@@ -3549,15 +3910,16 @@ function buildAny(m,idx){
     return wrapRow(m,lc,idx);
   }
   if(m.type==='checkAskCard'){
-    var cac=document.createElement('div');cac.className='cardMsg';
-    cac.innerHTML='<div class="cardTitle">'+esc(profile.taName||'TA')+' 查岗</div><div class="cardNote">'+esc(m.note||'在干嘛？')+'</div>';
-    if(!m.replied){var cActs=document.createElement('div');cActs.className='cardActs';var rep=document.createElement('button');rep.className='yes';rep.textContent='回复';rep.onclick=function(){openCheckReply(m);};cActs.appendChild(rep);cac.appendChild(cActs);}
-    else{var st=document.createElement('div');st.className='cardStatus';st.textContent='已回复';cac.appendChild(st);}
+    var ckActs=[];
+    if(!m.replied)ckActs.push({text:'回复',fill:true,fn:function(){openCheckReply(m);}});
+    var cac=zCard({skin:zSkinSurvey(),kind:'查岗',state:(m.replied?'已回复':'等你回应'),
+      title:(profile.taName||'TA')+' 在找你',note:(m.note||'在干嘛？'),acts:ckActs,
+      foot:{left:(m.replied?'已回复 · 已送达':'点回复，告诉他你在干嘛')}});
     return wrapRow(m,cac,idx);
   }
   if(m.type==='checkReplyCard'){
-    var crc=document.createElement('div');crc.className='cardMsg';
-    crc.innerHTML='<div class="cardTitle">我的查岗回复</div><div class="cardNote">'+esc(m.text||'')+'</div>'+(m.askNote?'<div class="cardStatus">原查岗：'+esc(m.askNote)+'</div>':'');
+    var crc=zCard({skin:zSkinSurvey(),kind:'回应',state:'已送达',title:'我的查岗回复',
+      note:(m.text||''),foot:{left:(m.askNote?'原查岗：'+m.askNote:'已送达')}});
     return wrapRow(m,crc,idx);
   }
 /* ===== 卡片皮肤生成器 ===== */
@@ -3700,10 +4062,19 @@ function zCard(cfg){
     return wrapRow(m,wcEl,idx);
   }
   if(m.type&&m.type!=='text'){
-    var c=document.createElement('div');c.className='cardMsg';var mine=m.from==='me';
-    if(m.type==='check')c.innerHTML='<div class="cardTitle">查岗</div><div class="cardNote">'+esc(m.note||'在干嘛？')+'</div><div class="cardStatus">'+(mine?'等待对方回应':'查岗中')+'</div>';
-    else if(m.type==='checkReply')c.innerHTML='<div class="cardTitle">查岗回复</div><div class="cardNote">'+esc(m.text||'')+'</div><div class="cardStatus">回应</div>';
-    return wrapRow(m,c,idx);
+    var mine=m.from==='me';
+    if(m.type==='check'){
+      var cc=zCard({skin:zSkinSurvey(),kind:'查岗',state:(mine?'等待对方回应':'对方正在回应'),
+        title:'你查了 '+(mine?esc(profile.taName||'TA'):'我')+' 的岗',note:(m.note||'在干嘛？'),
+        foot:{left:'查岗'}});
+      return wrapRow(m,cc,idx);
+    }
+    if(m.type==='checkReply'){
+      var cr=zCard({skin:zSkinSurvey(),kind:'回应',state:'查岗回复',
+        title:(mine?'我回应了查岗':esc(profile.taName||'TA')+' 回应了查岗'),note:(m.text||''),
+        foot:{left:'已送达'}});
+      return wrapRow(m,cr,idx);
+    }
   }
   var b=document.createElement('div');b.className='msg';b.textContent=m.text;return wrapRow(m,b,idx);
 }function markRead(msg){var delay=1000+Math.random()*1000;setTimeout(function(){msg.read=true;save('zika_chat_history',chatHistory);renderChat(true);},delay);}
@@ -3731,6 +4102,8 @@ function pickQuoteForTa(){
 }
 function reply(){
   if(!replyCards.length)return;
+  var chance=Number(probs.replyP);if(!isFinite(chance))chance=100;
+  if(Math.random()*100>=chance)return;
   var n=randInt(probs.rminN,probs.rmaxN);
   var minS=isFinite(probs.rmin)?probs.rmin:1,maxS=isFinite(probs.rmax)?probs.rmax:3;
   if(maxS<minS)maxS=minS;
@@ -3764,7 +4137,7 @@ function addFav(m,who){
   pushMsg({type:'sys',text:who+' 收藏了一条消息'});
 }
 function taRecall(msg){if(!msg||msg.recalled)return;if(Math.random()*100>=probs.recall)return;msg.recalled=true;save('zika_chat_history',chatHistory);renderChat(true);}
-function taFavsMy(){if(!probs.active)return;var mine=chatHistory.filter(function(m){return m.from==='me'&&!m.recalled;});if(!mine.length)return;if(Math.random()*100>=probs.fav)return;var pick=mine[Math.floor(Math.random()*mine.length)];addFav(pick,'对方');}
+function taFavsMy(){if(!Number(probs.active))return;var mine=chatHistory.filter(function(m){return m.from==='me'&&!m.recalled;});if(!mine.length)return;if(Math.random()*100>=probs.fav)return;var pick=mine[Math.floor(Math.random()*mine.length)];addFav(pick,'对方');}
 function openCard(m){
   if(!m||m.opened||m.from==='me')return;
   m.opened=true;save('zika_chat_history',chatHistory);
@@ -3788,7 +4161,7 @@ function doCheckReply(){
   pendingCheckAsk=null;
 }
 function taActiveSend(){
-  if(!probs.active)return;
+  if(!Number(probs.active))return;
   var roll=Math.random()*100,acc=0,chosen=null;
   acc+=probs.rp;if(roll<acc)chosen='redpacket';
   if(!chosen){acc+=probs.tf;if(roll<acc)chosen='transfer';}
@@ -3799,10 +4172,10 @@ function taActiveSend(){
   else if(chosen==='transfer')pushMsg({from:'ta',type:'transfer',amount:amt,note:'一点心意',opened:false});
   else pushMsg({from:'ta',type:'gift',giftName:'小礼物',amount:amt,opened:false});
 }
-function taPat(){if(!probs.active)return;if(Math.random()*100>=probs.pat)return;var tl=patTaCards.length?patTaCards:normalizeArr(DP_TA);pushMsg({type:'sys',text:fillNames(getCardText(tl[Math.floor(Math.random()*tl.length)]))});}
-function taSticker(){if(!probs.active)return;if(!stickers.length)return;if(Math.random()*100>=probs.stk)return;pushMsg({from:'ta',type:'sticker',url:stickers[Math.floor(Math.random()*stickers.length)]});}
+function taPat(){if(!Number(probs.active))return;if(Math.random()*100>=probs.pat)return;var tl=patTaCards.length?patTaCards:normalizeArr(DP_TA);pushMsg({type:'sys',text:fillNames(getCardText(tl[Math.floor(Math.random()*tl.length)]))});}
+function taSticker(){if(!Number(probs.active))return;if(!stickers.length)return;if(Math.random()*100>=probs.stk)return;pushMsg({from:'ta',type:'sticker',url:stickers[Math.floor(Math.random()*stickers.length)]});}
 function taCheckAsk(){
-  if(!probs.active)return;
+  if(!Number(probs.active))return;
   if(Math.random()*100>=probs.taCheck)return;
   var pool=checkAskCards.length?checkAskCards:normalizeArr(DCHKASK);
   if(!pool.length)return;
@@ -3811,23 +4184,26 @@ function taCheckAsk(){
   pushMsg({from:'ta',type:'checkAskCard',note:note,replied:false});
 }
 function taActiveMsg(){
-  if(!probs.active)return;
+  if(!Number(probs.active))return;
   if(!replyCards.length)return;
   var n=randInt(probs.amin,probs.amax);typingOn=true;renderChat();
   for(var k=0;k<n;k++){(function(i){setTimeout(function(){typingOn=false;var p=replyCards[Math.floor(Math.random()*replyCards.length)];var q=pickQuoteForTa();var mm=pushMsg({from:'ta',type:'text',text:getCardText(p),quote:q});setTimeout(function(){taRecall(mm);},2500+Math.random()*2000);},1500+i*900+Math.random()*600);})(k);}
 }
 var activeMsgTimer=null;
 function restartActiveMsgTick(){
-  if(activeMsgTimer)clearInterval(activeMsgTimer);
-  var gapMin=Math.max(1,parseFloat(probs.activeGap)||30);
-  var perSec=1/(gapMin*60);
-  activeMsgTimer=setInterval(function(){
-    if(!probs.active)return;
-    if(Math.random()<perSec) taActiveMsg();
-  },1000);
+  if(activeMsgTimer){clearTimeout(activeMsgTimer);clearInterval(activeMsgTimer);}
+  function schedule(){
+    var gapMin=Math.max(1,parseFloat(probs.activeGap)||30);
+    var delay=gapMin*60000*(0.45+Math.random()*1.25);
+    activeMsgTimer=setTimeout(function(){
+      if(Number(probs.active) && !document.hidden)taActiveMsg();
+      schedule();
+    },delay);
+  }
+  schedule();
 }
 function taSendLoc(){
-  if(!probs.active)return;
+  if(!Number(probs.active))return;
   if(!locList.length)return;
   if(Math.random()*100>=probs.loc)return;
   var p=locList[Math.floor(Math.random()*locList.length)];
@@ -3835,7 +4211,7 @@ function taSendLoc(){
   pushMsg({from:'ta',type:'loc',locName:p.name,locAddr:p.addr||''});
 }
 function afterUserAction(){
-  if(!probs.active)return;
+  if(!Number(probs.active))return;
   taActiveSend();taPat();taSticker();taCheckAsk();taFavsMy();taCallsMe();taSendLoc();
 }
 
@@ -3917,12 +4293,18 @@ function sparkCheckAndAward(){
 function screenToday(){var d=new Date();return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);}
 function screenRollStat(){
   var today=screenToday();
-  if(screenStat.dayKey!==today){screenStat.dayKey=today;screenStat.lockCountDay=0;screenStat.shareCountDay=0;save('zika_screen_stat',screenStat);}
+  if(screenStat.dayKey!==today){screenStat.dayKey=today;screenStat.lockCountDay=0;screenStat.shareCountDay=0;screenStat.shareViewCountDay=0;save('zika_screen_stat',screenStat);}
 }
 function screenMaybeTrigger(){
   if(lockActive||shareActive)return;
   screenRollStat();
   var now=Date.now();
+  if(parseInt(screenSet.shareViewEnable)&&screenStat.shareViewCountDay<(parseInt(screenSet.shareViewDayMax)||0)){
+    var viewGapMs=(parseInt(screenSet.shareViewGap)||60)*60*1000;
+    if(now-(screenStat.lastShareViewTs||0)>=viewGapMs){
+      if(Math.random()*100<(parseFloat(screenSet.shareViewP)||0)){screenStat.lastShareViewTs=now;screenStat.shareViewCountDay++;save('zika_screen_stat',screenStat);startShareInvite('view');return;}
+    }
+  }
   if(parseInt(screenSet.shareEnable)&&screenStat.shareCountDay<(parseInt(screenSet.shareDayMax)||0)){
     var gapMs=(parseInt(screenSet.shareGap)||60)*60*1000;
     if(now-screenStat.lastShareTs>=gapMs){
@@ -4425,7 +4807,7 @@ function endCall(reason){
   var cf=$('callFull');if(cf)cf.classList.remove('show');var fl=$('callFloat');if(fl)fl.classList.remove('show');
   if(reason){var txt=wasConnected?'通话结束（'+reason+'，通话时长 '+dur+'）':'通话结束（'+reason+'）';pushMsg({type:'sys',text:txt});}
 }
-function taCallsMe(){if(!probs.active)return;if(call.active)return;if(Math.random()*100>=probs.callMe)return;startIncomingCall();}
+function taCallsMe(){if(!Number(probs.active))return;if(call.active)return;if(Math.random()*100>=probs.callMe)return;startIncomingCall();}
 function showShotFull(src){
   if(!$('momentsPage')||!$('momentsPage').classList.contains('show'))return;
   var old=document.getElementById('shotViewer');if(old)old.remove();
@@ -4663,6 +5045,7 @@ function tagText(m,mi){if(m.from==='me'){return mi===0?'我寄出的原信':'我
 function toName(m){return m.from==='me'?(profile.taName||'TA'):(profile.meName||'我');}
 function signName(m){return m.from==='me'?(profile.meName||'我'):(profile.taName||'TA');}
 function fmtTime(t){var d=new Date(t);var hh=('0'+d.getHours()).slice(-2),mm=('0'+d.getMinutes()).slice(-2);var mo=('0'+(d.getMonth()+1)).slice(-2),dd=('0'+d.getDate()).slice(-2);return mo+'-'+dd+' '+hh+':'+mm;}
+function fmtHM(t){var d=new Date(t);return ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);}
 function applyMailPageBg(){
   var page=$('mailPage');if(!page)return;
   if(mailSet.bg){
@@ -4689,7 +5072,9 @@ function ensureConvNextAt(){
     if(!cv||typeof cv!=='object'||!Array.isArray(cv.msgs)||!cv.msgs.length)return;
     if(cv.nextAt==null){
       if(cv.msgs[cv.msgs.length-1].from==='me'){
-        cv.nextAt=Date.now()+mailRandMs(mailSet.replyMin,mailSet.replyMax);
+        var okOld=(Math.random()*100<(parseFloat(mailSet.replyP)||0));
+        cv.willReply=okOld?1:0;
+        cv.nextAt=okOld?Date.now()+mailRandMs(mailSet.replyMin,mailSet.replyMax):0;
       }else{
         cv.nextAt=0;
       }
@@ -4766,10 +5151,11 @@ function openConv(idx){
   reply.onclick=function(){
     var v=prompt('回信正文：');if(v===null)return;v=v.trim();if(!v)return;
     cv.msgs.push({from:'me',text:v,imgs:[],time:Date.now()});
-    cv.nextAt=Date.now()+mailRandMs(mailSet.replyMin,mailSet.replyMax);
+    var rpOk2=(Math.random()*100<(parseFloat(mailSet.replyP)||0));
+    cv.willReply=rpOk2?1:0;
+    cv.nextAt=rpOk2?Date.now()+mailRandMs(mailSet.replyMin,mailSet.replyMax):0;
     save('zika_mail_convs',convs);
     openConv(idx);
-    settleMailAll();
   };
   var del=document.createElement('span');del.className='delM';del.textContent='删除整封';del.onclick=function(){if(!confirm('删除这封信及全部往来？'))return;convs.splice(idx,1);save('zika_mail_convs',convs);renderMail();};
   acts.appendChild(back);acts.appendChild(reply);acts.appendChild(del);box.appendChild(acts);list.appendChild(box);applyMailCard();
@@ -4785,25 +5171,28 @@ function settleMailReply(){
   for(var i=0;i<convs.length;i++){
     var cv=convs[i];
     if(!cv||!Array.isArray(cv.msgs)||!cv.msgs.length)continue;
+    var lastMsg=cv.msgs[cv.msgs.length-1]||{};
+    if(lastMsg.from!=='me'){cv.nextAt=0;continue;}
     if(cv.nextAt==null||!cv.nextAt)continue;
-    if(cv.msgs[cv.msgs.length-1].from!=='me'){cv.nextAt=0;continue;}
-    var hit=Math.random()*100<(parseFloat(mailSet.replyP)||0);
-    if(hit){
-      var n=randInt(mailSet.cardMin,mailSet.cardMax);
-      var parts=[];
-      for(var k=0;k<n;k++)parts.push(getCardText(replyCards[Math.floor(Math.random()*replyCards.length)]));
-      var body=joinCardsWithPunc(parts);
-      if(!body.trim())body='嗯嗯。';
-      var imgs=[];
-      if(stickers.length){var kk=randInt(mailSet.imgMin,mailSet.imgMax);for(var j=0;j<kk;j++)imgs.push(stickers[Math.floor(Math.random()*stickers.length)]);}
-      cv.msgs.push({from:'ta',text:body,imgs:imgs,time:Date.now()});
-      cv.unread=true;
-      unreadData.mail++;
-      cv.nextAt=0;
-      done++;
-    }else{
-      cv.nextAt=now+Math.max(60000,mailRandMs(mailSet.replyMin,mailSet.replyMax));
+    var minDelay=Math.max(0,(parseFloat(mailSet.replyMin)||0)*60*1000);
+    if(cv.willReply==null){
+      cv.willReply=(Math.random()*100<(parseFloat(mailSet.replyP)||0))?1:0;
+      if(cv.willReply && cv.nextAt<(lastMsg.time||0)+minDelay){cv.nextAt=(lastMsg.time||0)+mailRandMs(mailSet.replyMin,mailSet.replyMax);}
     }
+    if(!cv.willReply){cv.nextAt=0;continue;}
+    if(now<cv.nextAt)continue;
+    var n=randInt(mailSet.cardMin,mailSet.cardMax);
+    var parts=[];
+    for(var k=0;k<n;k++)parts.push(getCardText(replyCards[Math.floor(Math.random()*replyCards.length)]));
+    var body=joinCardsWithPunc(parts);
+    if(!body.trim())body='嗯嗯。';
+    var imgs=[];
+    if(stickers.length){var kk=randInt(mailSet.imgMin,mailSet.imgMax);for(var j=0;j<kk;j++)imgs.push(stickers[Math.floor(Math.random()*stickers.length)]);}
+    cv.msgs.push({from:'ta',text:body,imgs:imgs,time:Date.now()});
+    cv.unread=true;
+    unreadData.mail++;
+    cv.nextAt=0;cv.willReply=0;
+    done++;
     if(done>=maxCatch)break;
   }
   return done;
@@ -4814,40 +5203,32 @@ function settleMailProactive(){
   if(!parseInt(mailSet.allowProactive))return 0;
   if(!Array.isArray(convs))convs=[];
   var now=Date.now();
-  var done=0;
-  var maxCatch=Math.max(1,parseInt(mailSet.maxCatchUp)||3);
   if(!mailProactive||typeof mailProactive.nextAt!=='number'||!mailProactive.nextAt){
     mailProactive={nextAt:now+mailRandMs(mailSet.proactiveMin,mailSet.proactiveMax)};
     save('zika_mail_proactive',mailProactive);
     return 0;
   }
-  var guard=0;
-  while(now>=mailProactive.nextAt && guard<200){
-    guard++;
-    var fireTs=mailProactive.nextAt;
-    var hit=Math.random()*100<(parseFloat(mailSet.writeP)||0);
-    if(hit && done<maxCatch){
-      var n2=randInt(mailSet.cardMin,mailSet.cardMax);
-      var parts2=[];
-      for(var i2=0;i2<n2;i2++)parts2.push(getCardText(replyCards[Math.floor(Math.random()*replyCards.length)]));
-      var body2=joinCardsWithPunc(parts2);
-      if(!body2.trim())body2='嗯嗯。';
-      var imgs2=[];
-      if(stickers.length){var k2=randInt(mailSet.imgMin,mailSet.imgMax);for(var j2=0;j2<k2;j2++)imgs2.push(stickers[Math.floor(Math.random()*stickers.length)]);}
-      var titlePool=['一封信','想你了','今天怎么样','随手写写','见字如面'];
-      var title=titlePool[Math.floor(Math.random()*titlePool.length)];
-      convs.push({title:title,msgs:[{from:'ta',text:body2,imgs:imgs2,time:fireTs}],unread:true,nextAt:0});
-      unreadData.mail++;
-      done++;
-    }
-    mailProactive.nextAt+=mailRandMs(mailSet.proactiveMin,mailSet.proactiveMax);
-    if(done>=maxCatch)break;
+  if(now<mailProactive.nextAt)return 0;
+  var fireTs=mailProactive.nextAt;
+  var hit=Math.random()*100<(parseFloat(mailSet.writeP)||0);
+  var made=0;
+  if(hit){
+    var n2=randInt(mailSet.cardMin,mailSet.cardMax);
+    var parts2=[];
+    for(var i2=0;i2<n2;i2++)parts2.push(getCardText(replyCards[Math.floor(Math.random()*replyCards.length)]));
+    var body2=joinCardsWithPunc(parts2);
+    if(!body2.trim())body2='嗯嗯。';
+    var imgs2=[];
+    if(stickers.length){var k2=randInt(mailSet.imgMin,mailSet.imgMax);for(var j2=0;j2<k2;j2++)imgs2.push(stickers[Math.floor(Math.random()*stickers.length)]);}
+    var titlePool=['一封信','想你了','今天怎么样','随手写写','见字如面'];
+    var title=titlePool[Math.floor(Math.random()*titlePool.length)];
+    convs.push({title:title,msgs:[{from:'ta',text:body2,imgs:imgs2,time:fireTs}],unread:true,nextAt:0,willReply:0});
+    unreadData.mail++;
+    made=1;
   }
-  if(now>=mailProactive.nextAt && guard>=200){
-    mailProactive.nextAt=now+mailRandMs(mailSet.proactiveMin,mailSet.proactiveMax);
-  }
+  mailProactive.nextAt=now+mailRandMs(mailSet.proactiveMin,mailSet.proactiveMax);
   save('zika_mail_proactive',mailProactive);
-  return done;
+  return made;
 }
 
 function settleMailAll(){
@@ -5093,108 +5474,344 @@ function renderScreenPage(){
   '<div class="probRow"><span>锁机触发概率（%）</span><input id="scLockP" type="number" min="0" max="100"></div>'+
   '<div class="probRow"><span>锁机冷却时间（分钟）</span><input id="scLockGap" type="number" min="1"></div>'+
   '<div class="probRow"><span>每日最多锁机次数</span><input id="scLockDayMax" type="number" min="0"></div>'+
-  '<div class="probRow"><span>锁机时长（分钟，到点自动解锁）</span><input id="scLockDuration" type="number" min="1"></div>'+
-  '<div class="fRow"><span>解锁密码（锁屏不显示，自己记好）</span><input id="scLockPwd" type="text" maxlength="12" placeholder="留空则只能用哄他解锁"></div>'+
-  '<div class="probRow"><span>求他解锁成功率（%）</span><input id="scBegSuccess" type="number" min="0" max="100"></div></div>'+
-  '<div class="setGroup"><h4>屏幕共享</h4>'+
-  '<div class="switchRow"><span>允许对方发起共享邀请</span><label class="switch"><input type="checkbox" id="scShareEnable"><span class="sl"></span></label></div>'+
-  '<div class="probRow"><span>共享邀请触发概率（%）</span><input id="scShareP" type="number" min="0" max="100"></div>'+
-  '<div class="probRow"><span>共享邀请冷却时间（分钟）</span><input id="scShareGap" type="number" min="1"></div>'+
-  '<div class="probRow"><span>每日最多共享邀请次数</span><input id="scShareDayMax" type="number" min="0"></div>'+
+  '<div class="probRow"><span>锁机基础时长（分钟，实际隐藏随机）</span><input id="scLockDuration" type="number" min="1"></div>'+
+
+  '<div class="probRow"><span>每句哄他心软的概率（%）</span><input id="scBegSuccess" type="number" min="0" max="100"></div></div>'+
+  '<div class="setGroup"><h4>同屏 · 接管手机</h4>'+
+  '<div class="switchRow"><span>允许对方发起同屏接管</span><label class="switch"><input type="checkbox" id="scShareEnable"><span class="sl"></span></label></div>'+
+  '<div class="probRow"><span>同屏接管触发概率（%）</span><input id="scShareP" type="number" min="0" max="100"></div>'+
+  '<div class="probRow"><span>同屏接管冷却时间（分钟）</span><input id="scShareGap" type="number" min="1"></div>'+
+  '<div class="probRow"><span>每日最多同屏接管次数</span><input id="scShareDayMax" type="number" min="0"></div>'+
   '<div class="probRow"><span>拒绝后对方锁屏概率（%）</span><input id="scShareRejectLockP" type="number" min="0" max="100"></div>'+
-  '<div class="probRow"><span>共享中对方观看反应间隔（秒）</span><input id="scShareReactGap" type="number" min="5"></div>'+
-  '<div class="fRow"><span>共享中顶部提示条文案</span><input id="scShareBarText" type="text" maxlength="30"></div>'+
+  '<div class="probRow"><span>同屏接管翻看节奏（秒）</span><input id="scShareReactGap" type="number" min="1"></div>'+
+  '<div class="fRow"><span>同屏接管顶部提示条文案</span><input id="scShareBarText" type="text" maxlength="30"></div>'+
   '<div class="probRow"><span>罚单贴纸显示时长（秒）</span><input id="scFineDur" type="number" min="1"></div></div>'+
-  '<div class="btns"><button class="cancel" id="scTestLock">测试锁机</button><button class="ok" id="scTestShare">测试共享邀请</button></div>'+
+  '<div class="setGroup"><h4>共享屏幕 · 只给他看</h4>'+
+  '<div class="switchRow"><span>允许对方发起共享屏幕</span><label class="switch"><input type="checkbox" id="scShareViewEnable"><span class="sl"></span></label></div>'+
+  '<div class="probRow"><span>共享屏幕触发概率（%）</span><input id="scShareViewP" type="number" min="0" max="100"></div>'+
+  '<div class="probRow"><span>共享屏幕冷却时间（分钟）</span><input id="scShareViewGap" type="number" min="1"></div>'+
+  '<div class="probRow"><span>每日最多共享屏幕次数</span><input id="scShareViewDayMax" type="number" min="0"></div>'+
+  '<div class="fRow"><span>共享屏幕提示文案</span><input id="scShareViewBarText" type="text" maxlength="30"></div></div>'+
+  '<div class="btns"><button class="cancel" id="scTestLock">测试锁机</button><button class="ok" id="scTestShare">测试同屏接管</button></div>'+
+  '<div class="btns" style="margin-top:8px"><button class="ok" id="scTestView" style="flex:1">测试共享屏幕</button></div>'+
   '<div class="btns" style="margin-top:8px"><button class="ok" id="scSaveAll" style="flex:1">保存设置</button></div>';
   $('scLockEnable').checked=!!parseInt(screenSet.lockEnable);
-  $('scLockP').value=screenSet.lockP;$('scLockGap').value=screenSet.lockGap;$('scLockDayMax').value=screenSet.lockDayMax;$('scLockDuration').value=screenSet.lockDuration;$('scLockPwd').value=screenSet.lockPwd||'';$('scBegSuccess').value=screenSet.begSuccess;
+  $('scLockP').value=screenSet.lockP;$('scLockGap').value=screenSet.lockGap;$('scLockDayMax').value=screenSet.lockDayMax;$('scLockDuration').value=screenSet.lockDuration;$('scBegSuccess').value=screenSet.begSuccess;
   $('scShareEnable').checked=!!parseInt(screenSet.shareEnable);
   $('scShareP').value=screenSet.shareP;$('scShareGap').value=screenSet.shareGap;$('scShareDayMax').value=screenSet.shareDayMax;$('scShareRejectLockP').value=screenSet.shareRejectLockP;$('scShareReactGap').value=screenSet.shareReactGap;$('scShareBarText').value=screenSet.shareBarText||'';$('scFineDur').value=fineSet.dur;
+  $('scShareViewEnable').checked=!!parseInt(screenSet.shareViewEnable);
+  $('scShareViewP').value=screenSet.shareViewP;$('scShareViewGap').value=screenSet.shareViewGap;$('scShareViewDayMax').value=screenSet.shareViewDayMax;$('scShareViewBarText').value=screenSet.shareViewBarText||'对方正在观看你的屏幕';
   $('scTestLock').onclick=function(){startLockScreen();};
-  $('scTestShare').onclick=function(){startShareInvite();};
+  $('scTestShare').onclick=function(){startShareInvite('takeover');};
+  $('scTestView').onclick=function(){startShareView();};
   $('scSaveAll').onclick=function(){
     screenSet.lockEnable=$('scLockEnable').checked?1:0;
     screenSet.lockP=Math.max(0,Math.min(100,parseFloat($('scLockP').value)||0));
     screenSet.lockGap=Math.max(1,parseInt($('scLockGap').value)||60);
     screenSet.lockDayMax=Math.max(0,parseInt($('scLockDayMax').value)||0);
     screenSet.lockDuration=Math.max(1,parseInt($('scLockDuration').value)||5);
-    screenSet.lockPwd=($('scLockPwd').value||'').trim();
     screenSet.begSuccess=Math.max(0,Math.min(100,parseFloat($('scBegSuccess').value)||0));
     screenSet.shareEnable=$('scShareEnable').checked?1:0;
     screenSet.shareP=Math.max(0,Math.min(100,parseFloat($('scShareP').value)||0));
     screenSet.shareGap=Math.max(1,parseInt($('scShareGap').value)||60);
     screenSet.shareDayMax=Math.max(0,parseInt($('scShareDayMax').value)||0);
     screenSet.shareRejectLockP=Math.max(0,Math.min(100,parseFloat($('scShareRejectLockP').value)||0));
-    screenSet.shareReactGap=Math.max(5,parseInt($('scShareReactGap').value)||30);
-    screenSet.shareBarText=($('scShareBarText').value||'').trim()||'对方正在观看你的屏幕';
+    screenSet.shareReactGap=Math.max(1,parseInt($('scShareReactGap').value)||3);
+    screenSet.shareBarText=($('scShareBarText').value||'').trim()||'他正在翻你的手机';
+    screenSet.shareViewEnable=$('scShareViewEnable').checked?1:0;
+    screenSet.shareViewP=Math.max(0,Math.min(100,parseFloat($('scShareViewP').value)||0));
+    screenSet.shareViewGap=Math.max(1,parseInt($('scShareViewGap').value)||60);
+    screenSet.shareViewDayMax=Math.max(0,parseInt($('scShareViewDayMax').value)||0);
+    screenSet.shareViewBarText=($('scShareViewBarText').value||'').trim()||'对方正在观看你的屏幕';
     fineSet.dur=Math.max(1,parseInt($('scFineDur').value)||15);
     save('zika_screen_set',screenSet);save('zika_fine_set',fineSet);alert('已保存');
   };
 }
+var lockDeadline=0,lockBegLast=0,lockBegCount=0,lockStart=0,lsElapsedTimer=null;
+function lsElapsedText(ms){var sec=Math.max(0,Math.floor(ms/1000));return sec<60?('00:'+('0'+sec).slice(-2)):(Math.floor(sec/60)+' 分 '+('0'+(sec%60)).slice(-2)+' 秒');}
+function lsSay(who,text){
+  var log=$('lsBegLog');if(!log||!text)return;
+  var d=document.createElement('div');d.className='lsBegMsg '+who;d.textContent=text;log.appendChild(d);log.scrollTop=log.scrollHeight;
+  
+}
+var lsLastLine='';
+function lsTaLine(){
+  var arr=['……','再说一句。','你平时也这么会哄人？','声音再软一点。','还不够。','他盯着屏幕，没说话。','你知道错哪了吗？'];
+  var line=arr[Math.floor(Math.random()*arr.length)];
+  if(arr.length>1&&line===lsLastLine)line=arr[(arr.indexOf(line)+1)%arr.length];
+  lsLastLine=line;return line;
+}
 function startLockScreen(){
   if(lockActive)return;
-  lockActive=true;wrongCount=0;
+  lockActive=true;wrongCount=0;lockBegLast=0;lockBegCount=0;
   var ls=$('lockScreen');if(!ls)return;
   var ln=$('lsTaName');if(ln)ln.textContent=profile.taName||'TA';
   var ti=$('lsTime');var da=$('lsDate');
   function tick(){var d=new Date();if(ti)ti.textContent=('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);if(da)da.textContent=(d.getMonth()+1)+'月'+d.getDate()+'日 星期'+['日','一','二','三','四','五','六'][d.getDay()];}
   tick();ls._clock=setInterval(tick,10000);
-  var pwd=$('lsPwd');if(pwd)pwd.value='';
+  var log=$('lsBegLog');if(log)log.innerHTML='';
+  var inp=$('lsBegInput');if(inp)inp.value='';
   var lw=$('lockWarn');if(lw)lw.classList.remove('show');
-  lockRemain=Math.max(1,parseInt(screenSet.lockDuration)||5)*60;
-  var cn=$('lsCountNum');if(cn)cn.textContent=Math.floor(lockRemain/60)+':'+('0'+(lockRemain%60)).slice(-2);
+  lockStart=Date.now();
+  var el=$('lsElapsed');if(el)el.textContent='00:00';
+  if(lsElapsedTimer){clearInterval(lsElapsedTimer);lsElapsedTimer=null;}
+  function tickElapsed(){var e=$('lsElapsed');if(e)e.textContent=lsElapsedText(Date.now()-lockStart);}
+  tickElapsed();lsElapsedTimer=setInterval(tickElapsed,1000);
+  var base=Math.max(1,parseInt(screenSet.lockDuration)||5)*60000;
+  lockDeadline=Date.now()+Math.round(base*(0.55+Math.random()*1.9));
   ls.classList.add('show');
+  lsSay('ta','手机在我这儿。');
+  lsSay('ta','想拿回去，就说点好听的。');
+  lsSay('ta','我听着。');
+  lsSay('ta','别不说话。');
   if(lockTimer)clearInterval(lockTimer);
-  lockTimer=setInterval(function(){if(!lockActive)return;lockRemain--;if(lockRemain<=0){endLockScreen();return;}var cn2=$('lsCountNum');if(cn2)cn2.textContent=Math.floor(lockRemain/60)+':'+('0'+(lockRemain%60)).slice(-2);},1000);
+  lockTimer=setInterval(function(){
+    if(!lockActive)return;
+    if(Date.now()>=lockDeadline){endLockScreen();pushMsg({type:'sys',text:'屏幕自己亮了。他到底还是心软了。'});}
+  },1000);
 }
 function endLockScreen(){
   if(!lockActive)return;
   lockActive=false;
   if(lockTimer){clearInterval(lockTimer);lockTimer=null;}
+  if(lsElapsedTimer){clearInterval(lsElapsedTimer);lsElapsedTimer=null;}
   var ls=$('lockScreen');if(ls){if(ls._clock){clearInterval(ls._clock);ls._clock=null;}ls.classList.remove('show');}
   var lw=$('lockWarn');if(lw)lw.classList.remove('show');
 }
-function lockWrong(){wrongCount++;var lw=$('lockWarn');if(!lw)return;var c=$('lwCount');if(c)c.textContent='这是第 '+wrongCount+' 次';lw.classList.add('show');}
-function tryUnlock(){
-  var inp=$('lsPwd');var v=inp?inp.value.trim():'';
-  var pw=String(screenSet.lockPwd||'').trim();
-  if(pw && v===pw){endLockScreen();pushMsg({type:'sys',text:'你解锁了屏幕'});return;}
-  lockWrong();
+function lockWrong(){
+  wrongCount++;
+  var lw=$('lockWarn');if(!lw)return;
+  var titles=['这句话，他没接。','还不够软。','他听见了，但没动。','他还在等你。'];
+  var texts=['手机还锁着。\n再说一句，软一点。','他没有松手。\n换个说法，再慢一点。','屏幕没有亮。\n他还在听。','别急。\n慢慢说给他听。'];
+  var t=$('lwTitle');if(t)t.textContent=titles[(wrongCount-1)%titles.length];
+  var x=$('lwText');if(x)x.textContent=texts[(wrongCount-1)%texts.length];
+  var c=$('lwCount');if(c)c.textContent='第 '+wrongCount+' 次 · 还没哄开';
+  lw.classList.add('show');
 }
 function begUnlock(){
-  var succ=Math.max(0,Math.min(100,parseFloat(screenSet.begSuccess)||0));
-  if(Math.random()*100<succ){endLockScreen();pushMsg({type:'sys',text:'你哄了他，他心软了，解锁了屏幕'});}
-  else{var btn=$('lsBegBtn');if(btn){btn.textContent='他没理你，再求一次';setTimeout(function(){btn.textContent='立刻哄他 · 求他解锁';},1500);}lockWrong();}
+  if(!lockActive)return;
+  var inp=$('lsBegInput');var v=inp?inp.value.trim():'';
+  if(!v){if(inp){inp.focus();}return;}
+  if(Date.now()-lockBegLast<800)return;
+  lockBegLast=Date.now();lockBegCount++;
+  lsSay('me',v);if(inp)inp.value='';
+  var p=Math.max(0,Math.min(100,parseFloat(screenSet.begSuccess)||0));
+  p=Math.min(95,p+Math.min(10,lockBegCount*2));
+  if(Math.random()*100<p){endLockScreen();pushMsg({type:'sys',text:'你哄了他，他心软了，解锁了屏幕'});return;}
+  lockDeadline-=Math.round(15000+Math.random()*45000);
+  setTimeout(function(){lsSay('ta',lsTaLine());if(Date.now()<lockDeadline)lockWrong();},700+Math.random()*900);
+  if(Date.now()>=lockDeadline){setTimeout(function(){if(lockActive){endLockScreen();pushMsg({type:'sys',text:'他叹了口气，把屏幕解开了。'});}},1200);}
 }
-function startShareInvite(){
+var stTimer=null,stClockTimer=null,stIdx=0,stBegCount=0,stLastBeg=0,stEnding=false;
+function stSay(who,text){
+  var c=$('stChat');if(!c||!text)return;
+  var d=document.createElement('div');d.className='stMsg '+who;d.textContent=text;c.appendChild(d);c.scrollTop=c.scrollHeight;
+  while(c.children.length>6)c.removeChild(c.firstChild);
+}
+function stPreview(app){
+  var t=$('stPrevTitle'),b=$('stPrevBody');if(!t||!b)return;
+  if(app==='chat'){t.textContent='他点开了聊天记录';b.innerHTML='<div class="stLine">他往上翻，停在你最后一句。</div><div class="stLine">他没有回，只是看着。</div><div class="stLine">屏幕上方显示：对方正在输入…</div>';}
+  else if(app==='photo'){t.textContent='他点开了相册';b.innerHTML='<div class="stPhotoRow"><div class="stPhoto"></div><div class="stPhoto"></div><div class="stPhoto"></div></div><div class="stLine" style="margin-top:7px">他放大了一张，又退出来。</div>';}
+  else if(app==='diary'){t.textContent='他翻开了日记';b.innerHTML='<div class="stLine">他停在你昨晚写的那一页。</div><div class="stLine">手指压着屏幕，没有往下划。</div><div class="stLine">那一页只写了一半。</div>';}
+  else if(app==='mail'){t.textContent='他打开了信箱';b.innerHTML='<div class="stLine">他先看了你寄出的那封。</div><div class="stLine">回信还空着，他没有写。</div><div class="stLine">他把信封折回去，放回原处。</div>';}
+  else if(app==='cards'){t.textContent='他翻着你的字卡';b.innerHTML='<div class="stLine">他一张一张往下翻。</div><div class="stLine">在你写给他的那张停得最久。</div>';}
+  else if(app==='shop'){t.textContent='他打开了商店';b.innerHTML='<div class="stLine">购物车里还留着你没舍得买的东西。</div><div class="stLine">他看了一会儿，退了出去。</div>';}
+  else if(app==='settings'){t.textContent='他打开了设置';b.innerHTML='<div class="stLine">他把通知声音调小了。</div><div class="stLine">像是怕你听见他还在翻。</div>';}
+  else{t.textContent='他回到了同屏页';b.innerHTML='<div class="stLine">他把手机翻回最上面。</div><div class="stLine">又重新点开了聊天。</div>';}
+}
+function stStep(){
+  if(!shareActive)return;
+  var icons=Array.prototype.slice.call(document.querySelectorAll('#stDesk .stIcon'));
+  if(!icons.length)return;
+  if(stIdx>=icons.length){stIdx=0;stSay('ta','他把手机翻回最上面，又从头看了一遍。');}
+  icons.forEach(function(el,i){el.classList.toggle('on',i===stIdx);});
+  var el=icons[stIdx];var hand=$('stHand');
+  if(hand&&el){hand.style.left=(el.offsetLeft+el.offsetWidth/2-17)+'px';hand.style.top=(el.offsetTop+el.offsetHeight/2-40)+'px';}
+  stPreview(el.getAttribute('data-app'));
+  var lines=['他点开聊天记录，往上翻了几页。','他停在相册里，放大了一张照片。','他翻到日记，没继续往下划。','他打开信箱，看到你寄出的那封。','他翻着字卡，停在你写给他的那张。','他点开商店，看了看购物车。','他把通知声音调小了。','他回到同屏页，又点开了聊天。'];
+  stSay('ta',lines[stIdx%lines.length]);
+  stIdx++;
+}
+function startShareTakeover(){
+  var st=$('shareTakeover');if(!st)return;
+  stIdx=0;stBegCount=0;stLastBeg=0;stEnding=false;
+  var c=$('stChat');if(c)c.innerHTML='';
+  var icons=Array.prototype.slice.call(document.querySelectorAll('#stDesk .stIcon'));
+  icons.forEach(function(el){el.classList.remove('on');});
+  var inp=$('stInput');if(inp)inp.value='';
+  st.classList.add('show');
+  function clock(){var d=new Date();var e=$('stClock');if(e)e.textContent=('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);}
+  clock();if(stClockTimer)clearInterval(stClockTimer);stClockTimer=setInterval(clock,10000);
+  stStep();
+  if(stTimer)clearInterval(stTimer);
+  stTimer=setInterval(stStep,Math.max(1500,(parseFloat(screenSet.shareReactGap)||3)*1000));
+}
+function stopShareTakeover(){
+  var st=$('shareTakeover');if(st)st.classList.remove('show');
+  if(stTimer){clearInterval(stTimer);stTimer=null;}
+  if(stClockTimer){clearInterval(stClockTimer);stClockTimer=null;}
+}
+function stBeg(){
+  if(!shareActive)return;
+  var inp=$('stInput');var v=inp?inp.value.trim():'';
+  if(!v)return;
+  if(Date.now()-stLastBeg<600)return;
+  stLastBeg=Date.now();stBegCount++;
+  stSay('me',v);if(inp)inp.value='';
+  var replies=['别说话。','你越求，我越想看。','求我。','把手拿开。','安静一点。','你现在的样子，倒是很乖。'];
+  stSay('ta',replies[Math.floor(Math.random()*replies.length)]);
+  var stopP=Math.min(45,5+stBegCount*6);
+  if(!stEnding&&Math.random()*100<stopP){stEnding=true;setTimeout(function(){if(!shareActive)return;stSay('ta','……行了。把手机拿回去。');setTimeout(function(){stopShare();},1200);},900);}
+}
+function startShareInvite(kind){
   if(shareActive)return;if(lockActive)return;
   var si=$('shareInvite');if(!si)return;
+  pendingShareKind=kind==='view'?'view':'takeover';
   var av=$('siAvatar');if(av)av.src=profile.taAvatar;
   var nm=$('siName');if(nm)nm.textContent=profile.taName||'TA';
+  var tip=$('siTip'),call=$('siCall'),lb=$('siAcceptBtn')?$('siAcceptBtn').querySelector('.lb'):null;
+  if(pendingShareKind==='view'){
+    if(tip)tip.innerHTML='邀请你 <b>共享屏幕</b>';
+    if(call)call.textContent='共享后，他能看见你屏幕上的内容';
+    if(lb)lb.textContent='给他看';
+  }else{
+    if(tip)tip.innerHTML='邀请你 <b>交出手机</b>';
+    if(call)call.textContent='同屏后，他能翻你的聊天、相册、日记';
+    if(lb)lb.textContent='给他翻';
+  }
   si.classList.add('show');
+}
+function svTimeText(ms){var sec=Math.max(0,Math.floor(ms/1000));return ('0'+Math.floor(sec/60)).slice(-2)+':'+('0'+(sec%60)).slice(-2);}
+function svTick(){var e=$('svTime');if(e)e.textContent=svTimeText(Date.now()-shareViewStart);}
+function placeShareView(x,y){
+  var ov=$('shareViewOverlay');if(!ov)return;
+  var w=ov.offsetWidth||111,h=ov.offsetHeight||55;
+  var maxX=Math.max(8,innerWidth-w-8),maxY=Math.max(8,innerHeight-h-8);
+  x=Math.max(8,Math.min(maxX,Number(x)||0));
+  y=Math.max(8,Math.min(maxY,Number(y)||0));
+  ov.style.left=x+'px';ov.style.top=y+'px';ov.style.right='auto';
+}
+function restoreShareViewPos(){
+  try{var p=load('zika_share_view_pos',null);if(p&&p.x!=null&&p.y!=null)placeShareView(p.x,p.y);}catch(e){}
+}
+var shareViewDragBound=false;
+function bindShareViewDrag(){
+  if(shareViewDragBound)return;
+  var ov=$('shareViewOverlay');if(!ov)return;
+  var top=ov.querySelector('.svTop');if(!top)return;
+  shareViewDragBound=true;
+  var drag=null;
+  function start(e){
+    if(e.target&&e.target.closest&&e.target.closest('.svStop'))return;
+    if(e.button!=null&&e.button!==0)return;
+    var r=ov.getBoundingClientRect();
+    drag={id:e.pointerId,dx:e.clientX-r.left,dy:e.clientY-r.top};
+    if(top.setPointerCapture)top.setPointerCapture(e.pointerId);
+    top.classList.add('drag');if(e.preventDefault)e.preventDefault();
+  }
+  function move(e){
+    if(!drag||e.pointerId!==drag.id)return;
+    placeShareView(e.clientX-drag.dx,e.clientY-drag.dy);
+  }
+  function end(e){
+    if(!drag||e.pointerId!==drag.id)return;
+    drag=null;top.classList.remove('drag');
+    var x=parseFloat(ov.style.left),y=parseFloat(ov.style.top);
+    if(!isNaN(x)&&!isNaN(y))save('zika_share_view_pos',{x:x,y:y});
+  }
+  top.addEventListener('pointerdown',start);
+  top.addEventListener('pointermove',move);
+  top.addEventListener('pointerup',end);
+  top.addEventListener('pointercancel',end);
+  window.addEventListener('resize',function(){
+    if(ov.classList.contains('show')&&ov.style.left){placeShareView(parseFloat(ov.style.left),parseFloat(ov.style.top));}
+  });
+}
+function startShareView(){
+  if(lockActive)return;
+  if(shareActive&&!shareViewActive)return;
+  var ov=$('shareViewOverlay');if(!ov)return;
+  var si=$('shareInvite');if(si)si.classList.remove('show');
+  var bar=$('shareBar');if(bar)bar.classList.remove('show');
+  shareActive=true;shareViewActive=true;pendingShareKind='view';
+  shareViewStart=Date.now();
+  var tx=$('svText');if(tx)tx.textContent=screenSet.shareViewBarText||'对方正在观看你的屏幕';
+  svTick();ov.classList.add('show');
+  bindShareViewDrag();restoreShareViewPos();
+  if(shareViewTimer)clearInterval(shareViewTimer);
+  shareViewTimer=setInterval(svTick,1000);
+  pushMsg({type:'sys',text:'你同意了共享屏幕，'+profile.taName+' 正在观看你的屏幕'});
+}
+function stopShareView(){
+  var ov=$('shareViewOverlay');if(ov)ov.classList.remove('show');
+  if(shareViewTimer){clearInterval(shareViewTimer);shareViewTimer=null;}
+}
+var shareCheckTimer=null,scStepIdx=0;
+function scFeedLine(t){
+  var f=$('scFeed');if(!f||!t)return;
+  var d=document.createElement('div');d.className='scLine';d.textContent=t;f.appendChild(d);f.scrollTop=f.scrollHeight;
+  while(f.children.length>3)f.removeChild(f.firstChild);
+}
+function scStep(){
+  if(!shareActive)return;
+  var rows=Array.prototype.slice.call(document.querySelectorAll('#scList .scRow'));
+  if(!rows.length)return;
+  if(scStepIdx>=rows.length){scStepIdx=0;rows.forEach(function(r){r.classList.remove('active','done');var b=r.querySelector('b');if(b)b.textContent='待翻';});scFeedLine('他把手机翻回最上面，又从头看了一遍。');}
+  rows.forEach(function(r,i){r.classList.toggle('done',i<scStepIdx);r.classList.toggle('active',i===scStepIdx);var b=r.querySelector('b');if(b)b.textContent=i<scStepIdx?'看过了':(i===scStepIdx?'翻看中':'待翻');});
+  var lines=['他停在聊天记录上，往上翻了好几页。','他点开相册，在一张照片上停了很久。','他翻到日记那一页，没往下划。','他打开信箱，看到你寄出的那封信。'];
+  scFeedLine(lines[scStepIdx%lines.length]);
+  var ft=$('scFootText');if(ft)ft.textContent='他还在翻，没打算把手机还你。';
+  scStepIdx++;
+}
+function startShareCheck(){
+  var sc=$('shareCheck');if(!sc)return;
+  scStepIdx=0;
+  var f=$('scFeed');if(f)f.innerHTML='';
+  var rows=Array.prototype.slice.call(document.querySelectorAll('#scList .scRow'));
+  rows.forEach(function(r){r.classList.remove('active','done');var b=r.querySelector('b');if(b)b.textContent='待翻';});
+  var ft=$('scFootText');if(ft)ft.textContent='他每划一下，你都看得见。';
+  sc.classList.add('show');
+  scStep();
+  if(shareCheckTimer)clearInterval(shareCheckTimer);
+  shareCheckTimer=setInterval(scStep,Math.max(1500,(parseFloat(screenSet.shareReactGap)||3)*1000));
+}
+function stopShareCheck(){
+  var sc=$('shareCheck');if(sc)sc.classList.remove('show');
+  if(shareCheckTimer){clearInterval(shareCheckTimer);shareCheckTimer=null;}
 }
 function acceptShare(){
   var si=$('shareInvite');if(si)si.classList.remove('show');
+  var view=pendingShareKind==='view';
   shareActive=true;
+  if(view){
+    shareViewActive=true;
+    var bar0=$('shareBar');if(bar0)bar0.classList.remove('show');
+    startShareView();
+    return;
+  }
+  shareViewActive=false;
   var bar=$('shareBar');
-  if(bar){var t=$('shareBarText');if(t)t.textContent=screenSet.shareBarText||'对方正在观看你的屏幕';bar.classList.add('show');}
-  pushMsg({type:'sys',text:'你接受了屏幕共享，'+profile.taName+' 正在观看你的屏幕'});
-  if(shareReactTimer)clearInterval(shareReactTimer);
-  var gap=Math.max(5,parseInt(screenSet.shareReactGap)||30)*1000;
-  shareReactTimer=setInterval(function(){if(!shareActive)return;if(!replyCards.length)return;var txt=getCardText(replyCards[Math.floor(Math.random()*replyCards.length)]);pushMsg({from:'ta',type:'text',text:txt});},gap);
+  if(bar){var t=$('shareBarText');if(t)t.textContent=screenSet.shareBarText||'他正在翻你的手机';bar.classList.add('show');}
+  pushMsg({type:'sys',text:'你接受了同屏，'+profile.taName+' 正在翻你的手机'});
+  if(shareReactTimer){clearInterval(shareReactTimer);shareReactTimer=null;}
+  startShareTakeover();
 }
 function rejectShare(){
   var si=$('shareInvite');if(si)si.classList.remove('show');
-  pushMsg({type:'sys',text:'你拒绝了屏幕共享'});
+  var wasView=pendingShareKind==='view';
+  pushMsg({type:'sys',text:wasView?'你拒绝了共享屏幕':'你拒绝把手机给他'});
+  pendingShareKind='takeover';
   var p=Math.max(0,Math.min(100,parseFloat(screenSet.shareRejectLockP)||0));
   if(Math.random()*100<p){setTimeout(function(){startLockScreen();},500);}
 }
 function stopShare(){
-  shareActive=false;
+  var wasView=shareViewActive;
+  shareActive=false;shareViewActive=false;
   if(shareReactTimer){clearInterval(shareReactTimer);shareReactTimer=null;}
+  stopShareCheck();stopShareTakeover();stopShareView();
   var bar=$('shareBar');if(bar)bar.classList.remove('show');
-  pushMsg({type:'sys',text:'你停止了屏幕共享'});
+  if(wasView){pushMsg({type:'sys',text:'你停止了共享屏幕'});}
+  else{pushMsg({type:'sys',text:'你把手机拿回来了'});}
 }
 
 /* ========== 未读角标 / 顶栏 ========== */
@@ -5408,7 +6025,7 @@ function showMoveIconMenu(key,curPidx){
 /* ========== 美化弹窗 ========== */
 function bindBeauty(){
   function openBeautyPanel(){
-    if($('bFontFamily'))$('bFontFamily').value=beauty.fontFamily||'serif';if($('bTitleFont'))$('bTitleFont').value=beauty.titleFont||'follow';$('bGFont').value=beauty.gfont;$('bFont').value=beauty.font;$('bPad').value=beauty.pad;$('bRadius').value=beauty.radius;
+    if($('bFontFamily'))$('bFontFamily').value=beauty.fontFamily||'serif';if($('bTitleFont'))$('bTitleFont').value=beauty.titleFont||'follow';$('bGFont').value=beauty.gfont;$('bFont').value=beauty.font;$('bPad').value=beauty.pad;$('bRadius').value=beauty.radius;if($('bCardW'))$('bCardW').value=(beauty.cardW||150);
     if($('bGiftSkin'))$('bGiftSkin').value=beauty.giftSkin||'mini';
     if($('bSurveySkin'))$('bSurveySkin').value=beauty.surveySkin||'ticket';
     $('bMeColor').value=beauty.meColor;$('bMetaColor').value=beauty.metaColor;$('bTaColor').value=beauty.taColor;$('bBgColor').value=beauty.bgColor;
@@ -5420,14 +6037,15 @@ function bindBeauty(){
     $('bSendBg').value=beauty.sendBg||'#111111';$('bSendBorder').value=beauty.sendBorder||'#111111';$('bSendText').value=beauty.sendText||'#ffffff';
     $('bInBg').value=beauty.inBg||'#ffffff';$('bInBorder').value=beauty.inBorder||'#111111';$('bInText').value=beauty.inText||'#111111';
     $('bTyping').value=beauty.typing||'';$('bCss').value=beauty.css||'';
-    $('bFontCss').value=beauty.fontCss||'';
+    if($('bFontCss'))$('bFontCss').value=beauty.fontCss||'';
+    try{if(window.__syncColorPickers)window.__syncColorPickers();}catch(e){}
     $('beautyMask').classList.add('show');
   }
   if($('drawerShop'))$('drawerShop').onclick=function(){closeDrawer();window.__shopFromChat=true;$('shopPage').classList.add('show');renderShop();};
-  if($('drawerBeauty'))$('drawerBeauty').onclick=function(){closeDrawer();openBeautyPanel();};
+  if($('drawerBeauty'))$('drawerBeauty').onclick=function(){closeDrawer();setTimeout(function(){try{openBeautyPanel();if(window.__initColorPickers)window.__initColorPickers();}catch(e){console.error(e);}},160);};
   if($('manageCardsBtn'))$('manageCardsBtn').onclick=function(){
-    $('pActiveOn').checked=!!probs.active;
-    $('pRminN').value=probs.rminN;$('pRmaxN').value=probs.rmaxN;$('pRmin').value=probs.rmin;$('pRmax').value=probs.rmax;
+    $('pActiveOn').checked=!!Number(probs.active);
+    $('pRminN').value=probs.rminN;$('pRmaxN').value=probs.rmaxN;$('pRmin').value=probs.rmin;$('pRmax').value=probs.rmax;$('pReplyP').value=(probs.replyP==null?100:probs.replyP);
     $('pActiveGap').value=(probs.activeGap==null?30:probs.activeGap);
     $('pAmin').value=probs.amin;$('pAmax').value=probs.amax;
     $('pRp').value=probs.rp;$('pTf').value=probs.tf;$('pGf').value=probs.gf;$('pPat').value=probs.pat;
@@ -5438,7 +6056,7 @@ function bindBeauty(){
     $('cardsMask').classList.add('show');
   };
   function readBeauty(){function num(id,def){var el=$(id);if(!el)return def;var v=parseFloat(el.value);return isFinite(v)?v:def;}
-    beauty.gfont=num('bGFont',14);beauty.font=num('bFont',14);beauty.pad=num('bPad',6);beauty.radius=num('bRadius',14);
+    beauty.gfont=num('bGFont',14);beauty.font=num('bFont',14);beauty.pad=num('bPad',6);beauty.radius=num('bRadius',14);beauty.cardW=num('bCardW',150);
     if($('bMeColor'))beauty.meColor=$('bMeColor').value;if($('bMetaColor'))beauty.metaColor=$('bMetaColor').value;if($('bTaColor'))beauty.taColor=$('bTaColor').value;if($('bBgColor'))beauty.bgColor=$('bBgColor').value;
     beauty.dim=num('bDim',100);if($('bScope'))beauty.scope=$('bScope').value;beauty.topAlpha=num('bTopAlpha',100);beauty.topBlur=num('bTopBlur',0);beauty.inAlpha=num('bInAlpha',100);beauty.inBlur=num('bInBlur',0);beauty.callDim=num('bCallDim',0);
     beauty.btnAlpha=num('bBtnAlpha',100);beauty.btnBlur=num('bBtnBlur',0);if($('bBtnBorderColor'))beauty.btnBorderColor=$('bBtnBorderColor').value;if($('bBtnTextColor'))beauty.btnTextColor=$('bBtnTextColor').value;
@@ -5450,7 +6068,7 @@ function bindBeauty(){
     if($('bSurveySkin'))beauty.surveySkin=$('bSurveySkin').value;
     if($('bFontFamily'))beauty.fontFamily=$('bFontFamily').value;if($('bTitleFont'))beauty.titleFont=$('bTitleFont').value;
     save('zika_beauty',beauty);applyBeauty();try{renderChat();}catch(e){}}
-  ['bGFont','bFont','bPad','bRadius','bMeColor','bMetaColor','bTaColor','bBgColor','bDim','bScope','bTopAlpha','bTopBlur','bInAlpha','bInBlur','bCallDim','bTyping','bBtnAlpha','bBtnBlur','bBtnBorderColor','bBtnTextColor','bPlusBg','bPlusBorder','bPlusText','bSendBg','bSendBorder','bSendText','bInBg','bInBorder','bInText','bGiftSkin','bSurveySkin','bFontFamily','bTitleFont'].forEach(function(id){if($(id)){$(id).addEventListener('change',readBeauty);$(id).addEventListener('input',readBeauty);}});
+  ['bGFont','bFont','bPad','bRadius','bCardW','bMeColor','bMetaColor','bTaColor','bBgColor','bDim','bScope','bTopAlpha','bTopBlur','bInAlpha','bInBlur','bCallDim','bTyping','bBtnAlpha','bBtnBlur','bBtnBorderColor','bBtnTextColor','bPlusBg','bPlusBorder','bPlusText','bSendBg','bSendBorder','bSendText','bInBg','bInBorder','bInText','bGiftSkin','bSurveySkin','bFontFamily','bTitleFont'].forEach(function(id){if($(id)){$(id).addEventListener('change',readBeauty);$(id).addEventListener('input',readBeauty);}});
   if($('bBgFile'))$('bBgFile').onchange=function(e){var f=e.target.files[0];if(!f)return;readBgImage(f,function(u){beauty.bgImg=u;save('zika_beauty',beauty);applyBeauty();});e.target.value='';};
   if($('bBgDel'))$('bBgDel').onclick=function(){beauty.bgImg='';save('zika_beauty',beauty);applyBeauty();};
   if($('bCallBg'))$('bCallBg').onchange=function(e){var f=e.target.files[0];if(!f)return;readBgImage(f,function(u){beauty.callBg=u;save('zika_beauty',beauty);applyBeauty();});e.target.value='';};
@@ -5462,7 +6080,7 @@ function bindBeauty(){
   if($('bCssApply'))$('bCssApply').onclick=function(){beauty.css=$('bCss').value;save('zika_beauty',beauty);applyBeauty();};
   if($('bCssClear'))$('bCssClear').onclick=function(){$('bCss').value='';beauty.css='';save('zika_beauty',beauty);applyBeauty();};
   if($('beautySave'))$('beautySave').onclick=function(){readBeauty();$('beautyMask').classList.remove('show');};
-  if($('beautyReset'))$('beautyReset').onclick=function(){beauty={fontFamily:'serif',gfont:14,font:14,pad:6,radius:14,meColor:'#111111',metaColor:'#aaaaaa',taColor:'#ffffff',bgColor:'#f7f7f7',bgImg:'',dim:100,scope:'chat',topAlpha:100,topBlur:0,inAlpha:100,inBlur:0,btnAlpha:100,btnBlur:0,btnBorderColor:'#111111',btnTextColor:'#111111',inBg:'#ffffff',inBorder:'#111111',inText:'#111111',plusBg:'#ffffff',plusBorder:'#111111',plusText:'#111111',sendBg:'#111111',sendBorder:'#111111',sendText:'#ffffff',css:'',typing:'对方正在输入…',callBg:'',callFloatBg:'',callDim:0,fontCss:''};save('zika_beauty',beauty);$('beautyMask').classList.remove('show');applyBeauty();};
+  if($('beautyReset'))$('beautyReset').onclick=function(){beauty={fontFamily:'serif',gfont:14,font:14,pad:6,radius:14,cardW:150,meColor:'#111111',metaColor:'#aaaaaa',taColor:'#ffffff',bgColor:'#f7f7f7',bgImg:'',dim:100,scope:'chat',topAlpha:100,topBlur:0,inAlpha:100,inBlur:0,btnAlpha:100,btnBlur:0,btnBorderColor:'#111111',btnTextColor:'#111111',inBg:'#ffffff',inBorder:'#111111',inText:'#111111',plusBg:'#ffffff',plusBorder:'#111111',plusText:'#111111',sendBg:'#111111',sendBorder:'#111111',sendText:'#ffffff',css:'',typing:'对方正在输入…',callBg:'',callFloatBg:'',callDim:0,fontCss:''};save('zika_beauty',beauty);$('beautyMask').classList.remove('show');applyBeauty();};
   if($('beautyClose'))$('beautyClose').onclick=function(){$('beautyMask').classList.remove('show');};
   if($('cardsClose'))$('cardsClose').onclick=function(){
     if($('pActiveOn'))probs.active=$('pActiveOn').checked?1:0;
@@ -5470,11 +6088,14 @@ function bindBeauty(){
     var v;
     if((v=num('pRminN'))!==null)probs.rminN=Math.max(1,Math.round(v));
     if((v=num('pRmaxN'))!==null)probs.rmaxN=Math.max(1,Math.round(v));
+    if(probs.rmaxN<probs.rminN)probs.rmaxN=probs.rminN;
     if((v=num('pRmin'))!==null)probs.rmin=Math.max(0,v);
     if((v=num('pRmax'))!==null)probs.rmax=Math.max(0,v);
+    if(probs.rmax<probs.rmin)probs.rmax=probs.rmin;
     if((v=num('pActiveGap'))!==null)probs.activeGap=Math.max(1,v);
     if((v=num('pAmin'))!==null)probs.amin=Math.max(1,Math.round(v));
     if((v=num('pAmax'))!==null)probs.amax=Math.max(1,Math.round(v));
+    if((v=num('pReplyP'))!==null)probs.replyP=Math.max(0,Math.min(100,v));
     if((v=num('pRp'))!==null)probs.rp=Math.max(0,Math.min(100,v));
     if((v=num('pTf'))!==null)probs.tf=Math.max(0,Math.min(100,v));
     if((v=num('pGf'))!==null)probs.gf=Math.max(0,Math.min(100,v));
@@ -5499,12 +6120,14 @@ function bindBeauty(){
 function openProfile(){$('pfTaName').value=profile.taName||'';$('pfMeName').value=profile.meName||'';$('pfTaAv').src=profile.taAvatar||DTA;$('pfMeAv').src=profile.meAvatar||DME;}
 function bindHomeBeauty(){
   function openHomeBeauty(){
+    /* 旧版“美化按钮”设置已随按钮一起移除，清掉可能残留的行 */
+    try{$('homeBeautyMask').querySelectorAll('.fRow span').forEach(function(sp){if(sp.textContent.indexOf('美化按钮')>=0&&sp.parentElement)sp.parentElement.remove();});}catch(e){}
     if($('hbTitleStyle'))$('hbTitleStyle').value=homeBeauty.titleStyle||'D';
     if($('hbIconFont'))$('hbIconFont').value=homeBeauty.iconFont||'serif';
     if($('hbFontFamily'))$('hbFontFamily').value=beauty.fontFamily||'serif';
     if($('hbTitleFont'))$('hbTitleFont').value=beauty.titleFont||'follow';
     if($('hbFontCss'))$('hbFontCss').value=beauty.fontCss||'';
-    $('hbBgColor').value=homeBeauty.bgColor||'#ffffff';$('hbDim').value=homeBeauty.dim;$('hbIconSize').value=homeBeauty.iconSize;$('hbIconAlpha').value=homeBeauty.iconAlpha;$('hbIconBlur').value=homeBeauty.iconBlur;$('hbIconBorderColor').value=homeBeauty.iconBorderColor||'#111111';if($('hbInkAlpha'))$('hbInkAlpha').value=(homeBeauty.inkAlpha==null?82:homeBeauty.inkAlpha);$('hbIconNameColor').value=homeBeauty.iconNameColor||'#333333';$('hbSetAlpha').value=homeBeauty.setAlpha;$('hbSetBlur').value=homeBeauty.setBlur;$('hbSetBorderColor').value=homeBeauty.setBorderColor||'#111111';
+    $('hbBgColor').value=homeBeauty.bgColor||'#ffffff';$('hbDim').value=homeBeauty.dim;$('hbIconSize').value=homeBeauty.iconSize;$('hbIconAlpha').value=homeBeauty.iconAlpha;$('hbIconBlur').value=homeBeauty.iconBlur;$('hbIconBorderColor').value=homeBeauty.iconBorderColor||'#111111';if($('hbInkAlpha'))$('hbInkAlpha').value=(homeBeauty.inkAlpha==null?82:homeBeauty.inkAlpha);$('hbIconNameColor').value=homeBeauty.iconNameColor||'#333333';
     var list=$('hbIconList');list.innerHTML='';var names=homeBeauty.names||{};
     DEFAULT_ORDER.forEach(function(key){
       var row=document.createElement('div');row.className='listRow';
@@ -5519,6 +6142,7 @@ function bindHomeBeauty(){
       show.onclick=function(){if(!homeBeauty.pages[0].hidden)homeBeauty.pages[0].hidden={};homeBeauty.pages[0].hidden[key]=!homeBeauty.pages[0].hidden[key];save('zika_home_beauty',homeBeauty);renderPagesStructure();show.textContent=homeBeauty.pages[0].hidden[key]?'恢复':'隐藏';nm.textContent=(names[key]||key)+(homeBeauty.pages[0].hidden[key]?'（已隐藏）':'');};
       row.appendChild(nm);row.appendChild(show);row.appendChild(ed);row.appendChild(lab);list.appendChild(row);
     });
+    try{if(window.__syncColorPickers)window.__syncColorPickers();}catch(e){}
     $('homeBeautyMask').classList.add('show');
   }
   if($('wgAllLine'))$('wgAllLine').onclick=function(){
@@ -5553,20 +6177,20 @@ function bindHomeBeauty(){
   if($('hbBgFile'))$('hbBgFile').onchange=function(e){var f=e.target.files[0];if(!f)return;readBgImage(f,function(u){homeBeauty.bgImg=u;save('zika_home_beauty',homeBeauty);applyHomeBeauty();});e.target.value='';};
   if($('hbBgDel'))$('hbBgDel').onclick=function(){homeBeauty.bgImg='';save('zika_home_beauty',homeBeauty);applyHomeBeauty();};
   if($('hbSave'))$('hbSave').onclick=function(){
-    homeBeauty.bgColor=$('hbBgColor').value;homeBeauty.dim=parseInt($('hbDim').value)||100;homeBeauty.iconSize=parseInt($('hbIconSize').value)||56;homeBeauty.iconAlpha=parseInt($('hbIconAlpha').value)||100;homeBeauty.iconBlur=parseInt($('hbIconBlur').value)||0;homeBeauty.iconBorderColor=$('hbIconBorderColor').value;homeBeauty.iconNameColor=$('hbIconNameColor').value;homeBeauty.inkAlpha=parseInt($('hbInkAlpha').value);homeBeauty.setAlpha=parseInt($('hbSetAlpha').value);homeBeauty.setBlur=parseInt($('hbSetBlur').value);homeBeauty.setBorderColor=$('hbSetBorderColor').value;
+    homeBeauty.bgColor=$('hbBgColor').value;homeBeauty.dim=parseInt($('hbDim').value)||100;homeBeauty.iconSize=parseInt($('hbIconSize').value)||56;homeBeauty.iconAlpha=parseInt($('hbIconAlpha').value)||100;homeBeauty.iconBlur=parseInt($('hbIconBlur').value)||0;homeBeauty.iconBorderColor=$('hbIconBorderColor').value;homeBeauty.iconNameColor=$('hbIconNameColor').value;homeBeauty.inkAlpha=parseInt($('hbInkAlpha').value);
     homeBeauty.titleStyle=$('hbTitleStyle')?$('hbTitleStyle').value:(homeBeauty.titleStyle||'classic');
     homeBeauty.iconFont=$('hbIconFont')?$('hbIconFont').value:(homeBeauty.iconFont||'serif');
     save('zika_home_beauty',homeBeauty);applyHomeBeauty();$('homeBeautyMask').classList.remove('show');
   };
   if($('hbReset'))$('hbReset').onclick=function(){
-    homeBeauty.bgColor='#ffffff';homeBeauty.bgImg='';homeBeauty.dim=100;homeBeauty.iconSize=56;homeBeauty.iconAlpha=100;homeBeauty.iconBlur=0;homeBeauty.iconBorderColor='#111111';homeBeauty.iconNameColor='#333333';homeBeauty.inkAlpha=82;homeBeauty.setAlpha=100;homeBeauty.setBlur=0;homeBeauty.setBorderColor='#111111';homeBeauty.titleStyle='D';homeBeauty.iconFont='serif';
+    homeBeauty.bgColor='#ffffff';homeBeauty.bgImg='';homeBeauty.dim=100;homeBeauty.iconSize=56;homeBeauty.iconAlpha=100;homeBeauty.iconBlur=0;homeBeauty.iconBorderColor='#111111';homeBeauty.iconNameColor='#333333';homeBeauty.inkAlpha=82;homeBeauty.titleStyle='D';homeBeauty.iconFont='serif';
     homeBeauty.icons={};homeBeauty.names=Object.assign({},DEFAULT_NAMES);
     homeBeauty.pages.forEach(function(p){p.pos={};p.hidden={};});
     save('zika_home_beauty',homeBeauty);renderPagesStructure();$('homeBeautyMask').classList.remove('show');
   };
-  ['hbBgColor','hbDim','hbIconSize','hbIconAlpha','hbIconBlur','hbIconBorderColor','hbIconNameColor','hbInkAlpha','hbSetAlpha','hbSetBlur','hbSetBorderColor'].forEach(function(id){
+  ['hbBgColor','hbDim','hbIconSize','hbIconAlpha','hbIconBlur','hbIconBorderColor','hbIconNameColor','hbInkAlpha'].forEach(function(id){
     if($(id))$(id).addEventListener('input',function(){
-      homeBeauty.bgColor=$('hbBgColor').value;homeBeauty.dim=parseInt($('hbDim').value)||100;homeBeauty.iconSize=parseInt($('hbIconSize').value)||56;homeBeauty.iconAlpha=parseInt($('hbIconAlpha').value)||100;homeBeauty.iconBlur=parseInt($('hbIconBlur').value)||0;homeBeauty.iconBorderColor=$('hbIconBorderColor').value;homeBeauty.iconNameColor=$('hbIconNameColor').value;homeBeauty.inkAlpha=parseInt($('hbInkAlpha').value);homeBeauty.setAlpha=parseInt($('hbSetAlpha').value);homeBeauty.setBlur=parseInt($('hbSetBlur').value);homeBeauty.setBorderColor=$('hbSetBorderColor').value;applyHomeBeauty();
+      homeBeauty.bgColor=$('hbBgColor').value;homeBeauty.dim=parseInt($('hbDim').value)||100;homeBeauty.iconSize=parseInt($('hbIconSize').value)||56;homeBeauty.iconAlpha=parseInt($('hbIconAlpha').value)||100;homeBeauty.iconBlur=parseInt($('hbIconBlur').value)||0;homeBeauty.iconBorderColor=$('hbIconBorderColor').value;homeBeauty.iconNameColor=$('hbIconNameColor').value;homeBeauty.inkAlpha=parseInt($('hbInkAlpha').value);applyHomeBeauty();
     });
   });
 }/* ========== 字卡页委托 ========== */
@@ -5605,7 +6229,7 @@ function resetMomentsData(){moments=[];save('zika_moments',moments);ms._todayKey
 function resetMailData(){convs=[];save('zika_mail_convs',convs);mailProactive={nextAt:Date.now()+mailRandMs(mailSet.proactiveMin,mailSet.proactiveMax)};save('zika_mail_proactive',mailProactive);renderMail();}
 function resetDiaryData(){diaryList=[];save('zika_diary',diaryList);diaryEvents=[];save('zika_diary_events',diaryEvents);renderDiary();renderDiaryTips();}
 function resetSparkData(){spark={adopted:false,name:'',callMe:'',callTa:'',floatOn:1,streak:0,lastFireDay:'',meToday:false,taToday:false,lastDayKey:'',coupon:0,dailyCoupon:10,weekCoupon:20,msgCouponNeed:5,msgCoupon:5,taGap:30,taBuyP:30,meSpoke:0,taSpoke:0};save('zika_spark',spark);sparkOwned=[];save('zika_spark_owned',sparkOwned);updateSparkFloat();if($('sparkPage').classList.contains('show'))renderSparkPage();}
-function resetScreenData(){screenSet={lockEnable:1,lockP:15,lockGap:60,lockDayMax:3,lockDuration:5,lockPwd:'',begSuccess:60,shareEnable:1,shareP:12,shareGap:60,shareDayMax:3,shareRejectLockP:60,shareReactGap:30,shareBarText:'对方正在观看你的屏幕'};save('zika_screen_set',screenSet);screenStat={lastLockTs:0,lastShareTs:0,lockCountDay:0,shareCountDay:0,dayKey:''};save('zika_screen_stat',screenStat);endLockScreen();stopShare();if($('screenPage').classList.contains('show'))renderScreenPage();}
+function resetScreenData(){screenSet={lockEnable:1,lockP:15,lockGap:60,lockDayMax:3,lockDuration:5,begSuccess:18,shareEnable:1,shareP:12,shareGap:60,shareDayMax:3,shareRejectLockP:60,shareReactGap:3,shareBarText:'他正在翻你的手机'};save('zika_screen_set',screenSet);screenStat={lastLockTs:0,lastShareTs:0,lockCountDay:0,shareCountDay:0,dayKey:''};save('zika_screen_stat',screenStat);endLockScreen();stopShare();if($('screenPage').classList.contains('show'))renderScreenPage();}
 function resetCardsData(){replyCards=DC.slice();save('zika_reply_cards',replyCards);statusPool=DS.slice();save('zika_status_pool',statusPool);patMeCards=DP_ME.slice();save('zika_pat_me',patMeCards);patTaCards=DP_TA.slice();save('zika_pat_ta',patTaCards);checkCards=DCHK.slice();save('zika_check_cards',checkCards);checkAskCards=DCHKASK.slice();save('zika_check_ask',checkAskCards);stickers=[];save('zika_stickers',stickers);cpGroupsStore={reply:[],status:[],patMe:[],patTa:[],check:[],checkAsk:[]};save('zika_cp_groups',cpGroupsStore);normalizeAllCards();clearAllNoteCache();renderCp();refreshStatus();}
 function resetShopData(){wallet={balance:500};save('zika_shop_wallet',wallet);cart=[];save('zika_shop_cart',cart);buyLog=[];save('zika_shop_buylog',buyLog);giveLog=[];save('zika_shop_givelog',giveLog);renderWallet();}
 function resetLocData(){locList=[];save('zika_loc_list',locList);if(cpTab==='loc')renderLocTab();}
@@ -5874,6 +6498,9 @@ function bindAnnivEdit(){
     var bg=$('annivBgGrid');
     if(bg){var onBg=bg.querySelector('.bgSwatch.on');if(onBg){if(onBg.id==='annivBgUpload'){}else{w.bg=onBg.dataset.bg||w.bg;w.img='';}}}
     if(editingAnnivBg!=='__keep__')w.img=editingAnnivBg;
+    var av=parseInt($('annivAlpha')?$('annivAlpha').value:100);var bv=parseInt($('annivBlur')?$('annivBlur').value:0);
+    w.imgAlpha=isFinite(av)?Math.max(0,Math.min(100,av)):100;
+    w.imgBlur=isFinite(bv)?Math.max(0,Math.min(100,bv)):0;
     save('zika_home_beauty',homeBeauty);renderPagesStructure();renderWgManageList();
     $('annivEditMask').classList.remove('show');
   };
@@ -5989,6 +6616,8 @@ var __domReady=function(){
     if(addCfm)addCfm.onclick=confirmCpAdd;
     if(addCan)addCan.onclick=function(){$('cpAddMask').classList.remove('show');};
     if($('plusBtn'))$('plusBtn').onclick=function(e){e.stopPropagation();if($('drawer').classList.contains('show'))closeDrawer();else openDrawer();};
+    if($('lsBegSend'))$('lsBegSend').onclick=begUnlock;
+    if($('lsBegInput'))$('lsBegInput').addEventListener('keydown',function(e){if(e.key==='Enter')begUnlock();});
     if($('sendBtn'))$('sendBtn').onclick=send;
     if($('msgInput'))$('msgInput').addEventListener('keydown',function(e){if(e.key==='Enter')send();});
     if($('backHome'))$('backHome').onclick=function(){
@@ -6065,12 +6694,12 @@ var __domReady=function(){
     if($('mwOk'))$('mwOk').onclick=function(){
       var t=$('mwTitle').value.trim();var b=$('mwBody').value.trim();if(!b){alert('写点正文再寄出');return;}
       if(!Array.isArray(convs))convs=[];
-      var newCv={title:(t||'无题'),msgs:[{from:'me',text:b,imgs:mwImgs.slice(),time:Date.now()}],unread:false,nextAt:Date.now()+mailRandMs(mailSet.replyMin,mailSet.replyMax)};
+      var rpOk=(Math.random()*100<(parseFloat(mailSet.replyP)||0));
+      var newCv={title:(t||'无题'),msgs:[{from:'me',text:b,imgs:mwImgs.slice(),time:Date.now()}],unread:false,willReply:rpOk?1:0,nextAt:rpOk?Date.now()+mailRandMs(mailSet.replyMin,mailSet.replyMax):0};
       convs.push(newCv);
       save('zika_mail_convs',convs);
       $('mailWriteMask').classList.remove('show');$('mailPage').classList.add('show');$('home').classList.add('hide');
       renderMail();
-      settleMailAll();
     };
     if($('mwSticker'))$('mwSticker').onchange=function(e){var f=e.target.files[0];if(!f)return;readImage(f,300,function(u){mwImgs.push(u);$('mwPrev').innerHTML=mwImgs.map(function(x){return '<img src="'+x+'" style="max-width:60px;max-height:60px;border-radius:6px">';}).join('');});e.target.value='';};
     if($('mailSetBtn'))$('mailSetBtn').onclick=function(){
@@ -6082,7 +6711,6 @@ var __domReady=function(){
       $('mailWriteP').value=(mailSet.writeP==null?30:mailSet.writeP);
       $('mailProactiveMin').value=(mailSet.proactiveMin==null?60:mailSet.proactiveMin);
       $('mailProactiveMax').value=(mailSet.proactiveMax==null?180:mailSet.proactiveMax);
-      $('mailMaxCatchUp').value=(mailSet.maxCatchUp==null?3:mailSet.maxCatchUp);
       $('mailCardMin').value=mailSet.cardMin;$('mailCardMax').value=mailSet.cardMax;
       $('mailImgMin').value=mailSet.imgMin;$('mailImgMax').value=mailSet.imgMax;
       $('mailBgScope').value=mailSet.bgScope;$('mailBgAlpha').value=mailSet.bgAlpha;
@@ -6105,7 +6733,6 @@ var __domReady=function(){
       mailSet.writeP=Math.max(0,Math.min(100,n('mailWriteP',30)));
       mailSet.proactiveMin=Math.max(1,n('mailProactiveMin',60));
       mailSet.proactiveMax=Math.max(mailSet.proactiveMin,n('mailProactiveMax',180));
-      mailSet.maxCatchUp=Math.max(1,Math.round(n('mailMaxCatchUp',3)));
       mailSet.cardMin=Math.max(1,Math.round(n('mailCardMin',1)));
       mailSet.cardMax=Math.max(mailSet.cardMin,Math.round(n('mailCardMax',2)));
       mailSet.imgMin=Math.max(0,Math.round(n('mailImgMin',0)));
@@ -6167,13 +6794,15 @@ var __domReady=function(){
     document.addEventListener('click',function(e){var dr=$('drawer'),pb=$('plusBtn'),sp=$('stickerPick'),ds=$('drawerSticker');if(dr&&!dr.contains(e.target)&&e.target!==pb&&sp&&!sp.contains(e.target)&&e.target!==ds)closeDrawer();});
     document.querySelectorAll('#cardsPage .cpTab').forEach(function(t){t.onclick=function(){cpTab=t.dataset.tab;cpCurGroup='全部';cpSel={};setActiveTab();renderCp();};});
     if($('cpStickerFile'))$('cpStickerFile').onchange=function(e){var files=e.target.files;if(!files||!files.length)return;var i=0;function next(){if(i>=files.length){save('zika_stickers',stickers);renderCp();return;}readImage(files[i],300,function(u){stickers.push(u);i++;next();});}next();e.target.value='';};
-    if($('lsUnlockBtn'))$('lsUnlockBtn').onclick=tryUnlock;
-    if($('lsBegBtn'))$('lsBegBtn').onclick=begUnlock;
-    if($('lwBack'))$('lwBack').onclick=function(){var lw=$('lockWarn');if(lw)lw.classList.remove('show');};
+    if($('lwBack'))$('lwBack').onclick=function(){var lw=$('lockWarn');if(lw)lw.classList.remove('show');var inp=$('lsBegInput');if(inp)inp.focus();};
     if($('lwBeg'))$('lwBeg').onclick=function(){var lw=$('lockWarn');if(lw)lw.classList.remove('show');begUnlock();};
-    if($('lsPwd'))$('lsPwd').addEventListener('keydown',function(e){if(e.key==='Enter')tryUnlock();});
     if($('siAcceptBtn'))$('siAcceptBtn').onclick=acceptShare;
+    if($('svStop'))$('svStop').onclick=stopShare;
     if($('siRejectBtn'))$('siRejectBtn').onclick=rejectShare;
+    if($('scBack'))$('scBack').onclick=stopShare;
+    if($('stSend'))$('stSend').onclick=stBeg;
+    if($('stInput'))$('stInput').addEventListener('keydown',function(e){if(e.key==='Enter')stBeg();});
+    if($('stExit'))$('stExit').onclick=stopShare;
     if($('shareStopBtn'))$('shareStopBtn').onclick=stopShare;
   }catch(e){console.error('bind',e);}
   try{
@@ -6275,7 +6904,7 @@ function restartMomentsTick(){
 }
 function restartMailTick(){
   if(mailTickTimer)clearInterval(mailTickTimer);
-  mailTickTimer=setInterval(function(){settleMailAll();},30*1000);
+  mailTickTimer=setInterval(function(){settleMailAll();},10*1000);
 }
 function restartShopTick(){if(shopTickTimer)clearInterval(shopTickTimer);var gap=Math.max(1,parseInt(shopSet.taGap)||30);shopTickTimer=setInterval(function(){taShopBuy();},gap*60*1000);}
 function restartDiaryTick(){if(diaryTickTimer)clearInterval(diaryTickTimer);var gap=Math.max(1,parseInt(diarySet.gap)||120);diaryTickTimer=setInterval(function(){taWriteDiary();},gap*60*1000);}
@@ -6295,5 +6924,143 @@ window.addEventListener('focus',function(){try{settleMailAll();}catch(e){}});
 __initStore(function(){__bootApp();});
 })();
 </script>
+<script>
+(function(){
+  var SW=['#000000','#1d1b18','#555049','#8a8378','#c9c1b2','#efe9dc','#ffffff','#7f1d1d','#b03a2e','#cd7f5b','#d9a441','#c9a86a','#7d8f69','#4a7c80','#3d5d86','#5b4b8a','#7b5ea7','#c48ba3','#e8c9d4','#6b6258','#a39d93'];
+  var mask,panel,card,cursor,hue,satEl,valEl,hexIn,prev,hexLab,swBox,curInp,curBtn,H=0,S=0,V=82,drag=false;
+  function clamp(n,a,b){return n<a?a:(n>b?b:n);}
+  function hexToRgb(h){
+    h=String(h||'#111111').trim();
+    if(h[0]==='#')h=h.slice(1);
+    if(h.length===3)h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];
+    if(!/^[0-9a-fA-F]{6}$/.test(h))h='111111';
+    return {r:parseInt(h.slice(0,2),16),g:parseInt(h.slice(2,4),16),b:parseInt(h.slice(4,6),16)};
+  }
+  function rgbToHsv(r,g,b){
+    r/=255;g/=255;b/=255;
+    var mx=Math.max(r,g,b),mn=Math.min(r,g,b),d=mx-mn,h=0,s=0,v=mx;
+    if(d){s=d/mx;if(mx===r)h=((g-b)/d+6)%6;else if(mx===g)h=(b-r)/d+2;else h=(r-g)/d+4;h*=60;}
+    return {h:h,s:s*100,v:v*100};
+  }
+  function hsvToHex(h,s,v){
+    h=(h%360+360)%360;s/=100;v/=100;
+    var c=v*s,x=c*(1-Math.abs((h/60)%2-1)),m=v-c,r=0,g=0,b=0;
+    if(h<60){r=c;g=x;}else if(h<120){r=x;g=c;}else if(h<180){g=c;b=x;}else if(h<240){g=x;b=c;}else if(h<300){r=x;b=c;}else{r=c;b=x;}
+    function p(n){var t=Math.round((n+m)*255);return (t<16?'0':'')+t.toString(16);}
+    return '#'+p(r)+p(g)+p(b);
+  }
+  function lum(hex){var c=hexToRgb(hex);return (0.2126*c.r+0.7152*c.g+0.0722*c.b)/255;}
+  function build(){
+    mask=document.createElement('div');mask.className='cpMask';mask.id='cpMask';
+    mask.innerHTML='<div class="cpPanel">'
+      +'<div class="cpHead"><b>选择颜色</b><span id="cpHex">#111111</span></div>'
+      +'<div class="cpPrev" id="cpPrev">预览</div>'
+      +'<div class="cpCard" id="cpCard"><div class="cpCursor" id="cpCursor"></div></div>'
+      +'<div style="display:flex;justify-content:space-between;font-size:10px;color:#9a9287;margin-top:5px;letter-spacing:1px"><span>← 饱和度 →</span><span>↑ 明度 ↓</span></div>'
+      +'<div class="cpSliders">'
+      +'<label class="cpRow"><span>色相</span><input id="cpHue" type="range" min="0" max="360" step="1"></label>'
+      +'<label class="cpRow"><span>饱和</span><input id="cpSat" type="range" min="0" max="100" step="1"></label>'
+      +'<label class="cpRow"><span>明度</span><input id="cpVal" type="range" min="0" max="100" step="1"></label>'
+      +'<div class="cpHexRow"><span style="font-size:12px;color:#5f594f">HEX</span><input id="cpHexIn" type="text" maxlength="7" placeholder="#111111" spellcheck="false"></div>'
+      +'</div>'
+      +'<div class="cpSwatches" id="cpSwatches"></div>'
+      +'<div class="cpBtns"><button id="cpCancel">取消</button><button id="cpOk">确定</button></div>'
+      +'</div>';
+    document.body.appendChild(mask);
+    panel=mask.querySelector('.cpPanel');card=mask.querySelector('#cpCard');cursor=mask.querySelector('#cpCursor');
+    prev=mask.querySelector('#cpPrev');hexLab=mask.querySelector('#cpHex');hue=mask.querySelector('#cpHue');satEl=mask.querySelector('#cpSat');valEl=mask.querySelector('#cpVal');hexIn=mask.querySelector('#cpHexIn');swBox=mask.querySelector('#cpSwatches');
+    SW.forEach(function(c){
+      var b=document.createElement('div');b.className='cpSw';b.style.background=c;b.dataset.c=c;
+      b.onclick=function(){var r=hexToRgb(c),o=rgbToHsv(r.r,r.g,r.b);H=o.h;S=o.s;V=o.v;paint();};
+      swBox.appendChild(b);
+    });
+    hue.oninput=function(){H=+this.value;paint();};
+    satEl.oninput=function(){S=+this.value;paint();};
+    valEl.oninput=function(){V=+this.value;paint();};
+    hexIn.onchange=function(){
+      var v=String(this.value||'').trim();if(v&&v[0]!=='#')v='#'+v;
+      var r=hexToRgb(v),o=rgbToHsv(r.r,r.g,r.b);H=o.h;S=o.s;V=o.v;paint();
+    };
+    function pick(e){
+      var r=card.getBoundingClientRect();
+      S=clamp((e.clientX-r.left)/r.width*100,0,100);
+      V=clamp(100-(e.clientY-r.top)/r.height*100,0,100);
+      paint();
+    }
+    card.addEventListener('pointerdown',function(e){e.preventDefault();drag=true;try{card.setPointerCapture(e.pointerId);}catch(err){}pick(e);});
+    card.addEventListener('pointermove',function(e){if(drag){e.preventDefault();pick(e);}});
+    card.addEventListener('pointerup',function(){drag=false;});
+    card.addEventListener('pointercancel',function(){drag=false;});
+    mask.querySelector('#cpCancel').onclick=close;
+    mask.querySelector('#cpOk').onclick=apply;
+    mask.addEventListener('click',function(e){if(e.target===mask)close();});
+  }
+  function paint(){
+    var hex=hsvToHex(H,S,V);
+    hexLab.textContent=hex.toUpperCase();
+    hexIn.value=hex.toUpperCase();
+    prev.style.background=hex;
+    prev.style.color=(lum(hex)>0.58?'#1d1b18':'#ffffff');
+    prev.textContent=hex.toUpperCase();
+    hue.value=Math.round(H);
+    hue.style.background='linear-gradient(90deg,#ff0000 0%,#ffff00 17%,#00ff00 33%,#00ffff 50%,#0000ff 67%,#ff00ff 83%,#ff0000 100%)';
+    satEl.value=Math.round(S);
+    satEl.style.background='linear-gradient(90deg,hsl('+Math.round(H)+',0%,50%),hsl('+Math.round(H)+',100%,50%))';
+    valEl.value=Math.round(V);
+    valEl.style.background='linear-gradient(90deg,#000,hsl('+Math.round(H)+','+Math.round(S)+'%,50%))';
+    card.style.background='linear-gradient(to top,#000,rgba(0,0,0,0)),linear-gradient(to right,#fff,hsl('+Math.round(H)+',100%,50%))';
+    cursor.style.left=S+'%';
+    cursor.style.top=(100-V)+'%';
+  }
+  function open(inp,btn){
+    if(!mask)build();
+    curInp=inp;curBtn=btn;
+    var r=hexToRgb(inp.value||'#111111'),o=rgbToHsv(r.r,r.g,r.b);
+    H=o.h;S=o.s;V=o.v;paint();
+    panel.scrollTop=0;
+    mask.classList.add('show');
+  }
+  function close(){if(mask)mask.classList.remove('show');curInp=null;drag=false;}
+  function apply(){
+    if(!curInp){close();return;}
+    var hex=hsvToHex(H,S,V);
+    curInp.value=hex;
+    curInp.dispatchEvent(new Event('input',{bubbles:true}));
+    curInp.dispatchEvent(new Event('change',{bubbles:true}));
+    if(curBtn)syncBtn(curInp,curBtn);
+    close();
+  }
+  function syncBtn(inp,btn){
+    var hex=inp.value||'#111111';
+    btn.style.background=hex;
+    btn.style.color=(lum(hex)>0.58?'#1d1b18':'#fff');
+    var i=btn.querySelector('i');if(i){i.style.background=hex;i.style.boxShadow='inset 0 0 0 1px rgba(255,255,255,.45)';}
+    var em=btn.querySelector('em');if(em)em.textContent=hex.toUpperCase();
+  }
+  function init(){
+    document.querySelectorAll('input[type="color"]').forEach(function(inp){
+      if(inp.dataset.cpReady)return;inp.dataset.cpReady='1';
+      inp.style.display='none';
+      var btn=document.createElement('button');btn.type='button';btn.className='cpBtn';
+      btn.innerHTML='<i></i><em></em>';
+      inp.parentNode.insertBefore(btn,inp.nextSibling);
+      syncBtn(inp,btn);
+      btn.onclick=function(){open(inp,btn);};
+      inp.addEventListener('change',function(){syncBtn(inp,btn);});
+    });
+  }
+  function syncAll(){
+    document.querySelectorAll('input[type="color"]').forEach(function(inp){
+      var btn=inp.nextSibling;
+      if(btn&&btn.classList&&btn.classList.contains('cpBtn'))syncBtn(inp,btn);
+    });
+  }
+  window.__syncColorPickers=syncAll;
+  window.__initColorPickers=init;
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init,{once:true});}else{init();}
+  setInterval(syncAll,700);
+})();
+</script>
+
 </body>
 </html>
