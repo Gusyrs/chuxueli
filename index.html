@@ -450,17 +450,17 @@ input,textarea,select,[contenteditable="true"]{-webkit-user-select:text;user-sel
 .moreBtn{font-size:19px;letter-spacing:2px;line-height:1;padding:4px 6px 4px 4px!important}
 .topBtn{font-size:13px;font-weight:400;color:#111;border:1px solid #111;border-radius:6px;padding:2px 8px;background:#fff;cursor:pointer;line-height:normal;height:auto}
 .iconTopBtn{border:none!important;background:none!important;box-shadow:none!important;padding:2px 4px;font-size:18px;line-height:1.15;cursor:pointer;color:#111}
-#chat{flex:1;overflow-y:auto;padding:20px 18px 18px;display:flex;flex-direction:column;gap:15px;position:relative;z-index:1;scrollbar-width:none;-ms-overflow-style:none}
+#chat{flex:1;overflow-y:auto;padding:18px 12px 16px;display:flex;flex-direction:column;gap:15px;position:relative;z-index:1;scrollbar-width:none;-ms-overflow-style:none}
 #chat::-webkit-scrollbar{display:none}
 .chatMore{align-self:center;font-size:11px;color:#888;background:#f2f2f2;border-radius:10px;padding:4px 12px;cursor:pointer;margin-bottom:2px;flex-shrink:0}
-.msgRow{display:flex;align-items:flex-start;gap:10px;max-width:92%}
-.msgRow.me{align-self:flex-end;flex-direction:row-reverse}
+.msgRow{display:flex;align-items:flex-start;gap:8px;max-width:calc(100% - 64px)}
+.msgRow.me{align-self:flex-end;flex-direction:row-reverse;max-width:calc(100% - 64px)}
 .msgRow.ta{align-self:flex-start}
 .msgRow img.av{width:34px;height:34px;border-radius:50%;object-fit:cover;background:#eee;flex-shrink:0}
 .msgWrap{display:flex;flex-direction:column;min-width:0}
 .msgRow.me .msgWrap{align-items:flex-end}
 .msgRow.ta .msgWrap{align-items:flex-start}
-.msg{padding:var(--msg-pad,9px) 13px;border-radius:var(--msg-radius,14px);font-size:var(--msg-font,15px);line-height:1.65;word-break:break-word;max-width:100%;display:inline-block;letter-spacing:.2px}
+.msg{padding:var(--msg-pad,9px) 13px;border-radius:var(--msg-radius,14px);font-size:var(--msg-font,15px);line-height:1.65;word-break:break-word;max-width:calc(17em + 26px);display:inline-block;letter-spacing:.2px}
 .msgRow.me .msg{background:var(--me-color,#111);color:#fff;border:1px solid #111}
 .msgRow.ta .msg{background:var(--ta-color,#fff);color:#111;border:1px solid #ddd}
 .stickerMsg{max-width:120px;max-height:120px;border-radius:8px;object-fit:contain}
@@ -571,7 +571,7 @@ input,textarea,select,[contenteditable="true"]{-webkit-user-select:text;user-sel
 .recalled{font-size:11px;color:#999;font-style:italic;padding:4px 8px;background:#f2f2f2;border-radius:8px}
 .quoteBox{font-size:11px;color:#666;background:#f5f5f5;border-left:3px solid #bbb;padding:4px 8px;border-radius:4px;margin-bottom:4px;max-width:100%;word-break:break-word}
 .typingBubble{font-size:12px;color:#666;background:#f5f5f5;border:1px solid #e5e5e5;padding:6px 10px;border-radius:12px}
-#inputArea{border-top:1px solid #e5e5e5;background:#fff;padding:9px 13px 11px;display:flex;flex-direction:column;gap:6px;position:relative;z-index:2}
+#inputArea{border-top:1px solid #e5e5e5;background:#fff;padding:9px 10px 11px;display:flex;flex-direction:column;gap:6px;position:relative;z-index:2}
 #quoteBar{display:none;font-size:12px;color:#666;background:#f5f5f5;border-radius:6px;padding:5px 8px;align-items:center;gap:8px}
 #quoteBar.show{display:flex}
 #quoteBar .qtext{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -2188,7 +2188,7 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
   <div class="mask" id="cpAddMask"><div class="dialog">
     <h3>添加字卡</h3>
     <div class="fRow"><span>字卡内容（可多行，一行一条）</span>
-      <textarea id="cpAddText" placeholder="例如：&#10;今天也想你&#10;早点睡呀" maxlength="600"></textarea>
+      <textarea id="cpAddText" placeholder="例如：&#10;今天也想你&#10;早点睡呀"></textarea>
     </div>
     <div class="fRow"><span>添加到分组</span><select id="cpAddGroup"></select></div>
     <div class="btns"><button class="cancel" id="cpAddCancel">取消</button><button class="ok" id="cpAddConfirm">添加</button></div>
@@ -2196,7 +2196,7 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
 
   <div class="mask" id="cpEditMask"><div class="dialog">
     <h3>编辑字卡</h3>
-    <textarea id="cpEditText" maxlength="200"></textarea>
+    <textarea id="cpEditText"></textarea>
     <div class="btns"><button class="cancel" id="cpEditCancel">取消</button><button class="ok" id="cpEditSave">保存</button></div>
   </div></div>
 
@@ -2215,9 +2215,8 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
   <div class="mask" id="cpImportMask"><div class="dialog">
     <h3>导入字卡</h3>
     <div class="fRow"><span>导入到当前分类（表情包除外）</span></div>
-    <label class="stickerUpload">选择 .txt（一行一条）<input type="file" id="cpImportTxt" accept=".txt,text/plain"></label>
-    <label class="stickerUpload">选择 .json（数组或按库对象）<input type="file" id="cpImportJson" accept=".json,application/json"></label>
-    <div style="font-size:11px;color:#666;margin-top:6px">JSON 支持：["卡1","卡2"] 或 {"reply":[],"status":[],"patMe":[],"patTa":[],"check":[]}</div>
+    <label class="stickerUpload">选择 .txt / .json 文件（自动识别，不限单条字数）<input type="file" id="cpImportFile"></label>
+    <div style="font-size:11px;color:#666;margin-top:6px">TXT：一行一条；JSON 支持 ["卡1","卡2"]、[{"text":"卡1","group":"未分组"}]、{"reply":[],"status":[],"patMe":[],"patTa":[],"check":[]}，也支持 {"text":[["分组",["卡1","卡2"]]]}</div>
     <div class="btns"><button class="cancel" id="cpImportCancel">关闭</button></div>
   </div></div>
 
@@ -4711,8 +4710,12 @@ function cpExport(){
   var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
   var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='zika_'+cpTab+'.json';a.click();
 }
+function cpCleanImport(text){
+  return String(text==null?'':text).replace(/^\uFEFF/,'').replace(/\u200B/g,'').replace(/\r\n/g,'\n').trim();
+}
 function cpImportTxt(text){
-  var lines=text.split(/\r?\n/).map(function(x){return x.trim();}).filter(function(x){return x;});
+  var clean=cpCleanImport(text);
+  var lines=clean.split(/\r?\n/).map(function(x){return x.trim();}).filter(function(x){return x;});
   if(!lines.length){alert('没有可导入内容');return;}
   if(cpTab==='sticker'){alert('表情包请用图片上传');return;}
   if(cpTab==='loc'){alert('地点库请在页面内手动添加');return;}
@@ -4720,8 +4723,36 @@ function cpImportTxt(text){
   setArr(cpTab,arr);saveArr(cpTab);renderCp();alert('导入 '+lines.length+' 条');
   if(cpTab==='status')refreshStatus();
 }
+function cpImportAuto(text){
+  var clean=cpCleanImport(text);
+  if(!clean){alert('文件是空的');return;}
+  if(/^[\[{]/.test(clean))cpImportJson(clean);else cpImportTxt(clean);
+}
+function cpReadTextFile(file,cb){
+  var reader=new FileReader();
+  reader.onload=function(ev){
+    var buf=ev.target.result,text='';
+    try{
+      if(window.TextDecoder)text=new TextDecoder('utf-8',{fatal:true}).decode(buf);
+      else throw new Error('no decoder');
+    }catch(e){
+      try{text=new TextDecoder('gb18030').decode(buf);}catch(e2){
+        try{text=new TextDecoder('utf-8').decode(buf);}catch(e3){text='';}
+      }
+    }
+    cb(text);
+  };
+  reader.onerror=function(){alert('文件读取失败，请重新选择');};
+  try{reader.readAsArrayBuffer(file);}catch(e){
+    var fallback=new FileReader();
+    fallback.onload=function(ev){cb(String(ev.target.result||''));};
+    fallback.onerror=function(){alert('文件读取失败，请重新选择');};
+    fallback.readAsText(file,'UTF-8');
+  }
+}
 function cpImportJson(text){
-  try{var obj=JSON.parse(text);}catch(e){alert('JSON 格式错误');return;}
+  text=cpCleanImport(text);
+  try{var obj=JSON.parse(text);}catch(e){alert('JSON 解析失败：请确认是标准 JSON（双引号、无多余逗号），或改用 TXT 一行一条');return;}
   var map={reply:'reply',status:'status',patMe:'patMe',patTa:'patTa',check:'check',checkAsk:'checkAsk'};
   var count=0;
   if(cpTab==='sticker'){alert('表情包请用图片上传');return;}
@@ -4731,6 +4762,13 @@ function cpImportJson(text){
     return;
   }
   var arr=arrOf(cpTab);
+  if(obj && obj.cards && Array.isArray(obj.cards)){
+    obj.cards.forEach(function(x){
+      if(typeof x==='string' && x.trim()){arr.push({text:x.trim(),group:'未分组'});count++;}
+      else if(x && typeof x==='object' && typeof x.text==='string' && x.text.trim()){arr.push({text:x.text.trim(),group:(x.group||'未分组')});count++;}
+    });
+    setArr(cpTab,arr);saveArr(cpTab);renderCp();alert('导入 '+count+' 条');refreshStatus();return;
+  }
   if(obj && Array.isArray(obj.text)){
     obj.text.forEach(function(groupItem){
       if(Array.isArray(groupItem) && groupItem.length>=2 && Array.isArray(groupItem[1])){
@@ -6642,6 +6680,11 @@ var __domReady=function(){
     if($('saveDelSel'))$('saveDelSel').onclick=function(){var idxs=Object.keys(saveSel).filter(function(k){return saveSel[k];}).map(Number).sort(function(a,b){return b-a;});if(!idxs.length){alert('先勾选要删除的');return;}idxs.forEach(function(i){favorites.splice(i,1);});saveSel={};save('zika_favorites',favorites);renderSavePage();};
     if($('cpSearch'))$('cpSearch').addEventListener('input',renderCp);
     if($('cpImportCancel'))$('cpImportCancel').onclick=function(){$('cpImportMask').classList.remove('show');};
+    if($('cpImportFile'))$('cpImportFile').onchange=function(e){
+      var f=e.target.files&&e.target.files[0];if(!f)return;
+      cpReadTextFile(f,function(text){cpImportAuto(text);$('cpImportMask').classList.remove('show');});
+      e.target.value='';
+    };
     if($('cpImportTxt'))$('cpImportTxt').onchange=function(e){var f=e.target.files[0];if(!f)return;var r=new FileReader();r.onload=function(ev){cpImportTxt(ev.target.result);$('cpImportMask').classList.remove('show');};r.readAsText(f);e.target.value='';};
     if($('cpImportJson'))$('cpImportJson').onchange=function(e){var f=e.target.files[0];if(!f)return;var r=new FileReader();r.onload=function(ev){cpImportJson(ev.target.result);$('cpImportMask').classList.remove('show');};r.readAsText(f);e.target.value='';};
     if($('cpEditCancel'))$('cpEditCancel').onclick=function(){$('cpEditMask').classList.remove('show');};
