@@ -499,7 +499,7 @@ input,textarea,select,[contenteditable="true"]{-webkit-user-select:text;user-sel
 .wx-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
 .wx-left{min-width:0;flex:1}
 .wx-title{font-size:12px;line-height:1.4;letter-spacing:.2px;word-break:break-word}
-.wx-sub{font-size:11px;margin-top:4px}
+.wx-sub{font-size:10px;line-height:1.45;margin-top:2px;opacity:.92}
 .wx-amount{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:17px;font-weight:600;line-height:1.2;margin-top:3px;letter-spacing:.3px}
 .wx-amount small{font-size:13px;font-weight:500;margin-right:1px}
 .wx-coin{width:27px;height:27px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex:0 0 auto;box-shadow:inset 0 0 0 1px rgba(255,255,255,.45),0 2px 4px rgba(120,60,10,.18)}
@@ -662,25 +662,27 @@ input,textarea,select,[contenteditable]{-webkit-user-select:text;-moz-user-selec
 .miniAdd{font-size:12px;color:#111;cursor:pointer;display:inline-block;margin-top:4px;border:1px solid #111;border-radius:4px;padding:1px 6px}
 #callFull{position:absolute;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;z-index:60;padding:16px}
 #callFull.show{display:flex}
-#callCard{width:76%;max-width:278px;height:auto;min-height:318px;max-height:78%;background:#fff;border-radius:22px;border:1px solid #111;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:22px 0 18px;box-sizing:border-box;background-size:cover;background-position:center;overflow:hidden}
+#callCard{width:76%;max-width:278px;height:auto;min-height:318px;max-height:78%;background:#fff;border-radius:24px;border:0;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:22px 0 18px;box-sizing:border-box;background-size:cover;background-position:center;overflow:hidden;box-shadow:0 18px 48px rgba(0,0,0,.22)}
 #callCard .cDim{position:absolute;inset:0;background:rgba(255,255,255,0);z-index:0}
 #callCard .cInner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;color:#111;width:100%;flex:1;padding:0 18px;box-sizing:border-box}
-#callCard img{width:78px;height:78px;border-radius:50%;object-fit:cover;background:#eee;margin-top:6px;margin-bottom:12px;border:1px solid #111}
+#callCard img{width:78px;height:78px;border-radius:50%;object-fit:cover;background:#eee;margin-top:6px;margin-bottom:12px;border:0;box-shadow:0 4px 14px rgba(0,0,0,.12)}
 #callCard .cName{font-size:17px;font-weight:600;margin-bottom:4px;color:#111}
 #callCard .cState{font-size:12px;color:#777;margin-bottom:4px}
 #callCard .cTime{font-size:14px;color:#111;margin-bottom:10px;letter-spacing:.5px}
-#callCard .cBtns{display:flex;gap:26px;margin-top:auto;padding-bottom:2px}
-#callCard .cBtn{width:54px;height:54px;border-radius:50%;border:1px solid #111;font-size:12px;cursor:pointer;color:#111;background:#fff}
-#callCard .hang{background:#111;color:#fff;border-color:#111}
-#callCard .accept{background:#fff;color:#111}
-#callMinBtn{position:absolute;top:12px;right:12px;z-index:2;width:32px;height:32px;border-radius:50%;border:1px solid #111;background:#fff;color:#111;font-size:16px;cursor:pointer}
-#callFloat{position:absolute;display:none;align-items:center;gap:5px;background-color:rgba(255,255,255,.97);background-size:cover;background-position:center;color:#111;border-radius:8px;padding:3px 6px;z-index:61;cursor:move;box-shadow:0 3px 10px rgba(0,0,0,.16);left:12px;top:100px;border:1px solid #111;touch-action:none}
+#callCard .cBtns{display:flex;gap:34px;margin-top:auto;padding-bottom:2px;align-items:flex-end}
+#callCard .cAct{display:flex;flex-direction:column;align-items:center;gap:6px}
+#callCard .cBtn{width:60px;height:60px;border-radius:50%;border:0;font-size:19px;cursor:pointer;color:#fff;background:#07c160;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(0,0,0,.16)}
+#callCard .accept{background:#07c160;color:#fff}
+#callCard .hang{background:#fa5151;color:#fff}
+#callCard .cLab{font-size:10px;color:#8a8a8a;letter-spacing:.5px}
+#callMinBtn{position:absolute;top:12px;right:12px;z-index:2;width:32px;height:32px;border-radius:50%;border:0;background:rgba(255,255,255,.82);color:#111;font-size:16px;cursor:pointer;backdrop-filter:blur(8px)}
+#callFloat{position:absolute;display:none;align-items:center;gap:6px;background-color:rgba(255,255,255,.96);background-size:cover;background-position:center;color:#111;border-radius:10px;padding:4px 7px;z-index:61;cursor:move;box-shadow:0 8px 24px rgba(0,0,0,.2);left:12px;top:100px;border:0;touch-action:none}
 #callFloat.show{display:flex}
 #callFloat img{width:18px;height:18px;border-radius:50%;object-fit:cover;background:#eee}
 #callFloat .cfInfo{display:flex;flex-direction:column;line-height:1.1}
 #callFloat .cfName{font-size:10px;color:#111;line-height:1.1}
 #callFloat .cfTime{font-size:9px;color:#666;line-height:1.1}
-#callFloat .cfHang{background:#111;color:#fff;border:none;border-radius:5px;padding:2px 5px;font-size:9px;line-height:12px;cursor:pointer}
+#callFloat .cfHang{background:#fa5151;color:#fff;border:none;border-radius:6px;padding:3px 6px;font-size:9px;line-height:12px;cursor:pointer}
 .cover{height:150px;background-size:cover;background-position:center;background:#fff;border-bottom:1px solid #eee}
 .meRow{display:flex;align-items:flex-end;padding:0 16px;margin-top:-28px;position:relative;z-index:2;justify-content:flex-end;gap:10px}
 .meLeft{flex:1;min-width:0;padding-bottom:6px;text-align:right}
@@ -709,13 +711,13 @@ input,textarea,select,[contenteditable]{-webkit-user-select:text;-moz-user-selec
 .mailItem .mt{font-size:13px;font-weight:600;margin-bottom:2px;color:#111}
 .mailItem .ms{font-size:11px;color:#999;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mailItem .md{font-size:10px;color:#bbb;margin-top:2px}
-.convWrap{background:#fff;border-radius:10px;padding:10px;border:1px solid #e5e5e5}
+.convWrap{background:transparent;border-radius:0;padding:0;border:0}
 .letterCard{background:#fff;border-radius:8px;border:1px solid #111;padding:10px 12px 9px;margin-bottom:9px;position:relative}
 .letterTop{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;min-height:18px}
-.letterTag{font-size:10px;padding:1px 7px;border-radius:4px;background:#111;color:#fff;white-space:nowrap}
-.letterTag.ta{background:#fff;color:#111;border:1px solid #111}
+.letterTag{font-size:9px;padding:0;border-radius:0;background:transparent;color:#b1a18a;white-space:nowrap;letter-spacing:1.2px;border:0}
+.letterTag.ta{background:transparent;color:#b1a18a;border:0}
 .letterActs{display:flex;gap:10px;font-size:11px;color:#111}
-.letterActs span{cursor:pointer;border:1px solid #111;border-radius:4px;padding:0 5px}
+.letterActs span{cursor:pointer;border:0;border-radius:0;padding:0;background:transparent;color:#aaa;font-size:10px;text-decoration:underline;text-underline-offset:3px}
 .letterTo{font-size:13px;font-weight:600;color:#111;margin-bottom:4px}
 .letterGreet{font-size:11px;color:#666;margin-bottom:7px}
 .letterBody{font-size:13px;line-height:1.65;white-space:pre-wrap;word-break:break-word;color:#111}
@@ -725,7 +727,7 @@ input,textarea,select,[contenteditable]{-webkit-user-select:text;-moz-user-selec
 .letterSign .lsName{font-size:12px;color:#111}
 .letterSign .lsTime{font-size:10px;color:#999;margin-top:1px}
 .convActs{display:flex;gap:14px;margin-top:8px;font-size:12px;color:#555;border-top:1px solid #eee;padding-top:9px}
-.convActs span{cursor:pointer;border:1px solid #111;border-radius:6px;padding:2px 8px;color:#111;background:#fff}
+.convActs span{cursor:pointer;border:0;border-radius:0;padding:0;color:#8f877b;background:transparent;font-size:11px;text-decoration:underline;text-underline-offset:3px}
 .goodsGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .goodsCard{background:#fff;border:1px solid #111;border-radius:8px;padding:8px 6px;display:flex;flex-direction:column;gap:4px;text-align:center}
 .goodsName{font-size:12px;font-weight:600;line-height:1.2;color:#111}
@@ -767,14 +769,22 @@ input,textarea,select,[contenteditable]{-webkit-user-select:text;-moz-user-selec
 .switch input:checked + .sl:before{transform:translateX(20px)}
 .nameLine{display:flex;align-items:center;gap:4px;min-width:0}
 .sparkTopBadge{font-size:13px;line-height:1;flex-shrink:0;cursor:pointer;white-space:nowrap;display:none}
-.locCard{border:1px solid #111;border-radius:8px;padding:8px 10px;background:#fff;min-width:160px;max-width:220px;cursor:pointer}
-.locCard .locTitle{font-size:11px;color:#666;margin-bottom:4px;display:flex;align-items:center;gap:4px}
-.locCard .locName{font-size:14px;font-weight:700;color:#111;margin-bottom:4px}
-.locCard .locAddr{font-size:11px;color:#666;line-height:1.4;word-break:break-word}
-.locCard .locMap{height:70px;border-radius:6px;margin-top:6px;background:linear-gradient(135deg,#e8f0e8,#d4e4d4);position:relative;overflow:hidden}
-.locCard .locMap:before{content:"";position:absolute;left:50%;top:50%;width:10px;height:10px;border-radius:50%;background:#e60000;transform:translate(-50%,-50%);box-shadow:0 0 0 4px rgba(230,0,0,.2)}
-.locCard .locMap:after{content:"";position:absolute;left:20%;top:30%;right:20%;bottom:25%;border:1px dashed rgba(0,0,0,.15);border-radius:50%}
-.locCard .locTime{font-size:10px;color:#999;margin-top:4px}
+.locCard{width:158px;max-width:100%;background:#fffdf9;border:0;border-radius:11px;overflow:hidden;cursor:pointer;box-shadow:0 5px 15px rgba(64,52,36,.10)}
+.locCard .locMap{height:54px;position:relative;overflow:hidden;background:linear-gradient(135deg,#edf3ea 0%,#dfe9db 50%,#cfddc9 100%)}
+.locCard .locMap:before{content:"";position:absolute;inset:0;background:
+  linear-gradient(90deg,transparent 0 22%,rgba(255,255,255,.7) 22% 23%,transparent 23% 100%),
+  linear-gradient(0deg,transparent 0 58%,rgba(255,255,255,.65) 58% 59%,transparent 59% 100%),
+  repeating-linear-gradient(115deg,rgba(255,255,255,.28) 0 2px,transparent 2px 22px);
+  opacity:.9}
+.locCard .locMap:after{content:"";position:absolute;left:12%;top:14%;width:26%;height:42%;border:1px solid rgba(120,140,110,.25);border-radius:9px;background:rgba(255,255,255,.24)}
+.locCard .locPin{position:absolute;left:50%;top:50%;width:9px;height:9px;border-radius:50%;background:#d95b43;transform:translate(-50%,-50%);box-shadow:0 0 0 4px rgba(255,255,255,.9),0 0 0 6px rgba(217,91,67,.14);z-index:2}
+.locCard .locPin:after{content:"";position:absolute;left:50%;top:50%;width:34px;height:34px;border:1px solid rgba(217,91,67,.35);border-radius:50%;transform:translate(-50%,-50%)}
+.locCard .locBadge{position:absolute;left:7px;top:6px;z-index:3;font-size:7.4px;letter-spacing:1px;color:#5d7054;background:rgba(255,255,255,.76);border-radius:999px;padding:2px 6px;backdrop-filter:blur(6px)}
+.locCard .locBody{padding:6px 8px 7px}
+.locCard .locTitle{font-size:8px;color:#b09f8a;letter-spacing:1.2px;margin-bottom:2px;display:flex;align-items:center;gap:4px}
+.locCard .locName{font-size:11.2px;font-weight:600;color:#2f2a24;line-height:1.35;word-break:break-word}
+.locCard .locAddr{font-size:8.2px;color:#9c9386;line-height:1.4;margin-top:2px;word-break:break-word}
+.locCard .locTime{font-size:7.2px;color:#c0b5a6;margin-top:4px;letter-spacing:.3px}
 .fineBadge{position:absolute;z-index:120;pointer-events:none;transform-origin:left top;animation:fbDrop .45s cubic-bezier(.2,1.4,.4,1) both,fbWobble 1.2s ease-in-out .45s infinite alternate;transition:opacity .35s}
 .fineBadge.fade{opacity:0}
 .fineBadge .fbPaper{background:#fffbe6;border:1px solid #d4a017;border-radius:3px;padding:3px 5px;box-shadow:1px 2px 5px rgba(0,0,0,.22);font-size:9px;line-height:1.2;color:#8a5a00;font-weight:700;white-space:nowrap;transform:rotate(-12deg);position:relative}
@@ -835,7 +845,40 @@ input,textarea,select,[contenteditable]{-webkit-user-select:text;-moz-user-selec
 .shape-wave .dnBg{-webkit-mask:radial-gradient(circle 12px at 12px 0,transparent 11px,#000 12px) 0 0/24px 100%,radial-gradient(circle 12px at 12px 100%,transparent 11px,#000 12px) 0 100%/24px 100%;mask:radial-gradient(circle 12px at 12px 0,transparent 11px,#000 12px) 0 0/24px 100%,radial-gradient(circle 12px at 12px 100%,transparent 11px,#000 12px) 0 100%/24px 100%}
 .shape-tear .dnBg{-webkit-mask:linear-gradient(#000 0 0) padding-box,radial-gradient(circle 5px at 5px 0,transparent 4px,#000 5px) 0 0/10px 100%;mask:linear-gradient(#000 0 0) padding-box,radial-gradient(circle 5px at 5px 0,transparent 4px,#000 5px) 0 0/10px 100%}
 .shape-tilt{transform:rotate(-1.5deg)}
-.diaryEmpty{color:#999;font-size:12px;padding:20px;text-align:center}
+.diaryEmpty{color:#999;font-size:12px;padding:20px;text-align:center;line-height:2}
+/* ===== 整页日记本（无独立卡片） ===== */
+#diaryPage{background:#fffdf8}
+.diaryPgTop{background:rgba(255,253,248,.92);border-bottom:1px solid #efe6d8;backdrop-filter:blur(10px)}
+#diaryBgDel{flex:0 0 auto;width:auto;background:none!important;color:#b3a18c!important;font-size:10px!important;padding:2px 0!important;letter-spacing:1px}
+.noteColorRow{display:flex;align-items:center;gap:7px;flex-wrap:wrap;justify-content:flex-end;flex:1}
+.noteColorRow .nc{width:24px;height:24px;border-radius:3px;border:1px solid rgba(90,70,45,.12);padding:0;cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.noteColorRow .nc.on{outline:2px solid #2f2a24;outline-offset:2px}
+#diaryBody{padding:4px 20px 40px;background:transparent}
+#diaryComposer{position:relative;box-sizing:border-box;width:100%;margin:14px 0 0;padding:0 4px 16px 46px;border-bottom:1px solid #efe5d6}
+#diaryComposer:before{content:"";position:absolute;left:34px;top:0;bottom:0;width:1px;background:rgba(190,120,100,.18)}
+#diaryComposer .dcHead{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:8px}
+#diaryComposer .dcHead span:first-child{font-family:Georgia,'Songti SC',serif;font-size:12px;letter-spacing:2px;color:#8c7a66;white-space:nowrap}
+#diaryComposerDate{font-size:9px;letter-spacing:1px;color:#c3b4a1;white-space:nowrap;flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis}
+#diaryQuickText{width:100%;min-height:76px;border:0!important;outline:none;resize:vertical;background:transparent;color:#3a322a;font-family:Georgia,'Songti SC',serif;font-size:14px;line-height:28px;padding:0;letter-spacing:.5px}
+#diaryQuickText::placeholder{color:#c9bbaa}
+#diaryComposer .dcFoot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:8px}
+#diaryComposer .dcHint{font-size:9px;color:#c3b4a1;letter-spacing:.5px}
+#diaryQuickSave{border:0;background:#cbbba7;color:#3f352a;border-radius:999px;padding:6px 16px;font-size:11px;letter-spacing:1px;font-family:inherit;cursor:pointer;box-shadow:0 2px 6px rgba(80,60,35,.08)}
+.diaryEntry{position:relative;padding:16px 2px 22px 46px;border-bottom:1px solid #f1e8da}
+.diaryEntry:before{content:"";position:absolute;left:34px;top:0;bottom:0;width:1px;background:rgba(190,120,100,.14)}
+.diaryEntry .deHead{display:flex;align-items:baseline;gap:7px;margin-bottom:7px}
+.diaryEntry .deWho{font-family:Georgia,'Songti SC',serif;font-size:12px;letter-spacing:1px;color:#6e5b49}
+.diaryEntry .deTime{font-size:9px;color:#c3b4a1;letter-spacing:.4px}
+.diaryEntry .deDel{margin-left:auto;border:0;background:none;color:#cbbcab;font-size:9px;cursor:pointer;padding:0}
+.diaryEntry .deTitle{font-family:Georgia,'Songti SC',serif;font-size:15px;line-height:1.5;color:#332c25;margin:0 0 5px;letter-spacing:.5px;word-break:break-word}
+.diaryEntry .deText{font-size:13.5px;line-height:28px;color:#40382f;white-space:pre-wrap;word-break:break-word;letter-spacing:.3px}
+.diaryEntry.ta .deText{color:#4a4036}
+.diaryEntry .deMood{display:inline-block;margin-top:8px;font-size:10px;color:#9b8873;border:0;background:#f5efe4;border-radius:999px;padding:2px 8px}
+.diaryEntry .deNotes{margin-top:18px;padding:0;border:0;display:flex;flex-direction:column;gap:11px}
+.diaryEntry .deNote{position:relative;max-width:88%;margin:0 0 0 4px;padding:9px 11px 8px;background:#fff8e3;color:#6a5948;font-size:11.5px;line-height:1.75;box-shadow:0 3px 10px rgba(92,72,42,.10);transform:rotate(-.6deg);word-break:break-word}
+.diaryEntry .deNote:nth-child(even){margin-left:auto;margin-right:2px;background:#fdf3ef;transform:rotate(.7deg)}
+.diaryEntry .deNote:before{content:"";position:absolute;left:50%;top:-5px;width:36px;height:9px;background:rgba(214,193,158,.48);border-radius:1px;transform:translateX(-50%) rotate(-1.5deg);box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.diaryEntry .deNote .noteBy{display:block;font-size:9px;color:#b3a18c;margin:0 0 3px;letter-spacing:.4px}
 #ddCardWrap{position:relative;margin:10px 0 14px}
 #ddCard{position:relative;min-height:220px;cursor:default}
 #ddEditor{display:none;border-top:1px solid #e5e5e5;background:#fff;padding:12px 14px;margin:0 -14px -14px}
@@ -1065,6 +1108,52 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
 .mailItem.B2{border:1px solid #111;border-bottom:1px dashed #111;border-radius:2px;background:#fff;padding:9px 12px}
 .mailItem.B3{background:#fff;border:1px solid #111;border-radius:4px;display:flex;gap:10px;padding:10px 12px;align-items:flex-start}
 .mailItem.B3 .mDate{writing-mode:vertical-rl;font-size:9px;letter-spacing:2px;color:#aaa;line-height:1}
+/* B 横线信纸 */
+.mailItem.B{position:relative;background:#fffefa;border:0;border-radius:2px;padding:13px 14px 11px 34px;margin-bottom:10px;box-shadow:0 4px 14px rgba(73,57,35,.07);overflow:hidden;background-image:repeating-linear-gradient(to bottom,transparent 0 22px,rgba(180,160,130,.13) 22px 23px);background-position:0 8px}
+.mailItem.B:before{content:"";position:absolute;left:24px;top:0;bottom:0;width:1px;background:rgba(190,120,100,.18)}
+.mailItem.B .mt{font-family:Georgia,'Songti SC',serif;font-size:14px;font-weight:400;letter-spacing:1px;color:#2e2923;line-height:23px;display:flex;align-items:baseline;gap:7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mailItem.B .mTag{background:transparent!important;border:0!important;padding:0!important;font-size:8px;letter-spacing:1px;color:#b3a18c!important;flex-shrink:0}
+.mailItem.B .ms{font-size:9.5px;color:#9f9485;line-height:23px;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mailItem.B .md{font-size:8.5px;color:#c0b3a1;line-height:23px;margin:0;letter-spacing:.6px}
+/* C 无卡片目录 */
+.mailItem.C{display:flex;gap:12px;padding:3px 2px 10px;margin-bottom:8px;border:0;border-bottom:1px solid #e8dfd2;border-radius:0;background:transparent!important;box-shadow:none}
+.mailItem.C .mDate{width:44px;flex-shrink:0;text-align:left;padding-top:1px}
+.mailItem.C .mDate b{display:block;font-family:Georgia,serif;font-size:18px;line-height:1;color:#8b7560;font-weight:400}
+.mailItem.C .mDate span{display:block;font-size:7.5px;color:#bdae9b;margin-top:4px;letter-spacing:1px}
+.mailItem.C .mBody{flex:1;min-width:0}
+.mailItem.C .mt{font-family:Georgia,'Songti SC',serif;font-size:14px;font-weight:400;letter-spacing:1px;color:#2d2822;display:flex;align-items:baseline;gap:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mailItem.C .mTag{background:transparent!important;border:0!important;padding:0!important;font-size:8px;letter-spacing:1px;color:#b3a18c!important;flex-shrink:0}
+.mailItem.C .ms{font-size:9.5px;color:#9c9182;line-height:1.6;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mailItem.C .md{font-size:8px;color:#c0b3a1;margin-top:6px;letter-spacing:.5px}
+/* D 便笺存根 */
+.mailItem.D{position:relative;background:#fffbef;border:0;border-radius:2px;padding:13px 14px 11px 30px;margin-bottom:10px;box-shadow:0 2px 8px rgba(80,62,38,.06);overflow:hidden}
+.mailItem.D:before{content:"";position:absolute;left:13px;top:0;bottom:0;width:1px;border-left:1px dashed #d8c8b1}
+.mailItem.D:after{content:"";position:absolute;right:9px;top:9px;width:9px;height:9px;border-radius:50%;background:#f0e6d4}
+.mailItem.D .mt{font-family:Georgia,'Songti SC',serif;font-size:14px;font-weight:400;letter-spacing:1px;color:#2d2822;display:flex;align-items:baseline;gap:7px;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mailItem.D .mNo{font-family:Georgia,serif;font-size:7.5px;color:#c1ad96;letter-spacing:1px;flex-shrink:0}
+.mailItem.D .mTag{background:transparent!important;border:0!important;padding:0!important;font-size:8px;letter-spacing:1px;color:#b3a18c!important;flex-shrink:0}
+.mailItem.D .ms{font-size:10px;color:#9d9283;line-height:1.6;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mailItem.D .md{display:flex;justify-content:space-between;font-size:8.5px;color:#c0b3a1;margin-top:9px;letter-spacing:.6px}
+/* B4 信笺纸：无重边框，纸感卡片 */
+
+/* A 信封折角：暂用版 */
+.mailItem.A{position:relative;background:#fffdf8;border:0;border-radius:8px;padding:14px 16px 11px;margin-bottom:9px;box-shadow:0 5px 18px rgba(73,57,35,.09);overflow:hidden}
+.mailItem.A:before{content:"";position:absolute;right:0;top:0;width:0;height:0;border-style:solid;border-width:0 23px 23px 0;border-color:transparent #f2e8d6 transparent transparent}
+.mailItem.A .mAStamp{position:absolute;right:34px;top:12px;width:27px;height:27px;border:1px solid rgba(166,91,79,.55);border-radius:50%;background:rgba(255,255,255,.58);display:flex;align-items:center;justify-content:center;font-size:6.5px;color:#a65b4f;letter-spacing:.4px;transform:rotate(-8deg);pointer-events:none}
+.mailItem.A .mAStamp:before{content:"";position:absolute;inset:2px;border:1px solid rgba(166,91,79,.28);border-radius:50%}
+.mailItem.A .mt{font-family:Georgia,'Songti SC',serif;font-size:14px;font-weight:400;letter-spacing:1px;color:#2d2822;display:flex;align-items:center;gap:7px;line-height:1.45;padding-right:60px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mailItem.A .mAUnread{width:5px;height:5px;border-radius:50%;background:#b08a63;flex-shrink:0}
+.mailItem.A .mTag{background:transparent!important;border:0!important;padding:0!important;font-size:8px;letter-spacing:1px;color:#b3a18c!important;flex-shrink:0}
+.mailItem.A .ms{font-size:10px;color:#9e9384;line-height:1.55;margin-top:7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mailItem.A .md{font-size:8.5px;color:#c0b3a1;margin-top:10px;display:flex;justify-content:space-between;gap:10px;letter-spacing:.6px}
+.mailItem.A .md b{font-weight:400;color:#8f7c65}
+.mailItem.B4{position:relative;background:#fffdf9;border:0;border-radius:4px;padding:12px 14px 11px 16px;margin-bottom:9px;box-shadow:0 3px 14px rgba(84,67,44,.07);overflow:hidden}
+.mailItem.B4:before{content:"";position:absolute;left:0;top:11px;bottom:11px;width:2px;background:#dfd3bf}
+.mailItem.B4.unread:before{background:#b9a27d}
+.mailItem.B4 .mt{font-family:Georgia,'Songti SC',serif;font-size:13.5px;font-weight:400;letter-spacing:.7px;color:#2f2a24;display:flex;align-items:center;gap:7px;line-height:1.4}
+.mailItem.B4 .ms{font-size:10.5px;color:#a39a8c;line-height:1.5;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mailItem.B4 .md{font-size:9px;color:#c2b8a8;margin-top:7px;display:flex;justify-content:space-between;gap:10px;letter-spacing:.6px}
+.mailItem.B4 .mTag{background:transparent!important;border:0!important;padding:0!important;font-size:9px;letter-spacing:1px;color:#b1a18a!important;box-shadow:none!important}
 .mailItem.B3 .mBody{flex:1;min-width:0}
 .mailItem.B1 .mt,.mailItem.B2 .mt,.mailItem.B3 .mt{font-size:12.5px;font-weight:400;letter-spacing:1px;color:#111;display:flex;align-items:center;gap:6px}
 .mailItem .mTag{font-size:9px;letter-spacing:1px;padding:0 4px;border-radius:2px;line-height:14px;flex-shrink:0}
@@ -1084,13 +1173,53 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
 .diaryNote.dnSkinC2 .dnInner{border-bottom:1px dashed #e6e6e6}
 
 /* ==== 展开信件 L1/L2/L3 ==== */
-.letterCard.L1{border:0;border-top:1px solid #111;border-bottom:1px solid #111;border-radius:0;padding:14px 4px 12px;margin-bottom:14px;background:transparent}
-.letterActs span{border:0;padding:0;color:#b0b0b0;font-size:10px}
-.letterCard.L2{border:0;border-top:1px dashed #111;border-radius:0;padding:14px 14px 12px;margin-bottom:14px}
+.letterCard.L1{border:0;border-top:1px solid #e7ded1;border-bottom:1px solid #e7ded1;border-radius:0;padding:14px 4px 12px;margin-bottom:14px;background:transparent}
+.letterActs span{border:0;padding:0;color:#b0b0b0;font-size:10px;text-decoration:underline;text-underline-offset:3px}
+.letterCard.L2{border:0;border-top:1px dashed #e7ded1;border-radius:0;padding:14px 14px 12px;margin-bottom:14px}
 .letterCard.L2 .letterTop{padding-right:46px}
 .letterCard.L2::after{content:'初雪';position:absolute;right:8px;top:8px;width:36px;height:36px;border:1px solid #111;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;letter-spacing:1.5px;color:#111;background:#fff;transform:rotate(-8deg);opacity:.85}
-.letterCard.L3{border:0;border-left:1px solid #111;border-radius:0;padding:12px 4px 12px 14px;margin-bottom:14px;background:transparent}
+.letterCard.L3{border:0;border-left:1px solid #e7ded1;border-radius:0;padding:12px 4px 12px 14px;margin-bottom:14px;background:transparent}
 .letterCard.L3 .letterSideDate{position:absolute;left:-15px;top:14px;writing-mode:vertical-rl;font-size:8.5px;letter-spacing:2px;color:#a8a8a8;line-height:1}
+
+/* ===== 信箱展开：半屏信纸弹层 ===== */
+.pmStamp{width:42px;height:42px;flex:0 0 42px;border:1.5px solid rgba(166,91,79,.72);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#a65b4f;position:relative;transform:rotate(-9deg);background:rgba(255,255,255,.32)}
+.pmStamp:before{content:"";position:absolute;inset:3px;border:1px solid rgba(166,91,79,.38);border-radius:50%}
+.pmStamp .pmTop{font-size:5px;letter-spacing:.8px;line-height:1;opacity:.8}
+.pmStamp b{font-family:"Songti SC","Noto Serif CJK SC",serif;font-size:11px;font-weight:400;letter-spacing:1.2px;line-height:1.3;margin:1px 0}
+.pmStamp .pmBottom{font-size:5px;letter-spacing:1px;line-height:1;opacity:.8}
+.pmStamp.sm{width:34px;height:34px;flex:0 0 34px}
+.pmStamp.sm b{font-size:8px;letter-spacing:1px}
+.pmStamp.sm .pmTop,.pmStamp.sm .pmBottom{font-size:4px;letter-spacing:.5px}
+.mailReader{position:absolute;left:0;right:0;top:53px;bottom:0;z-index:40;display:flex;justify-content:center;align-items:center;padding:14px 14px 18px;background:rgba(43,37,30,.30);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);overflow-y:auto}
+.mrSheet{position:relative;width:100%;max-width:352px;max-height:calc(100% - 4px);overflow-y:auto;background:#fff;border:1px solid #e8ddcf;border-radius:4px;padding:13px 14px 10px;box-shadow:0 18px 52px rgba(45,34,22,.22)}
+.mrSheet:before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,#b47866 0 14%,#dfcfb9 14% 100%);opacity:.55;pointer-events:none}
+.mrTop{display:flex;align-items:center;justify-content:space-between;padding:0 2px;margin-bottom:9px;border-bottom:1px solid #eee5d9;padding-bottom:8px}
+.mrTop .mrTitle{font-size:9px;letter-spacing:2px;color:#a3917a}
+.mrClose{font-size:11px;color:#8e7f6d;cursor:pointer;padding:2px 4px;line-height:1}
+.mrClose:hover{color:#2f2a24}
+.mrFoot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:8px;padding:8px 2px 1px;border-top:1px dashed #e5d9c9}
+.mfMeta{font-size:7.5px;letter-spacing:1.2px;color:#b09e89;line-height:1.7}
+.mfMeta b{display:block;font-size:9px;font-weight:400;letter-spacing:2.2px;color:#6e5c48;margin-bottom:2px}
+.mfStamp{display:flex;align-items:center;gap:5px;flex-shrink:0}
+.cancelMark{width:27px;height:10px;border-top:1px solid rgba(166,91,79,.28);border-bottom:1px solid rgba(166,91,79,.28);transform:rotate(-4deg);position:relative}
+.cancelMark:before{content:"";position:absolute;left:0;right:0;top:4px;border-top:1px solid rgba(166,91,79,.16)}
+
+/* 展开信：四版跟列表卡同步 */
+.letterCard.open-A{background:#fff;border:0;border-radius:3px;padding:17px 16px 13px;box-shadow:0 4px 14px rgba(70,55,35,.07);overflow:hidden}
+.letterCard.open-A .letterTop{padding-right:0}
+.letterCard.open-B{background:#fff;border:0;border-radius:2px;padding:17px 16px 13px 36px;box-shadow:0 3px 12px rgba(70,55,35,.07);background-image:repeating-linear-gradient(to bottom,transparent 0 26px,rgba(180,160,130,.13) 26px 27px);background-position:0 10px}
+.letterCard.open-B:before{content:"";position:absolute;left:24px;top:0;bottom:0;width:1px;background:rgba(190,120,100,.18)}
+.letterCard.open-B .letterTop,.letterCard.open-B .letterTo,.letterCard.open-B .letterGreet,.letterCard.open-B .letterTitle{line-height:26px;margin-bottom:0}
+.letterCard.open-B .letterBody{line-height:26px}
+.letterCard.open-C{background:transparent;border:0;border-bottom:1px solid #e5dacb;border-radius:0;box-shadow:none;padding:8px 2px 12px 45px}
+.letterCard.open-C .letterSideDate{position:absolute;left:2px;top:14px;width:32px;font-family:Georgia,serif;font-size:8px;line-height:1.5;color:#8b7560;letter-spacing:.5px;text-align:left}
+.letterCard.open-C .letterSideDate b{display:block;font-size:18px;font-weight:400;line-height:1;margin-bottom:3px}
+.letterCard.open-D{background:#fff;border:0;border-radius:2px;box-shadow:0 3px 10px rgba(80,62,38,.06);padding:17px 16px 13px 33px}
+.letterCard.open-D:before{content:"";position:absolute;left:16px;top:0;bottom:0;width:1px;border-left:1px dashed #d8c8b1}
+.letterCard.open-D:after{content:"";position:absolute;right:10px;top:10px;width:7px;height:7px;border-radius:50%;background:#efe4d1}
+.letterCard.open-D .letterTop{padding-right:18px}
+.mailReader .convWrap{background:transparent!important}
+.mailReader .convActs{margin-top:10px;padding-top:8px;border-top:1px solid #e8ddd0}
 
 #home .homeTitle,#home .homeDate,#home .homeTop{color:rgba(26,24,21,var(--ink-a,.82))}
 
@@ -1761,23 +1890,17 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
 
   <!-- ========== 日记本 ========== -->
   <div id="diaryPage">
-    <div class="pgTop">
+    <div class="pgTop diaryPgTop">
       <span class="back" id="diaryBack">‹ 返回</span>
       <span id="ttlDiary">日记本</span>
       <span class="diaryTopIcons">
-        <span class="back" id="diaryStkBtn">贴纸</span>
         <span class="back" id="diarySetBtn">设置</span>
-        <span class="back" id="diaryWriteBtn">写日记</span>
       </span>
     </div>
-    <div id="diaryTipsBar">
-      <div id="diaryTipsHead">
-        <span class="dtDot"></span>
-        <span class="dtText" id="diaryTipsLatest">暂无动态</span>
-        <span class="dtArrow">▾</span>
-      </div>
-      <div id="diaryTipsList"></div>
-      <span id="diaryTipsClear">清空动态</span>
+    <div id="diaryComposer">
+      <div class="dcHead"><span>写一页日记</span><span id="diaryComposerDate"></span></div>
+      <textarea id="diaryQuickText" placeholder="今天想记下什么…"></textarea>
+      <div class="dcFoot"><span class="dcHint">写完后点「落笔」，会留在这一页</span><button id="diaryQuickSave">落笔</button></div>
     </div>
     <div class="cpBody" id="diaryBody"></div>
   </div>
@@ -2047,10 +2170,6 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
     <div class="fRow"><span>输入框背景色</span><input id="bInBg" type="color"></div>
     <div class="fRow"><span>输入框边框颜色</span><input id="bInBorder" type="color"></div>
     <div class="fRow"><span>输入框文字颜色</span><input id="bInText" type="color"></div>
-    <div class="fRow"><span>顶栏按钮透明度（0-100）</span><input id="bBtnAlpha" type="range" min="0" max="100"></div>
-    <div class="fRow"><span>顶栏按钮磨砂（0-100）</span><input id="bBtnBlur" type="range" min="0" max="100"></div>
-    <div class="fRow"><span>顶栏按钮边框颜色</span><input id="bBtnBorderColor" type="color"></div>
-    <div class="fRow"><span>顶栏按钮字体颜色</span><input id="bBtnTextColor" type="color"></div>
     <hr style="border:none;border-top:1px solid #eee;margin:12px 0">
     <div class="fRow"><span>“+” 按钮背景色</span><input id="bPlusBg" type="color"></div>
     <div class="fRow"><span>“+” 按钮边框色</span><input id="bPlusBorder" type="color"></div>
@@ -2160,14 +2279,14 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
   <div class="mask" id="redpacketMask"><div class="dialog">
     <h3>发红包</h3>
     <input id="rpAmount" type="number" placeholder="金额（元）" style="margin-bottom:8px">
-    <input id="rpNote" type="text" placeholder="留言（可选）" maxlength="30">
+    <input id="rpNote" type="text" placeholder="留言（可选）">
     <div class="btns"><button class="cancel" id="rpCancel">取消</button><button class="ok" id="rpOk">发红包</button></div>
   </div></div>
 
   <div class="mask" id="transferMask"><div class="dialog">
     <h3>转账</h3>
     <input id="tfAmount" type="number" placeholder="金额（元）" style="margin-bottom:8px">
-    <input id="tfNote" type="text" placeholder="说明（可选）" maxlength="30">
+    <input id="tfNote" type="text" placeholder="说明（可选）">
     <div class="btns"><button class="cancel" id="tfCancel">取消</button><button class="ok" id="tfOk">确认</button></div>
   </div></div>
 
@@ -2277,11 +2396,8 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
     <div class="fRow"><span>背景磨砂（0-100）</span><input id="mailBgBlur" type="range" min="0" max="100"></div>
     <div class="fRow"><span>信件卡片透明度（0-100）</span><input id="mailCardAlpha" type="range" min="0" max="100"></div>
     <div class="fRow"><span>信件卡片磨砂（0-100）</span><input id="mailCardBlur" type="range" min="0" max="100"></div>
-    <div class="fRow"><span>展开信件样式</span>
-      <select id="mailLetterSkin"><option value="L1">L1 素纸信笺（默认）</option><option value="L2">L2 票根信笺</option><option value="L3">L3 竖排抬头</option></select>
-    </div>
-    <div class="fRow"><span>信件列表样式</span>
-      <select id="mailSkin"><option value="B1">B1 竖线信封（默认）</option><option value="B2">B2 便签纸</option><option value="B3">B3 目录式</option></select>
+    <div class="fRow"><span>信件样式（列表 + 展开）</span>
+      <select id="mailSkin"><option value="A">A 信封折角</option><option value="B">B 横线信纸</option><option value="C">C 无卡片目录</option><option value="D">D 便笺存根</option></select>
     </div>
     <div class="fRow"><span>字体设置</span>
       <select id="mailFontMode"><option value="global">跟随全局字体</option><option value="custom">自定义信件字体</option></select>
@@ -2371,14 +2487,6 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
     <div class="btns"><button class="cancel" id="diaryBgDel">删除日记背景</button></div>
     <div class="fRow"><span>页面背景透明度（0-100）</span><input id="diaryBgAlpha" type="range" min="0" max="100"></div>
     <div class="fRow"><span>页面背景磨砂（0-100）</span><input id="diaryBgBlur" type="range" min="0" max="100"></div>
-    <div class="fRow"><span>日记卡片透明度（0-100）</span><input id="diaryCardAlpha" type="range" min="0" max="100"></div>
-    <div class="fRow"><span>日记卡片磨砂（0-100）</span><input id="diaryCardBlur" type="range" min="0" max="100"></div>
-    <div class="fRow"><span>日记卡片纸样</span>
-      <select id="diarySkin"><option value="C2">C2 便签夹（默认）</option><option value="C1">C1 横线本</option></select>
-    </div>
-    <hr style="border:none;border-top:1px solid #eee;margin:12px 0">
-    <div class="fRow"><span>日记动态条透明度（0-100）</span><input id="diaryTipsAlpha" type="range" min="0" max="100"></div>
-    <div class="fRow"><span>日记动态条磨砂（0-100）</span><input id="diaryTipsBlur" type="range" min="0" max="100"></div>
     <hr style="border:none;border-top:1px solid #eee;margin:12px 0">
     <div class="fRow"><span>允许对方主动写日记</span>
       <select id="diaryEnable"><option value="1">开启</option><option value="0">关闭</option></select>
@@ -2387,15 +2495,16 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
     <div class="probRow"><span>对方写日记概率（%）</span><input id="diaryP" type="number" min="0" max="100"></div>
     <div class="probRow"><span>对方每篇日记最少抽字卡张数</span><input id="diaryCardMin" type="number" min="1"></div>
     <div class="probRow"><span>对方每篇日记最多抽字卡张数</span><input id="diaryCardMax" type="number" min="1"></div>
-    <div class="probRow"><span>日记带贴纸概率（%）</span><input id="diaryStkP" type="number" min="0" max="100"></div>
-    <div class="probRow"><span>每篇日记贴纸数量-最少</span><input id="diaryStkMin" type="number" min="0"></div>
-    <div class="probRow"><span>每篇日记贴纸数量-最多</span><input id="diaryStkMax" type="number" min="0"></div>
     <hr style="border:none;border-top:1px solid #eee;margin:12px 0">
     <div class="fRow"><span>允许对方给我日记留言</span>
       <select id="diaryAllowNote"><option value="1">开启</option><option value="0">关闭</option></select>
     </div>
     <div class="probRow"><span>对方给我留言概率（%）</span><input id="diaryNoteP" type="number" min="0" max="100"></div>
     <div class="probRow"><span>对方给我留言间隔（分钟）</span><input id="diaryNoteGap" type="number" min="1"></div>
+    <div class="probRow"><span>每条留言最少抽字卡张数</span><input id="diaryNoteCardMin" type="number" min="1"></div>
+    <div class="probRow"><span>每条留言最多抽字卡张数</span><input id="diaryNoteCardMax" type="number" min="1"></div>
+    <div class="probRow"><span>每篇日记最多留言次数</span><input id="diaryNoteMax" type="number" min="1"></div>
+    <div class="fRow"><span>留言便签纸颜色</span><div class="noteColorRow" id="diaryNoteColors"><button class="nc" type="button" data-color="#fff8e3" style="background:#fff8e3" aria-label="便签颜色"></button><button class="nc" type="button" data-color="#fdf1ee" style="background:#fdf1ee" aria-label="便签颜色"></button><button class="nc" type="button" data-color="#eef4f8" style="background:#eef4f8" aria-label="便签颜色"></button><button class="nc" type="button" data-color="#eff4ea" style="background:#eff4ea" aria-label="便签颜色"></button><button class="nc" type="button" data-color="#f6f4ef" style="background:#f6f4ef" aria-label="便签颜色"></button><button class="nc" type="button" data-color="#f3eff8" style="background:#f3eff8" aria-label="便签颜色"></button></div></div>
     <div class="btns"><button class="cancel" id="diarySetCancel">取消</button><button class="ok" id="diarySetSave">保存</button></div>
   </div></div>
 
@@ -2670,12 +2779,8 @@ var checkCards=load('zika_check_cards',DCHK);
 var checkAskCards=load('zika_check_ask',DCHKASK);
 var stickers=load('zika_stickers',[]);
 var favorites=load('zika_favorites',[]);
-var beauty=load('zika_beauty',{fontFamily:'serif',gfont:14,font:14,pad:6,radius:14,cardW:150,meColor:'#111111',metaColor:'#aaaaaa',taColor:'#ffffff',bgColor:'#f7f7f7',bgImg:'',dim:100,scope:'chat',topAlpha:100,topBlur:0,inAlpha:100,inBlur:0,btnAlpha:100,btnBlur:0,btnBorderColor:'#111111',btnTextColor:'#111111',inBg:'#ffffff',inBorder:'#111111',inText:'#111111',plusBg:'#ffffff',plusBorder:'#111111',plusText:'#111111',sendBg:'#111111',sendBorder:'#111111',sendText:'#ffffff',css:'',typing:'对方正在输入…',callBg:'',callFloatBg:'',callDim:0,fontCss:''});
+var beauty=load('zika_beauty',{fontFamily:'serif',gfont:14,font:14,pad:6,radius:14,cardW:150,meColor:'#111111',metaColor:'#aaaaaa',taColor:'#ffffff',bgColor:'#f7f7f7',bgImg:'',dim:100,scope:'chat',topAlpha:100,topBlur:0,inAlpha:100,inBlur:0,inBg:'#ffffff',inBorder:'#111111',inText:'#111111',plusBg:'#ffffff',plusBorder:'#111111',plusText:'#111111',sendBg:'#111111',sendBorder:'#111111',sendText:'#ffffff',css:'',typing:'对方正在输入…',callBg:'',callFloatBg:'',callDim:0,fontCss:''});
 if(beauty.fontCss==null)beauty.fontCss='';
-if(beauty.btnAlpha==null)beauty.btnAlpha=100;
-if(beauty.btnBlur==null)beauty.btnBlur=0;
-if(beauty.btnBorderColor==null)beauty.btnBorderColor='#111111';
-if(beauty.btnTextColor==null)beauty.btnTextColor='#111111';
 if(beauty.plusBg==null)beauty.plusBg='#ffffff';
 if(beauty.plusBorder==null)beauty.plusBorder='#111111';
 if(beauty.plusText==null)beauty.plusText='#111111';
@@ -2763,11 +2868,11 @@ var mailSet=load('zika_mail_set',{
   enable:1, allowReply:1, replyP:100, replyMin:1, replyMax:60,
   allowProactive:1, writeP:30, proactiveMin:60, proactiveMax:180,
   maxCatchUp:3, cardMin:1, cardMax:2, imgMin:0, imgMax:2,
-  bg:'', bgScope:'detail', bgAlpha:100, bgBlur:0, cardAlpha:100, cardBlur:0, skin:'B1', letterSkin:'L1',
+  bg:'', bgScope:'detail', bgAlpha:100, bgBlur:0, cardAlpha:100, cardBlur:0, skin:'A', letterSkin:'L1',
   fontMode:'global', font:13
 });
 if(mailSet.enable==null)mailSet.enable=1;
-if(!mailSet.skin)mailSet.skin='B1';
+if(!mailSet.skin||['B1','B2','B3','B4'].indexOf(mailSet.skin)>=0)mailSet.skin='A';
 if(!mailSet.letterSkin)mailSet.letterSkin='L1';
 if(mailSet.allowReply==null)mailSet.allowReply=1;
 if(mailSet.replyP==null)mailSet.replyP=100;
@@ -2818,7 +2923,8 @@ var DIARY_SHAPES=[{id:'rect',name:'圆角矩形'},{id:'round',name:'大圆角'},
 var DIARY_BUILTIN_STICKERS=[{id:'t1',type:'tape',name:'胶带横',w:80,h:18,rot:-3,color:'rgba(210,190,150,.65)'},{id:'t2',type:'tape',name:'胶带斜',w:80,h:18,rot:8,color:'rgba(180,200,220,.65)'},{id:'t3',type:'tape',name:'胶带粉',w:80,h:18,rot:-6,color:'rgba(230,190,200,.65)'},{id:'e1',type:'text',name:'花',txt:'🌸'},{id:'e2',type:'text',name:'星',txt:'⭐'},{id:'e3',type:'text',name:'心',txt:'❤️'},{id:'e4',type:'text',name:'月',txt:'🌙'},{id:'e5',type:'text',name:'叶',txt:'🍀'},{id:'e6',type:'text',name:'笑',txt:'😊'},{id:'e7',type:'text',name:'哭',txt:'😢'},{id:'e8',type:'text',name:'云',txt:'☁️'},{id:'e9',type:'text',name:'熊',txt:'🧸'},{id:'e10',type:'text',name:'杯',txt:'☕'}];
 var diaryList=load('zika_diary',[]);
 if(!Array.isArray(diaryList))diaryList=[];
-var diarySet=load('zika_diary_set',{skin:'C2',enable:1,gap:120,p:30,cardMin:1,cardMax:2,stkP:30,stkMin:0,stkMax:2,allowNote:1,noteP:30,noteGap:60,bgImg:'',pageBgAlpha:100,pageBgBlur:0,cardAlpha:100,cardBlur:0,tipsAlpha:72,tipsBlur:60});
+var diarySet=load('zika_diary_set',{noteColor:'#fff8e3',skin:'C2',enable:1,gap:120,p:30,cardMin:1,cardMax:2,stkP:30,stkMin:0,stkMax:2,allowNote:1,noteP:30,noteGap:60,noteCardMin:1,noteCardMax:2,noteMax:3,bgImg:'',pageBgAlpha:100,pageBgBlur:0,cardAlpha:100,cardBlur:0,tipsAlpha:72,tipsBlur:60});
+if(!diarySet.noteColor)diarySet.noteColor='#fff8e3';
 if(diarySet.enable==null)diarySet.enable=1;
 if(!diarySet.skin)diarySet.skin='C2';
 if(diarySet.gap==null)diarySet.gap=120;
@@ -2831,6 +2937,9 @@ if(diarySet.stkMax==null)diarySet.stkMax=2;
 if(diarySet.allowNote==null)diarySet.allowNote=1;
 if(diarySet.noteP==null)diarySet.noteP=30;
 if(diarySet.noteGap==null)diarySet.noteGap=60;
+if(diarySet.noteCardMin==null)diarySet.noteCardMin=1;
+if(diarySet.noteCardMax==null)diarySet.noteCardMax=2;
+if(diarySet.noteMax==null)diarySet.noteMax=3;
 if(diarySet.bgImg==null)diarySet.bgImg='';
 if(diarySet.pageBgAlpha==null)diarySet.pageBgAlpha=100;
 if(diarySet.pageBgBlur==null)diarySet.pageBgBlur=0;
@@ -2960,17 +3069,6 @@ function applyBeauty(){
   if(tb){tb.style.background=scopeAll?('rgba(255,255,255,'+(beauty.topAlpha/100)+')'):'#fff';tb.style.backdropFilter=scopeAll?('blur('+(beauty.topBlur/10)+'px)'):'none';}
   var ia=$('inputArea');
   if(ia){ia.style.background=scopeAll?('rgba(255,255,255,'+(beauty.inAlpha/100)+')'):'#fff';ia.style.backdropFilter=scopeAll?('blur('+(beauty.inBlur/10)+'px)'):'none';}
-  var btnAlpha=(beauty.btnAlpha==null?100:beauty.btnAlpha)/100;
-  var btnBlur=(beauty.btnBlur==null?0:beauty.btnBlur)/10;
-  var btnBorder=beauty.btnBorderColor||'#111111';
-  var btnText=beauty.btnTextColor||'#111111';
-  document.querySelectorAll('#topbar .topBtn').forEach(function(b){
-    b.style.backgroundColor='rgba(255,255,255,'+btnAlpha+')';
-    b.style.backdropFilter='blur('+btnBlur+'px)';
-    b.style.webkitBackdropFilter='blur('+btnBlur+'px)';
-    b.style.borderColor=btnBorder;
-    b.style.color=btnText;
-  });
   var mi=$('msgInput');
   if(mi){mi.style.borderColor=beauty.inBorder||'#111111';mi.style.backgroundColor=beauty.inBg||'#ffffff';mi.style.color=beauty.inText||'#111111';}
   var plus=$('plusBtn');
@@ -3590,6 +3688,12 @@ function clearAllNoteCache(){
     keys.forEach(function(k){LS.removeItem(k);});
   }catch(e){}
 }
+/* 小纸条只在每天零点换一次：平时只读当天缓存，跨天再随机抽一次 */
+var __noteDay=dayKey();
+setInterval(function(){
+  var d=dayKey();
+  if(d!==__noteDay){__noteDay=d;clearAllNoteCache();try{if(typeof renderWidgets==='function')renderWidgets();}catch(e){}}
+},30000);
 
 function hexToRgba(hex,a){
   hex=String(hex||'#ffffff').replace('#','');
@@ -3904,21 +4008,27 @@ function wrapRow(m,inner,idx){
 function buildAny(m,idx){
   if(m.type==='loc'){
     var lc=document.createElement('div');lc.className='locCard';
-    lc.innerHTML='<div class="locTitle">📍 实时位置</div><div class="locName">'+esc(m.locName||'')+'</div><div class="locAddr">'+esc(m.locAddr||'')+'</div><div class="locMap"></div><div class="locTime">'+fmtTime(m.time)+'</div>';
+    lc.innerHTML='<div class="locMap"><span class="locBadge">实时位置</span><span class="locPin"></span></div>'+
+      '<div class="locBody"><div class="locTitle">'+esc(profile.taName||'TA')+' 发来一个位置</div>'+
+      '<div class="locName">'+esc(m.locName||'')+'</div>'+
+      (m.locAddr?'<div class="locAddr">'+esc(m.locAddr||'')+'</div>':'')+
+      '<div class="locTime">'+fmtTime(m.time)+' · 点击查看</div></div>';
     lc.onclick=function(){alert('位置：'+(m.locName||'')+'\n'+(m.locAddr||''));};
     return wrapRow(m,lc,idx);
   }
   if(m.type==='checkAskCard'){
     var ckActs=[];
-    if(!m.replied)ckActs.push({text:'回复',fill:true,fn:function(){openCheckReply(m);}});
-    var cac=zCard({skin:zSkinSurvey(),kind:'查岗',state:(m.replied?'已回复':'等你回应'),
-      title:(profile.taName||'TA')+' 在找你',note:(m.note||'在干嘛？'),acts:ckActs,
-      foot:{left:(m.replied?'已回复 · 已送达':'点回复，告诉他你在干嘛')}});
+    if(!m.replied)ckActs.push({text:'作答',fill:true,fn:function(){openCheckReply(m);}});
+    var cac=zCard({skin:zSkinSurvey(),kind:'问卷 · 查岗',state:'1 题',
+      title:(profile.taName||'TA')+' 发来一份查岗',
+      list:[{title:(m.note||'在干嘛？'),kind:'text',options:[]}],acts:ckActs,
+      foot:{left:(m.replied?'已作答 · 已送达':'请作答后交卷')}});
     return wrapRow(m,cac,idx);
   }
   if(m.type==='checkReplyCard'){
-    var crc=zCard({skin:zSkinSurvey(),kind:'回应',state:'已送达',title:'我的查岗回复',
-      note:(m.text||''),foot:{left:(m.askNote?'原查岗：'+m.askNote:'已送达')}});
+    var crc=zCard({skin:zSkinSurvey(),kind:'问卷 · 查岗',state:'已完成',
+      title:'我的查岗作答',qa:[{q:(m.askNote||'在干嘛？'),a:(m.text||'')}],
+      foot:{left:'已交卷'}});
     return wrapRow(m,crc,idx);
   }
 /* ===== 卡片皮肤生成器 ===== */
@@ -4037,20 +4147,20 @@ function zCard(cfg){
     var footTxt,hintTxt,titleTxt2,subTxt2;
     if(isRp){
       wcEl.className='wxcard wx-red'+(m.opened?' wx-gray':'');
-      titleTxt2=m.note||'恭喜发财，大吉大利';
-      subTxt2='';
+      titleTxt2=mineW?'我给对方发红包':'对方给我发红包';
+      subTxt2=(m.note||'');
       footTxt=(m.opened?(mineW?'对方已领取':'已领取'):(mineW?'等待对方领取':'点击领取'));
       hintTxt='红包';
     }else if(m.type==='transfer'){
       wcEl.className='wxcard wx-orange'+(m.opened?' wx-gray':'');
-      titleTxt2=mineW?('转账给 '+(profile.taName||'TA')):((profile.taName||'TA')+' 转账给你');
-      subTxt2='';
+      titleTxt2=mineW?'我给对方转账':'对方给我转账';
+      subTxt2=(m.note||'').indexOf('已收款')===0?'':(m.note||'');
       footTxt=(m.opened?(mineW?'对方已收款':'已收款'):(mineW?'等待对方收款':'请收款'));
       hintTxt='转账';
     }
     var inner='<div class="wx-rect"><div class="wx-head"><div class="wx-left">'+
       '<div class="wx-title">'+esc(titleTxt2)+'</div>';
-    if(m.amount&&(m.opened||m.type!=='redpacket')){
+    if(m.amount){
       inner+='<div class="wx-amount"><small>¥</small>'+fmt(m.amount)+'</div>';
     }
     if(subTxt2)inner+='<div class="wx-sub">'+esc(subTxt2)+'</div>';
@@ -4063,15 +4173,17 @@ function zCard(cfg){
   if(m.type&&m.type!=='text'){
     var mine=m.from==='me';
     if(m.type==='check'){
-      var cc=zCard({skin:zSkinSurvey(),kind:'查岗',state:(mine?'等待对方回应':'对方正在回应'),
-        title:'你查了 '+(mine?esc(profile.taName||'TA'):'我')+' 的岗',note:(m.note||'在干嘛？'),
-        foot:{left:'查岗'}});
+      var cc=zCard({skin:zSkinSurvey(),kind:'问卷 · 查岗',state:'1 题',
+        title:'你给 '+(mine?(profile.taName||'TA'):'自己')+' 出了一份查岗',
+        list:[{title:(m.note||'在干嘛？'),kind:'text',options:[]}],
+        foot:{left:(mine?'等待作答':'已发出')}});
       return wrapRow(m,cc,idx);
     }
     if(m.type==='checkReply'){
-      var cr=zCard({skin:zSkinSurvey(),kind:'回应',state:'查岗回复',
-        title:(mine?'我回应了查岗':esc(profile.taName||'TA')+' 回应了查岗'),note:(m.text||''),
-        foot:{left:'已送达'}});
+      var cr=zCard({skin:zSkinSurvey(),kind:'问卷 · 查岗',state:'已完成',
+        title:(mine?'我的查岗作答':(profile.taName||'TA')+' 的查岗作答'),
+        qa:[{q:(m.askNote||'查岗'),a:(m.text||'')}],
+        foot:{left:'已交卷'}});
       return wrapRow(m,cr,idx);
     }
   }
@@ -4108,6 +4220,7 @@ function reply(){
   if(maxS<minS)maxS=minS;
   for(var k=0;k<n;k++){(function(i){var delay=(minS+Math.random()*(maxS-minS))*1000+i*600;setTimeout(function(){typingOn=false;var p=replyCards[Math.floor(Math.random()*replyCards.length)];var q=pickQuoteForTa();var mm=pushMsg({from:'ta',type:'text',text:getCardText(p),quote:q});setTimeout(function(){taRecall(mm);},2500+Math.random()*2000);},delay);})(k);}
 }
+
 function send(){
   var i=$('msgInput'),v=i.value.trim();if(!v)return;
   var q=quoteMsg?msgPreview(quoteMsg):null;quoteMsg=null;renderQuoteBar();
@@ -4140,9 +4253,10 @@ function taFavsMy(){if(!Number(probs.active))return;var mine=chatHistory.filter(
 function openCard(m){
   if(!m||m.opened||m.from==='me')return;
   m.opened=true;save('zika_chat_history',chatHistory);
-  if(m.type==='redpacket'){pushMsg({from:'me',type:'redpacket',amount:m.amount,note:'已领取',opened:true});pushMsg({type:'sys',text:'你领取了红包 ¥'+fmt(m.amount)});}
-  else if(m.type==='transfer'){pushMsg({from:'me',type:'transfer',amount:m.amount,note:'已收款',opened:true});pushMsg({type:'sys',text:'你已收款 ¥'+fmt(m.amount)});}
-  else{pushMsg({from:'me',type:'gift',giftName:m.giftName||'礼物',amount:m.amount,opened:true});pushMsg({type:'sys',text:'你收下了「'+esc(m.giftName||'礼物')+'」'});}
+  if(m.type==='redpacket'){m.note=(m.note&&m.note!=='已领取')?m.note:'恭喜发财，大吉大利';pushMsg({type:'sys',text:'你领取了红包 ¥'+fmt(m.amount)});}
+  else if(m.type==='transfer'){pushMsg({type:'sys',text:'你已收款 ¥'+fmt(m.amount)});}
+  else{pushMsg({type:'sys',text:'你收下了「'+(m.giftName||'礼物')+'」'});}
+  renderChat(true);
 }
 function openCheckReply(m){
   pendingCheckAsk=m;
@@ -4167,9 +4281,11 @@ function taActiveSend(){
   if(!chosen){acc+=probs.gf;if(roll<acc)chosen='gift';}
   if(!chosen)return;
   var amt=Math.floor(Math.random()*200)+1;
-  if(chosen==='redpacket')pushMsg({from:'ta',type:'redpacket',amount:amt,note:'给你发个红包',opened:false});
-  else if(chosen==='transfer')pushMsg({from:'ta',type:'transfer',amount:amt,note:'一点心意',opened:false});
-  else pushMsg({from:'ta',type:'gift',giftName:'小礼物',amount:amt,opened:false});
+  var notePool=getReplyCardsArr();
+  var note=notePool.length?fillNames(getCardText(notePool[Math.floor(Math.random()*notePool.length)])):'';
+  if(chosen==='redpacket')pushMsg({from:'ta',type:'redpacket',amount:amt,note:note||'给你发个红包',opened:false});
+  else if(chosen==='transfer')pushMsg({from:'ta',type:'transfer',amount:amt,note:note||'一点心意',opened:false});
+  else pushMsg({from:'ta',type:'gift',giftName:'小礼物',amount:amt,note:note,opened:false});
 }
 function taPat(){if(!Number(probs.active))return;if(Math.random()*100>=probs.pat)return;var tl=patTaCards.length?patTaCards:normalizeArr(DP_TA);pushMsg({type:'sys',text:fillNames(getCardText(tl[Math.floor(Math.random()*tl.length)]))});}
 function taSticker(){if(!Number(probs.active))return;if(!stickers.length)return;if(Math.random()*100>=probs.stk)return;pushMsg({from:'ta',type:'sticker',url:stickers[Math.floor(Math.random()*stickers.length)]});}
@@ -4347,7 +4463,7 @@ function applyDiaryPageBg(){
       else page.style.backdropFilter='';
     }else{
       page.style.backgroundImage='none';
-      page.style.background='#f7f7f7';
+      page.style.background=(page.id==='diaryPage'?'#fffdf8':'#f7f7f7');
       page.style.backdropFilter='';
     }
   });
@@ -4408,10 +4524,14 @@ function renderNotes(card,dn,editable){
   var layer=document.createElement('div');layer.className='dnNoteLayer';
   dn.notes.forEach(function(n,ni){
     var el=document.createElement('div');el.className='dnNoteCard';el.dataset.ni=String(ni);
-    el.style.left=(n.x||30)+'%';el.style.top=(n.y||30)+'%';
+    var noteTxt=n.text||'';var noteLen=noteTxt.replace(/\s/g,'').length;
+    var noteW=Math.max(74,Math.min(218,30+noteLen*11));
+    el.style.left=(n.x||30)+'%';el.style.top=(n.y||30)+'%';el.style.width=noteW+'px';
     el.style.background=noteStyleBg(n.noteStyle,n.bgColor);el.style.color=n.textColor||'#222222';
-    var tx=document.createElement('div');tx.className='dnNoteText';tx.textContent=n.text||'';
-    var meta=document.createElement('div');meta.className='dnNoteMeta';meta.textContent='—— '+(n.by==='me'?(profile.meName||'我'):(profile.taName||'TA'))+' 留言 · '+diaryShortTime(n.time);
+    var tx=document.createElement('div');tx.className='dnNoteText';tx.textContent=noteTxt;
+    var noteName=n.by==='me'?(profile.meName||'我'):(profile.taName||'TA');
+    var meta=document.createElement('div');meta.className='dnNoteMeta';
+    meta.textContent='—— '+noteName+((noteLen>10)?(' · '+diaryShortTime(n.time)):'');
     el.appendChild(tx);el.appendChild(meta);
     if(editable){var dbtn=document.createElement('span');dbtn.className='dnNoteDel';dbtn.textContent='×';dbtn.onclick=function(e){e.stopPropagation();if(!confirm('删除这张留言小卡片？'))return;dn.notes.splice(ni,1);if(dn===diaryList[ddCurIndex]){ddCurNotes=dn.notes.slice();}save('zika_diary',diaryList);if(dn===diaryList[ddCurIndex])refreshDetailCard();};el.appendChild(dbtn);}
     layer.appendChild(el);
@@ -4440,19 +4560,48 @@ function renderOneDiaryCard(card,dn,opts){
 function renderDiary(){
   var body=$('diaryBody');if(!body)return;
   applyDiaryPageBg();
+  var cd=$('diaryComposerDate');
+  if(cd){var now=new Date();cd.textContent=(now.getMonth()+1)+'月'+now.getDate()+'日';}
   body.innerHTML='';
-  if(!diaryList.length){body.innerHTML='<div class="diaryEmpty">还没有日记，点右上角「写日记」写一篇吧</div>';return;}
+  if(!diaryList.length){
+    body.innerHTML='<div class="diaryEmpty">这一页还是空的。<br>在上面写第一行吧。</div>';
+    return;
+  }
   diaryList.slice().reverse().forEach(function(dn){
     var realIdx=diaryList.indexOf(dn);
-    var card=document.createElement('div');card.className='diaryNote';card.dataset.idx=String(realIdx);
-    renderOneDiaryCard(card,dn,{editMode:false});
-    var btns=document.createElement('div');btns.className='dnTopBtns';
-    var delBtn=document.createElement('span');delBtn.className='tbtn';delBtn.textContent='删除';
-    delBtn.onclick=function(e){e.stopPropagation();if(!confirm('删除这篇日记？'))return;diaryList.splice(realIdx,1);save('zika_diary',diaryList);renderDiary();addDiaryEvent('我删除了一篇日记');};
-    btns.appendChild(delBtn);card.appendChild(btns);
-    card.onclick=function(e){if(e.target.closest('.dnTopBtns'))return;if(e.target.closest('.dnStk')||e.target.closest('.dnNoteCard'))return;openDiaryDetail(realIdx);};
-    body.appendChild(card);
+    var entry=document.createElement('div');entry.className='diaryEntry '+(dn.from==='ta'?'ta':'me');
+    entry.dataset.idx=String(realIdx);
+    var head=document.createElement('div');head.className='deHead';
+    var who=document.createElement('span');who.className='deWho';who.textContent=dn.from==='me'?(profile.meName||'我'):(profile.taName||'TA');
+    var tm=document.createElement('span');tm.className='deTime';tm.textContent=diaryTime(dn.time);
+    var del=document.createElement('button');del.className='deDel';del.textContent='删除';
+    del.onclick=function(e){e.stopPropagation();if(!confirm('删除这一页？'))return;diaryList.splice(realIdx,1);save('zika_diary',diaryList);renderDiary();addDiaryEvent('我删除了一页日记');};
+    head.appendChild(who);head.appendChild(tm);head.appendChild(del);entry.appendChild(head);
+    if(dn.title){var tt=document.createElement('div');tt.className='deTitle';tt.textContent=dn.title;entry.appendChild(tt);}
+    var tx=document.createElement('div');tx.className='deText';tx.textContent=dn.text||'';entry.appendChild(tx);
+    if(dn.mood){var md=document.createElement('span');md.className='deMood';md.textContent=dn.mood;entry.appendChild(md);}
+    if(dn.notes&&dn.notes.length){
+      var notes=document.createElement('div');notes.className='deNotes';
+      dn.notes.forEach(function(n){
+        var line=document.createElement('div');line.className='deNote';line.style.background=diarySet.noteColor||'#fff8e3';
+        var by=document.createElement('span');by.className='noteBy';by.textContent=(n.by==='me'?(profile.meName||'我'):(profile.taName||'TA'))+' 留言：';
+        var bodytxt=document.createElement('span');bodytxt.textContent=n.text||'';
+        line.appendChild(by);line.appendChild(bodytxt);notes.appendChild(line);
+      });
+      entry.appendChild(notes);
+    }
+    body.appendChild(entry);
   });
+}
+function saveQuickDiary(){
+  var ta=$('diaryQuickText');if(!ta)return;
+  var text=ta.value.trim();
+  if(!text){try{ta.focus();}catch(e){}return;}
+  diaryList.push({from:'me',title:'',text:text,mood:'',style:'blank',shape:'rect',tapeCount:0,bgImg:'',fontColor:'#222222',fontSize:14,stickers:[],notes:[],time:Date.now()});
+  save('zika_diary',diaryList);
+  ta.value='';
+  renderDiary();addDiaryEvent('我在日记本写了一页');
+  try{$('diaryBody').scrollTop=0;}catch(e){}
 }
 function openDiaryDetail(idx){
   var dn=diaryList[idx];if(!dn)return;
@@ -4550,9 +4699,21 @@ function taWriteDiary(){
 function taWriteNoteToMyDiary(){
   if(!diarySet.allowNote)return;if(!replyCards.length)return;
   if(Math.random()*100>=diarySet.noteP)return;
-  var mine=diaryList.filter(function(dn){return dn.from==='me';});if(!mine.length)return;
+  var cap=Math.max(1,Math.round(diarySet.noteMax||3));
+  var mine=diaryList.filter(function(dn){
+    if(dn.from!=='me')return false;
+    var taCount=(dn.notes||[]).filter(function(n){return n.by==='ta';}).length;
+    return taCount<cap;
+  });
+  if(!mine.length)return;
   var dn=mine[Math.floor(Math.random()*mine.length)];if(!dn.notes)dn.notes=[];
-  var txt=getCardText(replyCards[Math.floor(Math.random()*replyCards.length)]);if(!txt)return;
+  var minC=Math.max(1,Math.round(diarySet.noteCardMin||1)),maxC=Math.max(minC,Math.round(diarySet.noteCardMax||minC));
+  var cardN=randInt(minC,maxC);var parts=[];
+  for(var ck=0;ck<cardN;ck++){
+    var pick=replyCards[Math.floor(Math.random()*replyCards.length)];
+    var t=fillNames(getCardText(pick));if(t)parts.push(t);
+  }
+  var txt=joinCardsWithPunc(parts).trim();if(!txt)return;
   var stylePool=['blank','grid','line','dot','kraft'];var bgPool=['#fff9c4','#dbe9ff','#ffe0e6','#e2f5d8','#ffffff'];
   dn.notes.push({id:'n'+Date.now(),text:txt,by:'ta',time:Date.now(),noteStyle:stylePool[Math.floor(Math.random()*stylePool.length)],bgColor:bgPool[Math.floor(Math.random()*bgPool.length)],textColor:'#222222',x:15+Math.floor(Math.random()*50),y:15+Math.floor(Math.random()*50)});
   save('zika_diary',diaryList);addDiaryEvent((profile.taName||'TA')+' 在你的日记留了一张小卡片');
@@ -4595,7 +4756,7 @@ function showCardsPage(){var h=$('home');if(h)h.classList.add('hide');var p=$('c
 function setActiveTab(){document.querySelectorAll('#cardsPage .cpTab').forEach(function(x){x.classList.remove('active');});var t=document.querySelector('#cardsPage .cpTab[data-tab="'+cpTab+'"]');if(t)t.classList.add('active');}
 function arrOf(tab){if(tab==='reply')return replyCards;if(tab==='status')return statusPool;if(tab==='patMe')return patMeCards;if(tab==='patTa')return patTaCards;if(tab==='check')return checkCards;if(tab==='checkAsk')return checkAskCards;return [];}
 function setArr(tab,arr){if(tab==='reply')replyCards=arr;else if(tab==='status')statusPool=arr;else if(tab==='patMe')patMeCards=arr;else if(tab==='patTa')patTaCards=arr;else if(tab==='checkAsk')checkAskCards=arr;else checkCards=arr;}
-function saveArr(tab){if(tab==='reply')save('zika_reply_cards',replyCards);else if(tab==='status')save('zika_status_pool',statusPool);else if(tab==='patMe')save('zika_pat_me',patMeCards);else if(tab==='patTa')save('zika_pat_ta',patTaCards);else if(tab==='checkAsk')save('zika_check_ask',checkAskCards);else save('zika_check_cards',checkCards);clearAllNoteCache();}
+function saveArr(tab){if(tab==='reply')save('zika_reply_cards',replyCards);else if(tab==='status')save('zika_status_pool',statusPool);else if(tab==='patMe')save('zika_pat_me',patMeCards);else if(tab==='patTa')save('zika_pat_ta',patTaCards);else if(tab==='checkAsk')save('zika_check_ask',checkAskCards);else save('zika_check_cards',checkCards);}
 function getCardGroup(item){return typeof item==='string'?'未分组':((item&&item.group)||'未分组');}
 function normalizeArr(arr){return arr.map(function(x){return typeof x==='string'?{text:x,group:'未分组'}:{text:x.text||'',group:x.group||'未分组'};});}
 function normalizeAllCards(){
@@ -4817,8 +4978,14 @@ function callTimerStart(){call.sec=0;var ct=$('cTime');if(ct)ct.textContent='00:
 function callTimerStop(){clearInterval(call.timer);call.timer=null;}
 function renderCallBtns(){
   var box=$('cBtns');if(!box)return;box.innerHTML='';
-  if(call.dir==='in'&&!call.connected){var a=document.createElement('button');a.className='cBtn accept';a.textContent='接听';a.onclick=function(){connectCall();};var r=document.createElement('button');r.className='cBtn hang';r.textContent='拒接';r.onclick=function(){endCall('已拒接');};box.appendChild(a);box.appendChild(r);}
-  else{var h=document.createElement('button');h.className='cBtn hang';h.textContent='挂断';h.onclick=function(){endCall('已挂断');};box.appendChild(h);}
+  function add(icon,label,cls,fn){
+    var wrap=document.createElement('div');wrap.className='cAct';
+    var b=document.createElement('button');b.className='cBtn '+cls;b.textContent=icon;b.setAttribute('aria-label',label);b.onclick=fn;
+    var lb=document.createElement('div');lb.className='cLab';lb.textContent=label;
+    wrap.appendChild(b);wrap.appendChild(lb);box.appendChild(wrap);
+  }
+  if(call.dir==='in'&&!call.connected){add('✕','拒接','hang',function(){endCall('已拒接');});add('✓','接听','accept',function(){connectCall();});}
+  else{add('✕','挂断','hang',function(){endCall('已挂断');});}
 }
 function showCallFull(){var fl=$('callFloat');if(fl)fl.classList.remove('show');var cf=$('callFull');if(cf)cf.classList.add('show');call.isFloat=false;}
 function showCallFloat(){var cf=$('callFull');if(cf)cf.classList.remove('show');var fl=$('callFloat');if(fl)fl.classList.add('show');call.isFloat=true;}
@@ -5071,7 +5238,8 @@ function taTick(){
 function applyMailCard(){
   var a=(mailSet.cardAlpha==null?100:mailSet.cardAlpha)/100;var blur=(mailSet.cardBlur==null?0:mailSet.cardBlur)/10;
   var f=(mailSet.fontMode==='global')?globalFont():(mailSet.font==null?13:mailSet.font);
-  document.querySelectorAll('#mailPage .mailItem,#mailPage .convWrap').forEach(function(el){el.style.background='rgba(255,255,255,'+a+')';el.style.backdropFilter='blur('+blur+'px)';el.style.webkitBackdropFilter='blur('+blur+'px)';});
+  document.querySelectorAll('#mailPage .mailItem:not(.C):not(.B4),#mailPage .convWrap').forEach(function(el){el.style.backgroundColor='rgba(255,255,255,'+a+')';el.style.backdropFilter='blur('+blur+'px)';el.style.webkitBackdropFilter='blur('+blur+'px)';});
+  document.querySelectorAll('#mailPage .mailItem.B4').forEach(function(el){el.style.opacity=String(Math.max(.4,a));});
   document.querySelectorAll('#mailPage .letterCard').forEach(function(el){el.style.background='rgba(255,255,255,'+a+')';el.style.backdropFilter='blur('+blur+'px)';el.style.webkitBackdropFilter='blur('+blur+'px)';});
   document.querySelectorAll('#mailPage .letterBody').forEach(function(el){el.style.fontSize=f+'px';});
   document.querySelectorAll('#mailPage .letterTo').forEach(function(el){el.style.fontSize=(f+1)+'px';});
@@ -5121,8 +5289,10 @@ function ensureConvNextAt(){
   });
   if(changed)save('zika_mail_convs',convs);
 }
+function closeMailReader(){var r=document.getElementById('mailReader');if(r)r.remove();}
 function renderMail(){
   var list=$('mailList');if(!list)return;
+  closeMailReader();
   openConvIdx=-1;
   applyMailPageBg();
   ensureConvNextAt();
@@ -5132,7 +5302,7 @@ function renderMail(){
   if(!convs.length){list.innerHTML='<div style="color:#999;font-size:12px;padding:20px;text-align:center">信箱还是空的</div>';return;}
   convs.slice().reverse().forEach(function(cv){
     var realIdx=convs.indexOf(cv);var last=cv.msgs[cv.msgs.length-1]||{text:'',time:Date.now(),from:'me'};
-    var skin=mailSet.skin||'B1';
+    var skin=mailSet.skin||'A';
     var d=document.createElement('div');d.className='mailItem '+skin+(cv.unread?' unread':'');
     var hasMe=cv.msgs.some(function(m){return m.from==='me';});
     var replied=(hasMe&&last.from==='ta');
@@ -5143,8 +5313,19 @@ function renderMail(){
     if(hasMe){cv.msgs.forEach(function(m){if(m.from==='me')lastMe=m;});}
     var showMsg=(hasMe&&lastMe)?lastMe:last;
     var tm=fmtTime(showMsg.time),pre=esc((showMsg.text||'').slice(0,40));
+    var msgDate=new Date(showMsg.time),dayStr=('0'+msgDate.getDate()).slice(-2),monthStr=('0'+(msgDate.getMonth()+1)).slice(-2),yearStr=msgDate.getFullYear();
     var tagHtml='<span class="mTag '+(tag==='寄出'?'out':'in')+'">'+tag+'</span>'+extra;
-    if(skin==='B2'){
+    if(skin==='B'){
+      d.innerHTML='<div class="mt">'+esc(cv.title||'（无标题）')+' '+tagHtml+'</div><div class="ms">'+esc(pre)+'</div><div class="md">'+esc(from)+' · '+tm+'</div>';
+    }else if(skin==='C'){
+      d.innerHTML='<div class="mDate"><b>'+dayStr+'</b><span>'+monthStr+' / '+yearStr+'</span></div><div class="mBody"><div class="mt">'+esc(cv.title||'（无标题）')+' '+tagHtml+'</div><div class="ms">'+esc(pre)+'</div><div class="md">'+esc(from)+'</div></div>';
+    }else if(skin==='D'){
+      d.innerHTML='<div class="mt"><span class="mNo">NO. '+(realIdx+1<100?('0'+(realIdx+1)).slice(-2):(realIdx+1))+'</span>'+esc(cv.title||'（无标题）')+' '+tagHtml+'</div><div class="ms">'+esc(pre)+'</div><div class="md"><span>'+esc(from)+'</span><span>'+tm+'</span></div>';
+    }else if(skin==='A'){
+      d.innerHTML='<div class="mAStamp">初雪</div><div class="mt">'+(cv.unread?'<span class="mAUnread"></span>':'')+esc(cv.title||'（无标题）')+' '+tagHtml+'</div><div class="ms">'+esc(pre)+'</div><div class="md"><b>'+esc(from)+'</b><span>'+tm+'</span></div>';
+    }else if(skin==='B4'){
+      d.innerHTML='<div class="mt">'+esc(cv.title||'（无标题）')+' '+tagHtml+'</div><div class="ms">'+esc(pre)+'</div><div class="md"><span>'+esc(from)+'</span><span>'+tm+'</span></div>';
+    }else if(skin==='B2'){
       d.innerHTML='<div class="mt">'+esc(cv.title||'（无标题）')+' '+tagHtml+'</div><div class="mLine"></div><div class="ms">'+esc(pre)+'</div><div class="md">'+esc(from)+' · '+tm+'</div>';
     }else if(skin==='B3'){
       d.innerHTML='<div class="mDate">'+tm.replace(/\s.*/,'')+'</div><div class="mBody"><div class="mt">'+esc(cv.title||'（无标题）')+' '+tagHtml+'</div><div class="ms">'+esc(from)+' · '+esc(pre)+'</div></div>';
@@ -5157,8 +5338,9 @@ function renderMail(){
   applyMailCard();
 }
 function makeLetterCard(cv,mi,m){
-  var card=document.createElement('div');card.className='letterCard '+((mailSet&&mailSet.letterSkin)||'L1');
-  if(((mailSet&&mailSet.letterSkin)||'L1')==='L3'){var sd=document.createElement('div');sd.className='letterSideDate';sd.textContent=fmtTime(m.time).replace(/ /,'·');card.appendChild(sd);}
+  var openSkin=(mailSet&&['A','B','C','D'].indexOf(mailSet.skin)>=0)?mailSet.skin:'A';
+  var card=document.createElement('div');card.className='letterCard L1 open-'+openSkin;
+  if(openSkin==='C'){var sd=document.createElement('div');sd.className='letterSideDate';var dd=new Date(m.time);sd.innerHTML='<b>'+('0'+dd.getDate()).slice(-2)+'</b>'+('0'+(dd.getMonth()+1)).slice(-2)+' / '+dd.getFullYear();card.appendChild(sd);}
   var top=document.createElement('div');top.className='letterTop';
   var tag=document.createElement('div');tag.className='letterTag '+(m.from==='me'?'me':'ta');tag.textContent=tagText(m,mi);
   var lacts=document.createElement('div');lacts.className='letterActs';
@@ -5179,12 +5361,19 @@ function openConv(idx){
   openConvIdx=idx;
   if(!Array.isArray(cv.msgs))cv.msgs=[];
   cv.unread=false;save('zika_mail_convs',convs);
-  var list=$('mailList');list.innerHTML='';
-  applyMailPageBg();
+  var list=$('mailList');if(!list)return;
+  closeMailReader();
+  var reader=document.createElement('div');reader.id='mailReader';reader.className='mailReader';
+  reader.onclick=function(e){if(e.target===reader)closeMailReader();};
+  var sheet=document.createElement('div');sheet.className='mrSheet';
+  var top=document.createElement('div');top.className='mrTop';
+  var label=document.createElement('span');label.className='mrTitle';label.textContent='初雪信笺 · CHUXUELI';
+  var close=document.createElement('span');close.className='mrClose';close.textContent='收起 ×';close.onclick=closeMailReader;
+  top.appendChild(label);top.appendChild(close);sheet.appendChild(top);
   var box=document.createElement('div');box.className='convWrap';
   cv.msgs.forEach(function(m,mi){box.appendChild(makeLetterCard(cv,mi,m));});
   var acts=document.createElement('div');acts.className='convActs';
-  var back=document.createElement('span');back.textContent='‹ 返回列表';back.onclick=function(){renderMail();};
+  var back=document.createElement('span');back.textContent='‹ 收起';back.onclick=closeMailReader;
   var reply=document.createElement('span');reply.textContent='回信';
   reply.onclick=function(){
     var v=prompt('回信正文：');if(v===null)return;v=v.trim();if(!v)return;
@@ -5195,10 +5384,21 @@ function openConv(idx){
     save('zika_mail_convs',convs);
     openConv(idx);
   };
-  var del=document.createElement('span');del.className='delM';del.textContent='删除整封';del.onclick=function(){if(!confirm('删除这封信及全部往来？'))return;convs.splice(idx,1);save('zika_mail_convs',convs);renderMail();};
-  acts.appendChild(back);acts.appendChild(reply);acts.appendChild(del);box.appendChild(acts);list.appendChild(box);applyMailCard();
+  var del=document.createElement('span');del.className='delM';del.textContent='删除整封';del.onclick=function(){if(!confirm('删除这封信及全部往来？'))return;convs.splice(idx,1);save('zika_mail_convs',convs);closeMailReader();renderMail();};
+  acts.appendChild(back);acts.appendChild(reply);acts.appendChild(del);box.appendChild(acts);
+  var foot=document.createElement('div');foot.className='mrFoot';
+  foot.innerHTML='<div class="mfMeta"><b>初雪里</b>CHUXUELI · LETTER PAPER</div><div class="mfStamp"><span class="cancelMark"></span><div class="pmStamp sm"><span class="pmTop">CHUXUELI</span><b>初雪</b><span class="pmBottom">2026</span></div></div>';
+  sheet.appendChild(box);sheet.appendChild(foot);reader.appendChild(sheet);$('mailPage').appendChild(reader);
+  applyMailReaderText();
 }
-
+function applyMailReaderText(){
+  var f=(mailSet.fontMode==='global')?globalFont():(mailSet.font==null?13:mailSet.font);
+  document.querySelectorAll('#mailReader .letterBody').forEach(function(el){el.style.fontSize=f+'px';});
+  document.querySelectorAll('#mailReader .letterTo').forEach(function(el){el.style.fontSize=(f+1)+'px';});
+  document.querySelectorAll('#mailReader .letterGreet').forEach(function(el){el.style.fontSize=Math.max(10,f-1)+'px';});
+  document.querySelectorAll('#mailReader .letterSign .lsName').forEach(function(el){el.style.fontSize=f+'px';});
+  document.querySelectorAll('#mailReader .letterSign .lsTime').forEach(function(el){el.style.fontSize=Math.max(9,f-2)+'px';});
+}
 function settleMailReply(){
   if(!parseInt(mailSet.enable))return 0;
   if(!parseInt(mailSet.allowReply))return 0;
@@ -6069,8 +6269,6 @@ function bindBeauty(){
     $('bMeColor').value=beauty.meColor;$('bMetaColor').value=beauty.metaColor;$('bTaColor').value=beauty.taColor;$('bBgColor').value=beauty.bgColor;
     $('bDim').value=beauty.dim;$('bScope').value=beauty.scope;$('bTopAlpha').value=beauty.topAlpha;$('bTopBlur').value=beauty.topBlur;
     $('bInAlpha').value=beauty.inAlpha;$('bInBlur').value=beauty.inBlur;$('bCallDim').value=beauty.callDim;
-    $('bBtnAlpha').value=(beauty.btnAlpha==null?100:beauty.btnAlpha);$('bBtnBlur').value=(beauty.btnBlur==null?0:beauty.btnBlur);
-    $('bBtnBorderColor').value=beauty.btnBorderColor||'#111111';$('bBtnTextColor').value=beauty.btnTextColor||'#111111';
     $('bPlusBg').value=beauty.plusBg||'#ffffff';$('bPlusBorder').value=beauty.plusBorder||'#111111';$('bPlusText').value=beauty.plusText||'#111111';
     $('bSendBg').value=beauty.sendBg||'#111111';$('bSendBorder').value=beauty.sendBorder||'#111111';$('bSendText').value=beauty.sendText||'#ffffff';
     $('bInBg').value=beauty.inBg||'#ffffff';$('bInBorder').value=beauty.inBorder||'#111111';$('bInText').value=beauty.inText||'#111111';
@@ -6097,7 +6295,6 @@ function bindBeauty(){
     beauty.gfont=num('bGFont',14);beauty.font=num('bFont',14);beauty.pad=num('bPad',6);beauty.radius=num('bRadius',14);beauty.cardW=num('bCardW',150);
     if($('bMeColor'))beauty.meColor=$('bMeColor').value;if($('bMetaColor'))beauty.metaColor=$('bMetaColor').value;if($('bTaColor'))beauty.taColor=$('bTaColor').value;if($('bBgColor'))beauty.bgColor=$('bBgColor').value;
     beauty.dim=num('bDim',100);if($('bScope'))beauty.scope=$('bScope').value;beauty.topAlpha=num('bTopAlpha',100);beauty.topBlur=num('bTopBlur',0);beauty.inAlpha=num('bInAlpha',100);beauty.inBlur=num('bInBlur',0);beauty.callDim=num('bCallDim',0);
-    beauty.btnAlpha=num('bBtnAlpha',100);beauty.btnBlur=num('bBtnBlur',0);if($('bBtnBorderColor'))beauty.btnBorderColor=$('bBtnBorderColor').value;if($('bBtnTextColor'))beauty.btnTextColor=$('bBtnTextColor').value;
     if($('bPlusBg'))beauty.plusBg=$('bPlusBg').value;if($('bPlusBorder'))beauty.plusBorder=$('bPlusBorder').value;if($('bPlusText'))beauty.plusText=$('bPlusText').value;
     if($('bSendBg'))beauty.sendBg=$('bSendBg').value;if($('bSendBorder'))beauty.sendBorder=$('bSendBorder').value;if($('bSendText'))beauty.sendText=$('bSendText').value;
     if($('bInBg'))beauty.inBg=$('bInBg').value;if($('bInBorder'))beauty.inBorder=$('bInBorder').value;if($('bInText'))beauty.inText=$('bInText').value;
@@ -6106,7 +6303,7 @@ function bindBeauty(){
     if($('bSurveySkin'))beauty.surveySkin=$('bSurveySkin').value;
     if($('bFontFamily'))beauty.fontFamily=$('bFontFamily').value;if($('bTitleFont'))beauty.titleFont=$('bTitleFont').value;
     save('zika_beauty',beauty);applyBeauty();try{renderChat();}catch(e){}}
-  ['bGFont','bFont','bPad','bRadius','bCardW','bMeColor','bMetaColor','bTaColor','bBgColor','bDim','bScope','bTopAlpha','bTopBlur','bInAlpha','bInBlur','bCallDim','bTyping','bBtnAlpha','bBtnBlur','bBtnBorderColor','bBtnTextColor','bPlusBg','bPlusBorder','bPlusText','bSendBg','bSendBorder','bSendText','bInBg','bInBorder','bInText','bGiftSkin','bSurveySkin','bFontFamily','bTitleFont'].forEach(function(id){if($(id)){$(id).addEventListener('change',readBeauty);$(id).addEventListener('input',readBeauty);}});
+  ['bGFont','bFont','bPad','bRadius','bCardW','bMeColor','bMetaColor','bTaColor','bBgColor','bDim','bScope','bTopAlpha','bTopBlur','bInAlpha','bInBlur','bCallDim','bTyping','bPlusBg','bPlusBorder','bPlusText','bSendBg','bSendBorder','bSendText','bInBg','bInBorder','bInText','bGiftSkin','bSurveySkin','bFontFamily','bTitleFont'].forEach(function(id){if($(id)){$(id).addEventListener('change',readBeauty);$(id).addEventListener('input',readBeauty);}});
   if($('bBgFile'))$('bBgFile').onchange=function(e){var f=e.target.files[0];if(!f)return;readBgImage(f,function(u){beauty.bgImg=u;save('zika_beauty',beauty);applyBeauty();});e.target.value='';};
   if($('bBgDel'))$('bBgDel').onclick=function(){beauty.bgImg='';save('zika_beauty',beauty);applyBeauty();};
   if($('bCallBg'))$('bCallBg').onchange=function(e){var f=e.target.files[0];if(!f)return;readBgImage(f,function(u){beauty.callBg=u;save('zika_beauty',beauty);applyBeauty();});e.target.value='';};
@@ -6118,7 +6315,7 @@ function bindBeauty(){
   if($('bCssApply'))$('bCssApply').onclick=function(){beauty.css=$('bCss').value;save('zika_beauty',beauty);applyBeauty();};
   if($('bCssClear'))$('bCssClear').onclick=function(){$('bCss').value='';beauty.css='';save('zika_beauty',beauty);applyBeauty();};
   if($('beautySave'))$('beautySave').onclick=function(){readBeauty();$('beautyMask').classList.remove('show');};
-  if($('beautyReset'))$('beautyReset').onclick=function(){beauty={fontFamily:'serif',gfont:14,font:14,pad:6,radius:14,cardW:150,meColor:'#111111',metaColor:'#aaaaaa',taColor:'#ffffff',bgColor:'#f7f7f7',bgImg:'',dim:100,scope:'chat',topAlpha:100,topBlur:0,inAlpha:100,inBlur:0,btnAlpha:100,btnBlur:0,btnBorderColor:'#111111',btnTextColor:'#111111',inBg:'#ffffff',inBorder:'#111111',inText:'#111111',plusBg:'#ffffff',plusBorder:'#111111',plusText:'#111111',sendBg:'#111111',sendBorder:'#111111',sendText:'#ffffff',css:'',typing:'对方正在输入…',callBg:'',callFloatBg:'',callDim:0,fontCss:''};save('zika_beauty',beauty);$('beautyMask').classList.remove('show');applyBeauty();};
+  if($('beautyReset'))$('beautyReset').onclick=function(){beauty={fontFamily:'serif',gfont:14,font:14,pad:6,radius:14,cardW:150,meColor:'#111111',metaColor:'#aaaaaa',taColor:'#ffffff',bgColor:'#f7f7f7',bgImg:'',dim:100,scope:'chat',topAlpha:100,topBlur:0,inAlpha:100,inBlur:0,inBg:'#ffffff',inBorder:'#111111',inText:'#111111',plusBg:'#ffffff',plusBorder:'#111111',plusText:'#111111',sendBg:'#111111',sendBorder:'#111111',sendText:'#ffffff',css:'',typing:'对方正在输入…',callBg:'',callFloatBg:'',callDim:0,fontCss:''};save('zika_beauty',beauty);$('beautyMask').classList.remove('show');applyBeauty();};
   if($('beautyClose'))$('beautyClose').onclick=function(){$('beautyMask').classList.remove('show');};
   if($('cardsClose'))$('cardsClose').onclick=function(){
     if($('pActiveOn'))probs.active=$('pActiveOn').checked?1:0;
@@ -6667,7 +6864,7 @@ var __domReady=function(){
     if($('cardsBack'))$('cardsBack').onclick=function(){$('cardsPage').classList.remove('show');$('home').classList.remove('hide');};
     if($('saveBack'))$('saveBack').onclick=function(){$('savePage').classList.remove('show');$('home').classList.remove('hide');};
     if($('momentsBack'))$('momentsBack').onclick=function(){$('momentsPage').classList.remove('show');$('home').classList.remove('hide');closeShotViewer();};
-    if($('mailBack'))$('mailBack').onclick=function(){$('mailPage').classList.remove('show');$('home').classList.remove('hide');};
+    if($('mailBack'))$('mailBack').onclick=function(){closeMailReader();$('mailPage').classList.remove('show');$('home').classList.remove('hide');};
     if($('shopBack'))$('shopBack').onclick=function(){$('shopPage').classList.remove('show');if(window.__shopFromChat){window.__shopFromChat=false;$('home').classList.add('hide');}else{$('home').classList.remove('hide');}};
     if($('profileBack'))$('profileBack').onclick=function(){$('profilePage').classList.remove('show');$('home').classList.remove('hide');};
     if($('screenBack'))$('screenBack').onclick=function(){$('screenPage').classList.remove('show');$('home').classList.remove('hide');};
@@ -6760,6 +6957,7 @@ var __domReady=function(){
       $('mailBgBlur').value=mailSet.bgBlur;$('mailCardAlpha').value=mailSet.cardAlpha;
       $('mailCardBlur').value=mailSet.cardBlur;$('mailFontMode').value=mailSet.fontMode;
       $('mailFont').value=mailSet.font;
+      if($('mailSkin'))$('mailSkin').value=mailSet.skin||'A';
       $('mailSetMask').classList.add('show');
     };
     if($('mailSetCancel'))$('mailSetCancel').onclick=function(){$('mailSetMask').classList.remove('show');};
@@ -6784,7 +6982,7 @@ var __domReady=function(){
       mailSet.bgAlpha=Math.max(0,Math.min(100,n('mailBgAlpha',100)));
       mailSet.bgBlur=Math.max(0,Math.min(100,n('mailBgBlur',0)));
       mailSet.cardAlpha=Math.max(0,Math.min(100,n('mailCardAlpha',100)));
-      mailSet.cardBlur=Math.max(0,Math.min(100,n('mailCardBlur',0)));if($('mailSkin'))mailSet.skin=$('mailSkin').value||'B1';if($('mailLetterSkin'))mailSet.letterSkin=$('mailLetterSkin').value||'L1';
+      mailSet.cardBlur=Math.max(0,Math.min(100,n('mailCardBlur',0)));if($('mailSkin'))mailSet.skin=$('mailSkin').value||'A';
       mailSet.fontMode=$('mailFontMode').value;
       mailSet.font=Math.max(11,Math.min(20,Math.round(n('mailFont',13))));
       save('zika_mail_set',mailSet);
@@ -6817,10 +7015,10 @@ var __domReady=function(){
     if($('taAvatarTop'))$('taAvatarTop').onclick=function(){var nn=prompt('TA 的名字',profile.taName);if(nn===null)return;nn=nn.trim();if(nn){profile.taName=nn;save('zika_profile',profile);renderTopbar();renderChat();}};
     if($('drawerRedpacket'))$('drawerRedpacket').onclick=function(){closeDrawer();$('rpAmount').value='';$('rpNote').value='';$('redpacketMask').classList.add('show');};
     if($('rpCancel'))$('rpCancel').onclick=function(){$('redpacketMask').classList.remove('show');};
-    if($('rpOk'))$('rpOk').onclick=function(){var a=parseFloat($('rpAmount').value);if(!isFinite(a)||a<=0){alert('请输入有效金额');return;}var n=$('rpNote').value.trim();$('redpacketMask').classList.remove('show');pushMsg({from:'me',type:'redpacket',amount:a,note:n,opened:false});setTimeout(function(){pushMsg({from:'ta',type:'redpacket',amount:a,note:n,opened:true});pushMsg({type:'sys',text:profile.taName+' 领取了红包 ¥'+fmt(a)});},700);};
+    if($('rpOk'))$('rpOk').onclick=function(){var a=parseFloat($('rpAmount').value);if(!isFinite(a)||a<=0){alert('请输入有效金额');return;}var n=$('rpNote').value.trim();$('redpacketMask').classList.remove('show');var card=pushMsg({from:'me',type:'redpacket',amount:a,note:n,opened:false});setTimeout(function(){card.opened=true;save('zika_chat_history',chatHistory);pushMsg({type:'sys',text:profile.taName+' 领取了红包 ¥'+fmt(a)});renderChat(true);},700);};
     if($('drawerTransfer'))$('drawerTransfer').onclick=function(){closeDrawer();$('tfAmount').value='';$('tfNote').value='';$('transferMask').classList.add('show');};
     if($('tfCancel'))$('tfCancel').onclick=function(){$('transferMask').classList.remove('show');};
-    if($('tfOk'))$('tfOk').onclick=function(){var a=parseFloat($('tfAmount').value);if(!isFinite(a)||a<=0){alert('请输入有效金额');return;}var n=$('tfNote').value.trim();$('transferMask').classList.remove('show');pushMsg({from:'me',type:'transfer',amount:a,note:n,opened:false});setTimeout(function(){pushMsg({from:'ta',type:'transfer',amount:a,note:n,opened:true});pushMsg({type:'sys',text:profile.taName+' 已收款 ¥'+fmt(a)});},700);};
+    if($('tfOk'))$('tfOk').onclick=function(){var a=parseFloat($('tfAmount').value);if(!isFinite(a)||a<=0){alert('请输入有效金额');return;}var n=$('tfNote').value.trim();$('transferMask').classList.remove('show');var card=pushMsg({from:'me',type:'transfer',amount:a,note:n,opened:false});setTimeout(function(){card.opened=true;save('zika_chat_history',chatHistory);pushMsg({type:'sys',text:profile.taName+' 已收款 ¥'+fmt(a)});renderChat(true);},700);};
     if($('drawerGift'))$('drawerGift').onclick=function(){closeDrawer();$('gfName').value='';$('gfAmount').value='';$('giftMask').classList.add('show');};
     if($('gfCancel'))$('gfCancel').onclick=function(){$('giftMask').classList.remove('show');};
     if($('gfOk'))$('gfOk').onclick=function(){var n=$('gfName').value.trim(),a=parseFloat($('gfAmount').value);if(!n){alert('请填写礼物名称');return;}if(!isFinite(a)||a<0){alert('请输入有效金额');return;}$('giftMask').classList.remove('show');pushMsg({from:'me',type:'gift',giftName:n,amount:a,opened:false});setTimeout(function(){pushMsg({from:'ta',type:'gift',giftName:n,amount:a,opened:true});pushMsg({type:'sys',text:profile.taName+' 收下了「'+esc(n)+'」'});},700);};
@@ -6853,20 +7051,54 @@ var __domReady=function(){
     if($('diaryTipsHead'))$('diaryTipsHead').onclick=function(){$('diaryTipsBar').classList.toggle('open');};
     if($('diaryTipsClear'))$('diaryTipsClear').onclick=function(e){e.stopPropagation();if(!confirm('清空日记动态？'))return;diaryEvents=[];save('zika_diary_events',diaryEvents);renderDiaryTips();};
     if($('diaryWriteBtn'))$('diaryWriteBtn').onclick=function(){$('dwTitle').value='';$('dwText').value='';$('dwMood').value='';$('diaryWriteMask').classList.add('show');};
-    if($('diarySetBtn'))$('diarySetBtn').onclick=function(){$('diaryEnable').value=String(diarySet.enable);$('diaryGap').value=diarySet.gap;$('diaryP').value=diarySet.p;$('diaryCardMin').value=diarySet.cardMin;$('diaryCardMax').value=diarySet.cardMax;$('diaryStkP').value=diarySet.stkP;$('diaryStkMin').value=diarySet.stkMin;$('diaryStkMax').value=diarySet.stkMax;$('diaryAllowNote').value=String(diarySet.allowNote);$('diaryNoteP').value=diarySet.noteP;$('diaryNoteGap').value=diarySet.noteGap;$('diaryBgAlpha').value=diarySet.pageBgAlpha;$('diaryBgBlur').value=diarySet.pageBgBlur;$('diaryCardAlpha').value=diarySet.cardAlpha;$('diaryCardBlur').value=diarySet.cardBlur;if($('diarySkin'))$('diarySkin').value=diarySet.skin||'C2';$('diaryTipsAlpha').value=diarySet.tipsAlpha;$('diaryTipsBlur').value=diarySet.tipsBlur;$('diarySetMask').classList.add('show');};
+    if($('diaryQuickSave'))$('diaryQuickSave').onclick=saveQuickDiary;
+    if($('diaryQuickText'))$('diaryQuickText').addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key==='Enter'){e.preventDefault();saveQuickDiary();}});
+    if($('diarySetBtn'))$('diarySetBtn').onclick=function(){
+      if($('diaryEnable'))$('diaryEnable').value=String(diarySet.enable);
+      if($('diaryGap'))$('diaryGap').value=diarySet.gap;
+      if($('diaryP'))$('diaryP').value=diarySet.p;
+      if($('diaryCardMin'))$('diaryCardMin').value=diarySet.cardMin;
+      if($('diaryCardMax'))$('diaryCardMax').value=diarySet.cardMax;
+      if($('diaryAllowNote'))$('diaryAllowNote').value=String(diarySet.allowNote);
+      if($('diaryNoteP'))$('diaryNoteP').value=diarySet.noteP;
+      if($('diaryNoteGap'))$('diaryNoteGap').value=diarySet.noteGap;
+      if($('diaryNoteCardMin'))$('diaryNoteCardMin').value=diarySet.noteCardMin;
+      if($('diaryNoteCardMax'))$('diaryNoteCardMax').value=diarySet.noteCardMax;
+      if($('diaryNoteMax'))$('diaryNoteMax').value=diarySet.noteMax;
+      if($('diaryBgAlpha'))$('diaryBgAlpha').value=diarySet.pageBgAlpha;
+      if($('diaryBgBlur'))$('diaryBgBlur').value=diarySet.pageBgBlur;
+      var ncs=$('diaryNoteColors');if(ncs)ncs.querySelectorAll('.nc').forEach(function(b){b.classList.toggle('on',(b.dataset.color||'')===(diarySet.noteColor||'#fff8e3'));});
+      $('diarySetMask').classList.add('show');
+    };
+    if($('diaryNoteColors'))$('diaryNoteColors').querySelectorAll('.nc').forEach(function(b){b.onclick=function(){if($('diaryNoteColors'))$('diaryNoteColors').querySelectorAll('.nc').forEach(function(x){x.classList.toggle('on',x===b);});};});
     if($('diarySetCancel'))$('diarySetCancel').onclick=function(){$('diarySetMask').classList.remove('show');};
     if($('diaryBgFile'))$('diaryBgFile').onchange=function(e){var f=e.target.files[0];if(!f)return;readBgImage(f,function(u){diarySet.bgImg=u;save('zika_diary_set',diarySet);applyDiaryPageBg();renderDiary();});e.target.value='';};
     if($('diaryBgDel'))$('diaryBgDel').onclick=function(){diarySet.bgImg='';save('zika_diary_set',diarySet);applyDiaryPageBg();renderDiary();};
-    ['diaryBgAlpha','diaryBgBlur','diaryCardAlpha','diaryCardBlur','diaryTipsAlpha','diaryTipsBlur'].forEach(function(id){if($(id))$(id).addEventListener('input',function(){
+    ['diaryBgAlpha','diaryBgBlur'].forEach(function(id){if($(id))$(id).addEventListener('input',function(){
       diarySet.pageBgAlpha=parseInt($('diaryBgAlpha').value)||0;
       diarySet.pageBgBlur=parseInt($('diaryBgBlur').value)||0;
-      diarySet.cardAlpha=parseInt($('diaryCardAlpha').value)||0;
-      diarySet.cardBlur=parseInt($('diaryCardBlur').value)||0;
-      diarySet.tipsAlpha=parseInt($('diaryTipsAlpha').value)||0;
-      diarySet.tipsBlur=parseInt($('diaryTipsBlur').value)||0;
-      save('zika_diary_set',diarySet);applyDiaryPageBg();renderDiary();if($('diaryDetailPage').classList.contains('show'))refreshDetailCard();
+      save('zika_diary_set',diarySet);applyDiaryPageBg();renderDiary();
     });});
-    if($('diarySetSave'))$('diarySetSave').onclick=function(){function n(id,def){var el=$(id);if(!el)return def;var v=parseFloat(el.value);return isFinite(v)?v:def;}diarySet.enable=parseInt($('diaryEnable').value)||0;diarySet.gap=Math.max(1,Math.round(n('diaryGap',120)));diarySet.p=Math.max(0,Math.min(100,n('diaryP',30)));diarySet.cardMin=Math.max(1,Math.round(n('diaryCardMin',1)));diarySet.cardMax=Math.max(diarySet.cardMin,Math.round(n('diaryCardMax',2)));diarySet.stkP=Math.max(0,Math.min(100,n('diaryStkP',30)));diarySet.stkMin=Math.max(0,Math.round(n('diaryStkMin',0)));diarySet.stkMax=Math.max(diarySet.stkMin,Math.round(n('diaryStkMax',2)));diarySet.allowNote=parseInt($('diaryAllowNote').value)||0;diarySet.noteP=Math.max(0,Math.min(100,n('diaryNoteP',30)));diarySet.noteGap=Math.max(1,Math.round(n('diaryNoteGap',60)));diarySet.pageBgAlpha=Math.max(0,Math.min(100,n('diaryBgAlpha',100)));diarySet.pageBgBlur=Math.max(0,Math.min(100,n('diaryBgBlur',0)));diarySet.cardAlpha=Math.max(0,Math.min(100,n('diaryCardAlpha',100)));diarySet.cardBlur=Math.max(0,Math.min(100,n('diaryCardBlur',0)));if($('diarySkin'))diarySet.skin=$('diarySkin').value||'C2';diarySet.tipsAlpha=Math.max(0,Math.min(100,n('diaryTipsAlpha',72)));diarySet.tipsBlur=Math.max(0,Math.min(100,n('diaryTipsBlur',60)));save('zika_diary_set',diarySet);$('diarySetMask').classList.remove('show');restartDiaryTick();restartDiaryNoteTick();applyDiaryPageBg();renderDiary();};
+    if($('diarySetSave'))$('diarySetSave').onclick=function(){
+      function n(id,def){var el=$(id);if(!el)return def;var v=parseFloat(el.value);return isFinite(v)?v:def;}
+      diarySet.enable=parseInt($('diaryEnable').value)||0;
+      diarySet.gap=Math.max(1,Math.round(n('diaryGap',120)));
+      diarySet.p=Math.max(0,Math.min(100,n('diaryP',30)));
+      diarySet.cardMin=Math.max(1,Math.round(n('diaryCardMin',1)));
+      diarySet.cardMax=Math.max(diarySet.cardMin,Math.round(n('diaryCardMax',2)));
+      diarySet.allowNote=parseInt($('diaryAllowNote').value)||0;
+      diarySet.noteP=Math.max(0,Math.min(100,n('diaryNoteP',30)));
+      diarySet.noteGap=Math.max(1,Math.round(n('diaryNoteGap',60)));
+      diarySet.noteCardMin=Math.max(1,Math.round(n('diaryNoteCardMin',1)));
+      diarySet.noteCardMax=Math.max(diarySet.noteCardMin,Math.round(n('diaryNoteCardMax',2)));
+      diarySet.noteMax=Math.max(1,Math.round(n('diaryNoteMax',3)));
+      var nco=$('diaryNoteColors')?$('diaryNoteColors').querySelector('.nc.on'):null;if(nco)diarySet.noteColor=nco.dataset.color||'#fff8e3';
+      diarySet.pageBgAlpha=Math.max(0,Math.min(100,n('diaryBgAlpha',100)));
+      diarySet.pageBgBlur=Math.max(0,Math.min(100,n('diaryBgBlur',0)));
+      save('zika_diary_set',diarySet);
+      $('diarySetMask').classList.remove('show');
+      restartDiaryTick();restartDiaryNoteTick();applyDiaryPageBg();renderDiary();
+    };
     if($('diaryStkBtn'))$('diaryStkBtn').onclick=function(){$('diaryPage').classList.remove('show');$('diaryStkPage').classList.add('show');renderDiaryStkLib();};
     if($('diaryStkBack'))$('diaryStkBack').onclick=function(){$('diaryStkPage').classList.remove('show');$('diaryPage').classList.add('show');};
     if($('diaryStkAdd'))$('diaryStkAdd').onclick=function(){if($('diaryStkFile'))$('diaryStkFile').click();};
