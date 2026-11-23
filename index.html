@@ -453,9 +453,11 @@ input,textarea,select,[contenteditable="true"]{-webkit-user-select:text;user-sel
 #chat{flex:1;overflow-y:auto;padding:18px 12px 16px;display:flex;flex-direction:column;gap:15px;position:relative;z-index:1;scrollbar-width:none;-ms-overflow-style:none}
 #chat::-webkit-scrollbar{display:none}
 .chatMore{align-self:center;font-size:11px;color:#888;background:#f2f2f2;border-radius:10px;padding:4px 12px;cursor:pointer;margin-bottom:2px;flex-shrink:0}
-.msgRow{display:flex;align-items:flex-start;gap:8px;max-width:calc(100% - 64px)}
+.msgRow{display:flex;align-items:flex-start;gap:9px;max-width:calc(100% - 64px)}
 .msgRow.me{align-self:flex-end;flex-direction:row-reverse;max-width:calc(100% - 64px)}
 .msgRow.ta{align-self:flex-start}
+.msgRow.ta img.av{margin-left:-6px}
+.msgRow.me img.av{margin-right:-6px}
 .msgRow img.av{width:34px;height:34px;border-radius:50%;object-fit:cover;background:#eee;flex-shrink:0}
 .msgWrap{display:flex;flex-direction:column;min-width:0}
 .msgRow.me .msgWrap{align-items:flex-end}
@@ -697,14 +699,15 @@ input,textarea,select,[contenteditable]{-webkit-user-select:text;-moz-user-selec
 .momentText{font-size:13px;line-height:1.5;margin-bottom:8px;word-break:break-word;color:#111}
 .momentImgs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:8px}
 .momentImgs img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px}
-.momentActs{display:flex;gap:14px;font-size:12px;color:#555;border-top:1px solid #eee;padding-top:8px}
-.momentActs span{cursor:pointer}
-.momentActs .delM{color:#111;margin-left:auto;border:1px solid #111;border-radius:4px;padding:1px 6px}
+.momentActs{display:flex;align-items:center;gap:14px;font-size:12px;line-height:1;color:#555;border-top:1px solid #eee;padding-top:8px}
+.momentActs span{cursor:pointer;display:inline-flex;align-items:center;height:22px;line-height:1.1}
+.momentActs .delM{color:#111;margin-left:auto;border:1px solid #111;border-radius:4px;min-width:44px;height:28px;display:inline-flex!important;align-items:center;justify-content:center;padding:0 7px;box-sizing:border-box}
 /* ===== 评论区：加宽、正常换行，删除固定在整行右侧；点正文回复 ===== */
 .cmtList{margin-top:8px;background:#f5f5f5;border-radius:6px;padding:6px 4px}
 .cmtRow{font-size:12px;line-height:1.55;display:flex;gap:3px;align-items:flex-start;padding:2px 0;color:#111}
 .cmtRow .who{color:#111;font-weight:600;flex-shrink:0;white-space:nowrap}
 .cmtRow .ct{flex:1 1 auto;min-width:0;word-break:break-word;overflow-wrap:anywhere;cursor:pointer}
+.cmtRow .ct .replyTo{color:#111;font-weight:600}
 .cmtRow .cAct{font-size:11px;color:#555;cursor:pointer;flex-shrink:0;margin-left:4px}
 .cmtRow .cAct.push{margin-left:auto}.mailItem{background:#fff;border-radius:8px;padding:9px 11px;margin-bottom:7px;cursor:pointer;border:1px solid #e5e5e5}
 .mailItem.unread{border-left:3px solid #111}
@@ -749,6 +752,8 @@ input,textarea,select,[contenteditable]{-webkit-user-select:text;-moz-user-selec
 #confirmMask{position:absolute;inset:0;background:rgba(0,0,0,.35);display:none;align-items:center;justify-content:center;padding:20px;z-index:70}
 #confirmMask.show{display:flex}
 #confirmMask .dialog{max-width:320px}
+#textPromptMask{z-index:300}
+#textPromptMask .dialog{max-width:320px}
 #confirmMsg{font-size:13px;line-height:1.6;color:#111;white-space:pre-wrap}
 #toastBar{position:absolute;left:10px;right:10px;top:8px;z-index:80;background:#fff;color:#111;border:0;border-radius:14px;padding:10px 12px;display:flex;align-items:center;gap:9px;box-shadow:0 8px 24px rgba(0,0,0,.12);transform:translateY(-180%);opacity:0;transition:transform .3s cubic-bezier(.22,.61,.36,1),opacity .22s ease;cursor:pointer;overflow:hidden}
 #toastBar.show{transform:translateY(0);opacity:1}
@@ -1276,7 +1281,7 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
 /* 同屏：从红黑恐怖改成雾凇玻璃 */
 #lockScreen{background:linear-gradient(165deg,#eef4f7 0%,#fbfcfd 46%,#e6eef3 100%)!important;color:#24333f!important;overflow:hidden;padding:34px 24px!important}
 #lockScreen:before{content:"";position:absolute;top:-110px;right:-90px;width:330px;height:330px;border-radius:50%;background:radial-gradient(circle,rgba(158,187,205,.42),rgba(158,187,205,0) 68%);filter:blur(6px);pointer-events:none}
-#lockScreen:after{content:"";position:absolute;left:-120px;bottom:-160px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(196,210,221,.35),rgba(196,210,221,0) 70%);filter:blur(8px);pointer-events:none}
+#lockScreen:after{content:"";position:fixed;left:-120px;bottom:-160px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(196,210,221,.35),rgba(196,210,221,0) 70%);filter:blur(8px);pointer-events:none}
 #lockScreen>*:not(#lockWarn){position:relative;z-index:2}
 #lockScreen .lsGlow{display:none!important}
 #lockScreen .lsTime{font-size:60px;font-weight:300;letter-spacing:3px;color:#223440;text-shadow:none}
@@ -2265,6 +2270,11 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
   <div class="mask" id="wgEditMask"><div class="dialog">
     <h3 id="wgEditTitle">编辑</h3>
     <div id="editBody"></div>
+    <div id="wgLookBox">
+      <div class="fRow"><span>透明度（20-100）</span><input id="wgLookAlpha" type="range" min="20" max="100" value="100"></div>
+      <div class="fRow"><span>磨砂度（0-100）</span><input id="wgLookBlur" type="range" min="0" max="100" value="0"></div>
+      <div class="fRow"><span>背景照片</span><button type="button" id="wgLookBg" style="border:1px solid #111;background:#fff;border-radius:6px;padding:4px 10px;font-family:inherit;font-size:12px;cursor:pointer">更换</button></div>
+    </div>
     <div class="fRow"><span>卡片风格</span></div>
     <div class="stylePick" id="stylePick">
       <div class="styleOpt" data-style="ins"><div class="sPreview ins"></div><div class="sName">ins 风</div></div>
@@ -2375,7 +2385,6 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
   <!-- ========== 信箱写信/设置 ========== -->
   <div class="mask" id="mailWriteMask"><div class="dialog">
     <h3>写信</h3>
-    <input id="mwTitle" type="text" placeholder="标题" maxlength="40" style="margin-bottom:8px">
     <textarea id="mwBody" placeholder="正文…" maxlength="800"></textarea>
     <label class="stickerUpload">＋ 附带表情包<input type="file" id="mwSticker" accept="image/*"></label>
     <div id="mwPrev" style="display:flex;flex-wrap:wrap;gap:6px"></div>
@@ -2414,6 +2423,7 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
     <div class="probRow"><span>主动写信最短间隔（分钟）</span><input id="mailProactiveMin" type="number" min="1"></div>
     <div class="probRow"><span>主动写信最长间隔（分钟）</span><input id="mailProactiveMax" type="number" min="1"></div>
     <hr style="border:none;border-top:1px solid #eee;margin:12px 0">
+    <div class="probRow"><span>每日来信上限（封，含回信）</span><input id="mailDayMax" type="number" min="0"></div>
     <div class="probRow"><span>每封信抽取字卡条数-最少</span><input id="mailCardMin" type="number" min="1"></div>
     <div class="probRow"><span>每封信抽取字卡条数-最多</span><input id="mailCardMax" type="number" min="1"></div>
     <div class="probRow"><span>附带表情包数量-最少（默认0）</span><input id="mailImgMin" type="number" min="0"></div>
@@ -2534,6 +2544,11 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
     <h3 id="confirmTitle">确认</h3>
     <div id="confirmMsg"></div>
     <div class="btns"><button class="cancel" id="confirmCancel">取消</button><button class="ok" id="confirmOk">确定</button></div>
+  </div></div>
+  <div class="mask" id="textPromptMask"><div class="dialog">
+    <h3 id="tpTitle">写评论</h3>
+    <input id="tpInput" type="text" maxlength="200" placeholder="写点什么…">
+    <div class="btns"><button class="cancel" id="tpCancel">取消</button><button class="ok" id="tpOk">确定</button></div>
   </div></div>
 
   <div id="toastBar"><img id="toastAv" alt=""><div class="tInfo"><div class="tTop"><span class="tName" id="toastName"></span><span class="tTag" id="toastTag">来信</span><span class="tTime" id="toastTime"></span></div><div class="tText" id="toastText"></div></div></div>
@@ -2867,7 +2882,7 @@ var convs=load('zika_mail_convs',[]);
 var mailSet=load('zika_mail_set',{
   enable:1, allowReply:1, replyP:100, replyMin:1, replyMax:60,
   allowProactive:1, writeP:30, proactiveMin:60, proactiveMax:180,
-  maxCatchUp:3, cardMin:1, cardMax:2, imgMin:0, imgMax:2,
+  maxCatchUp:3, dayMax:2, cardMin:1, cardMax:2, imgMin:0, imgMax:2,
   bg:'', bgScope:'detail', bgAlpha:100, bgBlur:0, cardAlpha:100, cardBlur:0, skin:'A', letterSkin:'L1',
   fontMode:'global', font:13
 });
@@ -2883,6 +2898,7 @@ if(mailSet.writeP==null)mailSet.writeP=30;
 if(mailSet.proactiveMin==null)mailSet.proactiveMin=60;
 if(mailSet.proactiveMax==null)mailSet.proactiveMax=180;
 if(mailSet.maxCatchUp==null)mailSet.maxCatchUp=3;
+if(mailSet.dayMax==null)mailSet.dayMax=2;
 if(mailSet.cardMin==null)mailSet.cardMin=1;
 if(mailSet.cardMax==null)mailSet.cardMax=2;
 if(mailSet.imgMin==null)mailSet.imgMin=0;
@@ -2895,6 +2911,16 @@ if(!mailProactive||typeof mailProactive!=='object'||typeof mailProactive.nextAt!
   mailProactive={nextAt:Date.now()+Math.round((mailSet.proactiveMin+Math.random()*(mailSet.proactiveMax-mailSet.proactiveMin))*60*1000)};
   save('zika_mail_proactive',mailProactive);
 }
+var mailDaily=load('zika_mail_daily',{day:'',count:0});
+function mailTodayKey(){var d=new Date();return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);}
+function mailRollDaily(){
+  var today=mailTodayKey();
+  if(!mailDaily||mailDaily.day!==today){mailDaily={day:today,count:0};save('zika_mail_daily',mailDaily);}
+  if(!mailDaily.count)mailDaily.count=0;
+}
+function mailDailyLimit(){var n=parseInt(mailSet.dayMax);return isFinite(n)&&n>=0?n:2;}
+function mailCanReceive(){mailRollDaily();return mailDaily.count<mailDailyLimit();}
+function mailMarkReceived(){mailRollDaily();mailDaily.count++;save('zika_mail_daily',mailDaily);}
 function mailRandMs(minMin,maxMin){
   var a=Math.max(0,parseFloat(minMin)||0),b=Math.max(a,parseFloat(maxMin)||a);
   return Math.round((a+Math.random()*(b-a))*60*1000);
@@ -3350,6 +3376,14 @@ function buildCal(w){
   __wgTimers.push(setInterval(function(){renderPagesStructure();},1800000));
   return box;
 }
+function wgApplyLook(el,w){
+  if(!el||!w)return;
+  var a=(w.alpha==null?100:parseFloat(w.alpha));if(!isFinite(a))a=100;
+  var b=parseFloat(w.blur||0);if(!isFinite(b))b=0;
+  el.style.opacity=(Math.max(0,Math.min(100,a)))/100;
+  b=Math.max(0,Math.min(100,b));
+  el.style.filter=b?'blur('+(b/10)+'px)':'';
+}
 function buildClip(w){
   var wrap=document.createElement('div');wrap.className='wg-clip';
   var clip=document.createElement('div');clip.className='paperclip';
@@ -3360,6 +3394,7 @@ function buildClip(w){
   var cap=document.createElement('div');cap.className='clipCap';cap.textContent=w.cap||'';
   paper.appendChild(ph);paper.appendChild(cap);
   wrap.appendChild(paper);wrap.appendChild(clip);
+  wgApplyLook(wrap,w);
   return wrap;
 }
 function buildStamp(w){
@@ -3374,6 +3409,7 @@ function buildStamp(w){
   body.appendChild(inner);
   var pm=document.createElement('div');pm.className='postmark';pm.innerHTML='POST<br>'+new Date().getFullYear();
   body.appendChild(pm);wrap.appendChild(body);
+  wgApplyLook(wrap,w);
   return wrap;
 }
 function buildFilmCol(w,layout){
@@ -3390,6 +3426,7 @@ function buildFilmCol(w,layout){
   })(i);}
   var cap=document.createElement('div');cap.className=isCol?'colCap':'filmCap';cap.textContent=w.cap||'';
   wrap.appendChild(strip);wrap.appendChild(cap);
+  wgApplyLook(wrap,w);
   return wrap;
 }
 function buildHang(w,layout){
@@ -3414,6 +3451,7 @@ function buildHang(w,layout){
   }
   for(var i=0;i<count;i++){wrapH.appendChild(buildItem(i));}
   hang.appendChild(wrapH);
+  wgApplyLook(hang,w);
   return hang;
 }function buildTape(w){
   var tw=document.createElement('div');tw.className='wg-tape';
@@ -3451,6 +3489,7 @@ function buildHang(w,layout){
   strip.appendChild(tx);
   strip.onclick=function(e){e.stopPropagation();if($('home').classList.contains('manage'))openEditWidget(w);};
   tw.appendChild(strip);
+  wgApplyLook(strip,w);
   return tw;
 }
 function buildAnniv(w){
@@ -3514,6 +3553,7 @@ function buildClip(w){
   var cap=document.createElement('div');cap.className='clipCap';cap.textContent=w.cap||'';
   paper.appendChild(ph);paper.appendChild(cap);
   wrap.appendChild(paper);wrap.appendChild(clip);
+  wgApplyLook(wrap,w);
   return wrap;
 }
 function buildStamp(w){
@@ -3528,6 +3568,7 @@ function buildStamp(w){
   body.appendChild(inner);
   var pm=document.createElement('div');pm.className='postmark';pm.innerHTML='POST<br>'+new Date().getFullYear();
   body.appendChild(pm);wrap.appendChild(body);
+  wgApplyLook(wrap,w);
   return wrap;
 }
 function buildFilmCol(w,layout){
@@ -3544,6 +3585,7 @@ function buildFilmCol(w,layout){
   })(i);}
   var cap=document.createElement('div');cap.className=isCol?'colCap':'filmCap';cap.textContent=w.cap||'';
   wrap.appendChild(strip);wrap.appendChild(cap);
+  wgApplyLook(wrap,w);
   return wrap;
 }
 function buildHang(w,layout){
@@ -3568,6 +3610,7 @@ function buildHang(w,layout){
   }
   for(var i=0;i<count;i++){wrapH.appendChild(buildItem(i));}
   hang.appendChild(wrapH);
+  wgApplyLook(hang,w);
   return hang;
 }function buildTape(w){
   var tw=document.createElement('div');tw.className='wg-tape';
@@ -3605,6 +3648,7 @@ function buildHang(w,layout){
   strip.appendChild(tx);
   strip.onclick=function(e){e.stopPropagation();if($('home').classList.contains('manage'))openEditWidget(w);};
   tw.appendChild(strip);
+  wgApplyLook(strip,w);
   return tw;
 }
 function buildAnniv(w){
@@ -5116,20 +5160,21 @@ function renderMoments(){
     like.onclick=function(){mt.liked=!mt.liked;save('zika_moments',moments);renderMoments();};
     var cmt=document.createElement('span');cmt.textContent='评论';
     cmt.onclick=function(){
-      var v=prompt('写评论：');if(v===null)return;v=v.trim();if(!v)return;
-      if(!mt.comments)mt.comments=[];
-      var myCmt={whoType:'me',who:profile.meName||'我',text:v,time:Date.now(),_replied:false};
-      mt.comments.push(myCmt);
-      save('zika_moments',moments);renderMoments();
-      if(mt.from==='ta'&&!myCmt._replied&&Math.random()*100<ms.replyCmtP){
-        myCmt._replied=true;
-        setTimeout(function(){
-          mt.comments.push({whoType:'ta',who:profile.taName||'TA',text:getCardText(replyCards[Math.floor(Math.random()*replyCards.length)]),replyToType:'me',replyTo:profile.meName||'我',time:Date.now()});
-          save('zika_moments',moments);renderMoments();
-        },1500+Math.random()*1500);
-      }
+      showTextPrompt('写评论','',function(v){
+        if(!mt.comments)mt.comments=[];
+        var myCmt={whoType:'me',who:profile.meName||'我',text:v,time:Date.now(),_replied:false};
+        mt.comments.push(myCmt);
+        save('zika_moments',moments);renderMoments();
+        if(mt.from==='ta'&&!myCmt._replied&&Math.random()*100<ms.replyCmtP){
+          myCmt._replied=true;
+          setTimeout(function(){
+            mt.comments.push({whoType:'ta',who:profile.taName||'TA',text:getCardText(replyCards[Math.floor(Math.random()*replyCards.length)]),replyToType:'me',replyTo:profile.meName||'我',time:Date.now()});
+            save('zika_moments',moments);renderMoments();
+          },1500+Math.random()*1500);
+        }
+      });
     };
-    var del=document.createElement('span');del.className='delM';del.textContent='删除';del.onclick=function(){if(!confirm('删除这条动态？'))return;var idx=moments.indexOf(mt);if(idx>=0)moments.splice(idx,1);save('zika_moments',moments);renderMoments();};
+    var del=document.createElement('span');del.className='delM';del.textContent='删除';del.style.position='relative';del.style.zIndex='6';del.style.pointerEvents='auto';del.onclick=function(e){e.stopPropagation();showConfirm('删除这条动态','删除后不可恢复，确定删除？',function(){var idx=moments.indexOf(mt);if(idx>=0)moments.splice(idx,1);save('zika_moments',moments);renderMoments();});};
     acts.appendChild(like);acts.appendChild(cmt);acts.appendChild(del);card.appendChild(acts);
     if(mt.comments&&mt.comments.length){
       var cl=document.createElement('div');cl.className='cmtList';
@@ -5139,23 +5184,31 @@ function renderMoments(){
         var replyToName=momentReplyName(c);
         var who=document.createElement('span');who.className='who';who.textContent=whoName+'：';
         var ct=document.createElement('span');ct.className='ct';
-        var prefix=replyToName?'回复 '+replyToName+'：':'';
-        ct.appendChild(document.createTextNode(prefix+(c.text||'')));
-        ct.onclick=function(e){
+        if(replyToName){
+          ct.appendChild(document.createTextNode('回复 '));
+          var rn=document.createElement('span');rn.className='replyTo';rn.textContent=replyToName;
+          ct.appendChild(rn);ct.appendChild(document.createTextNode('：'));
+        }
+        ct.appendChild(document.createTextNode(c.text||''));
+        var dl=document.createElement('span');dl.className='cAct del push';dl.textContent='删除';dl.setAttribute('role','button');
+        r.onclick=function(e){
           e.stopPropagation();
-          var v=prompt('回复：');if(v===null)return;v=v.trim();if(!v)return;
-          var myReply={whoType:'me',who:profile.meName||'我',text:v,replyToType:(c.whoType||'ta'),replyTo:whoName,time:Date.now()};
-          mt.comments.push(myReply);
-          save('zika_moments',moments);renderMoments();
-          if(c.whoType==='ta'&&Math.random()*100<ms.replyCmtP){
-            setTimeout(function(){
-              mt.comments.push({whoType:'ta',who:profile.taName||'TA',text:getCardText(replyCards[Math.floor(Math.random()*replyCards.length)]),replyToType:'me',replyTo:profile.meName||'我',time:Date.now()});
-              save('zika_moments',moments);renderMoments();
-            },1500+Math.random()*1500);
+          var rr=r.getBoundingClientRect();
+          if(e.clientX>=rr.right-46 || e.target.closest('.cAct')){
+            mt.comments.splice(ci,1);save('zika_moments',moments);renderMoments();return;
           }
+          showTextPrompt('回复 '+whoName,'',function(v){
+            var myReply={whoType:'me',who:profile.meName||'我',text:v,replyToType:(c.whoType||'ta'),replyTo:whoName,time:Date.now()};
+            mt.comments.push(myReply);
+            save('zika_moments',moments);renderMoments();
+            if(c.whoType==='ta'&&Math.random()*100<ms.replyCmtP){
+              setTimeout(function(){
+                mt.comments.push({whoType:'ta',who:profile.taName||'TA',text:getCardText(replyCards[Math.floor(Math.random()*replyCards.length)]),replyToType:'me',replyTo:profile.meName||'我',time:Date.now()});
+                save('zika_moments',moments);renderMoments();
+              },1500+Math.random()*1500);
+            }
+          });
         };
-        var dl=document.createElement('span');dl.className='cAct del push';dl.textContent='删除';
-        dl.onclick=function(e){e.stopPropagation();mt.comments.splice(ci,1);save('zika_moments',moments);renderMoments();};
         r.appendChild(who);r.appendChild(ct);r.appendChild(dl);
         cl.appendChild(r);
       });
@@ -5316,21 +5369,21 @@ function renderMail(){
     var msgDate=new Date(showMsg.time),dayStr=('0'+msgDate.getDate()).slice(-2),monthStr=('0'+(msgDate.getMonth()+1)).slice(-2),yearStr=msgDate.getFullYear();
     var tagHtml='<span class="mTag '+(tag==='寄出'?'out':'in')+'">'+tag+'</span>'+extra;
     if(skin==='B'){
-      d.innerHTML='<div class="mt">'+esc(cv.title||'（无标题）')+' '+tagHtml+'</div><div class="ms">'+esc(pre)+'</div><div class="md">'+esc(from)+' · '+tm+'</div>';
+      d.innerHTML='<div class="mt">'+tagHtml+'</div><div class="ms">'+esc(pre)+'</div><div class="md">'+esc(from)+' · '+tm+'</div>';
     }else if(skin==='C'){
-      d.innerHTML='<div class="mDate"><b>'+dayStr+'</b><span>'+monthStr+' / '+yearStr+'</span></div><div class="mBody"><div class="mt">'+esc(cv.title||'（无标题）')+' '+tagHtml+'</div><div class="ms">'+esc(pre)+'</div><div class="md">'+esc(from)+'</div></div>';
+      d.innerHTML='<div class="mDate"><b>'+dayStr+'</b><span>'+monthStr+' / '+yearStr+'</span></div><div class="mBody"><div class="mt">'+tagHtml+'</div><div class="ms">'+esc(pre)+'</div><div class="md">'+esc(from)+'</div></div>';
     }else if(skin==='D'){
-      d.innerHTML='<div class="mt"><span class="mNo">NO. '+(realIdx+1<100?('0'+(realIdx+1)).slice(-2):(realIdx+1))+'</span>'+esc(cv.title||'（无标题）')+' '+tagHtml+'</div><div class="ms">'+esc(pre)+'</div><div class="md"><span>'+esc(from)+'</span><span>'+tm+'</span></div>';
+      d.innerHTML='<div class="mt"><span class="mNo">NO. '+(realIdx+1<100?('0'+(realIdx+1)).slice(-2):(realIdx+1))+'</span>'+tagHtml+'</div><div class="ms">'+esc(pre)+'</div><div class="md"><span>'+esc(from)+'</span><span>'+tm+'</span></div>';
     }else if(skin==='A'){
-      d.innerHTML='<div class="mAStamp">初雪</div><div class="mt">'+(cv.unread?'<span class="mAUnread"></span>':'')+esc(cv.title||'（无标题）')+' '+tagHtml+'</div><div class="ms">'+esc(pre)+'</div><div class="md"><b>'+esc(from)+'</b><span>'+tm+'</span></div>';
+      d.innerHTML='<div class="mAStamp">初雪</div><div class="mt">'+(cv.unread?'<span class="mAUnread"></span>':'')+tagHtml+'</div><div class="ms">'+esc(pre)+'</div><div class="md"><b>'+esc(from)+'</b><span>'+tm+'</span></div>';
     }else if(skin==='B4'){
-      d.innerHTML='<div class="mt">'+esc(cv.title||'（无标题）')+' '+tagHtml+'</div><div class="ms">'+esc(pre)+'</div><div class="md"><span>'+esc(from)+'</span><span>'+tm+'</span></div>';
+      d.innerHTML='<div class="mt">'+tagHtml+'</div><div class="ms">'+esc(pre)+'</div><div class="md"><span>'+esc(from)+'</span><span>'+tm+'</span></div>';
     }else if(skin==='B2'){
-      d.innerHTML='<div class="mt">'+esc(cv.title||'（无标题）')+' '+tagHtml+'</div><div class="mLine"></div><div class="ms">'+esc(pre)+'</div><div class="md">'+esc(from)+' · '+tm+'</div>';
+      d.innerHTML='<div class="mt">'+tagHtml+'</div><div class="mLine"></div><div class="ms">'+esc(pre)+'</div><div class="md">'+esc(from)+' · '+tm+'</div>';
     }else if(skin==='B3'){
-      d.innerHTML='<div class="mDate">'+tm.replace(/\s.*/,'')+'</div><div class="mBody"><div class="mt">'+esc(cv.title||'（无标题）')+' '+tagHtml+'</div><div class="ms">'+esc(from)+' · '+esc(pre)+'</div></div>';
+      d.innerHTML='<div class="mDate">'+tm.replace(/\s.*/,'')+'</div><div class="mBody"><div class="mt">'+tagHtml+'</div><div class="ms">'+esc(from)+' · '+esc(pre)+'</div></div>';
     }else{
-      d.innerHTML='<div class="mBar'+(cv.unread?'':' read')+'"></div><div class="mBody"><div class="mt">'+esc(cv.title||'（无标题）')+' '+tagHtml+'</div><div class="ms">'+esc(from)+' · '+esc(pre)+'</div><div class="md">'+tm+'</div></div>';
+      d.innerHTML='<div class="mBar'+(cv.unread?'':' read')+'"></div><div class="mBody"><div class="mt">'+tagHtml+'</div><div class="ms">'+esc(from)+' · '+esc(pre)+'</div><div class="md">'+tm+'</div></div>';
     }
     d.onclick=function(){openConv(realIdx);};
     list.appendChild(d);
@@ -5345,7 +5398,7 @@ function makeLetterCard(cv,mi,m){
   var tag=document.createElement('div');tag.className='letterTag '+(m.from==='me'?'me':'ta');tag.textContent=tagText(m,mi);
   var lacts=document.createElement('div');lacts.className='letterActs';
   var lEdit=document.createElement('span');lEdit.textContent='修改';
-  lEdit.onclick=function(){var newText=prompt('修改信件内容（第一行为标题，其余为正文）：',(cv.title||'无题')+'\n'+(m.text||''));if(newText===null)return;var lines=newText.split('\n');cv.title=lines[0].trim()||'无题';m.text=lines.slice(1).join('\n').trim();save('zika_mail_convs',convs);var ci=convs.indexOf(cv);if(ci>=0)openConv(ci);else renderMail();};
+  lEdit.onclick=function(){var newText=prompt('修改信件正文：',m.text||'');if(newText===null)return;newText=newText.trim();if(!newText)return;m.text=newText;save('zika_mail_convs',convs);var ci=convs.indexOf(cv);if(ci>=0)openConv(ci);else renderMail();};
   var lDel=document.createElement('span');lDel.className='delL';lDel.textContent='删除';lDel.onclick=function(){if(!confirm('删除这一封？'))return;var mi2=cv.msgs.indexOf(m);if(mi2>=0)cv.msgs.splice(mi2,1);if(!cv.msgs.length){var ci2=convs.indexOf(cv);if(ci2>=0)convs.splice(ci2,1);}save('zika_mail_convs',convs);var ci3=convs.indexOf(cv);if(ci3>=0)openConv(ci3);else renderMail();};
   lacts.appendChild(lEdit);lacts.appendChild(lDel);top.appendChild(tag);top.appendChild(lacts);card.appendChild(top);
   var to=document.createElement('div');to.className='letterTo';to.textContent='致 '+toName(m)+'：';card.appendChild(to);
@@ -5406,6 +5459,8 @@ function settleMailReply(){
   var now=Date.now();
   var done=0;
   var maxCatch=Math.max(1,parseInt(mailSet.maxCatchUp)||3);
+  mailRollDaily();
+  if(mailDaily.count>=mailDailyLimit())return 0;
   for(var i=0;i<convs.length;i++){
     var cv=convs[i];
     if(!cv||!Array.isArray(cv.msgs)||!cv.msgs.length)continue;
@@ -5426,7 +5481,9 @@ function settleMailReply(){
     if(!body.trim())body='嗯嗯。';
     var imgs=[];
     if(stickers.length){var kk=randInt(mailSet.imgMin,mailSet.imgMax);for(var j=0;j<kk;j++)imgs.push(stickers[Math.floor(Math.random()*stickers.length)]);}
+    if(!mailCanReceive())break;
     cv.msgs.push({from:'ta',text:body,imgs:imgs,time:Date.now()});
+    mailMarkReceived();
     cv.unread=true;
     unreadData.mail++;
     cv.nextAt=0;cv.willReply=0;
@@ -5450,7 +5507,7 @@ function settleMailProactive(){
   var fireTs=mailProactive.nextAt;
   var hit=Math.random()*100<(parseFloat(mailSet.writeP)||0);
   var made=0;
-  if(hit){
+  if(hit&&mailCanReceive()){
     var n2=randInt(mailSet.cardMin,mailSet.cardMax);
     var parts2=[];
     for(var i2=0;i2<n2;i2++)parts2.push(getCardText(replyCards[Math.floor(Math.random()*replyCards.length)]));
@@ -5461,6 +5518,7 @@ function settleMailProactive(){
     var titlePool=['一封信','想你了','今天怎么样','随手写写','见字如面'];
     var title=titlePool[Math.floor(Math.random()*titlePool.length)];
     convs.push({title:title,msgs:[{from:'ta',text:body2,imgs:imgs2,time:fireTs}],unread:true,nextAt:0,willReply:0});
+    mailMarkReceived();
     unreadData.mail++;
     made=1;
   }
@@ -6456,12 +6514,26 @@ function showConfirm(title,msg,onOk){
   $('confirmCancel').onclick=function(){$('confirmMask').classList.remove('show');};
   $('confirmMask').onclick=function(e){if(e.target===$('confirmMask'))$('confirmMask').classList.remove('show');};
 }
+function showTextPrompt(title,def,onOk){
+  var mask=$('textPromptMask'),inp=$('tpInput');
+  if(!mask||!inp)return;
+  $('tpTitle').textContent=title||'输入';
+  inp.value=def||'';
+  mask.classList.add('show');
+  var close=function(){mask.classList.remove('show');};
+  var done=function(){var v=inp.value.trim();if(!v)return;close();if(typeof onOk==='function')onOk(v);};
+  $('tpOk').onclick=done;
+  $('tpCancel').onclick=close;
+  mask.onclick=function(e){if(e.target===mask)close();};
+  inp.onkeydown=function(e){if(e.key==='Enter'){e.preventDefault();done();}};
+  setTimeout(function(){try{inp.focus();}catch(e){}},40);
+}
 
 /* ========== 数据清理/导入导出 ========== */
 function resetChatData(){chatHistory=[];save('zika_chat_history',chatHistory);renderChat();}
 function resetFavData(){favorites=[];save('zika_favorites',favorites);saveSel={};renderSavePage();}
 function resetMomentsData(){moments=[];save('zika_moments',moments);ms._todayKey='';ms._todayCount=0;save('zika_moment_settings',ms);renderMoments();}
-function resetMailData(){convs=[];save('zika_mail_convs',convs);mailProactive={nextAt:Date.now()+mailRandMs(mailSet.proactiveMin,mailSet.proactiveMax)};save('zika_mail_proactive',mailProactive);renderMail();}
+function resetMailData(){convs=[];save('zika_mail_convs',convs);mailDaily={day:mailTodayKey(),count:0};save('zika_mail_daily',mailDaily);mailProactive={nextAt:Date.now()+mailRandMs(mailSet.proactiveMin,mailSet.proactiveMax)};save('zika_mail_proactive',mailProactive);renderMail();}
 function resetDiaryData(){diaryList=[];save('zika_diary',diaryList);diaryEvents=[];save('zika_diary_events',diaryEvents);renderDiary();renderDiaryTips();}
 function resetSparkData(){spark={adopted:false,name:'',callMe:'',callTa:'',floatOn:1,streak:0,lastFireDay:'',meToday:false,taToday:false,lastDayKey:'',coupon:0,dailyCoupon:10,weekCoupon:20,msgCouponNeed:5,msgCoupon:5,taGap:30,taBuyP:30,meSpoke:0,taSpoke:0};save('zika_spark',spark);sparkOwned=[];save('zika_spark_owned',sparkOwned);updateSparkFloat();if($('sparkPage').classList.contains('show'))renderSparkPage();}
 function resetScreenData(){screenSet={lockEnable:1,lockP:15,lockGap:60,lockDayMax:3,lockDuration:5,begSuccess:18,shareEnable:1,shareP:12,shareGap:60,shareDayMax:3,shareRejectLockP:60,shareReactGap:3,shareBarText:'他正在翻你的手机'};save('zika_screen_set',screenSet);screenStat={lastLockTs:0,lastShareTs:0,lockCountDay:0,shareCountDay:0,dayKey:''};save('zika_screen_stat',screenStat);endLockScreen();stopShare();if($('screenPage').classList.contains('show'))renderScreenPage();}
@@ -6469,7 +6541,7 @@ function resetCardsData(){replyCards=DC.slice();save('zika_reply_cards',replyCar
 function resetShopData(){wallet={balance:500};save('zika_shop_wallet',wallet);cart=[];save('zika_shop_cart',cart);buyLog=[];save('zika_shop_buylog',buyLog);giveLog=[];save('zika_shop_givelog',giveLog);renderWallet();}
 function resetLocData(){locList=[];save('zika_loc_list',locList);if(cpTab==='loc')renderLocTab();}
 function resetWidgetsData(){homeBeauty.pages.forEach(function(p){p.widgets=[];});widgets=homeBeauty.pages[homeBeauty.curPage].widgets;save('zika_home_beauty',homeBeauty);try{save('zika_widgets',[]);}catch(e){}renderPagesStructure();renderWgManageList();}
-var ZIKA_KEYS=['zika_status_pool','zika_chat_history','zika_reply_cards','zika_probs','zika_pat_me','zika_pat_ta','zika_check_cards','zika_check_ask','zika_stickers','zika_favorites','zika_beauty','zika_home_beauty','zika_moments','zika_moment_settings','zika_mail_convs','zika_mail_set','zika_mail_proactive','zika_shop_goods','zika_shop_wallet','zika_shop_cart','zika_shop_buylog','zika_shop_givelog','zika_shop_set','zika_cp_groups','zika_profile','zika_status_current','zika_unread','zika_diary','zika_diary_set','zika_diary_stickers','zika_diary_events','zika_spark','zika_spark_shop','zika_spark_owned','zika_screen_set','zika_screen_stat','zika_loc_list','zika_fine_set','zika_widgets'];
+var ZIKA_KEYS=['zika_status_pool','zika_chat_history','zika_reply_cards','zika_probs','zika_pat_me','zika_pat_ta','zika_check_cards','zika_check_ask','zika_stickers','zika_favorites','zika_beauty','zika_home_beauty','zika_moments','zika_moment_settings','zika_mail_convs','zika_mail_set','zika_mail_proactive','zika_mail_daily','zika_shop_goods','zika_shop_wallet','zika_shop_cart','zika_shop_buylog','zika_shop_givelog','zika_shop_set','zika_cp_groups','zika_profile','zika_status_current','zika_unread','zika_diary','zika_diary_set','zika_diary_stickers','zika_diary_events','zika_spark','zika_spark_shop','zika_spark_owned','zika_screen_set','zika_screen_stat','zika_loc_list','zika_fine_set','zika_widgets'];
 function updateStoreInfo(){
   var el=$('storeInfoLine');if(!el)return;
   var used=0;
@@ -6569,7 +6641,7 @@ function bindSettingsPage(){
 /* ========== 小组件编辑 ========== */
 var TAPE_COLORS=['#f3ede1','#ece4d6','#e7e0d4','#e3ddd2','#ece6dc','#f5f1e9','#e8e3d8','#dcd6ca'];
 var editingWgId=null,curStyle='ins';
-var curTapeDir='h',curTapeShape='rect',curTapeColor='#f3ede1',curTapeAlpha=100,curTapeFont=10.5,curTapeRot=0;
+var curTapeDir='h',curTapeShape='rect',curTapeColor='#f3ede1',curTapeAlpha=100,curTapeBlur=0,curTapeFont=10.5,curTapeRot=0;
 function newWidget(layout){
   var base={id:'w'+Date.now()+Math.floor(Math.random()*1000),type:'photo',layout:layout,style:'line',cap:'',caps:['',''],imgs:[],cells:3,x:32,y:120,w:160,h:200};
   if(layout==='clip'){base.w=150;base.h=190;}
@@ -6595,7 +6667,7 @@ function openEditWidget(w){
   var html='';
   if(w.layout==='tape'){
     curTapeDir=w.dir||'h';curTapeShape=w.shape||'rect';curTapeColor=w.color||'#f3ede1';
-    curTapeAlpha=w.alpha==null?100:w.alpha;curTapeFont=w.fontSize||10.5;curTapeRot=(w.rot==null?0:w.rot);
+    curTapeAlpha=w.alpha==null?100:w.alpha;curTapeBlur=w.blur||0;curTapeFont=w.fontSize||10.5;curTapeRot=(w.rot==null?0:w.rot);
     html='<div class="fRow"><span>文字</span><input id="edTapeText" type="text" maxlength="40" placeholder="写点字" value="'+esc(w.text||'')+'"></div>';
     html+='<div class="fRow"><span>方向</span><div style="display:flex;gap:6px;margin-top:4px"><button type="button" data-dir="h" style="flex:1;'+(curTapeDir==='h'?'background:#111;color:#fff;border:1px solid #111':'background:#fff;color:#111;border:1px solid #111')+'">横贴</button><button type="button" data-dir="v" style="flex:1;'+(curTapeDir==='v'?'background:#111;color:#fff;border:1px solid #111':'background:#fff;color:#111;border:1px solid #111')+'">竖贴</button></div></div>';
     html+='<div class="fRow"><span>形状</span><select id="edTapeShape"><option value="rect"'+(curTapeShape==='rect'?' selected':'')+'>规则</option><option value="wave"'+(curTapeShape==='wave'?' selected':'')+'>波浪</option><option value="tear"'+(curTapeShape==='tear'?' selected':'')+'>撕纸</option><option value="skew"'+(curTapeShape==='skew'?' selected':'')+'>斜边</option></select></div>';
@@ -6604,6 +6676,7 @@ function openEditWidget(w){
     html+='</div></div>';
     html+='<div class="fRow"><span>旋转角度</span><input id="edTapeRot" type="range" min="-180" max="180" step="1" value="'+curTapeRot+'"></div>';
     html+='<div class="fRow"><span>透明度（20-100）</span><input id="edTapeAlpha" type="range" min="20" max="100" value="'+curTapeAlpha+'"></div>';
+    html+='<div class="fRow"><span>磨砂度（0-100）</span><input id="edTapeBlur" type="range" min="0" max="100" value="'+curTapeBlur+'"></div>';
     html+='<div class="fRow"><span>字号（8-16）</span><input id="edTapeFont" type="range" min="8" max="16" value="'+curTapeFont+'"></div>';
   }else if(w.layout==='vduo'||w.layout==='vtri'){
     var cnt=w.layout==='vtri'?3:2;
@@ -6616,10 +6689,16 @@ function openEditWidget(w){
     html+='<div style="font-size:11px;color:#999;margin-top:6px">点照片区域上传</div>';
   }
   body.innerHTML=html;
+  var look=$('wgLookBox');
+  if(look)look.style.display=(w.layout==='tape'?'none':'block');
+  if($('wgLookAlpha'))$('wgLookAlpha').value=(w.alpha==null?100:w.alpha);
+  if($('wgLookBlur'))$('wgLookBlur').value=(w.blur||0);
+  if($('wgLookBg'))$('wgLookBg').onclick=function(){pickWgPhoto(w.id,0);};
   if(w.layout==='tape'){
     body.querySelectorAll('button[data-dir]').forEach(function(b){b.onclick=function(){curTapeDir=b.dataset.dir;body.querySelectorAll('button[data-dir]').forEach(function(x){x.style.background='#fff';x.style.color='#111';x.style.border='1px solid #111';});b.style.background='#111';b.style.color='#fff';b.style.border='1px solid #111';};});
     var tp=body.querySelector('#tapeColorPick');if(tp)tp.querySelectorAll('.tapeColorSwatch').forEach(function(sw){sw.onclick=function(){curTapeColor=sw.dataset.color;tp.querySelectorAll('.tapeColorSwatch').forEach(function(x){x.style.border='2px solid rgba(0,0,0,.1)';});sw.style.border='2px solid #111';};});
     if($('edTapeAlpha'))$('edTapeAlpha').addEventListener('input',function(){curTapeAlpha=parseInt($('edTapeAlpha').value);});
+    if($('edTapeBlur'))$('edTapeBlur').addEventListener('input',function(){curTapeBlur=parseInt($('edTapeBlur').value);});
     if($('edTapeFont'))$('edTapeFont').addEventListener('input',function(){curTapeFont=parseInt($('edTapeFont').value);});
     if($('edTapeRot'))$('edTapeRot').addEventListener('input',function(){curTapeRot=parseInt($('edTapeRot').value);});
   }
@@ -6635,13 +6714,17 @@ if($('wgEditSave'))$('wgEditSave').onclick=function(){
   if(w.layout==='tape'){
     w.text=($('edTapeText')||{}).value||'';
     w.dir=curTapeDir;w.shape=($('edTapeShape')||{}).value||curTapeShape;w.color=curTapeColor;
-    w.alpha=curTapeAlpha;w.fontSize=curTapeFont;w.rot=curTapeRot;
+    w.alpha=curTapeAlpha;w.blur=curTapeBlur;w.fontSize=curTapeFont;w.rot=curTapeRot;
   }else if(w.layout==='vduo'||w.layout==='vtri'){
     var cnt2=w.layout==='vtri'?3:2;
     w.caps=[];
     for(var ci2=0;ci2<cnt2;ci2++){w.caps.push(($('edCap'+ci2)||{}).value||'');}
   }else{
     w.cap=($('edCap')||{}).value||'';
+  }
+  if(w.layout!=='tape'){
+    if($('wgLookAlpha'))w.alpha=Math.max(20,Math.min(100,parseInt($('wgLookAlpha').value)||100));
+    if($('wgLookBlur'))w.blur=Math.max(0,Math.min(100,parseInt($('wgLookBlur').value)||0));
   }
   w.style=curStyle;
   save('zika_home_beauty',homeBeauty);
@@ -6929,13 +7012,13 @@ var __domReady=function(){
     };
     if($('msCover'))$('msCover').onchange=function(e){var f=e.target.files[0];if(!f)return;readBgImage(f,function(u){ms.cover=u;save('zika_moment_settings',ms);renderMoments();});e.target.value='';};
     pair('msPostP','msPostPR');pair('msLikeP','msLikePR');pair('msCmtP','msCmtPR');pair('msReplyCmtP','msReplyCmtPR');pair('msImgP','msImgPR');pair('msShotP','msShotPR');
-    if($('mailWriteBtn'))$('mailWriteBtn').onclick=function(){$('mwTitle').value='';$('mwBody').value='';$('mwPrev').innerHTML='';mwImgs=[];$('mailWriteMask').classList.add('show');};
+    if($('mailWriteBtn'))$('mailWriteBtn').onclick=function(){$('mwBody').value='';$('mwPrev').innerHTML='';mwImgs=[];$('mailWriteMask').classList.add('show');};
     if($('mwCancel'))$('mwCancel').onclick=function(){$('mailWriteMask').classList.remove('show');};
     if($('mwOk'))$('mwOk').onclick=function(){
-      var t=$('mwTitle').value.trim();var b=$('mwBody').value.trim();if(!b){alert('写点正文再寄出');return;}
+      var b=$('mwBody').value.trim();if(!b){alert('写点正文再寄出');return;}
       if(!Array.isArray(convs))convs=[];
       var rpOk=(Math.random()*100<(parseFloat(mailSet.replyP)||0));
-      var newCv={title:(t||'无题'),msgs:[{from:'me',text:b,imgs:mwImgs.slice(),time:Date.now()}],unread:false,willReply:rpOk?1:0,nextAt:rpOk?Date.now()+mailRandMs(mailSet.replyMin,mailSet.replyMax):0};
+      var newCv={title:'无题',msgs:[{from:'me',text:b,imgs:mwImgs.slice(),time:Date.now()}],unread:false,willReply:rpOk?1:0,nextAt:rpOk?Date.now()+mailRandMs(mailSet.replyMin,mailSet.replyMax):0};
       convs.push(newCv);
       save('zika_mail_convs',convs);
       $('mailWriteMask').classList.remove('show');$('mailPage').classList.add('show');$('home').classList.add('hide');
@@ -6951,6 +7034,7 @@ var __domReady=function(){
       $('mailWriteP').value=(mailSet.writeP==null?30:mailSet.writeP);
       $('mailProactiveMin').value=(mailSet.proactiveMin==null?60:mailSet.proactiveMin);
       $('mailProactiveMax').value=(mailSet.proactiveMax==null?180:mailSet.proactiveMax);
+      if($('mailDayMax'))$('mailDayMax').value=(mailSet.dayMax==null?2:mailSet.dayMax);
       $('mailCardMin').value=mailSet.cardMin;$('mailCardMax').value=mailSet.cardMax;
       $('mailImgMin').value=mailSet.imgMin;$('mailImgMax').value=mailSet.imgMax;
       $('mailBgScope').value=mailSet.bgScope;$('mailBgAlpha').value=mailSet.bgAlpha;
@@ -6974,6 +7058,7 @@ var __domReady=function(){
       mailSet.writeP=Math.max(0,Math.min(100,n('mailWriteP',30)));
       mailSet.proactiveMin=Math.max(1,n('mailProactiveMin',60));
       mailSet.proactiveMax=Math.max(mailSet.proactiveMin,n('mailProactiveMax',180));
+      if($('mailDayMax'))mailSet.dayMax=Math.max(0,Math.round(n('mailDayMax',2)));
       mailSet.cardMin=Math.max(1,Math.round(n('mailCardMin',1)));
       mailSet.cardMax=Math.max(mailSet.cardMin,Math.round(n('mailCardMax',2)));
       mailSet.imgMin=Math.max(0,Math.round(n('mailImgMin',0)));
