@@ -701,7 +701,7 @@ input,textarea,select,[contenteditable]{-webkit-user-select:text;-moz-user-selec
 .momentImgs img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px}
 .momentActs{display:flex;align-items:center;gap:14px;font-size:12px;line-height:1;color:#555;border-top:1px solid #eee;padding-top:8px}
 .momentActs span{cursor:pointer;display:inline-flex;align-items:center;height:22px;line-height:1.1}
-.momentActs .delM{color:#111;margin-left:auto;border:1px solid #111;border-radius:4px;min-width:44px;height:28px;display:inline-flex!important;align-items:center;justify-content:center;padding:0 7px;box-sizing:border-box}
+.momentActs .delM{color:#111;margin-left:auto;border:0;background:transparent;border-radius:4px;min-width:44px;height:28px;display:inline-flex!important;align-items:center;justify-content:center;padding:0 7px;box-sizing:border-box}
 /* ===== 评论区：加宽、正常换行，删除固定在整行右侧；点正文回复 ===== */
 .cmtList{margin-top:8px;background:#f5f5f5;border-radius:6px;padding:6px 4px}
 .cmtRow{font-size:12px;line-height:1.55;display:flex;gap:3px;align-items:flex-start;padding:2px 0;color:#111}
@@ -754,6 +754,43 @@ input,textarea,select,[contenteditable]{-webkit-user-select:text;-moz-user-selec
 #confirmMask .dialog{max-width:320px}
 #textPromptMask{z-index:300}
 #textPromptMask .dialog{max-width:320px}
+
+/* ===== 修改信笺弹窗 ===== */
+#mailEditMask .dialog{max-width:340px;background:#fbf7ef;border-color:#d8cbb8;padding:0;overflow:hidden}
+.meHead{display:flex;align-items:center;justify-content:space-between;padding:12px 14px 10px;border-bottom:1px solid #e7ded1;background:rgba(255,253,247,.96)}
+.meHead b{font-size:14px;font-weight:600;letter-spacing:1px;color:#2b241b}
+.meClose{border:0;background:transparent;font-size:20px;line-height:1;color:#7b6d5a;padding:0 3px;cursor:pointer}
+.mePaperWrap{padding:12px;overflow-y:auto;max-height:56vh;-webkit-overflow-scrolling:touch}
+.mePaper{position:relative;background:#fffdf7;border:1px solid #e3d8c7;border-radius:2px;box-shadow:0 6px 18px rgba(80,62,38,.08);padding:18px 16px 14px;background-image:repeating-linear-gradient(to bottom,transparent 0 26px,rgba(180,160,130,.12) 26px 27px);background-position:0 55px}
+.mePaper:before{content:"";position:absolute;left:13px;top:0;bottom:0;width:1px;background:rgba(190,120,100,.16)}
+.meStamp{position:absolute;right:12px;top:11px;width:36px;height:36px;border:1px solid #b45a4a;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;letter-spacing:1px;color:#b45a4a;transform:rotate(-9deg);opacity:.75;background:rgba(255,255,255,.4)}
+.meTo{font-family:"Kaiti SC","STKaiti","Songti SC",serif;font-size:14px;line-height:26px;color:#3a3024;margin:6px 0 0 2px}
+#meBody{width:100%;min-height:170px;border:0!important;border-radius:0!important;background:transparent!important;padding:4px 2px!important;font-family:"Kaiti SC","STKaiti","Songti SC",serif!important;font-size:14px!important;line-height:26px!important;color:#2b241b;resize:vertical;box-shadow:none!important;outline:none}
+#meBody::placeholder{color:#b3a99a;font-family:"Songti SC",serif}
+.meImgGrid{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0}
+.meImgItem{position:relative;width:58px;height:58px;border:1px solid #e3d8c7;border-radius:5px;background:#fff;display:flex;align-items:center;justify-content:center;padding:3px;box-sizing:border-box}
+.meImgItem img{max-width:100%;max-height:100%;object-fit:contain;border-radius:3px}
+.meImgDel{position:absolute;top:-6px;right:-6px;width:18px;height:18px;border:1px solid #fff;border-radius:50%;background:#111;color:#fff;font-size:12px;line-height:16px;text-align:center;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.18)}
+.meAdd{font-size:11px;padding:8px;margin-top:10px;border-color:#c9bdab;color:#7b6d5a;background:rgba(255,255,255,.45)}
+.meHint{font-size:10px;color:#988b7a;margin-top:6px;line-height:1.5}
+.meFoot{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding-top:8px;border-top:1px solid #eee4d6;font-size:9px;letter-spacing:1.2px;color:#a09380}
+.meFoot span:last-child{width:30px;height:30px;border:1px solid #b45a4a;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:7px;color:#b45a4a;transform:rotate(-9deg);letter-spacing:.5px;opacity:.7}
+
+/* ===== 对方钱包 / 亲属卡 ===== */
+#taWalletMask .dialog{max-width:360px;max-height:88vh}
+.taWalletBal{font-size:24px;font-weight:700;color:#111;text-align:center;margin:8px 0 4px}
+.taWalletSub{text-align:center;font-size:11px;color:#888;margin-bottom:8px}
+.chipRow{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 0}
+.chipRow button{border:1px solid #111;border-radius:14px;background:#fff;color:#111;font-size:11px;padding:4px 9px;cursor:pointer}
+.kinBox{border:1px solid #e5e5e5;border-radius:10px;padding:10px 12px;background:#fafafa}
+#kinStatus{font-size:12px;color:#111;line-height:1.6;margin-bottom:2px}
+#kinStatus b{font-weight:600}
+.taWalletTip{font-size:10px;line-height:1.55;color:#888;margin-top:6px}
+.taPayLog{margin-top:8px}
+.taPayLog .listRow{padding:5px 0;font-size:11px}
+.mwImgItem{position:relative;width:58px;height:58px;border:1px solid #e5e5e5;border-radius:6px;display:flex;align-items:center;justify-content:center;padding:3px;box-sizing:border-box;background:#fff}
+.mwImgItem img{max-width:100%;max-height:100%;object-fit:contain;border-radius:4px}
+.mwImgDel{position:absolute;top:-6px;right:-6px;width:18px;height:18px;border:1px solid #fff;border-radius:50%;background:#111;color:#fff;font-size:12px;line-height:16px;text-align:center;cursor:pointer}
 #confirmMsg{font-size:13px;line-height:1.6;color:#111;white-space:pre-wrap}
 #toastBar{position:absolute;left:10px;right:10px;top:8px;z-index:80;background:#fff;color:#111;border:0;border-radius:14px;padding:10px 12px;display:flex;align-items:center;gap:9px;box-shadow:0 8px 24px rgba(0,0,0,.12);transform:translateY(-180%);opacity:0;transition:transform .3s cubic-bezier(.22,.61,.36,1),opacity .22s ease;cursor:pointer;overflow:hidden}
 #toastBar.show{transform:translateY(0);opacity:1}
@@ -1835,7 +1872,7 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
         <button class="cpToolBtn" id="cpMoveSel">移动选中</button>
       </div>
       <div id="cpStickerAdd" style="display:none">
-        <label class="stickerUpload">＋ 上传表情包图片<input type="file" id="cpStickerFile" accept="image/*" multiple></label>
+        <label class="stickerUpload">＋ 上传表情包图片（可多选）<input type="file" id="cpStickerFile" accept="image/*" multiple></label>
       </div>
       <div id="cpStickerGrid" class="stickerGrid" style="display:none"></div>
       <div id="cpList"></div>
@@ -2290,6 +2327,7 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
     <h3>发红包</h3>
     <input id="rpAmount" type="number" placeholder="金额（元）" style="margin-bottom:8px">
     <input id="rpNote" type="text" placeholder="留言（可选）">
+    <div class="fRow"><span>付款方式</span><select id="rpPaySrc"><option value="wallet">我的钱包</option><option value="kin" class="kinOpt">亲属卡</option></select></div>
     <div class="btns"><button class="cancel" id="rpCancel">取消</button><button class="ok" id="rpOk">发红包</button></div>
   </div></div>
 
@@ -2297,6 +2335,7 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
     <h3>转账</h3>
     <input id="tfAmount" type="number" placeholder="金额（元）" style="margin-bottom:8px">
     <input id="tfNote" type="text" placeholder="说明（可选）">
+    <div class="fRow"><span>付款方式</span><select id="tfPaySrc"><option value="wallet">我的钱包</option><option value="kin" class="kinOpt">亲属卡</option></select></div>
     <div class="btns"><button class="cancel" id="tfCancel">取消</button><button class="ok" id="tfOk">确认</button></div>
   </div></div>
 
@@ -2386,9 +2425,25 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
   <div class="mask" id="mailWriteMask"><div class="dialog">
     <h3>写信</h3>
     <textarea id="mwBody" placeholder="正文…" maxlength="800"></textarea>
-    <label class="stickerUpload">＋ 附带表情包<input type="file" id="mwSticker" accept="image/*"></label>
+    <label class="stickerUpload">＋ 附带表情包（可多选）<input type="file" id="mwSticker" accept="image/*" multiple></label>
     <div id="mwPrev" style="display:flex;flex-wrap:wrap;gap:6px"></div>
     <div class="btns"><button class="cancel" id="mwCancel">取消</button><button class="ok" id="mwOk">寄出</button></div>
+  </div></div>
+
+
+  <div class="mask" id="mailEditMask"><div class="dialog">
+    <div class="meHead"><b>修改信笺</b><button class="meClose" id="meClose" type="button">×</button></div>
+    <div class="mePaperWrap">
+      <div class="mePaper">
+        <div class="meStamp">初雪</div>
+        <div class="meTo" id="meTo">致 TA：</div>
+        <textarea id="meBody" maxlength="800" placeholder="写下想说的事…"></textarea>
+        <div class="meImgGrid" id="meImgs"></div>
+        <label class="stickerUpload meAdd">＋ 添加表情包（可多选）<input type="file" id="meSticker" accept="image/*" multiple></label>
+        <div class="meHint">点贴图右上角的 × 可以删除这张贴图</div>
+      </div>
+    </div>
+    <div style="padding:0 14px 14px"><div class="btns"><button class="cancel" id="meCancel">取消</button><button class="ok" id="meSave">保存修改</button></div></div>
   </div></div>
 
   <!-- 信箱设置：回信/主动写信 = 开关 + 概率 + min/max + 补算上限 -->
@@ -2435,7 +2490,30 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
     <h3>购买</h3>
     <div class="fRow"><span>数量</span><input id="buyQty" type="number" min="1" value="1"></div>
     <div class="fRow"><span>金额</span><input id="buyAmt" type="number" min="0"></div>
+    <div class="fRow"><span>付款方式</span><select id="buyPaySrc"><option value="wallet">我的钱包</option><option value="kin" class="kinOpt">亲属卡</option></select></div>
     <div class="btns"><button class="cancel" id="buyCancel">取消</button><button class="cancel" id="buyCart">加入购物车</button><button class="ok" id="buyDirect">直接购买</button><button class="ok" id="buyDai">梦角代付</button></div>
+  </div></div>
+
+
+  <div class="mask" id="taWalletMask"><div class="dialog">
+    <h3 id="taWalletTitle">TA的钱包</h3>
+    <div class="taWalletBal" id="taWalletBal">¥0</div>
+    <div class="taWalletSub">对方发红包、转账、礼物会从这里扣款</div>
+    <div class="fRow"><span>设定对方钱包余额</span><input id="taWalletSet" type="number" min="0" placeholder="如 10000"></div>
+    <div class="btns"><button class="cancel" id="taWalletClose">关闭</button><button class="ok" id="taWalletSave">保存余额</button></div>
+    <hr style="border:none;border-top:1px solid #eee;margin:14px 0">
+    <div class="fRow"><span>特殊金额（对方发红包 / 转账时优先使用）</span><input id="taWalletSpecial" type="text" placeholder="520,1314,5200"></div>
+    <div class="chipRow" id="taSpecialChips"><button type="button" data-v="520">＋520</button><button type="button" data-v="1314">＋1314</button><button type="button" data-v="5200">＋5200</button></div>
+    <div class="btns"><button class="ok" id="taSpecialSave">保存特殊金额</button></div>
+    <div class="taPayLog" id="taPayLog"></div>
+    <hr style="border:none;border-top:1px solid #eee;margin:14px 0">
+    <h3 style="font-size:14px">亲属卡</h3>
+    <div class="kinBox">
+      <div id="kinStatus">未绑定</div>
+      <div class="fRow"><span>亲属卡额度（元）</span><input id="kinLimit" type="number" min="0" placeholder="如 5200"></div>
+      <div class="btns"><button class="cancel" id="kinBind">让TA绑定</button><button class="cancel" id="kinUnbind">解绑</button><button class="ok" id="kinSave">保存额度</button></div>
+      <div class="taWalletTip" id="kinTip">绑定后，你买东西、发红包或转账时可以在付款方式里选“亲属卡”。每次使用都会给对方发通知。</div>
+    </div>
   </div></div>
 
   <div class="mask" id="addGoodsMask"><div class="dialog">
@@ -2476,8 +2554,10 @@ button:not(.ok):not(.doneBtn):not(#sendBtn):not(#plusBtn),.back,.zbtn,.cpToolBtn
     <div class="walletBal" id="walletBal">¥0</div>
     <div class="fRow"><span>手动增加余额</span><input id="addBal" type="number" min="0" placeholder="金额"></div>
     <div class="btns"><button class="cancel" id="wCancel">关闭</button><button class="ok" id="wAdd">增加</button></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin:10px 0;font-size:12px"><span style="color:#555">对方钱包 / 亲属卡</span><button class="cancel" id="wTaWalletBtn" type="button" style="width:auto;padding:6px 14px">管理</button></div>
     <hr style="border:none;border-top:1px solid #eee;margin:12px 0">
     <h3 style="font-size:14px">购物车</h3>
+    <div class="fRow"><span>结算付款方式</span><select id="cartPaySrc"><option value="wallet">我的钱包</option><option value="kin" class="kinOpt">亲属卡</option></select></div>
     <div id="cartList"></div>
     <div class="btns"><button class="ok" id="cartCheckout">结算购物车</button></div>
     <hr style="border:none;border-top:1px solid #eee;margin:12px 0">
@@ -2793,6 +2873,27 @@ var patTaCards=load('zika_pat_ta',DP_TA);
 var checkCards=load('zika_check_cards',DCHK);
 var checkAskCards=load('zika_check_ask',DCHKASK);
 var stickers=load('zika_stickers',[]);
+if(!Array.isArray(stickers))stickers=[];
+var _stkSeen={};stickers=stickers.filter(function(u){if(!u||_stkSeen[u])return false;_stkSeen[u]=1;return true;});
+save('zika_stickers',stickers);
+var mailStickerRecent=load('zika_mail_sticker_recent',[]);
+if(!Array.isArray(mailStickerRecent))mailStickerRecent=[];
+mailStickerRecent=mailStickerRecent.filter(function(u){return stickers.indexOf(u)>=0;});
+function pickMailStickerBatch(n){
+  n=Math.max(0,Math.round(n||0));
+  if(!n||!stickers.length)return [];
+  var fresh=stickers.filter(function(u){return mailStickerRecent.indexOf(u)<0;});
+  var pool=(fresh.length>=n?fresh:stickers.slice());
+  for(var i=pool.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=pool[i];pool[i]=pool[j];pool[j]=t;}
+  var picks=pool.slice(0,Math.min(n,pool.length));
+  if(picks.length){
+    mailStickerRecent=picks.concat(mailStickerRecent);
+    var keep=Math.max(0,stickers.length-1);
+    mailStickerRecent=mailStickerRecent.slice(0,Math.min(6,keep));
+    save('zika_mail_sticker_recent',mailStickerRecent);
+  }
+  return picks;
+}
 var favorites=load('zika_favorites',[]);
 var beauty=load('zika_beauty',{fontFamily:'serif',gfont:14,font:14,pad:6,radius:14,cardW:150,meColor:'#111111',metaColor:'#aaaaaa',taColor:'#ffffff',bgColor:'#f7f7f7',bgImg:'',dim:100,scope:'chat',topAlpha:100,topBlur:0,inAlpha:100,inBlur:0,inBg:'#ffffff',inBorder:'#111111',inText:'#111111',plusBg:'#ffffff',plusBorder:'#111111',plusText:'#111111',sendBg:'#111111',sendBorder:'#111111',sendText:'#ffffff',css:'',typing:'对方正在输入…',callBg:'',callFloatBg:'',callDim:0,fontCss:''});
 if(beauty.fontCss==null)beauty.fontCss='';
@@ -2873,6 +2974,7 @@ if(ms.dailyMax==null)ms.dailyMax=2;
 if(ms._todayKey==null)ms._todayKey='';
 if(ms._todayCount==null)ms._todayCount=0;
 if(ms.tickGap==null)ms.tickGap=60;
+if(ms.nextAt==null)ms.nextAt=Date.now()+Math.max(1,parseInt(ms.tickGap)||60)*60*1000;
 if(ms.delayMin==null)ms.delayMin=1;
 if(ms.delayMax==null)ms.delayMax=60;
 save('zika_moment_settings',ms);
@@ -2928,6 +3030,77 @@ function mailRandMs(minMin,maxMin){
 
 var goods=load('zika_shop_goods',[{id:'g1',name:'奶茶',price:15,img:''},{id:'g2',name:'鲜花',price:52,img:''},{id:'g3',name:'蛋糕',price:88,img:''},{id:'g4',name:'小夜灯',price:39,img:''},{id:'g5',name:'围巾',price:99,img:''},{id:'g6',name:'巧克力',price:66,img:''}]);
 var wallet=load('zika_shop_wallet',{balance:500});
+var TA_WALLET_DEFAULT={balance:10000,special:[520,1314,5200],kinBound:false,kinLimit:5200,kinUsed:0,log:[]};
+var taWallet=load('zika_ta_wallet',TA_WALLET_DEFAULT);
+if(!taWallet||typeof taWallet!=='object')taWallet=JSON.parse(JSON.stringify(TA_WALLET_DEFAULT));
+if(taWallet.balance==null)taWallet.balance=TA_WALLET_DEFAULT.balance;
+if(!Array.isArray(taWallet.special))taWallet.special=TA_WALLET_DEFAULT.special.slice();
+if(taWallet.kinBound==null)taWallet.kinBound=false;
+if(taWallet.kinLimit==null)taWallet.kinLimit=TA_WALLET_DEFAULT.kinLimit;
+if(taWallet.kinUsed==null)taWallet.kinUsed=0;
+if(!Array.isArray(taWallet.log))taWallet.log=[];
+save('zika_ta_wallet',taWallet);
+function twMoney(v){v=Math.round((parseFloat(v)||0)*100)/100;return v;}
+function twLog(desc,amt){taWallet.log.push({desc:desc,amt:twMoney(amt),time:Date.now()});if(taWallet.log.length>20)taWallet.log=taWallet.log.slice(-20);}
+function twSave(){save('zika_ta_wallet',taWallet);}
+function twRemain(){return Math.max(0,twMoney(taWallet.kinLimit)-twMoney(taWallet.kinUsed));}
+function twSpend(amt,desc){amt=twMoney(amt);if(amt<=0)return true;if(amt>twMoney(taWallet.balance))return false;taWallet.balance=twMoney(taWallet.balance-amt);twLog(desc,amt);twSave();return true;}
+function twSpecialAmount(){
+  var bal=twMoney(taWallet.balance);if(bal<=0)return 0;
+  var list=(taWallet.special||[]).map(twMoney).filter(function(v){return v>0&&v<=bal;});
+  if(list.length)return list[Math.floor(Math.random()*list.length)];
+  var cap=Math.min(200,bal);return Math.max(1,Math.floor(Math.random()*cap)+1);
+}
+function notifyKinUse(amt,scene){
+  var ta=profile.taName||'TA';
+  pushMsg({type:'sys',text:'【亲属卡提醒】你使用亲属卡支付 ¥'+fmt(amt)+'（'+scene+'），已通知'+ta+'，亲属卡剩余 ¥'+fmt(twRemain())+'。'});
+}
+function payUserAmount(amt,source,scene,deferNotify){
+  amt=twMoney(amt);if(amt<=0)return false;
+  if(source==='kin'){
+    if(!taWallet.kinBound){alert('亲属卡还没有绑定，先去“对方钱包”里让'+(profile.taName||'TA')+'绑定');return false;}
+    if(amt>twRemain()){alert('亲属卡额度不足，剩余 ¥'+fmt(twRemain()));return false;}
+    if(amt>twMoney(taWallet.balance)){alert('对方钱包余额不足，先给对方钱包充值');return false;}
+    taWallet.balance=twMoney(taWallet.balance-amt);taWallet.kinUsed=twMoney(taWallet.kinUsed+amt);
+    twLog('亲属卡 · '+scene,amt);twSave();if(!deferNotify)notifyKinUse(amt,scene);return true;
+  }
+  if(amt>twMoney(wallet.balance)){alert('余额不足，去钱包充值');return false;}
+  wallet.balance=twMoney(wallet.balance-amt);save('zika_shop_wallet',wallet);return true;
+}
+function kinOptionLabel(){
+  var opts=document.querySelectorAll('.kinOpt');
+  opts.forEach(function(o){
+    o.textContent=taWallet.kinBound?('亲属卡（余 ¥'+fmt(twRemain())+'）'):'亲属卡（未绑定）';
+    o.disabled=!taWallet.kinBound;
+  });
+}
+function renderTaWallet(){
+  if(!$('taWalletBal'))return;
+  var who=profile.taName||'TA';
+  if($('taWalletTitle'))$('taWalletTitle').textContent=who+'的钱包';
+  if($('kinTip'))$('kinTip').textContent='绑定后，你买东西、发红包或转账时可以在付款方式里选“亲属卡”。每次使用都会给'+who+'发通知。';
+  $('taWalletBal').textContent='¥'+fmt(taWallet.balance);
+  $('taWalletSet').value=taWallet.balance;
+  $('taWalletSpecial').value=(taWallet.special||[]).join(',');
+  $('kinLimit').value=taWallet.kinLimit;
+  if(taWallet.kinBound){
+    $('kinStatus').innerHTML='已绑定 · 额度 <b>¥'+fmt(taWallet.kinLimit)+'</b> · 已用 <b>¥'+fmt(taWallet.kinUsed)+'</b> · 剩余 <b>¥'+fmt(twRemain())+'</b>';
+    $('kinBind').textContent='已绑定';
+    $('kinBind').disabled=true;
+    $('kinUnbind').style.display='';
+  }else{
+    $('kinStatus').innerHTML='未绑定';
+    $('kinBind').textContent='让'+who+'绑定';
+    $('kinBind').disabled=false;
+    $('kinUnbind').style.display='none';
+  }
+  var lg=$('taPayLog');if(lg){
+    lg.innerHTML='';
+    if(!taWallet.log.length){lg.innerHTML='<div style="color:#999;font-size:11px;padding:4px 0">暂无支出记录</div>';}
+    else taWallet.log.slice().reverse().forEach(function(it){var r=document.createElement('div');r.className='listRow';r.innerHTML='<span style="flex:1">'+esc(it.desc)+'</span><span>¥'+fmt(it.amt)+'</span>';lg.appendChild(r);});
+  }
+  kinOptionLabel();
+}
 var cart=load('zika_shop_cart',[]);
 var buyLog=load('zika_shop_buylog',[]);
 var giveLog=load('zika_shop_givelog',[]);
@@ -3025,7 +3198,7 @@ if(screenStat.lastShareViewTs==null)screenStat.lastShareViewTs=0;
 if(screenStat.shareViewCountDay==null)screenStat.shareViewCountDay=0;
 save('zika_screen_stat',screenStat);
 var lockActive=false,lockTimer=null,lockRemain=0,wrongCount=0,shareActive=false,shareReactTimer=null,shareViewActive=false,shareViewTimer=null,shareViewStart=0,pendingShareKind='takeover';
-var tmpImgs=[],mwImgs=[],cpTab='reply',cpCurGroup='全部',cpSel={},quoteMsg=null,typingOn=false,surveyQuestions=[],curBuyGoods=null,agImg='',saveSel={},cpEditIndex=-1,pendingCheckAsk=null;
+var tmpImgs=[],mwImgs=[],meImgs=[],meEditMsg=null,meEditCv=null,cpTab='reply',cpCurGroup='全部',cpSel={},quoteMsg=null,typingOn=false,surveyQuestions=[],curBuyGoods=null,agImg='',saveSel={},cpEditIndex=-1,pendingCheckAsk=null;
 
 function statusTexts(){return (statusPool||[]).map(function(x){return typeof x==='string'?x:(x&&x.text)||'';}).filter(function(x){return String(x).trim();});}
 function refreshStatus(){
@@ -3709,7 +3882,7 @@ function buildNote(w){
   return mode==='countup'?-diff:diff;
 }
 function fmtDate(ts){var d=new Date(ts);return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);}
-function dayKey(){var d=new Date();return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);}
+function dayKey(ts){var d=ts?new Date(ts):new Date();return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);}
 function todayPretty(){var d=new Date();return (d.getMonth()+1)+'月'+d.getDate()+'日';}
 function getReplyCardsArr(){var arr=replyCards||[];return arr.map(function(x){return typeof x==='string'?x:(x&&x.text)||'';}).filter(function(x){return x;});}
 
@@ -4324,7 +4497,10 @@ function taActiveSend(){
   if(!chosen){acc+=probs.tf;if(roll<acc)chosen='transfer';}
   if(!chosen){acc+=probs.gf;if(roll<acc)chosen='gift';}
   if(!chosen)return;
-  var amt=Math.floor(Math.random()*200)+1;
+  var amt=twSpecialAmount();
+  if(!amt)return;
+  var spendDesc=(chosen==='redpacket'?'发红包':(chosen==='transfer'?'转账':'送礼物'));
+  if(!twSpend(amt,spendDesc))return;
   var notePool=getReplyCardsArr();
   var note=notePool.length?fillNames(getCardText(notePool[Math.floor(Math.random()*notePool.length)])):'';
   if(chosen==='redpacket')pushMsg({from:'ta',type:'redpacket',amount:amt,note:note||'给你发个红包',opened:false});
@@ -5127,6 +5303,10 @@ function momentReplyName(c){
   if(c.replyToType==='ta') return profile.taName||'TA';
   return c.replyTo||'';
 }
+function momentReplyDelayMs(){
+  var a=Math.max(1,parseFloat(ms.delayMin)||1),b=Math.max(a,parseFloat(ms.delayMax)||60);
+  return Math.round((a+Math.random()*(b-a))*1000);
+}
 function renderMoments(){
   var body=$('momentsBody');if(!body)return;body.innerHTML='';
   var cv=document.createElement('div');cv.className='cover';
@@ -5170,7 +5350,7 @@ function renderMoments(){
           setTimeout(function(){
             mt.comments.push({whoType:'ta',who:profile.taName||'TA',text:getCardText(replyCards[Math.floor(Math.random()*replyCards.length)]),replyToType:'me',replyTo:profile.meName||'我',time:Date.now()});
             save('zika_moments',moments);renderMoments();
-          },1500+Math.random()*1500);
+          },momentReplyDelayMs());
         }
       });
     };
@@ -5205,7 +5385,7 @@ function renderMoments(){
               setTimeout(function(){
                 mt.comments.push({whoType:'ta',who:profile.taName||'TA',text:getCardText(replyCards[Math.floor(Math.random()*replyCards.length)]),replyToType:'me',replyTo:profile.meName||'我',time:Date.now()});
                 save('zika_moments',moments);renderMoments();
-              },1500+Math.random()*1500);
+              },momentReplyDelayMs());
             }
           });
         };
@@ -5252,13 +5432,14 @@ function taReactMyMoments(){
   if(changed)save('zika_moments',moments);
 }
 
-function taTick(){
-  if(!replyCards.length)return;
-  var today=dayKey();
+function taTick(atTs,noRender){
+  var nowTs=atTs||Date.now();
+  if(!replyCards.length)return 0;
+  var today=dayKey(nowTs);
   if(ms._todayKey!==today){ms._todayKey=today;ms._todayCount=0;save('zika_moment_settings',ms);}
   var dailyMax=(ms.dailyMax==null?2:parseInt(ms.dailyMax)||0);
-  if(dailyMax>0 && ms._todayCount>=dailyMax)return;
-  if(Math.random()*100>=ms.postP)return;
+  if(dailyMax>0 && ms._todayCount>=dailyMax)return 0;
+  if(Math.random()*100>=ms.postP)return 0;
   var remain=(dailyMax>0)?(dailyMax-ms._todayCount):999;
   var n0=Math.max(1,Math.round(ms.nMin||1));
   var n1=Math.max(n0,Math.round(ms.nMax||n0));
@@ -5268,13 +5449,36 @@ function taTick(){
   for(var i=0;i<n;i++){
     var txt=getCardText(replyCards[Math.floor(Math.random()*replyCards.length)]);
     if(!txt)continue;
-    var m={from:'ta',text:txt,imgs:[],time:Date.now()+i*1000,comments:[],liked:false};
+    var m={from:'ta',text:txt,imgs:[],time:nowTs+i*1000,comments:[],liked:false};
     if(stickers.length&&Math.random()*100<ms.imgP){var k=Math.max(0,Math.round(ms.imgMin||0))+Math.floor(Math.random()*Math.max(1,(ms.imgMax||0)-(ms.imgMin||0)+1));for(var j=0;j<k;j++)m.imgs.push(stickers[Math.floor(Math.random()*stickers.length)]);}
     if(Math.random()*100<ms.shotP){(function(mm){makeChatShot(function(data){if(data){mm.shotImg=data;save('zika_moments',moments);renderMoments();}});})(m);}
     moments.push(m);unreadData.moments++;posted++;
   }
   if(posted>0){ms._todayCount+=posted;save('zika_moment_settings',ms);save('zika_moments',moments);if(unreadData.moments>0)saveUnread();}
-  taReactMyMoments();renderMoments();
+  if(!noRender){taReactMyMoments();renderMoments();}
+  return posted;
+}
+
+function momentsGapMs(){return Math.max(1,parseInt(ms.tickGap)||60)*60*1000;}
+function settleMomentsTick(){
+  var gap=momentsGapMs();
+  var now=Date.now();
+  if(!ms.nextAt){ms.nextAt=now+gap;save('zika_moment_settings',ms);return 0;}
+  var guard=0,total=0;
+  while(now>=ms.nextAt && guard<12){
+    var fireTs=ms.nextAt;
+    total+=taTick(fireTs,true);
+    ms.nextAt=fireTs+gap;
+    guard++;
+  }
+  if(guard>0){
+    if(now>=ms.nextAt)ms.nextAt=now+gap;
+    save('zika_moment_settings',ms);
+    if(total>0){save('zika_moments',moments);saveUnread();}
+    taReactMyMoments();
+    if($('momentsPage') && $('momentsPage').classList.contains('show'))renderMoments();
+  }
+  return total;
 }
 
 /* ========== 信箱 ==========
@@ -5390,6 +5594,47 @@ function renderMail(){
   });
   applyMailCard();
 }
+
+function mwRender(){
+  var box=$('mwPrev');if(!box)return;
+  box.innerHTML='';
+  mwImgs.forEach(function(u,i){
+    var d=document.createElement('div');d.className='mwImgItem';
+    var im=document.createElement('img');im.src=u;d.appendChild(im);
+    var x=document.createElement('span');x.className='mwImgDel';x.textContent='×';x.setAttribute('role','button');x.onclick=function(e){e.stopPropagation();mwImgs.splice(i,1);mwRender();};
+    d.appendChild(x);box.appendChild(d);
+  });
+}
+function renderMeImgs(){
+  var box=$('meImgs');if(!box)return;
+  box.innerHTML='';
+  meImgs.forEach(function(u,i){
+    var d=document.createElement('div');d.className='meImgItem';
+    var im=document.createElement('img');im.src=u;d.appendChild(im);
+    var x=document.createElement('span');x.className='meImgDel';x.textContent='×';x.setAttribute('role','button');x.onclick=function(e){e.stopPropagation();meImgs.splice(i,1);renderMeImgs();};
+    d.appendChild(x);box.appendChild(d);
+  });
+}
+function openMailEditor(cv,m){
+  meEditCv=cv;meEditMsg=m;meImgs=(m.imgs||[]).slice();
+  if($('meBody'))$('meBody').value=m.text||'';
+  if($('meTo'))$('meTo').textContent='致 '+toName(m)+'：';
+  renderMeImgs();
+  if($('mailEditMask'))$('mailEditMask').classList.add('show');
+  setTimeout(function(){try{if($('meBody'))$('meBody').focus();}catch(e){}},120);
+}
+function closeMailEditor(){if($('mailEditMask'))$('mailEditMask').classList.remove('show');meEditMsg=null;meEditCv=null;meImgs=[];}
+function saveMailEditor(){
+  if(!meEditMsg)return;
+  var v=($('meBody').value||'').trim();
+  if(!v){alert('信件正文不能为空');return;}
+  meEditMsg.text=v;meEditMsg.imgs=meImgs.slice();
+  save('zika_mail_convs',convs);
+  var ci=convs.indexOf(meEditCv);
+  closeMailEditor();
+  if(ci>=0)openConv(ci);else renderMail();
+}
+
 function makeLetterCard(cv,mi,m){
   var openSkin=(mailSet&&['A','B','C','D'].indexOf(mailSet.skin)>=0)?mailSet.skin:'A';
   var card=document.createElement('div');card.className='letterCard L1 open-'+openSkin;
@@ -5398,8 +5643,8 @@ function makeLetterCard(cv,mi,m){
   var tag=document.createElement('div');tag.className='letterTag '+(m.from==='me'?'me':'ta');tag.textContent=tagText(m,mi);
   var lacts=document.createElement('div');lacts.className='letterActs';
   var lEdit=document.createElement('span');lEdit.textContent='修改';
-  lEdit.onclick=function(){var newText=prompt('修改信件正文：',m.text||'');if(newText===null)return;newText=newText.trim();if(!newText)return;m.text=newText;save('zika_mail_convs',convs);var ci=convs.indexOf(cv);if(ci>=0)openConv(ci);else renderMail();};
-  var lDel=document.createElement('span');lDel.className='delL';lDel.textContent='删除';lDel.onclick=function(){if(!confirm('删除这一封？'))return;var mi2=cv.msgs.indexOf(m);if(mi2>=0)cv.msgs.splice(mi2,1);if(!cv.msgs.length){var ci2=convs.indexOf(cv);if(ci2>=0)convs.splice(ci2,1);}save('zika_mail_convs',convs);var ci3=convs.indexOf(cv);if(ci3>=0)openConv(ci3);else renderMail();};
+  lEdit.onclick=function(){openMailEditor(cv,m);};
+  var lDel=document.createElement('span');lDel.className='delL';lDel.textContent='删除';lDel.onclick=function(){showConfirm('删除这一封','删除后不可恢复，确定删除？',function(){var mi2=cv.msgs.indexOf(m);if(mi2>=0)cv.msgs.splice(mi2,1);if(!cv.msgs.length){var ci2=convs.indexOf(cv);if(ci2>=0)convs.splice(ci2,1);}save('zika_mail_convs',convs);var ci3=convs.indexOf(cv);if(ci3>=0)openConv(ci3);else renderMail();});};
   lacts.appendChild(lEdit);lacts.appendChild(lDel);top.appendChild(tag);top.appendChild(lacts);card.appendChild(top);
   var to=document.createElement('div');to.className='letterTo';to.textContent='致 '+toName(m)+'：';card.appendChild(to);
   var greet=document.createElement('div');greet.className='letterGreet';greet.textContent='见字如面，一切皆好。';card.appendChild(greet);
@@ -5429,15 +5674,17 @@ function openConv(idx){
   var back=document.createElement('span');back.textContent='‹ 收起';back.onclick=closeMailReader;
   var reply=document.createElement('span');reply.textContent='回信';
   reply.onclick=function(){
-    var v=prompt('回信正文：');if(v===null)return;v=v.trim();if(!v)return;
-    cv.msgs.push({from:'me',text:v,imgs:[],time:Date.now()});
-    var rpOk2=(Math.random()*100<(parseFloat(mailSet.replyP)||0));
-    cv.willReply=rpOk2?1:0;
-    cv.nextAt=rpOk2?Date.now()+mailRandMs(mailSet.replyMin,mailSet.replyMax):0;
-    save('zika_mail_convs',convs);
-    openConv(idx);
+    showTextPrompt('回信','',function(v){
+      v=v.trim();if(!v)return;
+      cv.msgs.push({from:'me',text:v,imgs:[],time:Date.now()});
+      var rpOk2=(Math.random()*100<(parseFloat(mailSet.replyP)||0));
+      cv.willReply=rpOk2?1:0;
+      cv.nextAt=rpOk2?Date.now()+mailRandMs(mailSet.replyMin,mailSet.replyMax):0;
+      save('zika_mail_convs',convs);
+      openConv(idx);
+    },800);
   };
-  var del=document.createElement('span');del.className='delM';del.textContent='删除整封';del.onclick=function(){if(!confirm('删除这封信及全部往来？'))return;convs.splice(idx,1);save('zika_mail_convs',convs);closeMailReader();renderMail();};
+  var del=document.createElement('span');del.className='delM';del.textContent='删除整封';del.onclick=function(){showConfirm('删除整封信','这封信和全部往来都会删除，确定吗？',function(){convs.splice(idx,1);save('zika_mail_convs',convs);closeMailReader();renderMail();});};
   acts.appendChild(back);acts.appendChild(reply);acts.appendChild(del);box.appendChild(acts);
   var foot=document.createElement('div');foot.className='mrFoot';
   foot.innerHTML='<div class="mfMeta"><b>初雪里</b>CHUXUELI · LETTER PAPER</div><div class="mfStamp"><span class="cancelMark"></span><div class="pmStamp sm"><span class="pmTop">CHUXUELI</span><b>初雪</b><span class="pmBottom">2026</span></div></div>';
@@ -5480,7 +5727,7 @@ function settleMailReply(){
     var body=joinCardsWithPunc(parts);
     if(!body.trim())body='嗯嗯。';
     var imgs=[];
-    if(stickers.length){var kk=randInt(mailSet.imgMin,mailSet.imgMax);for(var j=0;j<kk;j++)imgs.push(stickers[Math.floor(Math.random()*stickers.length)]);}
+    if(stickers.length){imgs=pickMailStickerBatch(randInt(mailSet.imgMin,mailSet.imgMax));}
     if(!mailCanReceive())break;
     cv.msgs.push({from:'ta',text:body,imgs:imgs,time:Date.now()});
     mailMarkReceived();
@@ -5514,7 +5761,7 @@ function settleMailProactive(){
     var body2=joinCardsWithPunc(parts2);
     if(!body2.trim())body2='嗯嗯。';
     var imgs2=[];
-    if(stickers.length){var k2=randInt(mailSet.imgMin,mailSet.imgMax);for(var j2=0;j2<k2;j2++)imgs2.push(stickers[Math.floor(Math.random()*stickers.length)]);}
+    if(stickers.length){imgs2=pickMailStickerBatch(randInt(mailSet.imgMin,mailSet.imgMax));}
     var titlePool=['一封信','想你了','今天怎么样','随手写写','见字如面'];
     var title=titlePool[Math.floor(Math.random()*titlePool.length)];
     convs.push({title:title,msgs:[{from:'ta',text:body2,imgs:imgs2,time:fireTs}],unread:true,nextAt:0,willReply:0});
@@ -5577,7 +5824,7 @@ function renderShop(){
   var add=document.createElement('div');add.className='addGoodsBtn';add.textContent='＋ 新增商品';add.onclick=function(){$('agName').value='';$('agPrice').value='';$('agPrev').innerHTML='';agImg='';$('addGoodsMask').classList.add('show');};box.appendChild(add);
   function acts(g,row){
     var bs=document.createElement('div');bs.className='goodsBtns'+(row?' row':'');
-    var b1=document.createElement('button');b1.className='buyBtn';b1.textContent='购买';b1.onclick=function(){curBuyGoods=g;$('buyQty').value=1;$('buyAmt').value=g.price;$('shopBuyMask').classList.add('show');};
+    var b1=document.createElement('button');b1.className='buyBtn';b1.textContent='购买';b1.onclick=function(){curBuyGoods=g;$('buyQty').value=1;$('buyAmt').value=g.price;kinOptionLabel();if($('buyPaySrc'))$('buyPaySrc').value='wallet';$('shopBuyMask').classList.add('show');};
     var b2=document.createElement('button');b2.className='cartBtn';b2.textContent='加购';b2.onclick=function(){cart.push({gid:g.id,name:g.name,price:g.price,qty:1});save('zika_shop_cart',cart);alert('已加入购物车');};
     bs.appendChild(b1);bs.appendChild(b2);return bs;
   }
@@ -5613,9 +5860,10 @@ function renderShop(){
   applyShopBg();
 }
 function doDirectBuy(){
-  var qty=parseInt($('buyQty').value)||1;var amt=parseFloat($('buyAmt').value)||curBuyGoods.price;var total=amt*qty;
-  if(total>wallet.balance){alert('余额不足，去钱包充值');return;}
-  wallet.balance-=total;save('zika_shop_wallet',wallet);buyLog.push({name:curBuyGoods.name,qty:qty,amt:total,time:Date.now(),type:'direct'});save('zika_shop_buylog',buyLog);$('shopBuyMask').classList.remove('show');alert('购买成功，已放入背包');
+  var qty=parseInt($('buyQty').value)||1;var amt=parseFloat($('buyAmt').value)||curBuyGoods.price;var total=twMoney(amt*qty);
+  var src=$('buyPaySrc')?$('buyPaySrc').value:'wallet';
+  if(!payUserAmount(total,src,'购买「'+curBuyGoods.name+'」'))return;
+  buyLog.push({name:curBuyGoods.name,qty:qty,amt:total,time:Date.now(),type:'direct'});save('zika_shop_buylog',buyLog);$('shopBuyMask').classList.remove('show');alert('购买成功，已放入背包');
 }
 function doDai(){
   var qty=parseInt($('buyQty').value)||1;var amt=parseFloat($('buyAmt').value)||curBuyGoods.price;var gname=curBuyGoods.name;
@@ -5637,6 +5885,7 @@ function doDai(){
 }
 function renderWallet(){
   $('walletBal').textContent='¥'+fmt(wallet.balance);
+  kinOptionLabel();
   var cl=$('cartList');cl.innerHTML='';
   if(!cart.length)cl.innerHTML='<div style="color:#999;font-size:12px">购物车是空的</div>';
   else{cart.forEach(function(it,i){var r=document.createElement('div');r.className='listRow';r.innerHTML='<span style="flex:1">'+esc(it.name)+' x'+it.qty+' · ¥'+fmt(it.price*it.qty)+'</span><span class="del" data-i="'+i+'">删除</span>';cl.appendChild(r);});cl.querySelectorAll('.del').forEach(function(d){d.onclick=function(){cart.splice(+d.dataset.i,1);save('zika_shop_cart',cart);renderWallet();};});}
@@ -5654,7 +5903,9 @@ function taShopBuy(){
   if(useCart){var pick=cart[Math.floor(Math.random()*cart.length)];item={name:pick.name,price:pick.price,qty:pick.qty||1};}
   else{if(!goods.length)return;var g=goods[Math.floor(Math.random()*goods.length)];item={name:g.name,price:g.price,qty:1};}
   var note=getCardText(replyCards[Math.floor(Math.random()*replyCards.length)]);var ta=profile.taName||'TA';
-  pushMsg({from:'ta',type:'giftOfferCard',goodsName:item.name,qty:item.qty,amount:item.price*item.qty,note:note,offerStatus:'pending',cardStatus:'待接受'});
+  var giftTotal=twMoney(item.price*item.qty);
+  if(!twSpend(giftTotal,'送你「'+item.name+'」x'+item.qty))return;
+  pushMsg({from:'ta',type:'giftOfferCard',goodsName:item.name,qty:item.qty,amount:giftTotal,note:note,offerStatus:'pending',cardStatus:'待接受'});
   giveLog.push({desc:ta+' 想送你「'+item.name+'」x'+item.qty,time:Date.now()});save('zika_shop_givelog',giveLog);
 }/* ========== 小火花渲染 ========== */
 function sparkForm(){var s=spark.streak||0;if(s>=31)return '烈焰火花';if(s>=15)return '大火花';if(s>=8)return '中火花';if(s>=4)return '小火花';return '火苗';}
@@ -6514,10 +6765,11 @@ function showConfirm(title,msg,onOk){
   $('confirmCancel').onclick=function(){$('confirmMask').classList.remove('show');};
   $('confirmMask').onclick=function(e){if(e.target===$('confirmMask'))$('confirmMask').classList.remove('show');};
 }
-function showTextPrompt(title,def,onOk){
+function showTextPrompt(title,def,onOk,maxLen){
   var mask=$('textPromptMask'),inp=$('tpInput');
   if(!mask||!inp)return;
   $('tpTitle').textContent=title||'输入';
+  inp.maxLength=maxLen||200;
   inp.value=def||'';
   mask.classList.add('show');
   var close=function(){mask.classList.remove('show');};
@@ -6538,10 +6790,10 @@ function resetDiaryData(){diaryList=[];save('zika_diary',diaryList);diaryEvents=
 function resetSparkData(){spark={adopted:false,name:'',callMe:'',callTa:'',floatOn:1,streak:0,lastFireDay:'',meToday:false,taToday:false,lastDayKey:'',coupon:0,dailyCoupon:10,weekCoupon:20,msgCouponNeed:5,msgCoupon:5,taGap:30,taBuyP:30,meSpoke:0,taSpoke:0};save('zika_spark',spark);sparkOwned=[];save('zika_spark_owned',sparkOwned);updateSparkFloat();if($('sparkPage').classList.contains('show'))renderSparkPage();}
 function resetScreenData(){screenSet={lockEnable:1,lockP:15,lockGap:60,lockDayMax:3,lockDuration:5,begSuccess:18,shareEnable:1,shareP:12,shareGap:60,shareDayMax:3,shareRejectLockP:60,shareReactGap:3,shareBarText:'他正在翻你的手机'};save('zika_screen_set',screenSet);screenStat={lastLockTs:0,lastShareTs:0,lockCountDay:0,shareCountDay:0,dayKey:''};save('zika_screen_stat',screenStat);endLockScreen();stopShare();if($('screenPage').classList.contains('show'))renderScreenPage();}
 function resetCardsData(){replyCards=DC.slice();save('zika_reply_cards',replyCards);statusPool=DS.slice();save('zika_status_pool',statusPool);patMeCards=DP_ME.slice();save('zika_pat_me',patMeCards);patTaCards=DP_TA.slice();save('zika_pat_ta',patTaCards);checkCards=DCHK.slice();save('zika_check_cards',checkCards);checkAskCards=DCHKASK.slice();save('zika_check_ask',checkAskCards);stickers=[];save('zika_stickers',stickers);cpGroupsStore={reply:[],status:[],patMe:[],patTa:[],check:[],checkAsk:[]};save('zika_cp_groups',cpGroupsStore);normalizeAllCards();clearAllNoteCache();renderCp();refreshStatus();}
-function resetShopData(){wallet={balance:500};save('zika_shop_wallet',wallet);cart=[];save('zika_shop_cart',cart);buyLog=[];save('zika_shop_buylog',buyLog);giveLog=[];save('zika_shop_givelog',giveLog);renderWallet();}
+function resetShopData(){wallet={balance:500};save('zika_shop_wallet',wallet);taWallet=JSON.parse(JSON.stringify(TA_WALLET_DEFAULT));save('zika_ta_wallet',taWallet);cart=[];save('zika_shop_cart',cart);buyLog=[];save('zika_shop_buylog',buyLog);giveLog=[];save('zika_shop_givelog',giveLog);renderWallet();renderTaWallet();}
 function resetLocData(){locList=[];save('zika_loc_list',locList);if(cpTab==='loc')renderLocTab();}
 function resetWidgetsData(){homeBeauty.pages.forEach(function(p){p.widgets=[];});widgets=homeBeauty.pages[homeBeauty.curPage].widgets;save('zika_home_beauty',homeBeauty);try{save('zika_widgets',[]);}catch(e){}renderPagesStructure();renderWgManageList();}
-var ZIKA_KEYS=['zika_status_pool','zika_chat_history','zika_reply_cards','zika_probs','zika_pat_me','zika_pat_ta','zika_check_cards','zika_check_ask','zika_stickers','zika_favorites','zika_beauty','zika_home_beauty','zika_moments','zika_moment_settings','zika_mail_convs','zika_mail_set','zika_mail_proactive','zika_mail_daily','zika_shop_goods','zika_shop_wallet','zika_shop_cart','zika_shop_buylog','zika_shop_givelog','zika_shop_set','zika_cp_groups','zika_profile','zika_status_current','zika_unread','zika_diary','zika_diary_set','zika_diary_stickers','zika_diary_events','zika_spark','zika_spark_shop','zika_spark_owned','zika_screen_set','zika_screen_stat','zika_loc_list','zika_fine_set','zika_widgets'];
+var ZIKA_KEYS=['zika_status_pool','zika_chat_history','zika_reply_cards','zika_probs','zika_pat_me','zika_pat_ta','zika_check_cards','zika_check_ask','zika_stickers','zika_favorites','zika_beauty','zika_home_beauty','zika_moments','zika_moment_settings','zika_mail_convs','zika_mail_set','zika_mail_proactive','zika_mail_daily','zika_shop_goods','zika_shop_wallet','zika_ta_wallet','zika_mail_sticker_recent','zika_shop_cart','zika_shop_buylog','zika_shop_givelog','zika_shop_set','zika_cp_groups','zika_profile','zika_status_current','zika_unread','zika_diary','zika_diary_set','zika_diary_stickers','zika_diary_events','zika_spark','zika_spark_shop','zika_spark_owned','zika_screen_set','zika_screen_stat','zika_loc_list','zika_fine_set','zika_widgets'];
 function updateStoreInfo(){
   var el=$('storeInfoLine');if(!el)return;
   var used=0;
@@ -7004,7 +7256,7 @@ var __domReady=function(){
       ms.nMax=Math.max(ms.nMin,Math.round(n('msNmax',ms.nMax)));
       ms.imgMin=Math.max(0,Math.round(n('msImgNmin',ms.imgMin)));
       ms.imgMax=Math.max(ms.imgMin,Math.round(n('msImgNmax',ms.imgMax)));
-      ms._todayKey=dayKey();ms._todayCount=0;
+      ms._todayKey=dayKey();ms._todayCount=0;ms.nextAt=Date.now()+Math.max(1,parseInt(ms.tickGap)||60)*60*1000;
       save('zika_moment_settings',ms);
       $('momentsSetMask').classList.remove('show');
       renderMoments();
@@ -7012,7 +7264,7 @@ var __domReady=function(){
     };
     if($('msCover'))$('msCover').onchange=function(e){var f=e.target.files[0];if(!f)return;readBgImage(f,function(u){ms.cover=u;save('zika_moment_settings',ms);renderMoments();});e.target.value='';};
     pair('msPostP','msPostPR');pair('msLikeP','msLikePR');pair('msCmtP','msCmtPR');pair('msReplyCmtP','msReplyCmtPR');pair('msImgP','msImgPR');pair('msShotP','msShotPR');
-    if($('mailWriteBtn'))$('mailWriteBtn').onclick=function(){$('mwBody').value='';$('mwPrev').innerHTML='';mwImgs=[];$('mailWriteMask').classList.add('show');};
+    if($('mailWriteBtn'))$('mailWriteBtn').onclick=function(){$('mwBody').value='';mwImgs=[];mwRender();$('mailWriteMask').classList.add('show');};
     if($('mwCancel'))$('mwCancel').onclick=function(){$('mailWriteMask').classList.remove('show');};
     if($('mwOk'))$('mwOk').onclick=function(){
       var b=$('mwBody').value.trim();if(!b){alert('写点正文再寄出');return;}
@@ -7024,7 +7276,27 @@ var __domReady=function(){
       $('mailWriteMask').classList.remove('show');$('mailPage').classList.add('show');$('home').classList.add('hide');
       renderMail();
     };
-    if($('mwSticker'))$('mwSticker').onchange=function(e){var f=e.target.files[0];if(!f)return;readImage(f,300,function(u){mwImgs.push(u);$('mwPrev').innerHTML=mwImgs.map(function(x){return '<img src="'+x+'" style="max-width:60px;max-height:60px;border-radius:6px">';}).join('');});e.target.value='';};
+    if($('mwSticker'))$('mwSticker').onchange=function(e){
+      var files=Array.prototype.slice.call(e.target.files||[]);if(!files.length)return;
+      var i=0;
+      function next(){
+        if(i>=files.length){mwRender();e.target.value='';return;}
+        readImage(files[i],300,function(u){if(mwImgs.indexOf(u)<0)mwImgs.push(u);i++;next();});
+      }
+      next();
+    };
+    if($('meSticker'))$('meSticker').onchange=function(e){
+      var files=Array.prototype.slice.call(e.target.files||[]);if(!files.length)return;
+      var i=0;
+      function next(){
+        if(i>=files.length){renderMeImgs();e.target.value='';return;}
+        readImage(files[i],300,function(u){if(meImgs.indexOf(u)<0)meImgs.push(u);i++;next();});
+      }
+      next();
+    };
+    if($('meClose'))$('meClose').onclick=closeMailEditor;
+    if($('meCancel'))$('meCancel').onclick=closeMailEditor;
+    if($('meSave'))$('meSave').onclick=saveMailEditor;
     if($('mailSetBtn'))$('mailSetBtn').onclick=function(){
       $('mailAllowReply').checked=!!parseInt(mailSet.allowReply);
       $('mailReplyP').value=(mailSet.replyP==null?100:mailSet.replyP);
@@ -7086,8 +7358,17 @@ var __domReady=function(){
     ['shopBgAlpha','shopBgBlur','shopCardAlpha','shopCardBlur'].forEach(function(id){if($(id))$(id).addEventListener('input',function(){shopSet.bgAlpha=parseInt($('shopBgAlpha').value)||0;shopSet.bgBlur=parseInt($('shopBgBlur').value)||0;shopSet.cardAlpha=parseInt($('shopCardAlpha').value)||0;shopSet.cardBlur=parseInt($('shopCardBlur').value)||0;applyShopBg();});});
     if($('shopWalletBtn'))$('shopWalletBtn').onclick=function(){renderWallet();$('walletMask').classList.add('show');};
     if($('wCancel'))$('wCancel').onclick=function(){$('walletMask').classList.remove('show');};
-    if($('wAdd'))$('wAdd').onclick=function(){var v=parseFloat($('addBal').value);if(!isFinite(v)||v<=0){alert('输入有效金额');return;}wallet.balance+=v;save('zika_shop_wallet',wallet);$('addBal').value='';renderWallet();};
-    if($('cartCheckout'))$('cartCheckout').onclick=function(){if(!cart.length){alert('购物车空');return;}var total=cart.reduce(function(s,it){return s+it.price*it.qty;},0);if(total>wallet.balance){alert('余额不足');return;}wallet.balance-=total;save('zika_shop_wallet',wallet);cart.forEach(function(it){buyLog.push({name:it.name,qty:it.qty,amt:it.price*it.qty,time:Date.now(),type:'direct'});});save('zika_shop_buylog',buyLog);cart=[];save('zika_shop_cart',cart);renderWallet();alert('结算成功，已放入背包');};
+    if($('wTaWalletBtn'))$('wTaWalletBtn').onclick=function(){$('walletMask').classList.remove('show');renderTaWallet();$('taWalletMask').classList.add('show');};
+    if($('wAdd'))$('wAdd').onclick=function(){var v=parseFloat($('addBal').value);if(!isFinite(v)||v<=0){alert('输入有效金额');return;}wallet.balance=twMoney(wallet.balance+v);save('zika_shop_wallet',wallet);$('addBal').value='';renderWallet();};
+    if($('cartCheckout'))$('cartCheckout').onclick=function(){if(!cart.length){alert('购物车空');return;}var total=cart.reduce(function(s,it){return s+it.price*it.qty;},0);var src=$('cartPaySrc')?$('cartPaySrc').value:'wallet';if(!payUserAmount(total,src,'购物车结算'))return;cart.forEach(function(it){buyLog.push({name:it.name,qty:it.qty,amt:it.price*it.qty,time:Date.now(),type:'direct'});});save('zika_shop_buylog',buyLog);cart=[];save('zika_shop_cart',cart);renderWallet();alert('结算成功，已放入背包');};
+    if($('taWalletClose'))$('taWalletClose').onclick=function(){$('taWalletMask').classList.remove('show');};
+    if($('taWalletSave'))$('taWalletSave').onclick=function(){var v=parseFloat($('taWalletSet').value);if(!isFinite(v)||v<0){alert('请输入有效余额');return;}taWallet.balance=twMoney(v);twSave();renderTaWallet();alert('对方钱包余额已更新');};
+    if($('taSpecialSave'))$('taSpecialSave').onclick=function(){var raw=($('taWalletSpecial').value||'').replace(/，/g,',');var arr=raw.split(/[\s,]+/).map(function(x){return twMoney(x);}).filter(function(x){return x>0;});if(!arr.length){alert('至少留一个特殊金额');return;}taWallet.special=arr.slice(0,30);twSave();renderTaWallet();alert('特殊金额已保存');};
+    if($('taSpecialChips'))$('taSpecialChips').querySelectorAll('button').forEach(function(b){b.onclick=function(){var v=b.dataset.v;var cur=($('taWalletSpecial').value||'').replace(/，/g,',').split(/[\s,]+/).filter(Boolean);if(cur.indexOf(v)<0)cur.push(v);$('taWalletSpecial').value=cur.join(',');};});
+    if($('kinBind'))$('kinBind').onclick=function(){var lim=parseFloat($('kinLimit').value);if(isFinite(lim)&&lim>=0)taWallet.kinLimit=twMoney(lim);taWallet.kinBound=true;taWallet.kinUsed=0;twSave();renderTaWallet();pushMsg({type:'sys',text:'【亲属卡】'+(profile.taName||'TA')+' 给你绑定了一张亲属卡，额度 ¥'+fmt(taWallet.kinLimit)+'。'});};
+    if($('kinUnbind'))$('kinUnbind').onclick=function(){showConfirm('解绑亲属卡','解绑后剩余额度将不能继续使用，确定解绑？',function(){taWallet.kinBound=false;taWallet.kinUsed=0;twSave();renderTaWallet();});};
+    if($('kinSave'))$('kinSave').onclick=function(){var lim=parseFloat($('kinLimit').value);if(!isFinite(lim)||lim<0){alert('请输入有效额度');return;}taWallet.kinLimit=twMoney(lim);if(twMoney(taWallet.kinUsed)>taWallet.kinLimit)taWallet.kinUsed=taWallet.kinLimit;twSave();renderTaWallet();if(taWallet.kinBound)pushMsg({type:'sys',text:'【亲属卡】额度已更新为 ¥'+fmt(taWallet.kinLimit)+'，当前剩余 ¥'+fmt(twRemain())+'。'});alert('亲属卡额度已更新');};
+    kinOptionLabel();
     if($('buyCancel'))$('buyCancel').onclick=function(){$('shopBuyMask').classList.remove('show');};
     if($('buyCart'))$('buyCart').onclick=function(){var qty=parseInt($('buyQty').value)||1;var amt=parseFloat($('buyAmt').value)||curBuyGoods.price;cart.push({gid:curBuyGoods.id,name:curBuyGoods.name,price:amt,qty:qty});save('zika_shop_cart',cart);$('shopBuyMask').classList.remove('show');alert('已加入购物车');};
     if($('buyDirect'))$('buyDirect').onclick=doDirectBuy;
@@ -7098,12 +7379,12 @@ var __domReady=function(){
     var dlg=$('actDialog');
     if(dlg){dlg.addEventListener('click',function(e){e.stopPropagation();});document.addEventListener('click',function(e){if(dlg.open){var r=dlg.getBoundingClientRect();var inX=e.clientX>=r.left&&e.clientX<=r.right;var inY=e.clientY>=r.top&&e.clientY<=r.bottom;if(!inX||!inY)dlg.close();}});dlg.addEventListener('cancel',function(){dlg.close();});}
     if($('taAvatarTop'))$('taAvatarTop').onclick=function(){var nn=prompt('TA 的名字',profile.taName);if(nn===null)return;nn=nn.trim();if(nn){profile.taName=nn;save('zika_profile',profile);renderTopbar();renderChat();}};
-    if($('drawerRedpacket'))$('drawerRedpacket').onclick=function(){closeDrawer();$('rpAmount').value='';$('rpNote').value='';$('redpacketMask').classList.add('show');};
+    if($('drawerRedpacket'))$('drawerRedpacket').onclick=function(){closeDrawer();$('rpAmount').value='';$('rpNote').value='';kinOptionLabel();if($('rpPaySrc'))$('rpPaySrc').value='wallet';$('redpacketMask').classList.add('show');};
     if($('rpCancel'))$('rpCancel').onclick=function(){$('redpacketMask').classList.remove('show');};
-    if($('rpOk'))$('rpOk').onclick=function(){var a=parseFloat($('rpAmount').value);if(!isFinite(a)||a<=0){alert('请输入有效金额');return;}var n=$('rpNote').value.trim();$('redpacketMask').classList.remove('show');var card=pushMsg({from:'me',type:'redpacket',amount:a,note:n,opened:false});setTimeout(function(){card.opened=true;save('zika_chat_history',chatHistory);pushMsg({type:'sys',text:profile.taName+' 领取了红包 ¥'+fmt(a)});renderChat(true);},700);};
-    if($('drawerTransfer'))$('drawerTransfer').onclick=function(){closeDrawer();$('tfAmount').value='';$('tfNote').value='';$('transferMask').classList.add('show');};
+    if($('rpOk'))$('rpOk').onclick=function(){var a=parseFloat($('rpAmount').value);if(!isFinite(a)||a<=0){alert('请输入有效金额');return;}var src=$('rpPaySrc')?$('rpPaySrc').value:'wallet';if(!payUserAmount(a,src,'发红包',true))return;var n=$('rpNote').value.trim();$('redpacketMask').classList.remove('show');var card=pushMsg({from:'me',type:'redpacket',amount:a,note:n,opened:false});if(src==='kin')notifyKinUse(a,'发红包');setTimeout(function(){card.opened=true;save('zika_chat_history',chatHistory);pushMsg({type:'sys',text:profile.taName+' 领取了红包 ¥'+fmt(a)});renderChat(true);},700);};
+    if($('drawerTransfer'))$('drawerTransfer').onclick=function(){closeDrawer();$('tfAmount').value='';$('tfNote').value='';kinOptionLabel();if($('tfPaySrc'))$('tfPaySrc').value='wallet';$('transferMask').classList.add('show');};
     if($('tfCancel'))$('tfCancel').onclick=function(){$('transferMask').classList.remove('show');};
-    if($('tfOk'))$('tfOk').onclick=function(){var a=parseFloat($('tfAmount').value);if(!isFinite(a)||a<=0){alert('请输入有效金额');return;}var n=$('tfNote').value.trim();$('transferMask').classList.remove('show');var card=pushMsg({from:'me',type:'transfer',amount:a,note:n,opened:false});setTimeout(function(){card.opened=true;save('zika_chat_history',chatHistory);pushMsg({type:'sys',text:profile.taName+' 已收款 ¥'+fmt(a)});renderChat(true);},700);};
+    if($('tfOk'))$('tfOk').onclick=function(){var a=parseFloat($('tfAmount').value);if(!isFinite(a)||a<=0){alert('请输入有效金额');return;}var src=$('tfPaySrc')?$('tfPaySrc').value:'wallet';if(!payUserAmount(a,src,'转账',true))return;var n=$('tfNote').value.trim();$('transferMask').classList.remove('show');var card=pushMsg({from:'me',type:'transfer',amount:a,note:n,opened:false});if(src==='kin')notifyKinUse(a,'转账');setTimeout(function(){card.opened=true;save('zika_chat_history',chatHistory);pushMsg({type:'sys',text:profile.taName+' 已收款 ¥'+fmt(a)});renderChat(true);},700);};
     if($('drawerGift'))$('drawerGift').onclick=function(){closeDrawer();$('gfName').value='';$('gfAmount').value='';$('giftMask').classList.add('show');};
     if($('gfCancel'))$('gfCancel').onclick=function(){$('giftMask').classList.remove('show');};
     if($('gfOk'))$('gfOk').onclick=function(){var n=$('gfName').value.trim(),a=parseFloat($('gfAmount').value);if(!n){alert('请填写礼物名称');return;}if(!isFinite(a)||a<0){alert('请输入有效金额');return;}$('giftMask').classList.remove('show');pushMsg({from:'me',type:'gift',giftName:n,amount:a,opened:false});setTimeout(function(){pushMsg({from:'ta',type:'gift',giftName:n,amount:a,opened:true});pushMsg({type:'sys',text:profile.taName+' 收下了「'+esc(n)+'」'});},700);};
@@ -7119,7 +7400,19 @@ var __domReady=function(){
     if($('drawerSticker'))$('drawerSticker').onclick=function(e){e.stopPropagation();var p=$('stickerPick');if(!stickers.length){alert('还没有表情包，请到字卡库-表情包 上传');closeDrawer();return;}p.innerHTML='';stickers.forEach(function(url){var d=document.createElement('div');d.className='sp';var im=document.createElement('img');im.src=url;d.appendChild(im);d.onclick=function(){pushMsg({from:'me',type:'sticker',url:url});closeDrawer();};p.appendChild(d);});p.classList.add('show');};
     document.addEventListener('click',function(e){var dr=$('drawer'),pb=$('plusBtn'),sp=$('stickerPick'),ds=$('drawerSticker');if(dr&&!dr.contains(e.target)&&e.target!==pb&&sp&&!sp.contains(e.target)&&e.target!==ds)closeDrawer();});
     document.querySelectorAll('#cardsPage .cpTab').forEach(function(t){t.onclick=function(){cpTab=t.dataset.tab;cpCurGroup='全部';cpSel={};setActiveTab();renderCp();};});
-    if($('cpStickerFile'))$('cpStickerFile').onchange=function(e){var files=e.target.files;if(!files||!files.length)return;var i=0;function next(){if(i>=files.length){save('zika_stickers',stickers);renderCp();return;}readImage(files[i],300,function(u){stickers.push(u);i++;next();});}next();e.target.value='';};
+    if($('cpStickerFile'))$('cpStickerFile').onchange=function(e){
+      var files=Array.prototype.slice.call(e.target.files||[]);if(!files.length)return;
+      var i=0;
+      function finish(){
+        var seen={};stickers=stickers.filter(function(u){if(!u||seen[u])return false;seen[u]=1;return true;});
+        save('zika_stickers',stickers);renderCp();e.target.value='';
+      }
+      function next(){
+        if(i>=files.length){finish();return;}
+        readImage(files[i],300,function(u){if(stickers.indexOf(u)<0)stickers.push(u);i++;next();});
+      }
+      next();
+    };
     if($('lwBack'))$('lwBack').onclick=function(){var lw=$('lockWarn');if(lw)lw.classList.remove('show');var inp=$('lsBegInput');if(inp)inp.focus();};
     if($('lwBeg'))$('lwBeg').onclick=function(){var lw=$('lockWarn');if(lw)lw.classList.remove('show');begUnlock();};
     if($('siAcceptBtn'))$('siAcceptBtn').onclick=acceptShare;
@@ -7259,8 +7552,8 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 var momentsTickTimer=null,mailTickTimer=null,shopTickTimer=null,diaryTickTimer=null,diaryNoteTickTimer=null;
 function restartMomentsTick(){
   if(momentsTickTimer)clearInterval(momentsTickTimer);
-  var gap=Math.max(1,parseInt(ms.tickGap)||60);
-  momentsTickTimer=setInterval(function(){taTick();},gap*60*1000);
+  settleMomentsTick();
+  momentsTickTimer=setInterval(function(){settleMomentsTick();},30*1000);
 }
 function restartMailTick(){
   if(mailTickTimer)clearInterval(mailTickTimer);
@@ -7274,9 +7567,9 @@ restartMomentsTick();restartMailTick();restartShopTick();restartDiaryTick();rest
 
 try{settleMailAll();}catch(e){}
 document.addEventListener('visibilitychange',function(){
-  if(!document.hidden){try{settleMailAll();}catch(e){}}
+  if(!document.hidden){try{settleMomentsTick();}catch(e){}try{settleMailAll();}catch(e){}}
 });
-window.addEventListener('focus',function(){try{settleMailAll();}catch(e){}});
+window.addEventListener('focus',function(){try{settleMomentsTick();}catch(e){}try{settleMailAll();}catch(e){}});
 
 } /* ===== __bootApp 结束 ===== */
 
