@@ -23,7 +23,7 @@
       name:"初雪里",short_name:"初雪里",lang:"zh-CN",
       description:"初雪里——只属于我们的信件、日记与朋友圈。",
       start_url:href,scope:scope,id:location.pathname,
-      display:"fullscreen",display_override:["fullscreen","standalone"],
+      display:"standalone",display_override:["standalone"],
       orientation:"portrait",background_color:"#fbf7ef",theme_color:"#fbf7ef",
       prefer_related_applications:false,icons:icons
     };
@@ -618,6 +618,11 @@ input,textarea,select,[contenteditable="true"]{-webkit-user-select:text;user-sel
 #stickerPick.show{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 #stickerPick .sp{border:1px solid #e5e5e5;border-radius:6px;padding:4px;cursor:pointer;min-height:52px;display:flex;align-items:center;justify-content:center}
 #stickerPick .sp img{max-width:100%;max-height:46px;object-fit:contain}
+
+/* ===== PWA/安卓安全区：底部手势条留白 ===== */
+#inputArea{padding-bottom:max(24px,calc(11px + env(safe-area-inset-bottom,0px)))}
+#drawer{bottom:calc(58px + env(safe-area-inset-bottom,0px))}
+#stickerPick{bottom:calc(100px + env(safe-area-inset-bottom,0px))}
 
 /* ===== 图片防撑大 + 绝对定位填满 ===== */
 .wg-clip .clipPhoto,.wg-stamp .stampPhoto,.wg-film .filmFrame,.wg-col .colCell,.wg-hang .hangPhoto{position:relative;overflow:hidden}
